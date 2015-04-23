@@ -8,7 +8,7 @@ My focus for the past 10 years has been around Systems, Data, Infrastructure Arc
 
 This journey started around mid 2013 and lasted well over a year. It took awhile getting to a point where I felt comfortable because I kept seeing discrepancies between what was commonly understood and what Roy Fielding's dissertation was telling me.
 
-I eventually got around to the rebranding effort "Hypermedia API" which is an attempt to refocus attention toward an aspect of REST that has been, up until now, remained dormant except perhaps in a few marginal implementations.
+I eventually got around to the rebranding effort "Hypermedia API" which is an attempt to refocus attention toward a particular aspect of REST (i.e. Hypermedia as the engine of application state) that has, up until recently, remained dormant except perhaps in a few marginal API implementations.
 
 I still have some work to do to close the gap on some of the finer aspects of the REST architectural style but I've benefited from the feedback of a community of very motivated and very knowledgeable folks (in particular the HAL Discuss and Hypermedia Web Google Groups).
 
