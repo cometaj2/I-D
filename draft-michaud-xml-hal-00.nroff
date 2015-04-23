@@ -17,10 +17,9 @@
 .in 0
 
 .nf
-.tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''Stateless'
-.tl 'Intended status: Informational''October 12, 2015'
-.tl 'Expires: October 12, 2015'''
+.tl '\%Internet-Draft''J. Michaud'
+.tl 'Intended status: Informational''April 23, 2015'
+.tl 'Expires: October 25, 2015'''
 .fi
 .in 3
 
