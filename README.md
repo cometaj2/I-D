@@ -1,6 +1,6 @@
 # I-D
 
-This repository is intended to contain an Interet-Draft for the application/hal+xml media type.
+This repository is intended to contain an Internet-Draft for the application/hal+xml media type.
 
 A note about the author:
 
