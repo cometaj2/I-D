@@ -8,7 +8,7 @@ Expires: October 25, 2015
 
 
                    XML Hypertext Application Language
-                        draft-michaud-xml-hal-10
+                        draft-michaud-xml-hal-00
 
 Abstract
 
