@@ -187,14 +187,14 @@ A Link is defined as a set of attributes that represent a hyperlink from the con
 .ti 0
 5.1.  rel
 
-The "rel" property is REQUIRED.
+The "rel" attribute is REQUIRED.
 
-It is a property whose relation values are link relation types (as defined by [RFC5988]).
+It is an attribute whose relation values are link relation types (as defined by [RFC5988]).
 
 .ti 0
 5.1.  href
 
-The "href" property is REQUIRED.
+The "href" attribute is REQUIRED.
 
 Its value is either a URI [RFC3986] or a URI Template [RFC6570].
 
@@ -203,9 +203,9 @@ If the value is a URI Template then the Link SHOULD have a "templated" attribute
 .ti 0
 5.2.  templated
 
-The "templated" property is OPTIONAL.
+The "templated" attribute is OPTIONAL.
 
-Its value is boolean and SHOULD be true when the Link's "href" property is a URI Template.
+Its value is boolean and SHOULD be true when the Link's "href" attribute is a URI Template.
 
 Its value SHOULD be considered false if it is undefined or any other value than true.
 
@@ -223,7 +223,7 @@ The "deprecation" attribute is OPTIONAL.
 
 Its presence indicates that the link is to be deprecated (i.e. removed) at a future date.  Its value is a URL that SHOULD provide further information about the deprecation.
 
-A client SHOULD provide some notification (e.g. by logging a warning message) whenever it traverses over a link that has this property.  The notification SHOULD include the deprecation property's value so that a client maintainer can easily find information about the deprecation.
+A client SHOULD provide some notification (e.g. by logging a warning message) whenever it traverses over a link that has this attribute.  The notification SHOULD include the deprecation attribute's value so that a client maintainer can easily find information about the deprecation.
 
 .ti 0
 5.5.  name
