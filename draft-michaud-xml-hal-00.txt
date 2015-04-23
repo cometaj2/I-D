@@ -245,14 +245,14 @@ Internet-Draft     XML Hypertext Application Language       October 2013
 
 5.3.  type
 
-   The "type" property is OPTIONAL.
+   The "type" attribute is OPTIONAL.
 
    Its value is a string used as a hint to indicate the media type
    expected when dereferencing the target resource.
 
 5.4.  deprecation
 
-   The "deprecation" property is OPTIONAL.
+   The "deprecation" attribute is OPTIONAL.
 
    Its presence indicates that the link is to be deprecated (i.e.
    removed) at a future date.  Its value is a URL that SHOULD provide
@@ -266,7 +266,7 @@ Internet-Draft     XML Hypertext Application Language       October 2013
 
 5.5.  name
 
-   The "name" property is OPTIONAL.
+   The "name" attribute is OPTIONAL.
 
    Its value MAY be used as a secondary key for selecting Links which
    share the same relation type.
@@ -284,21 +284,21 @@ Internet-Draft     XML Hypertext Application Language       October 2013
 
 5.6.  profile
 
-   The "profile" property is OPTIONAL.
+   The "profile" attribute is OPTIONAL.
 
    Its value is a string which is a URI that hints about the profile (as
    defined by [I-D.wilde-profile-link]) of the target resource.
 
 5.7.  title
 
-   The "title" property is OPTIONAL.
+   The "title" attribute is OPTIONAL.
 
    Its value is a string and is intended for labeling the link with a
    human-readable identifier (as defined by [RFC5988]).
 
 5.8.  hreflang
 
-   The "hreflang" property is OPTIONAL.
+   The "hreflang" attribute is OPTIONAL.
 
    Its value is a string and is intended for indicating the language of
    the target resource (as defined by [RFC5988]).
