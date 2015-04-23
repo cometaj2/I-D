@@ -12,4 +12,4 @@ I eventually got around to the rebranding effort "Hypermedia API" which is an at
 
 I still have some work to do to close the gap on some of the finer aspects of the REST architectural style but I've benefited from the feedback of a community of very motivated and very knowledgeable folks (in particular the HAL Discuss and Hypermedia Web Google Groups).
 
-I'm sharing a bit of what I've learned in the form of this Internet-Draft for the application/hal+xml media type.
+I'm sharing back in the form of this Internet-Draft for the application/hal+xml media type and I intend to submit it after getting a bit of feedback from the community.
