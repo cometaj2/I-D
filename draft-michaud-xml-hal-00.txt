@@ -429,8 +429,8 @@ Internet-Draft     XML Hypertext Application Language         April 2015
      <link rel="acme:widgets" href="/widgets"/>
    </resource>
 
-   The above demonstrates the relation "http://docs.acme.com/relations/
-   widgets" being abbreviated to "acme:widgets" via CURIE syntax.
+   The above demonstrates the relation "http://a.com/rels/widgets" being
+   abbreviated to "acme:widgets" via CURIE syntax.
 
 8.3.  Hypertext Cache Pattern
 

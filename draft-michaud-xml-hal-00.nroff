@@ -326,7 +326,7 @@ The CURIE Syntax [W3C.NOTE-curie-20101216] MAY be used for brevity for these URI
 </resource>
 .fi
 
-The above demonstrates the relation "http://docs.acme.com/relations/ widgets" being abbreviated to "acme:widgets" via CURIE syntax.
+The above demonstrates the relation "http://a.com/rels/widgets" being abbreviated to "acme:widgets" via CURIE syntax.
 
 .ti 0
 8.3.  Hypertext Cache Pattern
