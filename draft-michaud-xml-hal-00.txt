@@ -67,7 +67,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
        4.1.2.  resource . . . . . . . . . . . . . . . . . . . . . . .  4
    5.  Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.1.  rel  . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
+     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.2.  templated  . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.3.  type . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.4.  deprecation  . . . . . . . . . . . . . . . . . . . . . . .  5
@@ -178,8 +178,6 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    It has two reserved elements:
 
-   Elements:
-
    (1)  "link": a link to another resource.
 
    (2)  "resource": an embedded resource.
@@ -218,6 +216,8 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    It is an attribute whose relation values are link relation types (as
    defined by [RFC5988]).
+
+5.1.  href
  
 
 
@@ -225,8 +225,6 @@ Michaud                 Expires October 25, 2015                [Page 4]
 
 Internet-Draft     XML Hypertext Application Language         April 2015
 
-
-5.1.  href
 
    The "href" attribute is REQUIRED.
 
@@ -272,6 +270,8 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    Its value MAY be used as a secondary key for selecting Links which
    share the same relation type.
+
+
 
 
  

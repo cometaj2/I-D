@@ -67,7 +67,7 @@ Table of Contents
        4.1.2.  resource . . . . . . . . . . . . . . . . . . . . . . .  4
    5.  Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.1.  rel  . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
+     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.2.  templated  . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.3.  type . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.4.  deprecation  . . . . . . . . . . . . . . . . . . . . . . .  5
@@ -151,8 +151,6 @@ Here, we have a HAL document representing an order resource with the URI "/order
 The resource element represents a Resource and SHOULD also host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. and Section 8.1. for details
 
 It has two reserved elements:
-
-Elements:
 
 (1)  "link": a link to another resource.
 
