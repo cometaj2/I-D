@@ -90,7 +90,7 @@ Table of Contents
      B.1.  How should a client know the
            meaning/structure/semantics/type of a  . . . . . . . . . . 10
      B.2.  Where can I find libraries for working with HAL? . . . . . 10
-     B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 10
+     B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 11
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
 .fi
 .in 3
@@ -103,7 +103,7 @@ Table of Contents
 .fi
 There is an emergence of non-HTML HTTP applications ("Web APIs") which use hyperlinks to direct clients around their resources.
 
-The XML Hypertext Application Language (HAL) is a standard which establishes conventions for expressing hypermedia controls, such as links, with XML [RFC7303].
+The XML Hypertext Application Language (HAL) is a standard which establishes conventions for expressing hypermedia controls, such as links, with XML [W3C.REC-xml-20081126].
 
 HAL is a generic media type with which Web APIs can be developed and exposed as series of links.  Clients of these APIs can select links by their link relation type and traverse them in order to progress through the application.
 
@@ -119,7 +119,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 .ti 0
 3.  HAL Documents
 
-A HAL Document uses the format described in [RFC7303] and has the media type "application/hal+xml".
+A HAL Document uses the format described in [W3C.REC-xml-20081126] and has the media type "application/hal+xml".
 
 Its root MUST be a resource element.
 
@@ -323,11 +323,11 @@ Custom link relation types (Extension Relation Types in [RFC5988]) SHOULD be URI
 The CURIE Syntax [W3C.NOTE-curie-20101216] MAY be used for brevity for these URIs.  CURIEs are established within a HAL document via XML namespace on the root Resource.
 
 .nf
-<resource rel="self" href="/orders" xmlns:acme="http://docs/acme.com/relations/">
+<resource rel="self" href="/orders" xmlns:acme="http://a.com/rels/">
   <link rel="acme:widgets" href="/widgets"/>
 </resource>
-
 .fi
+
 The above demonstrates the relation "http://docs.acme.com/relations/ widgets" being abbreviated to "acme:widgets" via CURIE syntax.
 
 .ti 0
@@ -389,7 +389,14 @@ TBD
 [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource Identifier (URI): Generic Syntax", STD 66, RFC 3986, January 2005.
 
 .ti 3
-[RFC7303]  Thomson, H., "XML Media Types", RFC 7303, July 2014.
+[W3C.REC-xml-20081126]
+           Tim Bray, Textuality and Netscape <tbray@textuality.com>
+           Jean Paoli, Microsoft <jeanpa@microsoft.com>
+           C. M. Sperberg-McQueen, W3C <cmsmcq@w3.org>
+           Eve Maler, Sun Microsystems, Inc. <eve.maler@east.sun.com>
+           Francois Yergeau, "Extensible Markup Language (XML) 1.0 (Fifth Edition)",
+           World Wide Web Consortium REC REC-xml-20081126, November 2008,
+           <http://www.w3.org/TR/2008/REC-xml-20081126/>.
 
 .ti 3
 [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
