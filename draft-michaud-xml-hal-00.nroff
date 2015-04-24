@@ -388,13 +388,8 @@ TBD
 
 .ti 3
 [W3C.REC-xml-20081126]
-           Tim Bray, Textuality and Netscape <tbray@textuality.com>
-           Jean Paoli, Microsoft <jeanpa@microsoft.com>
-           C. M. Sperberg-McQueen, W3C <cmsmcq@w3.org>
-           Eve Maler, Sun Microsystems, Inc. <eve.maler@east.sun.com>
-           Francois Yergeau, "Extensible Markup Language (XML) 1.0 (Fifth Edition)",
-           World Wide Web Consortium REC REC-xml-20081126, November 2008,
-           <http://www.w3.org/TR/2008/REC-xml-20081126/>.
+
+Bray, T., Paoli, J., Sperberg-McQueen, C. M., Maler, E., Yergeau, F., "Extensible Markup Language (XML) 1.0 (Fifth Edition)", World Wide Web Consortium REC REC-xml-20081126, November 2008, <http://www.w3.org/TR/2008/REC-xml-20081126/>.
 
 .ti 3
 [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
@@ -405,6 +400,7 @@ TBD
 .nf
 .in 3
 [W3C.NOTE-curie-20101216]
+
            McCarron, S. and M. Birbeck, "CURIE Syntax 1.0", World
            Wide Web Consortium NOTE NOTE-curie-20101216, December
            2010, <http://www.w3.org/TR/2010/NOTE-curie-20101216>.

@@ -510,15 +510,13 @@ Internet-Draft     XML Hypertext Application Language         April 2015
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
               3986, January 2005.
 
-   [W3C.REC-xml-20081126]           Tim Bray, Textuality and Netscape
-              <tbray@textuality.com>           Jean Paoli, Microsoft
-              <jeanpa@microsoft.com>           C. M. Sperberg-McQueen,
-              W3C <cmsmcq@w3.org>           Eve Maler, Sun Microsystems,
-              Inc. <eve.maler@east.sun.com>           Francois Yergeau,
-              "Extensible Markup Language (XML) 1.0 (Fifth Edition)",   
-                     World Wide Web Consortium REC REC-xml-20081126,
-              November 2008,           <http://www.w3.org/TR/2008/REC-
-              xml-20081126/>.
+   [W3C.REC-xml-20081126]
+
+              Bray, T., Paoli, J., Sperberg-McQueen, C. M., Maler, E.,
+              Yergeau, F., "Extensible Markup Language (XML) 1.0 (Fifth
+              Edition)", World Wide Web Consortium REC REC-xml-20081126,
+              November 2008, <http://www.w3.org/TR/2008/REC-xml-
+              20081126/>.
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
@@ -526,6 +524,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
               and D. Orchard, "URI Template", RFC 6570, March 2012.
 
    [W3C.NOTE-curie-20101216]
+
               McCarron, S. and M. Birbeck, "CURIE Syntax 1.0", World
               Wide Web Consortium NOTE NOTE-curie-20101216, December
               2010, <http://www.w3.org/TR/2010/NOTE-curie-20101216>.
@@ -554,6 +553,7 @@ B.1.  How should a client know the meaning/structure/semantics/type of a
 
 B.2.  Where can I find libraries for working with HAL?
 
+   A list of libraries is maintained here:
  
 
 
@@ -562,7 +562,6 @@ Michaud                 Expires October 25, 2015               [Page 10]
 Internet-Draft     XML Hypertext Application Language         April 2015
 
 
-   A list of libraries is maintained here:
    http://stateless.co/hal_specification.html
 
 B.3.  Why does HAL have no forms?
@@ -577,6 +576,7 @@ Author's Address
    Jeff Michaud
 
    Email: cometaj2@comcast.net
+
 
 
 
