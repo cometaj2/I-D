@@ -61,13 +61,13 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HAL Documents  . . . . . . . . . . . . . . . . . . . . . . . .  3
-   4.  Resource . . . . . . . . . . . . . . . . . . . . . . . . . . .  3
+   4.  Resource . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      4.1.  Reserved Elements  . . . . . . . . . . . . . . . . . . . .  4
        4.1.1.  link . . . . . . . . . . . . . . . . . . . . . . . . .  4
        4.1.2.  resource . . . . . . . . . . . . . . . . . . . . . . .  4
    5.  Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.1.  rel  . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
+     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.2.  templated  . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.3.  type . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.4.  deprecation  . . . . . . . . . . . . . . . . . . . . . . .  5
@@ -76,8 +76,8 @@ Table of Contents
      5.7.  title  . . . . . . . . . . . . . . . . . . . . . . . . . .  6
      5.8.  hreflang . . . . . . . . . . . . . . . . . . . . . . . . .  6
    6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-   7.  Media Type Parameters  . . . . . . . . . . . . . . . . . . . .  7
-     7.1.  profile  . . . . . . . . . . . . . . . . . . . . . . . . .  7
+   7.  Media Type Parameters  . . . . . . . . . . . . . . . . . . . .  8
+     7.1.  profile  . . . . . . . . . . . . . . . . . . . . . . . . .  8
    8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
      8.1.  Self Link  . . . . . . . . . . . . . . . . . . . . . . . .  8
      8.2.  Link relations . . . . . . . . . . . . . . . . . . . . . .  8
@@ -141,14 +141,14 @@ Content-Type: application/hal+xml
     <total>10.20</total>
 </resource>
 
-
 .fi
 Here, we have a HAL document representing an order resource with the URI "/orders/523".  It has "warehouse" and "invoice" links, and its own state in the form of "currency", "status", and "total" elements.
 
+.bp
 .ti 0
 4.  Resource
 
-The Resource element represents a resource and SHOULD also host a Link. See Section 5. and Section 8.1.
+The resource element represents a Resource and SHOULD also host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. and Section 8.1. for details
 
 It has two reserved elements:
 
@@ -168,14 +168,14 @@ Everything else MUST be valid XML and represents the current state of the Resour
 
 The reserved "link" element is OPTIONAL.
 
-This element MUST be used to host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. for details.
+This element MAY be used to host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. for details.
 
 .ti 0
 4.1.2.  resource
 
 The reserved "resource" element is OPTIONAL
 
-If present, this element MUST observe the same constraints defined for the root resource but MUST additionally host a link so that it can more easily identified when processed.
+If present, this element MUST observe the same constraints defined for the root resource but MUST additionally host a Link so that embedded resources can more easily be identified when processed.
 
 Embedded resources MAY be a full, partial, or inconsistent version of the representation served from the target URI.
 
@@ -296,6 +296,7 @@ It also has two embedded resources, "order".  Each of these has its own links to
 
 Additionally, the order list resource has its own properties "currentlyProcessing" and "shippedToday".
 
+.bp
 .ti 0
 7.  Media Type Parameters
 
