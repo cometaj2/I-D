@@ -1,4 +1,4 @@
-# I-D
+# hal+xml I-D
 
 This repository is intended to contain an Internet-Draft for the application/hal+xml media type.
 
