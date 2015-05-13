@@ -82,14 +82,15 @@ Table of Contents
      8.1.  Self Link  . . . . . . . . . . . . . . . . . . . . . . . .  8
      8.2.  Link relations . . . . . . . . . . . . . . . . . . . . . .  8
      8.3.  Hypertext Cache Pattern  . . . . . . . . . . . . . . . . .  8
+     8.4.  Namespace and prefix . . . . . . . . . . . . . . . . . . .  9
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
-   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  9
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 10
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 10
      B.1.  How should a client know the
            meaning/structure/semantics/type of a  . . . . . . . . . . 10
-     B.2.  Where can I find libraries for working with HAL? . . . . . 10
+     B.2.  Where can I find libraries for working with HAL? . . . . . 11
      B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 11
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
 .fi
@@ -361,6 +362,11 @@ After:
 .fi
 
 .ti 0
+8.4.  Namespace and prefix
+
+The default namespace of "http://stateless.co/hal/ns" SHOULD be used to allow for mixed, and potentially conflicting, xml vocabularies to coexist in the same xml instance. If a namespace prefix is needed, "hal" MAY be used by default. Implementers are, encouraged to provide facilities to allow for an override of the default namespace to resolve conflicts.
+
+.ti 0
 9.  Security Considerations
 
 TBD
@@ -370,6 +376,7 @@ TBD
 
 TBD
 
+.bp
 .ti 0
 11.  Normative References
 
@@ -382,7 +389,6 @@ TBD
 .ti 3
 [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
 
-.bp
 .ti 3
 [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform Resource Identifier (URI): Generic Syntax", STD 66, RFC 3986, January 2005.
 

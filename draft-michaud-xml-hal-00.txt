@@ -82,14 +82,15 @@ Internet-Draft     XML Hypertext Application Language         April 2015
      8.1.  Self Link  . . . . . . . . . . . . . . . . . . . . . . . .  8
      8.2.  Link relations . . . . . . . . . . . . . . . . . . . . . .  8
      8.3.  Hypertext Cache Pattern  . . . . . . . . . . . . . . . . .  8
+     8.4.  Namespace and prefix . . . . . . . . . . . . . . . . . . .  9
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
-   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  9
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 10
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 10
      B.1.  How should a client know the
            meaning/structure/semantics/type of a  . . . . . . . . . . 10
-     B.2.  Where can I find libraries for working with HAL? . . . . . 10
+     B.2.  Where can I find libraries for working with HAL? . . . . . 11
      B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 11
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
 
@@ -105,7 +106,6 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    HAL is a generic media type with which Web APIs can be developed and
    exposed as series of links.  Clients of these APIs can select links
-   by their link relation type and traverse them in order to progress
  
 
 
@@ -114,6 +114,7 @@ Michaud                 Expires October 25, 2015                [Page 2]
 Internet-Draft     XML Hypertext Application Language         April 2015
 
 
+   by their link relation type and traverse them in order to progress
    through the application.
 
    HAL's conventions result in a uniform interface for serving and
@@ -158,7 +159,6 @@ Internet-Draft     XML Hypertext Application Language         April 2015
    Here, we have a HAL document representing an order resource with the
    URI "/orders/523".  It has "warehouse" and "invoice" links, and its
    own state in the form of "currency", "status", and "total" elements.
-
 
 
 
@@ -477,6 +477,15 @@ Internet-Draft     XML Hypertext Application Language         April 2015
        <resource>
    </resource>
 
+8.4.  Namespace and prefix
+
+   The default namespace of "http://stateless.co/hal/ns" SHOULD be used
+   to allow for mixed, and potentially conflicting, xml vocabularies to
+   coexist in the same xml instance. If a namespace prefix is needed,
+   "hal" MAY be used by default. Implementers are, encouraged to provide
+   facilities to allow for an override of the default namespace to
+   resolve conflicts.
+
 9.  Security Considerations
 
    TBD
@@ -484,15 +493,6 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 10.  IANA Considerations
 
    TBD
-
-11.  Normative References
-
-   [I-D.wilde-profile-link]           Wilde, E., "The 'profile' Link
-   Relation Type", draft-           wilde-profile-link-04 (work in
-   progress), October 2012.
-
-   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
-              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
 
 
@@ -505,6 +505,15 @@ Michaud                 Expires October 25, 2015                [Page 9]
 
 Internet-Draft     XML Hypertext Application Language         April 2015
 
+
+11.  Normative References
+
+   [I-D.wilde-profile-link]           Wilde, E., "The 'profile' Link
+   Relation Type", draft-           wilde-profile-link-04 (work in
+   progress), October 2012.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
@@ -545,6 +554,14 @@ B.1.  How should a client know the meaning/structure/semantics/type of a
    exposing additional documentation describing the resource which may
    be human and/or machine readable (i.e.  an HTML page and/or a XML
    Schema).  The difference between the two approaches is in where that
+ 
+
+
+Michaud                 Expires October 25, 2015               [Page 10]
+
+Internet-Draft     XML Hypertext Application Language         April 2015
+
+
    URI is shared with the client, which is either:
 
    (1)  The URI that was the preceding link relation type.
@@ -554,14 +571,6 @@ B.1.  How should a client know the meaning/structure/semantics/type of a
 B.2.  Where can I find libraries for working with HAL?
 
    A list of libraries is maintained here:
- 
-
-
-Michaud                 Expires October 25, 2015               [Page 10]
-
-Internet-Draft     XML Hypertext Application Language         April 2015
-
-
    http://stateless.co/hal_specification.html
 
 B.3.  Why does HAL have no forms?
@@ -576,15 +585,6 @@ Author's Address
    Jeff Michaud
 
    Email: cometaj2@comcast.net
-
-
-
-
-
-
-
-
-
 
 
 
