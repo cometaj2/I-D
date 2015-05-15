@@ -481,10 +481,10 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    The default namespace of "http://stateless.co/hal/ns" SHOULD be used
    to allow for mixed, and potentially conflicting, xml vocabularies to
-   coexist in the same xml instance. If a namespace prefix is needed,
-   "hal" MAY be used by default. Implementers are, encouraged to provide
-   facilities to allow for an override of the default namespace to
-   resolve conflicts.
+   coexist in the same xml instance (e.g. embedding an
+   application/hal+xml payload in another xml).
+
+   If a namespace prefix is needed, "hal" MAY be used by default.
 
 9.  Security Considerations
 
