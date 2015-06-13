@@ -542,12 +542,12 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
 Appendix A.  Acknowledgements
 
-              Thanks to Mike Kelly for making this specification
-              possible through the creation of HAL and the hal+json
-              specification.
+   Thanks to Mike Kelly for making this specification possible through
+   the creation of HAL and the hal+json specification.
 
-              The author takes all responsibility for errors and
-              omissions.
+   The author takes all responsibility for errors and omissions.
+
+
 
 
 
@@ -565,7 +565,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 Appendix B.  Frequently Asked Questions
 
 B.1.  How should a client know the meaning/structure/semantics/type of a
-resource?
+   resource?
 
    There are two main approaches to solving this problem.  Both involve
    exposing additional documentation describing the resource which may

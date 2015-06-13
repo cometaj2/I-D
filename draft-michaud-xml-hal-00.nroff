@@ -416,6 +416,7 @@ Biron, P. V., Malhotra, A., "XML Schema Part 2: Datatypes Second Edition", World
 
 .nf
 
+.in 3
 .ti 0
 Appendix A.  Acknowledgements
 
@@ -423,13 +424,12 @@ Appendix A.  Acknowledgements
 Thanks to Mike Kelly for making this specification possible through the creation of HAL and the hal+json specification.
 
 The author takes all responsibility for errors and omissions.
+.nf
 
 .bp
 .ti 0
 Appendix B.  Frequently Asked Questions
 
-.nf
-.in 0
 .ti 0
 B.1.  How should a client know the meaning/structure/semantics/type of a
 resource?
