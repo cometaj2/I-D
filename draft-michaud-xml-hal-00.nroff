@@ -149,7 +149,7 @@ Here, we have a HAL document representing an order resource with the URI "/order
 .ti 0
 4.  Resource
 
-The resource element represents a Resource and SHOULD also host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. and Section 8.1. for details
+The resource element represents a Resource and SHOULD also host the set of attributes that describe a Link (as defined by [RFC5988]). See Section 5. and Section 8.1. for details.
 
 It has two reserved elements:
 

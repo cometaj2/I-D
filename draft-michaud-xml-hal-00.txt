@@ -174,7 +174,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    The resource element represents a Resource and SHOULD also host the
    set of attributes that describe a Link (as defined by [RFC5988]). See
-   Section 5. and Section 8.1. for details
+   Section 5. and Section 8.1. for details.
 
    It has two reserved elements:
 
