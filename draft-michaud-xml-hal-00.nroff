@@ -67,7 +67,7 @@ Table of Contents
        4.1.2.  resource . . . . . . . . . . . . . . . . . . . . . . .  4
    5.  Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.1.  rel  . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
+     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.2.  templated  . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.3.  type . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.4.  deprecation  . . . . . . . . . . . . . . . . . . . . . . .  5
@@ -85,11 +85,11 @@ Table of Contents
      8.4.  Namespace and prefix . . . . . . . . . . . . . . . . . . .  9
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
-   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 10
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  9
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 10
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 11
      B.1.  How should a client know the
-           meaning/structure/semantics/type of a  . . . . . . . . . . 10
+           meaning/structure/semantics/type of a  . . . . . . . . . . 11
      B.2.  Where can I find libraries for working with HAL? . . . . . 11
      B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 11
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
@@ -181,7 +181,7 @@ Embedded resources MAY be a full, partial, or inconsistent version of the repres
 .ti 0
 5.  Link
 
-A Link is defined as a set of attributes that represent a hyperlink from the containing resource to a URI.
+A Link is defined as a set of attributes that represent a hyperlink from the containing resource to a URI. The attributes are as follows:
 
 .ti 0
 5.1.  rel
@@ -190,6 +190,7 @@ The "rel" attribute is REQUIRED.
 
 It is an attribute whose relation values are link relation types (as defined by [RFC5988]).
 
+.bp
 .ti 0
 5.1.  href
 
@@ -204,9 +205,9 @@ If the value is a URI Template then the Link SHOULD have a "templated" attribute
 
 The "templated" attribute is OPTIONAL.
 
-Its value is boolean and SHOULD be true when the Link's "href" attribute is a URI Template.
+Its value is boolean (as defined by [W3C.REC-xmlschema-2-20041028]) and SHOULD be true when the Link's "href" attribute is a URI Template.
 
-Its value SHOULD be considered false if it is undefined or any other value than true.
+Its value SHOULD be considered false if the attribute is absent.
 
 .ti 0
 5.3.  type
@@ -237,7 +238,7 @@ Its value MAY be used as a secondary key for selecting Links which share the sam
 
 The "profile" attribute is OPTIONAL.
 
-Its value is a string which is a URI that hints about the profile (as defined by [I-D.wilde-profile-link]) of the target resource.
+Its value is a string which is a URI that hints about the profile (as defined by [RFC6906]) of the target resource.
 
 .ti 0
 5.7.  title
@@ -302,7 +303,7 @@ Additionally, the order list resource has its own properties "currentlyProcessin
 .ti 0
 7.1.  profile
 
-The media type identifier application/hal+xml MAY also include an additional "profile" parameter (as defined by \%[I-D.wilde-profile-link])
+The media type identifier application/hal+xml MAY also include an additional "profile" parameter (as defined by [RFC6906])
 
 HAL documents that are served with the "profile" parameter still SHOULD include a "profile" link belonging to the root resource.
 
@@ -378,16 +379,14 @@ TBD
 
 TBD
 
-.bp
 .ti 0
 11.  Normative References
-
-[I-D.wilde-profile-link]
-           Wilde, E., "The 'profile' Link Relation Type", draft-
-           \%wilde-profile-link-04 (work in progress), October 2012.
-
 .fi
+
 .in 14
+.ti 3
+[RFC6906]  Wilde, E., "The 'profile' Link Relation Type", RFC 6906, March 2013.
+
 .ti 3
 [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate Requirement Levels", BCP 14, RFC 2119, March 1997.
 
@@ -405,13 +404,17 @@ Bray, T., Paoli, J., Sperberg-McQueen, C. M., Maler, E., Yergeau, F., "Extensibl
 .ti 3
 [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M., and D. Orchard, "URI Template", RFC 6570, March 2012.
 
-.nf
-.in 3
+.ti 3
 [W3C.NOTE-curie-20101216]
 
-           McCarron, S. and M. Birbeck, "CURIE Syntax 1.0", World
-           Wide Web Consortium NOTE NOTE-curie-20101216, December
-           2010, <http://www.w3.org/TR/2010/NOTE-curie-20101216>.
+McCarron, S. and M. Birbeck, "CURIE Syntax 1.0", World Wide Web Consortium NOTE NOTE-curie-20101216, December 2010, <http://www.w3.org/TR/2010/NOTE-curie-20101216>.
+
+.ti 3
+[W3C.REC-xmlschema-2-20041028]
+
+Biron, P. V., Malhotra, A., "XML Schema Part 2: Datatypes Second Edition", World Wide Web Consortium REC REC-xmlschema-2-20041028, October 2004, <http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/>.
+
+.nf
 
 .ti 0
 Appendix A.  Acknowledgements
@@ -421,6 +424,7 @@ Thanks to Mike Kelly for making this specification possible through the creation
 
 The author takes all responsibility for errors and omissions.
 
+.bp
 .ti 0
 Appendix B.  Frequently Asked Questions
 
@@ -428,7 +432,7 @@ Appendix B.  Frequently Asked Questions
 .in 0
 .ti 0
 B.1.  How should a client know the meaning/structure/semantics/type of a
-      resource?
+resource?
 
 .fi
 .in 3

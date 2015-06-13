@@ -67,7 +67,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
        4.1.2.  resource . . . . . . . . . . . . . . . . . . . . . . .  4
    5.  Link . . . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
      5.1.  rel  . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  4
+     5.1.  href . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.2.  templated  . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.3.  type . . . . . . . . . . . . . . . . . . . . . . . . . . .  5
      5.4.  deprecation  . . . . . . . . . . . . . . . . . . . . . . .  5
@@ -85,11 +85,11 @@ Internet-Draft     XML Hypertext Application Language         April 2015
      8.4.  Namespace and prefix . . . . . . . . . . . . . . . . . . .  9
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
-   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 10
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  9
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 10
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 11
      B.1.  How should a client know the
-           meaning/structure/semantics/type of a  . . . . . . . . . . 10
+           meaning/structure/semantics/type of a  . . . . . . . . . . 11
      B.2.  Where can I find libraries for working with HAL? . . . . . 11
      B.3.  Why does HAL have no forms?  . . . . . . . . . . . . . . . 11
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
@@ -208,7 +208,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 5.  Link
 
    A Link is defined as a set of attributes that represent a hyperlink
-   from the containing resource to a URI.
+   from the containing resource to a URI. The attributes are as follows:
 
 5.1.  rel
 
@@ -217,7 +217,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
    It is an attribute whose relation values are link relation types (as
    defined by [RFC5988]).
 
-5.1.  href
+
  
 
 
@@ -225,6 +225,8 @@ Michaud                 Expires October 25, 2015                [Page 4]
 
 Internet-Draft     XML Hypertext Application Language         April 2015
 
+
+5.1.  href
 
    The "href" attribute is REQUIRED.
 
@@ -237,11 +239,11 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    The "templated" attribute is OPTIONAL.
 
-   Its value is boolean and SHOULD be true when the Link's "href"
-   attribute is a URI Template.
+   Its value is boolean (as defined by [W3C.REC-xmlschema-2-20041028])
+   and SHOULD be true when the Link's "href" attribute is a URI
+   Template.
 
-   Its value SHOULD be considered false if it is undefined or any other
-   value than true.
+   Its value SHOULD be considered false if the attribute is absent.
 
 5.3.  type
 
@@ -272,8 +274,6 @@ Internet-Draft     XML Hypertext Application Language         April 2015
    share the same relation type.
 
 
-
-
  
 
 
@@ -287,7 +287,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
    The "profile" attribute is OPTIONAL.
 
    Its value is a string which is a URI that hints about the profile (as
-   defined by [I-D.wilde-profile-link]) of the target resource.
+   defined by [RFC6906]) of the target resource.
 
 5.7.  title
 
@@ -399,8 +399,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 7.1.  profile
 
    The media type identifier application/hal+xml MAY also include an
-   additional "profile" parameter (as defined by
-   [I-D.wilde-profile-link])
+   additional "profile" parameter (as defined by [RFC6906])
 
    HAL documents that are served with the "profile" parameter still
    SHOULD include a "profile" link belonging to the root resource.
@@ -442,6 +441,7 @@ Internet-Draft     XML Hypertext Application Language         April 2015
    relation, they will read from an embedded resource (if present) in
    preference to traversing a link.
 
+   To activate this client behavior for a given link, servers SHOULD add
  
 
 
@@ -450,7 +450,6 @@ Michaud                 Expires October 25, 2015                [Page 8]
 Internet-Draft     XML Hypertext Application Language         April 2015
 
 
-   To activate this client behavior for a given link, servers SHOULD add
    an embedded resource into the representation with the same relation.
 
    Servers SHOULD NOT entirely "swap out" a link for an embedded
@@ -494,9 +493,10 @@ Internet-Draft     XML Hypertext Application Language         April 2015
 
    TBD
 
+11.  Normative References
 
-
-
+   [RFC6906]  Wilde, E., "The 'profile' Link Relation Type", RFC 6906,
+              March 2013.
 
  
 
@@ -505,12 +505,6 @@ Michaud                 Expires October 25, 2015                [Page 9]
 
 Internet-Draft     XML Hypertext Application Language         April 2015
 
-
-11.  Normative References
-
-   [I-D.wilde-profile-link]           Wilde, E., "The 'profile' Link
-   Relation Type", draft-           wilde-profile-link-04 (work in
-   progress), October 2012.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
@@ -538,22 +532,28 @@ Internet-Draft     XML Hypertext Application Language         April 2015
               Wide Web Consortium NOTE NOTE-curie-20101216, December
               2010, <http://www.w3.org/TR/2010/NOTE-curie-20101216>.
 
+   [W3C.REC-xmlschema-2-20041028]
+
+              Biron, P. V., Malhotra, A., "XML Schema Part 2: Datatypes
+              Second Edition", World Wide Web Consortium REC REC-
+              xmlschema-2-20041028, October 2004,
+              <http://www.w3.org/TR/2004/REC-xmlschema-2-20041028/>.
+
+
 Appendix A.  Acknowledgements
 
-   Thanks to Mike Kelly for making this specification possible through
-   the creation of HAL and the hal+json specification.
+              Thanks to Mike Kelly for making this specification
+              possible through the creation of HAL and the hal+json
+              specification.
 
-   The author takes all responsibility for errors and omissions.
+              The author takes all responsibility for errors and
+              omissions.
 
-Appendix B.  Frequently Asked Questions
 
-B.1.  How should a client know the meaning/structure/semantics/type of a
-      resource?
 
-   There are two main approaches to solving this problem.  Both involve
-   exposing additional documentation describing the resource which may
-   be human and/or machine readable (i.e.  an HTML page and/or a XML
-   Schema).  The difference between the two approaches is in where that
+
+
+
  
 
 
@@ -562,6 +562,15 @@ Michaud                 Expires October 25, 2015               [Page 10]
 Internet-Draft     XML Hypertext Application Language         April 2015
 
 
+Appendix B.  Frequently Asked Questions
+
+B.1.  How should a client know the meaning/structure/semantics/type of a
+resource?
+
+   There are two main approaches to solving this problem.  Both involve
+   exposing additional documentation describing the resource which may
+   be human and/or machine readable (i.e.  an HTML page and/or a XML
+   Schema).  The difference between the two approaches is in where that
    URI is shared with the client, which is either:
 
    (1)  The URI that was the preceding link relation type.
@@ -585,15 +594,6 @@ Author's Address
    Jeff Michaud
 
    Email: cometaj2@comcast.net
-
-
-
-
-
-
-
-
-
 
 
 
