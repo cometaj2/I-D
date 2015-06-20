@@ -436,11 +436,11 @@ resource?
 
 .fi
 .in 3
-There are two main approaches to solving this problem.  Both involve exposing additional documentation describing the resource which may be human and/or machine readable (i.e.  an HTML page and/or a XML Schema).  The difference between the two approaches is in where that URI is shared with the client, which is either:
+There are two main approaches to solving this problem.  Both involve exposing additional documentation describing the resource which may be human and/or machine readable (e.g.  an HTML page, an XML Schema, an ALPS profile, etc.).  The difference between the two approaches is in where that URI is shared with the client, which is either:
 
-(1)  The URI that was the preceding link relation type.
+(1)  The relation documentation associated to a Link relation type.
 
-(2)  A 'profile' link from the resource itself.
+(2)  A 'profile' (via a Link's profile attribute or via a Link with a 'profile' relation type).
 
 .ti 0
 B.2.  Where can I find libraries for working with HAL?
