@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH April 2015
+.ds RH June 24, 2016
 .ds CH XML Hypertext Application Language
-.ds CF Expires October 25, 2015
+.ds CF Expires December 26, 2016
 .hy 0
 .nh
 .ad l
@@ -18,8 +18,8 @@
 
 .nf
 .tl '\%Internet-Draft''J. Michaud'
-.tl 'Intended status: Informational''April 23, 2015'
-.tl 'Expires: October 25, 2015'''
+.tl 'Intended status: Informational''June 24, 2016'
+.tl 'Expires: December 26, 2016'''
 .fi
 .in 3
 
@@ -47,7 +47,7 @@ This Internet-Draft will expire on October 12, 2015.
 .ti 0
 Copyright Notice
 
-Copyright (c) 2015 IETF Trust and the persons identified as the document authors.  All rights reserved.
+Copyright (c) 2016 IETF Trust and the persons identified as the document authors.  All rights reserved.
 
 This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents \%(http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
 
@@ -422,6 +422,8 @@ Appendix A.  Acknowledgements
 
 .fi
 Thanks to Mike Kelly for making this specification possible through the creation of HAL and the hal+json specification.
+
+I would also like to thank folks on the Hal Discuss Google group for providing feedback for the draft.
 
 The author takes all responsibility for errors and omissions.
 .nf

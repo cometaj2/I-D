@@ -3,8 +3,8 @@
 
 
 Internet-Draft                                                J. Michaud
-Intended status: Informational                            April 23, 2015
-Expires: October 25, 2015                                               
+Intended status: Informational                             June 24, 2016
+Expires: December 26, 2016                                              
 
 
                    XML Hypertext Application Language
@@ -34,7 +34,7 @@ Status of This Memo
 
 Copyright Notice
 
-   Copyright (c) 2015 IETF Trust and the persons identified as the
+   Copyright (c) 2016 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Table of Contents
  
 
 
-Michaud                 Expires October 25, 2015                [Page 1]
+Michaud                Expires December 26, 2016                [Page 1]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
@@ -109,9 +109,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 2]
+Michaud                Expires December 26, 2016                [Page 2]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
    by their link relation type and traverse them in order to progress
@@ -165,9 +165,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 3]
+Michaud                Expires December 26, 2016                [Page 3]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 4.  Resource
@@ -221,9 +221,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 4]
+Michaud                Expires December 26, 2016                [Page 4]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 5.1.  href
@@ -277,9 +277,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 5]
+Michaud                Expires December 26, 2016                [Page 5]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 5.6.  profile
@@ -333,9 +333,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 6]
+Michaud                Expires December 26, 2016                [Page 6]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 6.  Example
@@ -389,9 +389,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 7]
+Michaud                Expires December 26, 2016                [Page 7]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 7.  Media Type Parameters
@@ -445,9 +445,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 8]
+Michaud                Expires December 26, 2016                [Page 8]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
    an embedded resource into the representation with the same relation.
@@ -501,9 +501,9 @@ Internet-Draft     XML Hypertext Application Language         April 2015
  
 
 
-Michaud                 Expires October 25, 2015                [Page 9]
+Michaud                Expires December 26, 2016                [Page 9]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -545,10 +545,10 @@ Appendix A.  Acknowledgements
    Thanks to Mike Kelly for making this specification possible through
    the creation of HAL and the hal+json specification.
 
+   I would also like to thank folks on the Hal Discuss Google group for
+   providing feedback for the draft.
+
    The author takes all responsibility for errors and omissions.
-
-
-
 
 
 
@@ -557,9 +557,9 @@ Appendix A.  Acknowledgements
  
 
 
-Michaud                 Expires October 25, 2015               [Page 10]
+Michaud                Expires December 26, 2016               [Page 10]
 
-Internet-Draft     XML Hypertext Application Language         April 2015
+Internet-Draft     XML Hypertext Application Language      June 24, 2016
 
 
 Appendix B.  Frequently Asked Questions
@@ -613,4 +613,4 @@ Author's Address
 
 
 
-Michaud                 Expires October 25, 2015               [Page 11]
+Michaud                Expires December 26, 2016               [Page 11]
