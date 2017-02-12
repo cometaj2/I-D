@@ -10,7 +10,7 @@ This specification emerged out of an idea that started as a python client named 
 
 Discussion about the HCLI specification (and huck) can happen on huck's google group [4].
 
-[1] http://alps.io\s
-[2] https://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-02\s
-[3] https://github.com/cometaj2/huck\s
-[4] https://groups.google.com/forum/#!forum/huck-hypermedia-unified-cli-with-a-kick\s
+[1] http://alps.io  
+[2] https://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-02  
+[3] https://github.com/cometaj2/huck  
+[4] https://groups.google.com/forum/#!forum/huck-hypermedia-unified-cli-with-a-kick
