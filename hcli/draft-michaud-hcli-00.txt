@@ -1,0 +1,616 @@
+ 
+
+
+
+Internet-Draft                                                J. Michaud
+Intended status: Informational                             June 24, 2016
+Expires: December 26, 2016                                              
+
+
+                    Hypertext Command Line Interface
+                         draft-michaud-hcli-00
+
+Abstract
+
+   This document proposes a codification of unix-like command line
+   interface (CLI) semantics for the purpose of representing resources
+   and their relations with hyperlinks so that web services implementing
+   such semantics, and clients consuming them, may respectively benefit
+   form a standard production and consumption dynamic across a variety
+   of hypermedia-rich media-types.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on October 12, 2015.
+
+Copyright Notice
+
+   Copyright (c) 2016 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 1]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
+   2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
+   3.  HCLI Semantics . . . . . . . . . . . . . . . . . . . . . . . .  3
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.1.  Reserved Properties  . . . . . . . . . . . . . . . . . . .  6
+       4.1.1.  _HCLI_version  . . . . . . . . . . . . . . . . . . . .  6
+     4.2  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
+       4.2.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.2.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
+     4.3  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
+     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
+     4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.6.  Next . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+   6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  9
+     8.1.  Server-side Considerations . . . . . . . . . . . . . . . .  9
+     8.2.  Client-side Considerations . . . . . . . . . . . . . . . .  9
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
+   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  9
+     11.1  Normative References . . . . . . . . . . . . . . . . . . .  9
+     11.2  Informative References . . . . . . . . . . . . . . . . . . 10
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 11
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
+
+
+1.  Introduction
+
+   The proliferation of generic hypermedia-rich media-types such as HAL,
+   Collection+JSON, Siren, JSON API, Hydra, JSON-LD, etc., has led to a
+   explosion of Web API considerations along the production and
+   consumption axis; notably as it pertains to the establishment of
+   standard and generic, reusable, producers and consumers.
+
+   The Hypertext Command Line Interface (HCLI) is a standard which
+   establishes semantic conventions for expressing command line
+   interfaces via hypermedia controls, such as links, and ALPS [I-
+   D.draft-amundsen-richardson-foster-alps].
+
+   HCLI leverages the use of Application Level Profile Semantics (ALPS),
+   similar to microformat, to establish a shared understanding and
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 2]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+   meaning within generic hypermedia-rich media-types.
+
+   Web APIs, and their consuming clients, developed and exposed as
+   series of links and following the standard semantics proposed in this
+   standard could benefit, amongst other things, from:
+
+   1- Dynamic and gradually exposed, server controlled, CLI commands.
+
+   2- Dynamic and gradually exposed, server controlled, standard
+   Unix/Linux-like documentation.
+
+   3- Automatic client side documentation generation in a familiar
+   format (e.g. Unix/Linux man pages).
+
+   4- Standard client-side consumption in a shell terminal.
+
+   5- Broad-ranging compatibility with all programming languages that
+   are able to interact with their's OS's Unix/Linux shell.
+
+   6- Rapid prototyping and testing of new commands and experimentation
+   by developers.
+
+   HCLI's conventions result in a uniform interface for serving and
+   consuming hypermedia CLIs, enabling the creation of general-purpose
+   libraries that can be re-used on any API using HCLI semantics.
+
+   The primary design goal of HCLI is to foster the creation of a
+   prolific intersection between the REST architectural style and the
+   Unix/Linux pipe and filter style. HCLI can be applied to many
+   different domains, and only imposes limitations that constrain a
+   hypermedia API to operate as a CLI.
+
+2.  Requirements
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+3.  HCLI Semantics
+
+   The HCLI semantics are largely codified via the definition of a
+   standard profile via ALPS [I-D.draft-amundsen-richardson-foster-
+   alps], and takes the following form:
+
+   <alps version="1.0">
+       <doc format="text">A command line interface.</doc>
+       <descriptor id="_HCLI_version">1.0</descriptor>
+
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 3]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+       <!-- Documentation section -->
+       <descriptor id="section" type="semantic">
+           <descriptor id="name" type="semantic" />
+           <descriptor id="description" type="semantic" />
+       </descriptor>
+
+       <!-- A command: zero or more of these may be present -->
+       <descriptor id="option" type="semantic">
+           <descriptor id="item" type="safe">
+               <doc>A link to an individual command or option.</doc>
+           </descriptor>
+           <descriptor id="cli" type="safe">
+               <doc>A link for selecting an option.</doc>
+           </descriptor>
+           <descriptor id="name" type="semantic" />
+           <descriptor id="description" type="semantic" />
+       </descriptor> 
+
+       <!-- A command: zero or more of these may be present -->
+       <descriptor id="command" type="semantic">
+           <descriptor id="item" type="safe">
+               <doc>A link to an individual command.</doc>
+           </descriptor>
+           <descriptor id="cli" type="safe">
+               <doc>A link for selecting a command.</doc>
+           </descriptor>
+           <descriptor id="name" type="semantic" />
+           <descriptor id="description" type="semantic" />
+       </descriptor>  
+
+       <!-- Parameters: zero or one of these may be present -->
+       <descriptor id="parameter" type="semantic">
+           <doc>A form for inputting command line parameters.</doc>
+           <descriptor id="item" type="safe">
+               <doc>A link to an individual parameter.</doc>
+           </descriptor>
+
+           <!-- Only one of these may be present at a time -->
+           <descriptor id="_H_1" type="semantic">
+               <doc>Custom supplied input 1 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_2" type="semantic">
+               <doc>Custom supplied input 2 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_3" type="semantic">
+               <doc>Custom supplied input 3 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_4" type="semantic">
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 4]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+               <doc>Custom supplied input 4 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_5" type="semantic">
+               <doc>Custom supplied input 5 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_6" type="semantic">
+               <doc>Custom supplied input 6 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_7" type="semantic">
+               <doc>Custom supplied input 7 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_8" type="semantic">
+               <doc>Custom supplied input 8 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_9" type="semantic">
+               <doc>Custom supplied input 9 for a CLI execution.</doc>
+           </descriptor>
+           <descriptor id="_H_10" type="semantic">
+               <doc>Custom supplied input 10 for a CLI execution.</doc>
+           </descriptor>
+       </descriptor>
+
+       <!-- A command: zero or one of these is present -->
+       <descriptor id="next" type="safe">
+           <descriptor id="cli" type="safe">
+               <doc>A link for selecting an option.</doc>
+           </descriptor>
+       </descriptor>  
+
+       <!-- A command: zero or one of these is present -->
+       <descriptor id="next" type="unsafe">
+           <descriptor id="cli" type="safe">
+               <doc>A link for selecting an option.</doc>
+           </descriptor>
+       </descriptor>  
+   </alps>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 5]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+4.  HCLI Document
+
+   An HCLI Document MAY be represented using any media-type that is able
+   to represent the HCLI semantics expressed via the ALPS profile [I-
+   D.draft-amundsen-richardson-foster-alps].
+
+   It has one reserved property:
+
+   (1)  "_HCLI_version": The version of the HCLI specification used.
+
+   It should also be noted that an HCLI document MUST not endeavor to
+   expose the entirety of the command line interface it represents. The
+   command line interface MUST be gradually presented as each layer of
+   commands unfold through hypermedia navigation.
+
+4.1.  Reserved Properties
+
+   The "_HCLI_" prefix on property names is reserved for use exclusive
+   use by the HCLI specification.
+
+   The "_H_" prefix on parameter key names is reserved for use exclusive
+   use by the HCLI specification.
+
+4.1.1.  _HCLI_version
+
+   The reserved "_HCLI_version" property is REQUIRED.
+
+   This property MUST be present in all command line interface
+   representations and MUST contain the version number of the HCLI
+   version of the specification used to output representations.
+
+   This specification documents the semantics of HCLI version 1.0.
+
+4.2  Section
+
+   A section contains documentation used to help users interact with the
+   HCLI. Given the primary goal of HCLI, mentioned in the introduction,
+   the sections SHOULD take a form akin to Unix/Linux style man pages
+   and SHOULD minimally make use of the following named sections:
+
+   (1) NAME
+
+   (2) SYNOPSIS
+
+   (3) DESCRIPTION
+
+   (4) EXAMPLE
+
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 6]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+   (5) SEE ALSO
+
+   The purpose and content of each section SHOULD adhere to Unix/Linux
+   man page conventions.
+
+4.2.1.  name
+
+   The "name" property is REQUIRED.
+
+   Its value SHOULD be the name of a documentation section.
+
+4.2.2.  description
+
+   The "description" property is REQUIRED.
+
+   Its value SHOULD contain information that pertains to the purpose of
+   the named section.
+
+4.3  Option
+
+   An option describes a flag that MAY be used to effect a variation on
+   the outcome of a command line execution.
+
+   An option item SHOULD only be presented if contextually relevant
+   given the represented resource. Relevance determination is out of
+   scope of this specification.
+
+   A "profile", referencing the ALPS semantics defined in this
+   specification, SHOULD accompany the "cli" link relation.
+
+   Successful traversal of the "cli" link relation by an HCLI consumer
+   MUST return an HCLI document.
+
+4.3.1.  name
+
+   The "name" property is REQUIRED.
+
+   Its value SHOULD be the name of the option (e.g. "--version"). By
+   convention, option names SHOULD be prefixed with a "-" or "--", to
+   help differentiate options from commands.
+
+4.3.2.  description
+
+   The "description" property is REQUIRED.
+
+   Its value SHOULD contain information that describes the purpose of
+   the option.
+
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 7]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+4.4  Command
+
+   A command describes a type of action to effect in a command line
+   execution.
+
+   A command item SHOULD only be presented if contextually relevant
+   given the represented resource. Relevance determination is out of
+   scope of this specification.
+
+   A "profile", referencing the ALPS semantics defined in this
+   specification, SHOULD accompany the "cli" link relation.
+
+   Successful traversal of the "cli" link relation by an HCLI consumer
+   MUST return an HCLI document.
+
+4.4.1.  name
+
+   The "name" property is REQUIRED.
+
+   Its value SHOULD be the name of the option (e.g. "s3" in "aws s3").
+   By convention, command names SHOULD NOT be prefixed with a "-" or "--
+   ", to help differentiate options from commands.
+
+4.4.2.  description
+
+   The "description" property is REQUIRED.
+
+   Its value SHOULD contain information that describes the purpose of
+   the command.
+
+4.5  Parameter
+
+   Parameter describes the presence of an additional custom user
+   supplied parameter as a query parameter ([RFC3986] and [RFC6570])
+   that MAY be required for successful command line execution.
+
+   Only a single "_H_" query parameter at a time should be presented if
+   a parameter item is present in a representation.
+
+   A parameter item SHOULD only be presented if contextually relevant
+   given the represented resource. Relevance determination is out of
+   scope of this specification.
+
+   A "profile", referencing the ALPS semantics defined in this
+   specification, SHOULD accompany the "cli" link relation.
+
+   Successful traversal of the "cli" link relation by an HCLI consumer
+   MUST return an HCLI document.
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 8]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+4.6.  Next
+
+   The "next" link relation presence indicates that the heretofore
+   accumulated command line MAY be executed.
+
+   A "next" link relation SHOULD only be presented if contextually
+   relevant given the heretofore accumulated command line. Relevance
+   determination is out of scope of this specification.
+
+6.  Example
+
+   TBD
+
+8.  Recommendations
+
+8.1.  Server-side Considerations
+
+   TBD
+
+8.2.  Client-side Considerations
+
+   TBD
+
+9.  Security Considerations
+
+   TBD
+
+10.  IANA Considerations
+
+   The HCLI specification introduces the "cli" link relation [RFC5988]
+   to indicate the presence of command line interface semantics.
+
+   The link relation SHOULD be accompanied by a "profile" [RFC6906]
+   defining command line interface semantics.
+
+   This specification defines an HCLI ALPS profile to be used in
+   conjunction with the "cli" link relation but does not require that
+   the HCLI profile defined in this specification be the only profile
+   used in conjunction with the "cli" link relation.
+
+11.  References
+
+11.1  Normative References
+
+   [RFC6906]  Wilde, E., "The 'profile' Link Relation Type", RFC 6906,
+              March 2013.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 9]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+              Requirement Levels", BCP 14, RFC 2119, March 1997.
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
+
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66, RFC
+              3986, January 2005.
+
+   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
+              and D. Orchard, "URI Template", RFC 6570, March 2012.
+
+11.2  Informative References
+
+   [I-D.draft-kelly-json-hal]
+
+              Kelly, M., "JSON Hypertext Application Language", draft-
+              kelly-json-hal-08 (work in progress), May 2016.
+
+   [I-D.draft-michaud-xml-hal]
+
+              Michaud, J., "XML Hypertext Application Language", draft-
+              michaud-xml-hal-01 (work in progress) February 2017.
+
+   [I-D.draft-amundsen-richardson-foster-alps]
+
+              Amundsen, M., CA Technologies, Inc., Richardson L.,
+              Foster, M., "Application-Level Profile Semantics (ALPS)",
+              draft-amundsen-richardson-foster-alps-02 (work in
+              progress), August 2015.
+
+Appendix A.  Acknowledgements
+
+   TBD
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+Michaud                Expires December 26, 2016               [Page 10]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+Appendix B.  Frequently Asked Questions
+
+   TBD
+
+Author's Address
+
+   Jeff Michaud
+
+   Email: cometaj2@comcast.net
+   Twitter: @cometaj2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Michaud                Expires December 26, 2016               [Page 11]
