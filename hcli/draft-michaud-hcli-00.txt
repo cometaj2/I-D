@@ -72,23 +72,23 @@ Table of Contents
      4.3  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
-     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
        4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
      4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  8
-     4.6.  Next . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+     4.6.  Execution  . . . . . . . . . . . . . . . . . . . . . . . .  8
    6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  9
-     8.1.  Server-side Considerations . . . . . . . . . . . . . . . .  9
-     8.2.  Client-side Considerations . . . . . . . . . . . . . . . .  9
-   9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  9
-   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  9
-   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  9
-     11.1  Normative References . . . . . . . . . . . . . . . . . . .  9
-     11.2  Informative References . . . . . . . . . . . . . . . . . . 10
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 10
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 11
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 11
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
+     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 11
+     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 11
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 11
+   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     11.1  Normative References . . . . . . . . . . . . . . . . . . . 11
+     11.2  Informative References . . . . . . . . . . . . . . . . . . 12
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
 
 
 1.  Introduction
@@ -101,11 +101,11 @@ Table of Contents
 
    The Hypertext Command Line Interface (HCLI) is a standard which
    establishes semantic conventions for expressing command line
-   interfaces via hypermedia controls, such as links, and ALPS [I-
-   D.draft-amundsen-richardson-foster-alps].
+   interfaces via hypermedia controls, such as links and forms.
 
-   HCLI leverages the use of Application Level Profile Semantics (ALPS),
-   similar to microformat, to establish a shared understanding and
+   HCLI leverages the use of Application Level Profile Semantics (ALPS)
+   [I-D.draft-amundsen-richardson-foster-alps], similar to microformat,
+   to establish a shared understanding and meaning within generic
  
 
 
@@ -114,11 +114,12 @@ Michaud                Expires December 26, 2016                [Page 2]
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
 
-   meaning within generic hypermedia-rich media-types.
+   hypermedia-rich media-types.
 
    Web APIs, and their consuming clients, developed and exposed as
-   series of links and following the standard semantics proposed in this
-   standard could benefit, amongst other things, from:
+   series of links through the REST architectural style, and following
+   the standard semantics proposed in this standard, could benefit,
+   amongst other things, from:
 
    1- Dynamic and gradually exposed, server controlled, CLI commands.
 
@@ -161,7 +162,6 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
    <alps version="1.0">
        <doc format="text">A command line interface.</doc>
        <descriptor id="_HCLI_version">1.0</descriptor>
-
  
 
 
@@ -248,30 +248,30 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
            </descriptor>
        </descriptor>
 
-       <!-- A command: zero or one of these is present -->
-       <descriptor id="next" type="safe">
+       <!-- An execution: zero or one of these is present -->
+       <descriptor id="execution" type="semantic">
+           <doc>A form for executing a command line.</doc>
+           <descriptor id="item" type="safe">
+               <doc>A link to a command line execution item.</doc>
+           </descriptor>
+
            <descriptor id="cli" type="safe">
-               <doc>A link for selecting an option.</doc>
+               <doc>A link for executing a command line.</doc>
            </descriptor>
        </descriptor>  
 
-       <!-- A command: zero or one of these is present -->
-       <descriptor id="next" type="unsafe">
-           <descriptor id="cli" type="safe">
-               <doc>A link for selecting an option.</doc>
+       <!-- A execution: zero or one of these is present -->
+       <descriptor id="execution" type="semantic">
+           <doc>A form for executing a command line.</doc>
+           <descriptor id="item" type="safe">
+               <doc>A link to a command line execution item.</doc>
+           </descriptor>
+
+           <descriptor id="cli" type="unsafe">
+               <doc>A link for executing a command line.</doc>
            </descriptor>
        </descriptor>  
    </alps>
-
-
-
-
-
-
-
-
-
-
 
 
  
@@ -288,30 +288,30 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
    to represent the HCLI semantics expressed via the ALPS profile [I-
    D.draft-amundsen-richardson-foster-alps].
 
+   The "_HCLI_" prefix on property names is reserved for exclusive use
+   by the HCLI specification.
+
+   The "_H_" prefix on parameter key names is reserved for exclusive use
+   by the HCLI specification.
+
    It has one reserved property:
 
    (1)  "_HCLI_version": The version of the HCLI specification used.
 
    It should also be noted that an HCLI document MUST not endeavor to
-   expose the entirety of the command line interface it represents. The
-   command line interface MUST be gradually presented as each layer of
-   commands unfold through hypermedia navigation.
+   expose the entirety of the command line interface it represents
+   across HCLI documents. The command line interface MUST be gradually
+   presented as each layer of commands and options unfold through
+   hypermedia navigation.
 
 4.1.  Reserved Properties
-
-   The "_HCLI_" prefix on property names is reserved for use exclusive
-   use by the HCLI specification.
-
-   The "_H_" prefix on parameter key names is reserved for use exclusive
-   use by the HCLI specification.
 
 4.1.1.  _HCLI_version
 
    The reserved "_HCLI_version" property is REQUIRED.
 
-   This property MUST be present in all command line interface
-   representations and MUST contain the version number of the HCLI
-   version of the specification used to output representations.
+   This property MUST be present in all HCLI documents and MUST contain
+   the HCLI version number of the HCLI specification.
 
    This specification documents the semantics of HCLI version 1.0.
 
@@ -365,9 +365,6 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
    given the represented resource. Relevance determination is out of
    scope of this specification.
 
-   A "profile", referencing the ALPS semantics defined in this
-   specification, SHOULD accompany the "cli" link relation.
-
    Successful traversal of the "cli" link relation by an HCLI consumer
    MUST return an HCLI document.
 
@@ -386,6 +383,9 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
    Its value SHOULD contain information that describes the purpose of
    the option.
 
+4.4  Command
+
+   A command describes a type of action to effect in a command line
  
 
 
@@ -394,17 +394,11 @@ Michaud                Expires December 26, 2016                [Page 7]
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
 
-4.4  Command
-
-   A command describes a type of action to effect in a command line
    execution.
 
    A command item SHOULD only be presented if contextually relevant
    given the represented resource. Relevance determination is out of
    scope of this specification.
-
-   A "profile", referencing the ALPS semantics defined in this
-   specification, SHOULD accompany the "cli" link relation.
 
    Successful traversal of the "cli" link relation by an HCLI consumer
    MUST return an HCLI document.
@@ -442,6 +436,12 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
    Successful traversal of the "cli" link relation by an HCLI consumer
    MUST return an HCLI document.
+
+4.6.  Execution
+
+   An execution item identifies the ability to execute a heretofore
+   accumulated command line.
+
  
 
 
@@ -450,18 +450,120 @@ Michaud                Expires December 26, 2016                [Page 8]
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
 
-4.6.  Next
+   An execution item SHOULD only be presented if contextually relevant
+   given the represented resource. Relevance determination is out of
+   scope of this specification.
 
-   The "next" link relation presence indicates that the heretofore
-   accumulated command line MAY be executed.
-
-   A "next" link relation SHOULD only be presented if contextually
-   relevant given the heretofore accumulated command line. Relevance
-   determination is out of scope of this specification.
+   Successful traversal of the "cli" link relation by an HCLI consumer
+   MUST NOT return an HCLI document.
 
 6.  Example
 
-   TBD
+   Here's an example of a hypothetical usp5 command line interface
+   represented as hal+json [I-D.draft-kelly-json-hal] and respecting
+   HCLI semantics:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/usp5-webapp/"
+       },
+       "profile": {
+         "href": "http://alps.io/profiles/cli"
+       },
+       "type": {
+         "href": "http://alps.io/profiles/cli"
+       }
+     },
+     "section" : [
+     {
+       "name": "name",
+       "description": "usp5"
+     },
+     {
+       "name": "synopsis",
+       "description": "usp5 [options] <command> <subcommand> [parameters]"
+     },
+     {
+       "name": "description",
+       "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
+     },
+     {
+       "name": "files",
+       "description": "N/A"
+     },
+     {
+       "name": "see also",
+       "description": "N/A"
+     },
+     {
+       "name": "notes",
+ 
+
+
+Michaud                Expires December 26, 2016                [Page 9]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+       "description": "N/A"
+     },
+     {
+       "name": "author",
+       "description": "Jeff Michaud"
+     },
+     {
+       "name": "bugs",
+       "description": "None."
+     }],
+     "_embedded":{
+       "item":[
+       {
+         "_links": {
+           "self": {
+             "href": "/usp5-webapp/__commandsdefinitions?admin"
+           },
+           "profile": {
+             "href": "http://alps.io/profiles/cli"
+           },
+           "type": {
+             "href": "http://alps.io/profiles/cli#command"
+           },
+           "cli": {
+             "href": "/usp5-webapp/admin"
+           }
+         },
+         "name": "admin",
+         "description": "Allows you to administer the usp5 server."
+       },
+       {
+         "_links": {
+           "self": {
+             "href": "/usp5-webapp/__optionsdefinitions?--version"
+           },
+           "profile": {
+             "href": "http://alps.io/profiles/cli"
+           },
+           "type": {
+             "href": "http://alps.io/profiles/cli#option"
+           },
+           "cli": {
+             "href": "/usp5-webapp/?--version"
+           }
+         },
+         "name": "--version",
+         "description": "The usp5 CLI version."
+       }]
+ 
+
+
+Michaud                Expires December 26, 2016               [Page 10]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
+
+     }
+   }
 
 8.  Recommendations
 
@@ -498,14 +600,6 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
               March 2013.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
- 
-
-
-Michaud                Expires December 26, 2016                [Page 9]
-
-Internet-Draft      Hypertext Command Line Interface       June 24, 2016
-
-
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
@@ -516,6 +610,13 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
    [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
               and D. Orchard, "URI Template", RFC 6570, March 2012.
+ 
+
+
+Michaud                Expires December 26, 2016               [Page 11]
+
+Internet-Draft      Hypertext Command Line Interface       June 24, 2016
+
 
 11.2  Informative References
 
@@ -554,10 +655,21 @@ Appendix A.  Acknowledgements
 
 
 
+
+
+
+
+
+
+
+
+
+
+
  
 
 
-Michaud                Expires December 26, 2016               [Page 10]
+Michaud                Expires December 26, 2016               [Page 12]
 
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
@@ -613,4 +725,4 @@ Author's Address
 
 
 
-Michaud                Expires December 26, 2016               [Page 11]
+Michaud                Expires December 26, 2016               [Page 13]
