@@ -407,6 +407,10 @@ Here's an example of a hypothetical usp5 command line interface represented as h
     "description": "Jeff Michaud"
   },
   {
+    "name": "example",
+    "description": "N/A"
+  },
+  {
     "name": "bugs",
     "description": "None."
   }],
@@ -424,7 +428,8 @@ Here's an example of a hypothetical usp5 command line interface represented as h
           "href": "http://alps.io/profiles/cli#command"
         },
         "cli": {
-          "href": "/usp5-webapp/admin"
+          "href": "/usp5-webapp/admin",
+          "profile": "http://alps.io/profiles/cli"
         }
       },
       "name": "admin",
@@ -442,7 +447,8 @@ Here's an example of a hypothetical usp5 command line interface represented as h
           "href": "http://alps.io/profiles/cli#option"
         },
         "cli": {
-          "href": "/usp5-webapp/?--version"
+          "href": "/usp5-webapp/?--version",
+          "profile": "http://alps.io/profiles/cli"
         }
       },
       "name": "--version",

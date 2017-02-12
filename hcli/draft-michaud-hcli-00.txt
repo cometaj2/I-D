@@ -513,6 +513,10 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
        "description": "Jeff Michaud"
      },
      {
+       "name": "example",
+       "description": "N/A"
+     },
+     {
        "name": "bugs",
        "description": "None."
      }],
@@ -530,7 +534,8 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
              "href": "http://alps.io/profiles/cli#command"
            },
            "cli": {
-             "href": "/usp5-webapp/admin"
+             "href": "/usp5-webapp/admin",
+             "profile": "http://alps.io/profiles/cli"
            }
          },
          "name": "admin",
@@ -548,12 +553,7 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
              "href": "http://alps.io/profiles/cli#option"
            },
            "cli": {
-             "href": "/usp5-webapp/?--version"
-           }
-         },
-         "name": "--version",
-         "description": "The usp5 CLI version."
-       }]
+             "href": "/usp5-webapp/?--version",
  
 
 
@@ -562,6 +562,12 @@ Michaud                Expires December 26, 2016               [Page 10]
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
 
+             "profile": "http://alps.io/profiles/cli"
+           }
+         },
+         "name": "--version",
+         "description": "The usp5 CLI version."
+       }]
      }
    }
 
@@ -604,12 +610,6 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
-   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
-              Resource Identifier (URI): Generic Syntax", STD 66, RFC
-              3986, January 2005.
-
-   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
-              and D. Orchard, "URI Template", RFC 6570, March 2012.
  
 
 
@@ -617,6 +617,13 @@ Michaud                Expires December 26, 2016               [Page 11]
 
 Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 
+
+   [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
+              Resource Identifier (URI): Generic Syntax", STD 66, RFC
+              3986, January 2005.
+
+   [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
+              and D. Orchard, "URI Template", RFC 6570, March 2012.
 
 11.2  Informative References
 
@@ -640,13 +647,6 @@ Internet-Draft      Hypertext Command Line Interface       June 24, 2016
 Appendix A.  Acknowledgements
 
    TBD
-
-
-
-
-
-
-
 
 
 
