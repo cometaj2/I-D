@@ -33,8 +33,6 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 12, 2015.
-
 Copyright Notice
 
    Copyright (c) 2017 IETF Trust and the persons identified as the
@@ -50,6 +48,8 @@ Copyright Notice
    the Trust Legal Provisions and are provided without warranty as
    described in the Simplified BSD License.
 
+
+Table of Contents
  
 
 
@@ -57,8 +57,6 @@ Michaud                 Expires August 17, 2017                 [Page 1]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
-
-Table of Contents
 
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
@@ -106,6 +104,8 @@ Table of Contents
    establishes semantic conventions for expressing command line
    interfaces via hypermedia controls, such as links and forms.
 
+   HCLI leverages the use of Application Level Profile Semantics (ALPS)
+   [I-D.draft-amundsen-richardson-foster-alps], similar to microformats,
  
 
 
@@ -114,8 +114,6 @@ Michaud                 Expires August 17, 2017                 [Page 2]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-   HCLI leverages the use of Application Level Profile Semantics (ALPS)
-   [I-D.draft-amundsen-richardson-foster-alps], similar to microformats,
    to establish a shared understanding and meaning within generic
    hypermedia-rich media-types.
 
@@ -162,6 +160,8 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    proposed standard profile, through ALPS [I-D.draft-amundsen-
    richardson-foster-alps], and takes the following form:
 
+   <alps version="1.0">
+       <doc format="text">A command line interface.</doc>
  
 
 
@@ -170,8 +170,6 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-   <alps version="1.0">
-       <doc format="text">A command line interface.</doc>
        <descriptor id="_HCLI_version">1.0</descriptor>
 
        <!-- Documentation section -->
@@ -218,6 +216,8 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <descriptor id="_H_2" type="semantic">
                <doc>Custom supplied input 2 for a CLI execution.</doc>
            </descriptor>
+           <descriptor id="_H_3" type="semantic">
+               <doc>Custom supplied input 3 for a CLI execution.</doc>
  
 
 
@@ -226,8 +226,6 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-           <descriptor id="_H_3" type="semantic">
-               <doc>Custom supplied input 3 for a CLI execution.</doc>
            </descriptor>
            <descriptor id="_H_4" type="semantic">
                <doc>Custom supplied input 4 for a CLI execution.</doc>
@@ -274,6 +272,8 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <descriptor id="cli" type="unsafe">
                <doc>A link for executing a command line.</doc>
            </descriptor>
+       </descriptor>  
+   </alps>
  
 
 
@@ -282,8 +282,8 @@ Michaud                 Expires August 17, 2017                 [Page 5]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-       </descriptor>  
-   </alps>
+
+
 
 
 
