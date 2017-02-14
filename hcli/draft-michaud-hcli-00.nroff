@@ -344,8 +344,6 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT ret
 .ti 0
 6.  Example
 
-Let us take a 
-
 Here's an example of a hypothetical usp5 command line interface represented as hal+json [I-D.draft-kelly-json-hal] and respecting HCLI semantics:
 
 .nf
