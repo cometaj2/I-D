@@ -298,11 +298,11 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    (1)  "_HCLI_version": The version of this HCLI specification.
 
-   It should also be noted that an HCLI document MUST NOT endeavor to
-   expose the entirety of a command line interface. An API creator MUST
-   represents it across HCLI documents by presenting it gradually as
-   each layer of commands and options unfold through hypertext
-   navigation [RFC5988].
+   It should also be noted that an HCLI Document MUST NOT endeavor to
+   expose the entirety of a command line interface in a single HCLI
+   Document. HCLI serving MUST be represented incrementally and across
+   multiple HCLI documents as each layer of commands, options and
+   parameters unfold through hypertext navigation.
 
 4.1.  Reserved Properties
 
@@ -460,6 +460,8 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 6.  Example
 
+   Let us take a 
+
    Here's an example of a hypothetical usp5 command line interface
    represented as hal+json [I-D.draft-kelly-json-hal] and respecting
    HCLI semantics:
@@ -496,8 +498,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
      {
        "name": "see also",
        "description": "N/A"
-     },
-     {
  
 
 
@@ -506,6 +506,8 @@ Michaud                 Expires August 17, 2017                 [Page 9]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+     },
+     {
        "name": "notes",
        "description": "N/A"
      },
@@ -552,8 +554,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            },
            "type": {
              "href": "http://alps.io/profiles/cli#option"
-           },
-           "cli": {
  
 
 
@@ -562,6 +562,8 @@ Michaud                 Expires August 17, 2017                [Page 10]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+           },
+           "cli": {
              "href": "/usp5-webapp/?--version",
              "profile": "http://alps.io/profiles/cli"
            }
@@ -608,8 +610,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
-
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
  
 
 
@@ -617,6 +617,8 @@ Michaud                 Expires August 17, 2017                [Page 11]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
@@ -647,8 +649,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 Appendix A.  Acknowledgements
 
    TBD
-
-
 
 
 

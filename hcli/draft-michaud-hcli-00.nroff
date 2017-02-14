@@ -230,7 +230,7 @@ HCLI makes use of one reserved property:
 
 (1)  "_HCLI_version": The version of this HCLI specification.
 
-It should also be noted that an HCLI document MUST NOT endeavor to expose the entirety of a command line interface. An API creator MUST represents it across HCLI documents by presenting it gradually as each layer of commands and options unfold through hypertext navigation [RFC5988].
+It should also be noted that an HCLI Document MUST NOT endeavor to expose the entirety of a command line interface in a single HCLI Document. HCLI serving MUST be represented incrementally and across multiple HCLI documents as each layer of commands, options and parameters unfold through hypertext navigation.
 
 .ti 0
 4.1.  Reserved Properties
@@ -343,6 +343,8 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT ret
 
 .ti 0
 6.  Example
+
+Let us take a 
 
 Here's an example of a hypothetical usp5 command line interface represented as hal+json [I-D.draft-kelly-json-hal] and respecting HCLI semantics:
 
