@@ -59,32 +59,32 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HCLI Semantics . . . . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  7
-     4.1.  Reserved Properties  . . . . . . . . . . . . . . . . . . .  7
-       4.1.1.  _HCLI_version  . . . . . . . . . . . . . . . . . . . .  7
-     4.2  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.2.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.2.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
-     4.3  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
-     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
-     4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  9
-     4.6.  Execution  . . . . . . . . . . . . . . . . . . . . . . . .  9
-   6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
-     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 12
-     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 12
-   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
-   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 12
-   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 12
-     11.1  Normative References . . . . . . . . . . . . . . . . . . . 12
-     11.2  Informative References . . . . . . . . . . . . . . . . . . 13
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 13
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 14
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 14
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.1.  Reserved Properties  . . . . . . . . . . . . . . . . . . .  6
+       4.1.1.  _HCLI_version  . . . . . . . . . . . . . . . . . . . .  6
+     4.2  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
+       4.2.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.2.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
+     4.3  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
+     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
+     4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.6.  Execution  . . . . . . . . . . . . . . . . . . . . . . . .  8
+   6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
+     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 11
+     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 11
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 11
+   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     11.1  Normative References . . . . . . . . . . . . . . . . . . . 11
+     11.2  Informative References . . . . . . . . . . . . . . . . . . 12
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
 .fi
 .in 3
 
@@ -100,23 +100,9 @@ The Hypertext Command Line Interface (HCLI) is a standard that establishes seman
 
 HCLI leverages the use of Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-Web APIs, and their consuming clients, developed and exposed as series of links, and following the standard semantics proposed in this standard, could benefit, amongst other things, from:
+HCLI's conventions result in a semantic interface for serving and consuming hypermedia CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumers using HCLI semantics.
 
-1- Dynamic and gradually exposed, server controlled, CLI commands.
-
-2- Dynamic and gradually exposed, server controlled, standard Unix/Linux-like documentation.
-
-3- Automatic client side documentation generation in a familiar format (e.g. Unix/Linux man pages).
-
-4- Standard client-side consumption in a shell terminal.
-
-5- Broad-ranging compatibility with all programming languages that are able to interact with their's OS's Unix/Linux shell.
-
-6- Rapid prototyping and testing of new commands and experimentation by developers.
-
-HCLI's conventions result in a semantic interface for serving and consuming hypermedia CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and clients using HCLI semantics.
-
-The primary design goal of HCLI is to foster the creation of a prolific intersection between the REST architectural style and the Unix/Linux pipe and filter style. HCLI can be applied to many different domains, and only imposes limitations that constrain a hypermedia API to operate as a CLI.
+The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection between the REST architectural style and the Unix/Linux pipe and filter style. HCLI can be applied to many different domains, and only imposes limitations that constrain a hypermedia API to operate as a CLI.
 
 .ti 0
 2.  Requirements
