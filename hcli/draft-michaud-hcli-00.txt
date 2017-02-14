@@ -12,11 +12,11 @@ Expires: August 17, 2017
 
 Abstract
 
-   This document proposes a codification of Unix-like command line
-   interface (CLI) semantics using resources and their relations with
-   hyperlinks to foster the creation of a prolific intersection between
-   the REST architectural style and the Unix/Linux pipe and filter
-   style.
+   This document proposes a codification of resources and their
+   relations with hyperlinks, using Unix-like command line interface
+   (CLI) semantics, to foster the creation of a reusable and prolific
+   intersection between the REST architectural style and the Unix/Linux
+   pipe and filter style.
 
 Status of This Memo
 
