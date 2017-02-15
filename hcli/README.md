@@ -12,5 +12,5 @@ Discussion about the HCLI specification (and huck) can happen on huck's google g
 
 [1] http://alps.io  
 [2] https://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-02  
-[3] https://github.com/cometaj2/huck  
+[3] https://github.com/cometaj2/huckle  
 [4] https://groups.google.com/forum/#!forum/huck-hypermedia-unified-cli-with-a-kick

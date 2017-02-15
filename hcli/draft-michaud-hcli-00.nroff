@@ -72,19 +72,20 @@ Table of Contents
        4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
        4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
      4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  8
-     4.6.  Execution  . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.6.  Safe Execution . . . . . . . . . . . . . . . . . . . . . .  8
+     4.7.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . .  9
    6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
-     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 11
-     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 11
-   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
-   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 11
-   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     11.1  Normative References . . . . . . . . . . . . . . . . . . . 11
-     11.2  Informative References . . . . . . . . . . . . . . . . . . 12
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
+     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 12
+     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 13
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 13
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 13
+   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 13
+     11.1  Normative References . . . . . . . . . . . . . . . . . . . 13
+     11.2  Informative References . . . . . . . . . . . . . . . . . . 13
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 14
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 15
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 15
 .fi
 .in 3
 
@@ -116,7 +117,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 
 .nf
 <alps version="1.0">
-    <doc format="text">A command line interface.</doc>
+    <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
     <descriptor id="_HCLI_version">1.0</descriptor>
 
     <!-- Documentation section -->
@@ -190,7 +191,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
     </descriptor>
 
     <!-- An execution: zero or one of these is present -->
-    <descriptor id="execution" type="semantic">
+    <descriptor id="safe-execution" type="semantic">
         <doc>A form for executing a command line.</doc>
         <descriptor id="item" type="safe">
             <doc>A link to a command line execution item.</doc>
@@ -202,7 +203,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
     </descriptor>  
 
     <!-- A execution: zero or one of these is present -->
-    <descriptor id="execution" type="semantic">
+    <descriptor id="unsafe-execution" type="semantic">
         <doc>A form for executing a command line.</doc>
         <descriptor id="item" type="safe">
             <doc>A link to a command line execution item.</doc>
@@ -333,20 +334,36 @@ A parameter item MUST only be made available if contextually relevant, for a giv
 Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document.
 
 .ti 0
-4.6.  Execution
+4.6.  Safe Execution
 
 An execution item identifies an API consumer's ability to execute a theretofore accumulated command line.
 
 An execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document.
+Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MUST NOT impact server resources.
+
+.ti 0
+4.7.  Unsafe Execution
+
+An execution item identifies an API consumer's ability to execute a theretofore accumulated command line.
+
+An execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+
+Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MAY impact server resources.
 
 .ti 0
 6.  Example
 
-Here's an example of a hypothetical usp5 command line interface represented as hal+json [I-D.draft-kelly-json-hal] and respecting HCLI semantics:
+Here's an example of a hypothetical usp5 hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] and respecting HCLI semantics:
 
 .nf
+GET /usp5 HTTP/1.1
+Host: example.org
+Accept: application/hal+json
+
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+
 {
   "_links": {
     "self": {
@@ -366,42 +383,26 @@ Here's an example of a hypothetical usp5 command line interface represented as h
   },
   {
     "name": "synopsis",
-    "description": "usp5 [options] <command> <subcommand> [parameters]"
+    "description": "usp5 [option] <command> <subcommand> [parameters]"
   },
   {
     "name": "description",
     "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
   },
   {
-    "name": "files",
-    "description": "N/A"
-  },
-  {
     "name": "see also",
     "description": "N/A"
   },
   {
-    "name": "notes",
-    "description": "N/A"
-  },
-  {
-    "name": "author",
-    "description": "Jeff Michaud"
-  },
-  {
     "name": "example",
     "description": "N/A"
-  },
-  {
-    "name": "bugs",
-    "description": "None."
   }],
   "_embedded":{
     "item":[
     {
       "_links": {
         "self": {
-          "href": "/usp5-webapp/__commandsdefinitions?admin"
+          "href": "/usp5/__commandsdefinitions?admin"
         },
         "profile": {
           "href": "http://alps.io/profiles/cli"
@@ -410,7 +411,7 @@ Here's an example of a hypothetical usp5 command line interface represented as h
           "href": "http://alps.io/profiles/cli#command"
         },
         "cli": {
-          "href": "/usp5-webapp/admin",
+          "href": "/usp5/admin",
           "profile": "http://alps.io/profiles/cli"
         }
       },
@@ -420,7 +421,7 @@ Here's an example of a hypothetical usp5 command line interface represented as h
     {
       "_links": {
         "self": {
-          "href": "/usp5-webapp/__optionsdefinitions?--version"
+          "href": "/usp5/__optionsdefinitions?--version"
         },
         "profile": {
           "href": "http://alps.io/profiles/cli"
@@ -429,7 +430,7 @@ Here's an example of a hypothetical usp5 command line interface represented as h
           "href": "http://alps.io/profiles/cli#option"
         },
         "cli": {
-          "href": "/usp5-webapp/?--version",
+          "href": "/usp5?--version",
           "profile": "http://alps.io/profiles/cli"
         }
       },
@@ -438,6 +439,80 @@ Here's an example of a hypothetical usp5 command line interface represented as h
     }]
   }
 }
+
+GET /usp5?--version HTTP/1.1
+Host: example.org
+Accept: application/hal+json
+
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+
+{
+  "_links": {
+    "self": {
+      "href": "/usp5?--version"
+    },
+    "profile": {
+      "href": "http://alps.io/profiles/cli"
+    },
+    "type": {
+      "href": "http://alps.io/profiles/cli"
+    }
+  },
+  "section" : [
+  {
+    "name": "name",
+    "description": "usp5 --version"
+  },
+  {
+    "name": "synopsis",
+    "description": "usp5 --version"
+  },
+  {
+    "name": "description",
+    "description": "The usp5 CLI version."
+  },
+  {
+    "name": "see also",
+    "description": "N/A"
+  },
+  {
+    "name": "example",
+    "description": "N/A"
+  }],
+  "_embedded":{
+    "item":[
+    {
+      "_links": {
+        "self": {
+          "href": "/usp5/execution?usp5&--version"
+        },
+        "profile": {
+          "href": "http://alps.io/profiles/cli"
+        },
+        "type": {
+          "href": "http://alps.io/profiles/cli#safe-execution"
+        },
+        "cli": {
+          "href": "/usp5/__execution?usp5&--version",
+          "profile": "http://alps.io/profiles/cli"
+        }
+      }
+    }]
+  }
+}
+
+POST /usp5/__execution?usp5&--version HTTP/1.1
+Host: example.org
+Accept: application/json
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "version" : "usp5/0.0.1"
+}
+
 .fi
 
 .ti 0
