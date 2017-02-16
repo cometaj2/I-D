@@ -121,7 +121,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    HCLI's conventions result in a semantic interface for serving and
    consuming hypermedia CLIs, enabling the creation of general-purpose
    libraries that can be re-used on any API and API consumer using HCLI
-   semantics; and event resulting in the potential establishment of de-
+   semantics; and even resulting in the potential establishment of de-
    facto standard HCLI clients and servers.
 
    The primary design goal of HCLI is to foster the creation of a

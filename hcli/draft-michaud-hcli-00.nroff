@@ -101,7 +101,7 @@ The Hypertext Command Line Interface (HCLI) is a standard that establishes seman
 
 HCLI leverages the use of Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-HCLI's conventions result in a semantic interface for serving and consuming hypermedia CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics; and event resulting in the potential establishment of de-facto standard HCLI clients and servers.
+HCLI's conventions result in a semantic interface for serving and consuming hypermedia CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics; and even resulting in the potential establishment of de-facto standard HCLI clients and servers.
 
 The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection between the REST architectural style and the Unix/Linux pipe and filter style. HCLI can be applied to many different domains, and only imposes limitations that constrain a hypermedia API to operate as a CLI.
 
