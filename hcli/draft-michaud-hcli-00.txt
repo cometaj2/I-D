@@ -120,8 +120,9 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    HCLI's conventions result in a semantic interface for serving and
    consuming hypermedia CLIs, enabling the creation of general-purpose
-   libraries that can be re-used on any API and API consumers using HCLI
-   semantics.
+   libraries that can be re-used on any API and API consumer using HCLI
+   semantics; and event resulting in the potential establishment of de-
+   facto standard HCLI clients and servers.
 
    The primary design goal of HCLI is to foster the creation of a
    reusable and prolific intersection between the REST architectural
@@ -161,7 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            </descriptor>
            <descriptor id="name" type="semantic" />
            <descriptor id="description" type="semantic" />
-       </descriptor> 
  
 
 
@@ -169,6 +169,8 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+       </descriptor> 
 
        <!-- A command: zero or more of these may be present -->
        <descriptor id="command" type="semantic">
@@ -216,8 +218,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            </descriptor>
            <descriptor id="_H_9" type="semantic">
                <doc>Custom supplied input 9 for a CLI execution.</doc>
-           </descriptor>
-           <descriptor id="_H_10" type="semantic">
  
 
 
@@ -226,6 +226,8 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+           </descriptor>
+           <descriptor id="_H_10" type="semantic">
                <doc>Custom supplied input 10 for a CLI execution.</doc>
            </descriptor>
        </descriptor>
@@ -254,8 +256,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            </descriptor>
        </descriptor>  
    </alps>
-
-
 
 
 
