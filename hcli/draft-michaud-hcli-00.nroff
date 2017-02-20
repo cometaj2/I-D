@@ -65,24 +65,25 @@ Table of Contents
      4.2  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
        4.2.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.2.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
-     4.3  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.3  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
-     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.4  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
        4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
      4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  8
      4.6.  Safe Execution . . . . . . . . . . . . . . . . . . . . . .  8
      4.7.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . .  9
    6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  9
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
-     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 12
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 13
+     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 13
      8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 13
+       8.2.1 For Unix/Linux shell clients . . . . . . . . . . . . . . 13
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 13
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 13
-   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 13
-     11.1  Normative References . . . . . . . . . . . . . . . . . . . 13
-     11.2  Informative References . . . . . . . . . . . . . . . . . . 13
+   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 14
+     11.1  Normative References . . . . . . . . . . . . . . . . . . . 14
+     11.2  Informative References . . . . . . . . . . . . . . . . . . 14
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 14
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 15
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 15
@@ -118,7 +119,9 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 .nf
 <alps version="1.0">
     <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
-    <descriptor id="_HCLI_version">1.0</descriptor>
+    <descriptor id="_HCLI_version">
+        <doc>1.0</doc>
+    </descriptor>
 
     <!-- Documentation section -->
     <descriptor id="section" type="semantic">
@@ -221,7 +224,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 .ti 0
 4.  HCLI Document
 
-An HCLI Document, or any document containing HCLI semantics, MAY be represented using any media-type that is able to express the HCLI semantics described via the proposed ALPS profile.
+An HCLI Document, or any document containing HCLI semantics, MAY be represented using any media-type that is able to express the HCLI semantics described via the proposed ALPS profile and provisions otherwise mentioned in this specification.
 
 The "_HCLI_" prefix on property names is reserved for exclusive use by the HCLI specification.
 
@@ -243,7 +246,7 @@ The reserved "_HCLI_version" property is REQUIRED.
 
 This property MUST be present in all HCLI documents and MUST contain the version number of the applicable HCLI specification.
 
-This specification documents the semantics of HCLI version 1.0.
+This specification documents the semantics of HCLI version "1.0".
 
 .ti 0
 4.2  Section
@@ -257,8 +260,6 @@ A section contains documentation used to help users interact with the HCLI. Give
 (3) DESCRIPTION
 
 (4) EXAMPLE
-
-(5) SEE ALSO
 
 The purpose and content of each section SHOULD adhere to Unix/Linux man page conventions.
 
@@ -277,61 +278,63 @@ The "description" property is REQUIRED.
 Its value SHOULD contain information that pertains to the purpose of the named section.
 
 .ti 0
-4.3  Option
+4.3  Command
 
-An option describes a flag that MAY be used to effect a variation on the outcome of a command line execution.
+A Command describes a type of action to effect in a command line execution.
 
-An option item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Command item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document.
+Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document describing the Command's context.
 
 .ti 0
 4.3.1.  name
 
 The "name" property is REQUIRED.
 
-Its value SHOULD be the name of the option (e.g. "--version"). By convention, option names SHOULD be prefixed with a "-" or "--", to help human actors differentiate options from commands.
+Its value SHOULD be the name of the Command (e.g. "s3" in "aws s3"). By convention, Command names SHOULD NOT be prefixed with a "-" or "--", to help human actors differentiate Options from Commands.
+
+The "help" Command name is reserved for use by clients and MUST NOT be presented as a valid Command to use.
 
 .ti 0
 4.3.2.  description
 
 The "description" property is REQUIRED.
 
-Its value SHOULD contain information that describes the purpose of the option.
+Its value SHOULD contain information that describes the purpose of the command.
 
 .ti 0
-4.4  Command
+4.4  Option
 
-A command describes a type of action to effect in a command line execution.
+An Option describes a flag that MAY be used to effect a variation on the outcome of a command line execution.
 
-A command item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+An Option item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document.
+Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document that corresponds to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
 
 .ti 0
 4.4.1.  name
 
 The "name" property is REQUIRED.
 
-Its value SHOULD be the name of the option (e.g. "s3" in "aws s3"). By convention, command names SHOULD NOT be prefixed with a "-" or "--", to help human actors differentiate options from commands.
+Its value SHOULD be the name of the Option (e.g. "--version"). By convention, Option names SHOULD be prefixed with a "-" or "--", to help human actors differentiate Options from Commands.
 
 .ti 0
 4.4.2.  description
 
 The "description" property is REQUIRED.
 
-Its value SHOULD contain information that describes the purpose of the command.
+Its value SHOULD contain information that describes the purpose of the Option, and how to use it.
 
 .ti 0
 4.5  Parameter
 
-A parameter describes the presence of an additional user supplied parameter, as a query parameter ([RFC3986] and [RFC6570]), that MAY be required for successful command line execution.
+A Parameter describes the presence of user supplied parameter, as a query parameter ([RFC3986] and [RFC6570]), that MAY be required for successful command line execution.
 
-Only a single "_H_" query parameter at a time should be presented if a parameter item is present in a representation.
+Only a single "_H_" query parameter at a time SHOULD be presented if a parameter item is present in a representation.
 
-A parameter item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Parameter item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document.
+Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document that corresponds to the last successfully navigated Command. Parameters MUST NOT present documentation distinct from it's associated Command.
 
 .ti 0
 4.6.  Safe Execution
@@ -342,6 +345,8 @@ An execution item MUST only be made available if contextually relevant, for a gi
 
 Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MUST NOT impact server resources.
 
+Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
+
 .ti 0
 4.7.  Unsafe Execution
 
@@ -350,6 +355,8 @@ An execution item identifies an API consumer's ability to execute a theretofore 
 An execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
 Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MAY impact server resources.
+
+Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
 .ti 0
 6.  Example
@@ -526,7 +533,18 @@ TBD
 .ti 0
 8.2.  Client-side Considerations
 
-TBD
+.ti 0
+8.2.1 For Unix/Linux shell clients
+
+Hitting the "return" key SHOULD prompt a client to automatically, and sequentially parse arguments, and to navigate the HCLI corresponding to each entered command, option or parameter.
+
+To further navigation, a parameter SHOULD automatically be filled in with the sequentially corresponding user entered value.
+
+If sequential HCLI navigation fails because of an unsupported command, option or parameter, or because the client ran out of parsed arguments to use to navigate the HCLI, the client SHOULD present a useful message to the user and MAY use the last successfully retrieved HCLI Document to provide useful feedback to help users correct mistakes.
+
+Upon running out of parsed commands, options and parameters to use for HCLI navigation, the client SHOULD automatically attempt a Safe Execution or Unsafe Execution traversal. If neither a Safe Execution nor Unsafe Execution is available, the traversal should be treated as a failure.
+
+The reserved "help" command MAY be used anywhere in a command line execution to present man pages formatted from the HCLI Document of the last successfully retrieved Command immediately preceding "help".
 
 .ti 0
 9.  Security Considerations
