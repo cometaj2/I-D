@@ -100,12 +100,12 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    industry. However, given the generic nature of these hypermedia-rich
    media types, the establishment of meaning within their structure
    requires additional work. Semantic definition and agreement between
-   API creators and consumers is required to enable generic and reusable
-   APIs and API consumers.
+   API creators and consumers is required to enable use coherence to
+   emerge between APIs and API consumers.
 
    The Hypertext Command Line Interface (HCLI) is a standard that
    establishes semantic conventions for expressing command line
-   interfaces via hypermedia controls, such as links and forms.
+   interfaces via hypermedia controls, such as through the use of links
  
 
 
@@ -113,6 +113,8 @@ Michaud                 Expires August 17, 2017                 [Page 2]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+   and forms.
 
    HCLI leverages the use of Application Level Profile Semantics (ALPS)
    [I-D.draft-amundsen-richardson-foster-alps], similar to microformats,
@@ -160,8 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <descriptor id="item" type="safe">
                <doc>A link to an individual command.</doc>
            </descriptor>
-           <descriptor id="cli" type="safe">
-               <doc>A link for selecting a command.</doc>
  
 
 
@@ -170,6 +170,8 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+           <descriptor id="cli" type="safe">
+               <doc>A link for selecting a command.</doc>
            </descriptor>
            <descriptor id="name" type="semantic" />
            <descriptor id="description" type="semantic" />
@@ -216,8 +218,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        <descriptor id="unsafe-execution" type="semantic">
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
-               <doc>A link to a command line execution item.</doc>
-           </descriptor>
  
 
 
@@ -226,14 +226,14 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+               <doc>A link to a command line execution item.</doc>
+           </descriptor>
+
            <descriptor id="cli" type="unsafe">
                <doc>A link for executing a command line.</doc>
            </descriptor>
        </descriptor>  
    </alps>
-
-
-
 
 
 
