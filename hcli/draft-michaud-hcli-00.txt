@@ -320,7 +320,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    A section contains documentation used to help users interact with the
    HCLI. Given the primary goal of HCLI, mentioned in the introduction,
    the sections SHOULD take a form akin to Unix/Linux style man pages
-   and SHOULD minimally make use of the following named sections:
+   and MUST minimally make use of the following named sections:
 
    (1) NAME
 

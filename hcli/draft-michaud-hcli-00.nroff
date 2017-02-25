@@ -227,7 +227,7 @@ This specification documents the semantics of HCLI version "1.0".
 
 The Section property is REQUIRED.
 
-A section contains documentation used to help users interact with the HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and SHOULD minimally make use of the following named sections:
+A section contains documentation used to help users interact with the HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and MUST minimally make use of the following named sections:
 
 (1) NAME
 
