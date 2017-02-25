@@ -758,7 +758,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    Here's an example of a hypothetical "jsonf" hypertext command line
    interface represented as hal+json [I-D.draft-kelly-json-hal] that
-   takes an JSON input stream and attempts to reformat it to enhance
+   takes a JSON input stream and attempts to reformat it to enhance
    human readability:
 
    GET /jsonf HTTP/1.1

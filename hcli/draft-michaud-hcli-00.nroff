@@ -565,7 +565,7 @@ Content-Type: application/json
 .ti 0
 6.1 JSONF
 
-Here's an example of a hypothetical "jsonf" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] that takes an JSON input stream and attempts to reformat it to enhance human readability:
+Here's an example of a hypothetical "jsonf" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] that takes a JSON input stream and attempts to reformat it to enhance human readability:
 
 .nf
 GET /jsonf HTTP/1.1
