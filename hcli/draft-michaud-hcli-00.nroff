@@ -62,31 +62,32 @@ Table of Contents
    4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
      4.1.  Reserved Properties  . . . . . . . . . . . . . . . . . . .  6
        4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  6
-     4.2  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
-       4.2.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.2.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
-     4.3  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.2. Name  . . . . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.3  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
        4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
-     4.4  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
-     4.5  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  9
-     4.6.  Safe Execution . . . . . . . . . . . . . . . . . . . . . .  9
-     4.7.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 10
-   6.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-     6.1 USP5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-     6.1 JSONF  . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 16
-     8.1.  Server-side Considerations . . . . . . . . . . . . . . . . 16
-     8.2.  Client-side Considerations . . . . . . . . . . . . . . . . 16
-       8.2.1 For Clients in General . . . . . . . . . . . . . . . . . 16
-       8.2.2 For Command Line Clients (e.g. Under Unix/Linux) . . . . 17
-   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 17
-   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 17
-   11.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 17
-     11.1  Normative References . . . . . . . . . . . . . . . . . . . 17
-     11.2  Informative References . . . . . . . . . . . . . . . . . . 18
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
+     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
+     4.5  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.5.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
+     4.6  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  9
+     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . .  9
+     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 10
+   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+     5.1 usp5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+     5.2 jsonf  . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
+   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 16
+     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 16
+     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 16
+       6.2.1 For Clients in General . . . . . . . . . . . . . . . . . 16
+       6.2.2 For Command Line Clients (e.g. Under Unix/Linux) . . . . 17
+   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 17
+   8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 17
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+     9.1  Normative References  . . . . . . . . . . . . . . . . . . . 18
+     9.2  Informative References  . . . . . . . . . . . . . . . . . . 18
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 18
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 19
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 19
@@ -126,7 +127,10 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         <doc>1.0</doc>
     </descriptor>
 
-    <!-- Documentation section -->
+    <!-- The name of the command described by the HCLI Document -->
+    <descriptor id="name" type="semantic"/>
+
+    <!-- Documentation section -4yy->
     <descriptor id="section" type="semantic">
         <descriptor id="name" type="semantic" />
         <descriptor id="description" type="semantic" />
@@ -223,7 +227,14 @@ This property MUST be present in all HCLI documents and MUST contain the version
 This specification documents the semantics of HCLI version "1.0".
 
 .ti 0
-4.2  Section
+4.2. Name
+
+The Name property is REQUIRED.
+
+The name property contains the name of the command described by the HCLI document.
+
+.ti 0
+4.3  Section
 
 The Section property is REQUIRED.
 
@@ -240,21 +251,21 @@ A section contains documentation used to help users interact with the HCLI. Give
 The purpose and content of each section SHOULD adhere to Unix/Linux man page conventions.
 
 .ti 0
-4.2.1.  name
+4.3.1.  name
 
 The "name" property is REQUIRED.
 
 Its value SHOULD be the name of a documentation section.
 
 .ti 0
-4.2.2.  description
+4.3.2.  description
 
 The "description" property is REQUIRED.
 
 Its value SHOULD contain information that pertains to the purpose of the named section.
 
 .ti 0
-4.3  Command
+4.4  Command
 
 The Command item is OPTIONAL.
 
@@ -265,7 +276,7 @@ A Command item MUST only be made available if contextually relevant, for a given
 Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document describing the Command's context.
 
 .ti 0
-4.3.1.  name
+4.4.1.  name
 
 The "name" property is REQUIRED.
 
@@ -288,14 +299,14 @@ To make it easier for clients to differentiate between Parameters, Commands and 
 (3) back tick character (i.e. `)
 
 .ti 0
-4.3.2.  description
+4.4.2.  description
 
 The "description" property is REQUIRED.
 
 Its value SHOULD contain information that describes the purpose of the command.
 
 .ti 0
-4.4  Option
+4.5  Option
 
 The Option item is OPTIONAL.
 
@@ -308,7 +319,7 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST return 
 The "cli" link relation of an Option that's already been navigated through MUST NOT be presented to HCLI clients, but the Option item MUST otherwise remain available to help HCLI clients with automatic documentation generation.
 
 .ti 0
-4.4.1.  name
+4.5.1.  name
 
 The "name" property is REQUIRED.
 
@@ -327,14 +338,14 @@ To make it easier for clients to differentiate between Parameters, Commands and 
 (3) back tick character (i.e. `)
 
 .ti 0
-4.4.2.  description
+4.5.2.  description
 
 The "description" property is REQUIRED.
 
 Its value SHOULD contain information that describes the purpose of the Option, and how to use it.
 
 .ti 0
-4.5  Parameter
+4.6  Parameter
 
 The Parameter item is OPTIONAL.
 
@@ -349,7 +360,7 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST return 
 Only a single Parameter item at a time MAY be presented in an HCLI Document.
 
 .ti 0
-4.6.  Safe Execution
+4.7.  Safe Execution
 
 The Safe Execution item is OPTIONAL.
 
@@ -362,7 +373,7 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT ret
 Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
 .ti 0
-4.7.  Unsafe Execution
+4.8.  Unsafe Execution
 
 The Unsafe Execution item is OPTIONAL.
 
@@ -375,10 +386,10 @@ Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT ret
 Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
 .ti 0
-6.  Examples
+5.  Examples
 
 .ti 0
-6.1 USP5
+5.1 usp5
 
 Here's an example of a hypothetical "usp5" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] and navigating us through a request for the CLI's version number:
 
@@ -563,7 +574,7 @@ Content-Type: application/json
 .fi
 
 .ti 0
-6.1 JSONF
+5.2 jsonf
 
 Here's an example of a hypothetical "jsonf" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] that takes a JSON input stream and attempts to reformat it to enhance human readability:
 
@@ -645,10 +656,10 @@ Content-Type: application/json
 .fi
 
 .ti 0
-8.  Recommendations
+6.  Recommendations
 
 .ti 0
-8.1.  Server-side Considerations
+6.1.  Server-side Considerations
 
 Servers implementing HCLI semantics that leverage Unsafe Execution and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream from a Unix/Linux CLI, MUST minimally be ready to receive and process entity bodies of the application/octet-stream media type [RFC2046].
 
@@ -657,10 +668,10 @@ Servers SHOULD, however, endeavor to support the reception and processing of any
 This is intended to enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Input stream processing semantics by HCLI servers are out of scope of this specification.
 
 .ti 0
-8.2.  Client-side Considerations
+6.2.  Client-side Considerations
 
 .ti 0
-8.2.1 For Clients in General
+6.2.1 For Clients in General
 
 Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter "hcli_param", corresponding to each entered command, option or parameter.
 
@@ -673,7 +684,7 @@ Command line clients that support input stream processing into an Unsafe Executi
 Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer. If such an implementation is too onerous, clients MAY minimally support sending all input streams under
 
 .ti 0
-8.2.2 For Command Line Clients (e.g. Under Unix/Linux)
+6.2.2 For Command Line Clients (e.g. Under Unix/Linux)
 
 The reserved "help" command MAY be used anywhere in a command line execution to present man pages formatted from the last successfully retrieved HCLI Document preceding "help".
 
@@ -682,12 +693,12 @@ Clients receiving the result of a successful HCLI execution SHOULD output the re
 Clients receiving failure results from an HCLI execution SHOULD output the failure result to STDERR to allow for further pipe and filter processing.
 
 .ti 0
-9.  Security Considerations
+7.  Security Considerations
 
 TBD
 
 .ti 0
-10.  IANA Considerations
+8.  IANA Considerations
 
 The HCLI specification introduces the "hcli" link relation [RFC5988] to indicate the presence of hypertext command line interface semantics.
 
@@ -696,10 +707,10 @@ The link relation SHOULD be accompanied by a "profile" [RFC6906] defining comman
 This specification defines an HCLI ALPS profile to be used in conjunction with the "hcli" link relation but does NOT REQUIRE that the HCLI profile defined in this specification be the only profile used in conjunction with the "hcli" link relation.
 
 .ti 0
-11.  References
+9.  References
 
 .ti 0
-11.1  Normative References
+9.1  Normative References
 
 .fi
 .in 14
@@ -724,7 +735,7 @@ This specification defines an HCLI ALPS profile to be used in conjunction with t
 
 .in 3
 .ti 0
-11.2  Informative References
+9.2  Informative References
 .fi
 
 .in 14
