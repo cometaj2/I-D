@@ -174,9 +174,10 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        <descriptor id="command" type="semantic">
            <descriptor id="item" type="safe">
                <doc>A link to an individual command.</doc>
-           </descriptor>
-           <descriptor id="cli" type="safe">
-               <doc>A link for selecting a command.</doc>
+
+               <descriptor id="cli" type="safe">
+                   <doc>A link for selecting a command.</doc>
+               </descriptor>
            </descriptor>
            <descriptor id="name" type="semantic" />
            <descriptor id="description" type="semantic" />
@@ -186,9 +187,10 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        <descriptor id="option" type="semantic">
            <descriptor id="item" type="safe">
                <doc>A link to an individual option.</doc>
-           </descriptor>
-           <descriptor id="cli" type="safe">
-               <doc>A link for selecting an option.</doc>
+
+               <descriptor id="cli" type="safe">
+                   <doc>A link for selecting an option.</doc>
+               </descriptor>
            </descriptor>
            <descriptor id="name" type="semantic" />
            <descriptor id="description" type="semantic" />
@@ -199,11 +201,11 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <doc>A form for inputting command line parameters.</doc>
            <descriptor id="item" type="safe">
                <doc>A link to an individual parameter.</doc>
-           </descriptor>
 
-           <!-- Only one of these may be present at a time -->
-           <descriptor id="hcli_param" type="semantic">
-               <doc>Custom supplied input for a CLI execution.</doc>
+               <!-- Only one of these may be present -->
+               <descriptor id="hcli_param" type="semantic">
+                   <doc>Custom supplied input for a CLI execution.</doc>
+               </descriptor>
            </descriptor>
        </descriptor>
 
@@ -212,12 +214,10 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
                <doc>A link to a command line execution item.</doc>
-           </descriptor>
 
-           <descriptor id="cli" type="safe">
-               <doc>A link for executing a command line.</doc>
-           </descriptor>
-       </descriptor>  
+               <!-- Only one of these may be present -->
+               <descriptor id="cli" type="safe">
+                   <doc>A link for executing a command line.</doc>
  
 
 
@@ -226,23 +226,23 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+               </descriptor>
+           </descriptor>
+       </descriptor>  
+
        <!-- A execution: zero or one of these is present -->
        <descriptor id="unsafe-execution" type="semantic">
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
                <doc>A link to a command line execution item.</doc>
-           </descriptor>
 
-           <descriptor id="cli" type="unsafe">
-               <doc>A link for executing a command line.</doc>
+               <!-- Only one of these may be present -->
+               <descriptor id="cli" type="unsafe">
+                   <doc>A link for executing a command line.</doc>
+               </descriptor>
            </descriptor>
        </descriptor>  
    </alps>
-
-
-
-
-
 
 
 
