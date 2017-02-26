@@ -58,36 +58,37 @@ Table of Contents
 .nf
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
-   3.  HCLI Semantics . . . . . . . . . . . . . . . . . . . . . . . .  3
+   3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
    4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.1.  Reserved Properties  . . . . . . . . . . . . . . . . . . .  6
-       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  6
-     4.2. Name  . . . . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.3  Section . . . . . . . . . . . . . . . . . . . . . . . . . .  6
-       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  7
-     4.4  Command . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
-     4.5  Option  . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
+       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
+       4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
+     4.2.  Name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.3.  Section  . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
+     4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
+     4.5.  Option . . . . . . . . . . . . . . . . . . . . . . . . . .  9
        4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.5.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
-     4.6  Parameter . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
+     4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
      4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 10
-     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 10
-   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-     5.1 usp5 . . . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-     5.2 jsonf  . . . . . . . . . . . . . . . . . . . . . . . . . . . 14
-   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 16
-     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 16
-     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 16
-       6.2.1 For Clients in General . . . . . . . . . . . . . . . . . 16
-       6.2.2 For Command Line Clients (e.g. Under Unix/Linux) . . . . 17
-   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 17
+     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
+   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
+     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
+     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 17
+       6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 17
+       6.2.2. For Command Line Clients (e.g. Under Unix/Linux)  . . . 18
+   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 18
    8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 18
-   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 18
-     9.1  Normative References  . . . . . . . . . . . . . . . . . . . 18
-     9.2  Informative References  . . . . . . . . . . . . . . . . . . 18
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 19
+     9.1.  Normative References . . . . . . . . . . . . . . . . . . . 19
+     9.2.  Informative References . . . . . . . . . . . . . . . . . . 19
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 19
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 20
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 20
@@ -116,7 +117,7 @@ The primary design goal of HCLI is to foster the creation of a reusable and prol
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC2119].
 
 .ti 0
-3.  HCLI Semantics
+3.  HCLI ALPS Semantics
 
 The HCLI semantics are largely codified via the definition of a proposed standard profile, through ALPS [I-D.draft-amundsen-richardson-foster-alps], and takes the following form:
 
@@ -168,7 +169,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         </descriptor>
 
         <!-- Only one of these may be present at a time -->
-        <descriptor id="_HCLI_param" type="semantic">
+        <descriptor id="hcli_param" type="semantic">
             <doc>Custom supplied input for a CLI execution.</doc>
         </descriptor>
     </descriptor>
@@ -197,25 +198,49 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         </descriptor>
     </descriptor>  
 </alps>
-
 .fi
 
 .bp
 .ti 0
 4.  HCLI Document
 
-An HCLI Document, or any document containing HCLI semantics, MAY be represented using any media-type that is able to express the HCLI semantics described via the proposed ALPS profile and provisions otherwise mentioned in this specification.
-
-The "hcli_" prefix on property names, or the Parameter URI Templates [RFC6570], is reserved for exclusive use by the HCLI specification.
-
-This specification makes use of one reserved property:
-
-(1)  "hcli_version": The version of this HCLI specification.
+An HCLI Document, or any document containing HCLI semantics, MAY be represented using any media-type that is able to express the HCLI semantics described via the proposed ALPS profile and the provisions otherwise mentioned in this specification.
 
 It should also be noted that an HCLI Document MUST NOT endeavor to expose the entirety of a command line interface in a single HCLI Document. HCLI serving MUST be represented incrementally and across multiple HCLI Documents as each layer of commands, options and parameters unfold through hypertext navigation.
 
+
+An HCLI Document MUST always contain at least one of the following:
+
+(1)  Command
+
+(2)  Option
+
+(3)  Parameter
+
+(4)  Safe Execution
+
+(5)  Unsafe Execution.
+
+
+The "hcli_" prefix is reserved for exclusive use by the HCLI specification.
+
+This specification makes use of one reserved properties and one reserved URI Template [RFC6570] parameter name, using the "hcli_" prefix:
+
+(1)  "hcli_version": The version of this HCLI specification.
+
+(2)  "hcli_param": The Parameter name to submit in a URI Template.
+
+
+Additionally, this specification reserves the following names for exclusive use by HCLI clients:
+
+(1)  "OPTIONS" : A reserved Section name
+
+(2)  "COMMANDS" : A reserved Section name
+
+(3)  "help": A reserved Command name
+
 .ti 0
-4.1.  Reserved Properties
+4.1.  Reserved Property and Other Reserved Names
 
 .ti 0
 4.1.1.  hcli_version
@@ -227,14 +252,19 @@ This property MUST be present in all HCLI documents and MUST contain the version
 This specification documents the semantics of HCLI version "1.0".
 
 .ti 0
-4.2. Name
+4.1.2.  Other Reserved Names
+
+Other reserved names, mentioned in [Section 4.  HCLI Document] and related provisions are covered in sections further below, where they can be better contextualized.
+
+.ti 0
+4.2.  Name
 
 The Name property is REQUIRED.
 
 The name property contains the name of the command described by the HCLI document.
 
 .ti 0
-4.3  Section
+4.3.  Section
 
 The Section property is REQUIRED.
 
@@ -250,7 +280,7 @@ A section contains documentation used to help users interact with the HCLI. Give
 
 The purpose and content of each section SHOULD adhere to Unix/Linux man page conventions.
 
-Two sections names are reserved for automatic documentation generation by HCLI clients and MUST NOT be used:
+Two section names are reserved for automatic documentation generation by HCLI clients and MUST NOT be used in HCLI Documents:
 
 (1) OPTIONS
 
@@ -271,7 +301,7 @@ The "description" property is REQUIRED.
 Its value SHOULD contain information that pertains to the purpose of the named section.
 
 .ti 0
-4.4  Command
+4.4.  Command
 
 The Command item is OPTIONAL.
 
@@ -312,7 +342,7 @@ The "description" property is REQUIRED.
 Its value SHOULD contain information that describes the purpose of the command.
 
 .ti 0
-4.5  Option
+4.5.  Option
 
 The Option item is OPTIONAL.
 
@@ -322,7 +352,7 @@ An Option item MUST only be made available if contextually relevant, for a given
 
 Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document that corresponds to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
 
-The "cli" link relation of an Option that's already been navigated through MUST NOT be presented to HCLI clients, but the Option item MUST otherwise remain available to help HCLI clients with automatic documentation generation.
+The "cli" link relation of an Option that's already been navigated through by a client MUST NOT be presented to HCLI clients any longer, but the Option item MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
 
 .ti 0
 4.5.1.  name
@@ -351,11 +381,11 @@ The "description" property is REQUIRED.
 Its value SHOULD contain information that describes the purpose of the Option, and how to use it.
 
 .ti 0
-4.6  Parameter
+4.6.  Parameter
 
 The Parameter item is OPTIONAL.
 
-A Parameter describes an client's ability to input a user supplied parameter, using the {hcli_param} as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
+A Parameter describes an client's ability to input a user supplied parameter, using the reserved "hcli_param" name. The "hcli_param" is used as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
 
 A submitted expansion variable MUST be URL encoded [RFC3986].
 
@@ -395,7 +425,7 @@ Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously
 5.  Examples
 
 .ti 0
-5.1 usp5
+5.1  usp5
 
 Here's an example of a hypothetical "usp5" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] and navigating us through a request for the CLI's version number:
 
@@ -421,19 +451,19 @@ Content-Type: application/hal+json
   },
   "section" : [
   {
-    "name": "name",
+    "name": "NAME",
     "description": "usp5"
   },
   {
-    "name": "synopsis",
+    "name": "SYNOPSIS",
     "description": "usp5 [option] <command> <subcommand> [parameters]"
   },
   {
-    "name": "description",
+    "name": "DESCRIPTION",
     "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
   },
   {
-    "name": "example",
+    "name": "EXAMPLES",
     "description": "N/A"
   }],
   "_embedded":{
@@ -441,7 +471,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__commandsdef?admin"
+          "href": "/usp5/__cdef/admin??command=usp5"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -460,7 +490,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__optionsdef?--version"
+          "href": "/usp5/__odef/--version?command=usp5"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -500,19 +530,19 @@ Content-Type: application/hal+json
   },
   "section" : [
   {
-    "name": "name",
+    "name": "NAME",
     "description": "usp5"
   },
   {
-    "name": "synopsis",
+    "name": "SYNOPSIS",
     "description": "usp5 [option] <command> <subcommand> [parameters]"
   },
   {
-    "name": "description",
+    "name": "DESCRIPTION",
     "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
   },
   {
-    "name": "example",
+    "name": "EXAMPLES",
     "description": "N/A"
   }],
   "_embedded":{
@@ -520,7 +550,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__commandsdefnocli?admin"
+          "href": "/usp5/__cdef/admin?command=usp5+--version"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -535,7 +565,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__optionsdefnocli?--version"
+          "href": "/usp5/__odef/--version?command=usp5+--version"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -550,7 +580,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__executiondef?command=usp5+--version"
+          "href": "/usp5/__edef?command=usp5+--version"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -580,7 +610,7 @@ Content-Type: application/json
 .fi
 
 .ti 0
-5.2 jsonf
+5.2  jsonf
 
 Here's an example of a hypothetical "jsonf" hypertext command line interface represented as hal+json [I-D.draft-kelly-json-hal] that takes a JSON input stream and attempts to reformat it to enhance human readability:
 
@@ -606,19 +636,19 @@ Content-Type: application/hal+json
   },
   "section" : [
   {
-    "name": "name",
+    "name": "NAME",
     "description": "jsonf"
   },
   {
-    "name": "synopsis",
+    "name": "SYNOPSIS",
     "description": "jsonf"
   },
   {
-    "name": "description",
+    "name": "DESCRIPTION",
     "description": "The jsonf CLI formats JSON documents to make them more human-readable."
   },
   {
-    "name": "example",
+    "name": "EXAMPLES",
     "description": "cat linear.json | jsonf"
   }],
   "_embedded":{
@@ -626,7 +656,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/jsonf/__executiondef?command=usp5+--version"
+          "href": "/jsonf/__edef?command=jsonf"
         },
         "profile": {
           "href": "http://hcli.io/profiles/hcli"
@@ -677,7 +707,7 @@ This is intended to enable the pipe and filter style for clients and servers tha
 6.2.  Client-side Considerations
 
 .ti 0
-6.2.1 For Clients in General
+6.2.1.  For Clients in General
 
 Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter "hcli_param", corresponding to each entered command, option or parameter.
 
@@ -690,7 +720,7 @@ Command line clients that support input stream processing into an Unsafe Executi
 Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer. If such an implementation is too onerous, clients MAY minimally support sending all input streams under
 
 .ti 0
-6.2.2 For Command Line Clients (e.g. Under Unix/Linux)
+6.2.2. For Command Line Clients (e.g. Under Unix/Linux)
 
 The reserved "help" command MAY be used anywhere in a command line execution and SHOULD present a man page formatted from the last successfully retrieved HCLI Document immediately preceding the "help" command.
 
@@ -718,7 +748,7 @@ This specification defines an HCLI ALPS profile to be used in conjunction with t
 9.  References
 
 .ti 0
-9.1  Normative References
+9.1.  Normative References
 
 .fi
 .in 14
@@ -743,7 +773,7 @@ This specification defines an HCLI ALPS profile to be used in conjunction with t
 
 .in 3
 .ti 0
-9.2  Informative References
+9.2.  Informative References
 .fi
 
 .in 14
@@ -751,11 +781,6 @@ This specification defines an HCLI ALPS profile to be used in conjunction with t
 [I-D.draft-kelly-json-hal]
 
 Kelly, M., "JSON Hypertext Application Language", draft-kelly-json-hal-08 (work in progress), May 2016.
-
-.ti 3
-[I-D.draft-michaud-xml-hal]
-
-Michaud, J., "XML Hypertext Application Language", draft-michaud-xml-hal-01 (work in progress) February 2017.
 
 .ti 3
 [I-D.draft-amundsen-richardson-foster-alps]
