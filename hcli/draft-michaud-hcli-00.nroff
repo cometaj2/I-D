@@ -282,7 +282,7 @@ A section contains documentation used to help users interact with the HCLI. Give
 
 (4) EXAMPLES
 
-The purpose and content of each section SHOULD adhere to Unix/Linux man page conventions.
+The purpose and content of each section SHOULD adhere to Unix/Linux man page conventions and the first three sections MUST be in the exact sequence mentioned above. Other sections MAY be in any order.
 
 Two section names are reserved for automatic documentation generation by HCLI clients and MUST NOT be used in HCLI Documents:
 
@@ -742,11 +742,11 @@ TBD
 .ti 0
 8.  IANA Considerations
 
-The HCLI specification introduces the "hcli" link relation [RFC5988] to indicate the presence of hypertext command line interface semantics.
+The HCLI specification introduces the "cli" link relation [RFC5988] to indicate the presence of hypertext command line interface semantics.
 
 The link relation SHOULD be accompanied by a "profile" [RFC6906] defining command line interface semantics.
 
-This specification defines an HCLI ALPS profile to be used in conjunction with the "hcli" link relation but does NOT REQUIRE that the HCLI profile defined in this specification be the only profile used in conjunction with the "hcli" link relation.
+This specification defines an HCLI ALPS profile to be used in conjunction with the "cli" link relation but does NOT REQUIRE that the HCLI profile defined in this specification be the only profile used in conjunction with the "cli" link relation.
 
 .ti 0
 9.  References
