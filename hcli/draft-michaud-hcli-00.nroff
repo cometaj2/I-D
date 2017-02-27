@@ -31,7 +31,7 @@ Hypertext Command Line Interface
 .ti 0
 Abstract
 
-This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the Unix/Linux pipe and filter style.
+This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the pipe and filter style, as seen on Unix/Linux command line.
 
 .ti 0
 Status of This Memo
