@@ -101,15 +101,15 @@ Table of Contents
 1.  Introduction
 
 .fi
-The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, Hydra, JSON-LD, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
+The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, Hydra, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
 
 The Hypertext Command Line Interface (HCLI) is a standard that establishes semantic conventions for expressing command line interfaces via hypermedia controls, such as through the use of links and forms.
 
 HCLI leverages the use of Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics; and even resulting in the potential establishment of de-facto standard HCLI clients and servers.
+HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. The intended result of the establishment of a semantic interface of this nature is the evolution toward de-facto standard, and interoperable, HCLI clients and servers and a potential ecosystem growth of standard, reusable and shareable CLIs.
 
-The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection between the REST architectural style and the Unix/Linux pipe and filter style. HCLI can be applied to many different domains, and only imposes limitations that constrain a hypermedia API to operate as a CLI.
+The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to many different domains, and only imposes limitations that constrain a REST API to operate as a hypertext command line interface.
 
 .ti 0
 2.  Requirements

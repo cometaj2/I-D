@@ -99,7 +99,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 1.  Introduction
 
    The proliferation of hypermedia-rich media-types such as HAL,
-   Collection+JSON, Siren, JSON API, Hydra, JSON-LD, etc., was a
+   Collection+JSON, Siren, JSON API, Hydra, JSON-LD, Mason, etc., was a
    significant step in helping hypermedia APIs take flight in the
    industry. However, given the generic nature of these hypermedia-rich
    media types, the establishment of meaning within their structure
@@ -126,15 +126,18 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    HCLI's conventions result in a semantic interface for serving and
    consuming CLIs, enabling the creation of general-purpose libraries
-   that can be re-used on any API and API consumer using HCLI semantics;
-   and even resulting in the potential establishment of de-facto
-   standard HCLI clients and servers.
+   that can be re-used on any API and API consumer using HCLI semantics.
+   The intended result of the establishment of a semantic interface of
+   this nature is the evolution toward de-facto standard, and
+   interoperable, HCLI clients and servers and a potential ecosystem
+   growth of standard, reusable and shareable CLIs.
 
    The primary design goal of HCLI is to foster the creation of a
-   reusable and prolific intersection between the REST architectural
-   style and the Unix/Linux pipe and filter style. HCLI can be applied
-   to many different domains, and only imposes limitations that
-   constrain a hypermedia API to operate as a CLI.
+   reusable and prolific intersection, or bridge, between the REST
+   architectural style and the pipe and filter style; as the latter is
+   seen under the Unix/Linux shell. HCLI can be applied to many
+   different domains, and only imposes limitations that constrain a REST
+   API to operate as a hypertext command line interface.
 
 2.  Requirements
 
@@ -159,9 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
        <!-- Documentation section -4yy->
        <descriptor id="section" type="semantic">
-           <descriptor id="name" type="semantic" />
-           <descriptor id="description" type="semantic" />
-       </descriptor>
  
 
 
@@ -169,6 +169,10 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+           <descriptor id="name" type="semantic" />
+           <descriptor id="description" type="semantic" />
+       </descriptor>
 
        <!-- A command: zero or more of these may be present -->
        <descriptor id="command" type="semantic">
@@ -214,10 +218,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
                <doc>A link to a command line execution item.</doc>
-
-               <!-- Only one of these may be present -->
-               <descriptor id="cli" type="safe">
-                   <doc>A link for executing a command line.</doc>
  
 
 
@@ -226,6 +226,9 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+               <!-- Only one of these may be present -->
+               <descriptor id="cli" type="safe">
+                   <doc>A link for executing a command line.</doc>
                </descriptor>
            </descriptor>
        </descriptor>  
@@ -243,9 +246,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            </descriptor>
        </descriptor>  
    </alps>
-
-
-
 
 
 
