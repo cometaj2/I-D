@@ -31,7 +31,7 @@ Hypertext Command Line Interface
 .ti 0
 Abstract
 
-This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the pipe and filter style, as seen on Unix/Linux command line.
+This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the pipe and filter style, as seen in a Unix/Linux shell.
 
 .ti 0
 Status of This Memo
@@ -101,13 +101,13 @@ Table of Contents
 1.  Introduction
 
 .fi
-The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, Hydra, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
+The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
 
 The Hypertext Command Line Interface (HCLI) is a standard that establishes semantic conventions for expressing command line interfaces via hypermedia controls, such as through the use of links and forms.
 
-HCLI leverages the use of Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
+HCLI leverages the use of the Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. The intended result of the establishment of a semantic interface of this nature is the evolution toward de-facto standard, and interoperable, HCLI clients and servers and a potential ecosystem growth of standard, reusable and shareable CLIs.
+HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. Furthermore, the establishment of a semantic interface of this nature is expected to instigate the creation of a rich ecosystem of reusable and shareable CLIs.
 
 The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to many different domains, and only imposes limitations that constrain a REST API to operate as a hypertext command line interface.
 
@@ -226,9 +226,9 @@ An HCLI Document MUST always contain at least one of the following:
 (5)  Unsafe Execution.
 
 
-The "hcli_" prefix is reserved for exclusive use by the HCLI specification.
+The "hcli_" prefix is reserved by the HCLI specification and MUST NOT be used by API creators to define private semantics.
 
-This specification makes use of one reserved properties and one reserved URI Template [RFC6570] parameter name, using the "hcli_" prefix:
+This specification makes use of one reserved property and one reserved URI Template [RFC6570] Parameter name, using the "hcli_" prefix:
 
 (1)  "hcli_version": The version of this HCLI specification.
 
@@ -251,28 +251,28 @@ Additionally, this specification reserves the following names for exclusive use 
 
 The reserved "hcli_version" property is REQUIRED.
 
-This property MUST be present in all HCLI documents and MUST contain the version number of the applicable HCLI specification.
+This property MUST be present in all HCLI Documents and MUST contain the version number of the applicable HCLI specification.
 
 This specification documents the semantics of HCLI version "1.0".
 
 .ti 0
 4.1.2.  Other Reserved Names
 
-Other reserved names, mentioned in [Section 4.  HCLI Document] and related provisions are covered in sections further below, where they can be better contextualized.
+Other reserved names, mentioned in [Section 4.  HCLI Document], and related provisions are covered in sections further below, where they can be better contextualized.
 
 .ti 0
 4.2.  Name
 
 The Name property is REQUIRED.
 
-The name property contains the name of the command described by the HCLI document.
+The name property contains the name of the Command described by the HCLI Document.
 
 .ti 0
 4.3.  Section
 
 The Section property is REQUIRED.
 
-A section contains documentation used to help users interact with the HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and MUST minimally make use of the following named sections:
+A section contains documentation used to users interact with an HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and MUST minimally make use of the following named sections:
 
 (1) NAME
 
@@ -313,14 +313,12 @@ A Command describes a type of action to effect in a command line execution.
 
 A Command item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document describing the Command's context.
+Successful traversal of the "cli" link relation by an HCLI client MUST return an HCLI Document describing the targeted Command's context.
 
 .ti 0
 4.4.1.  name
 
 The "name" property is REQUIRED.
-
-The "help" Command name is reserved for use by clients and MUST NOT be presented as a valid Command to use.
 
 Its value SHOULD be the name of the Command (e.g. "s3" in "aws s3").
 
@@ -330,7 +328,8 @@ By convention, and to help human actors differentiate Options from Commands, Com
 
 (2) two consecutive dash characters (i.e. "--").
 
-To make it easier for clients to differentiate between Parameters, Commands and Options, the name value MUST NOT make use of the:
+
+Furthermore, to make it easier for HCLI clients to differentiate between Parameters, Commands and Options, the name value MUST NOT make use of the:
 
 (1) single quote character (i.e. ')
 
@@ -338,12 +337,15 @@ To make it easier for clients to differentiate between Parameters, Commands and 
 
 (3) back tick character (i.e. `)
 
+
+The "help" Command name is reserved for use by clients and MUST NOT be presented as a valid Command to use.
+
 .ti 0
 4.4.2.  description
 
 The "description" property is REQUIRED.
 
-Its value SHOULD contain information that describes the purpose of the command.
+Its value SHOULD contain information that describes the purpose of the Command.
 
 .ti 0
 4.5.  Option
@@ -354,9 +356,9 @@ An Option describes a option or flag that MAY be used to effect a variation on t
 
 An Option item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document that corresponds to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
+Successful traversal of the "cli" link relation by an HCLI client MUST return an HCLI Document that correlates to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
 
-The "cli" link relation of an Option that's already been navigated through by a client MUST NOT be presented to HCLI clients any longer, but the Option item MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
+The "cli" link relation of an Option that's already been navigated through by an HCLI client MUST NOT be presented any longer. The Option item, however, MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
 
 .ti 0
 4.5.1.  name
@@ -389,13 +391,13 @@ Its value SHOULD contain information that describes the purpose of the Option, a
 
 The Parameter item is OPTIONAL.
 
-A Parameter describes an client's ability to input a user supplied parameter, using the reserved "hcli_param" name. The "hcli_param" is used as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
+A Parameter describes an HCLI client's ability to input a user supplied parameter, using the reserved "hcli_param" name. The "hcli_param" name is used as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
 
 A submitted expansion variable MUST be URL encoded [RFC3986].
 
 A Parameter item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST return an HCLI Document that corresponds to the last successfully navigated Command. Parameters MUST NOT present documentation distinct from that of it's associated Command.
+Successful traversal of the "cli" link relation by an HCLI client MUST return an HCLI Document that correlates to the last successfully navigated Command. Parameters MUST NOT present documentation distinct from that of it's associated Command.
 
 Only a single Parameter item at a time MAY be presented in an HCLI Document.
 
@@ -404,11 +406,11 @@ Only a single Parameter item at a time MAY be presented in an HCLI Document.
 
 The Safe Execution item is OPTIONAL.
 
-An execution item identifies an API consumer's ability to execute a theretofore accumulated command line.
+A Safe Execution item identifies an HCLI client's ability to execute a theretofore accumulated command line.
 
-An execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Safe Execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MUST NOT impact server resources.
+Successful traversal of the "cli" link relation by an HCLI client MUST NOT return an HCLI Document and execution fulfillment MUST NOT impact server resources.
 
 Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
@@ -417,11 +419,11 @@ Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously
 
 The Unsafe Execution item is OPTIONAL.
 
-An execution item identifies an consuming client's ability to execute a theretofore accumulated command line.
+An Unsafe Execution item identifies an HCLI client's ability to execute a theretofore accumulated command line.
 
-An execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+An Unsafe Execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI consumer MUST NOT return an HCLI document and execution MAY impact server resources.
+Successful traversal of the "cli" link relation by an HCLI client MUST NOT return an HCLI Document and execution MAY impact server resources.
 
 Both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
@@ -603,10 +605,10 @@ Content-Type: application/hal+json
 
 GET /usp5/execution?command=usp5+--version HTTP/1.1
 Host: example.org
-Accept: application/json
+Accept: application/octet-stream
 
 HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/octet-stream
 
 {
   "version" : "0.0.1"
@@ -680,7 +682,7 @@ Content-Type: application/hal+json
 POST /jsonf/execution?command=jsonf HTTP/1.1
 Host: example.org
 Content-Type: application/json
-Accept: application/json
+Accept: */*
 
 {"linear":"and","hard":"to","read":"json"}
 
@@ -701,11 +703,11 @@ Content-Type: application/json
 .ti 0
 6.1.  Server-side Considerations
 
-Servers implementing HCLI semantics that leverage Unsafe Execution and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream from a Unix/Linux CLI, MUST minimally be ready to receive and process entity bodies of the application/octet-stream media type [RFC2046].
+Servers implementing HCLI semantics that leverage Unsafe Execution and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and process entity bodies of the application/octet-stream media type [RFC2046].
 
-Servers SHOULD, however, endeavor to support the reception and processing of any known media-type to help maintain visibility on the network.
+Servers SHOULD, however, endeavor to foster support for the reception of correctly identified media-types to help maintain visibility on the network.
 
-This is intended to enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Input stream processing semantics by HCLI servers are out of scope of this specification.
+This is intended to enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Specific input stream processing semantics by HCLI servers are out of scope of this specification.
 
 .ti 0
 6.2.  Client-side Considerations
@@ -713,22 +715,22 @@ This is intended to enable the pipe and filter style for clients and servers tha
 .ti 0
 6.2.1.  For Clients in General
 
-Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter "hcli_param", corresponding to each entered command, option or parameter.
+Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter variable "hcli_param", corresponding to each entered command, option or parameter.
 
 A client MAY want to help disambiguate user supplied parameters from commands and options by always assuming that strings surrounded by the double quote character (i.e. ") are intended to be submitted as a user supplied parameter.
 
-Upon running out of parsed commands, options and parameters to use for HCLI navigation, a client SHOULD automatically attempt a Safe Execution or Unsafe Execution traversal. If neither a Safe Execution nor Unsafe Execution is available, the command line execution SHOULD be treated as a failure and the last successfully retrieved HCLI Document MAY be used to provide useful feedback to help users correct mistakes.
+Upon running out of commands, options and parameters to parse for use in HCLI navigation, a client SHOULD automatically attempt a Safe Execution or Unsafe Execution traversal. If neither a Safe Execution nor Unsafe Execution is available, the command line execution SHOULD be treated as a failure and the last successfully retrieved HCLI Document MAY be used to provide useful feedback to help users correct mistakes.
 
-Command line clients that support input stream processing into an Unsafe Execution MUST minimally support sending all input streams under the application/octet-stream [RFC2046] media-type.
+Command line clients that support input stream processing into an Unsafe Execution MUST minimally support sending input streams under the application/octet-stream [RFC2046] media-type.
 
-Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer. If such an implementation is too onerous, clients MAY minimally support sending all input streams under
+Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer.
 
 .ti 0
 6.2.2. For Command Line Clients (e.g. Under Unix/Linux)
 
 The reserved "help" command MAY be used anywhere in a command line execution and SHOULD present a man page formatted from the last successfully retrieved HCLI Document immediately preceding the "help" command.
 
-Additionally, clients SHOULD automatically generate an OPTIONS and COMMANDS section in the man page documentation that corresponds to a listing of Commands and Options contained in the HCLI document for which the man page is presented.
+Additionally, clients SHOULD automatically generate an OPTIONS and COMMANDS section, in the man page documentation, that corresponds to a listing of Commands and Options contained in the presented HCLI Document.
 
 Clients receiving the result of a successful HCLI execution SHOULD output the result to STDOUT to allow for further pipe and filter processing.
 
