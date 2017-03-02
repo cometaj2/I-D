@@ -124,14 +124,16 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 .nf
 <alps version="1.0">
     <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
+
+    <!-- The mandatory version of the HCLI specification in use -->
     <descriptor id="hcli_version">
         <doc>1.0</doc>
     </descriptor>
 
-    <!-- The name of the command described by the HCLI Document -->
+    <!-- The mandatory name of the command described by the HCLI Document -->
     <descriptor id="name" type="semantic"/>
 
-    <!-- Documentation section -4yy->
+    <!-- A mandatory documentation section -->
     <descriptor id="section" type="semantic">
         <descriptor id="name" type="semantic" />
         <descriptor id="description" type="semantic" />
@@ -189,7 +191,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         </descriptor>
     </descriptor>  
 
-    <!-- A execution: zero or one of these is present -->
+    <!-- An execution: zero or one of these is present -->
     <descriptor id="unsafe-execution" type="semantic">
         <doc>A form for executing a command line.</doc>
         <descriptor id="item" type="safe">
@@ -272,7 +274,7 @@ The name property contains the name of the Command described by the HCLI Documen
 
 The Section property is REQUIRED.
 
-A section contains documentation used to users interact with an HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and MUST minimally make use of the following named sections:
+A section contains documentation used by users to interact with an HCLI. Given the primary goal of HCLI, mentioned in the introduction, the sections SHOULD take a form akin to Unix/Linux style man pages and MUST minimally make use of the following named sections:
 
 (1) NAME
 
