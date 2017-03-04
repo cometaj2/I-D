@@ -85,8 +85,8 @@ Table of Contents
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
      6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
-       6.1.1. Stream Processing . . . . . . . . . . . . . . . . . . . 17
-       6.1.2. Standard HTCLI ALPS Profile . . . . . . . . . . . . . . 17
+       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
+       6.1.2.  Standard HTCLI ALPS Profile  . . . . . . . . . . . . . 17
      6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 17
        6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
          6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
@@ -918,7 +918,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 6.1.  Server-side Considerations
 
-6.1.1. Stream Processing
+6.1.1.  Stream Processing
 
    Servers implementing HTCLI semantics that leverage Unsafe Execution
    and that intend to allow input stream like processing for their
@@ -936,11 +936,11 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    stream processing semantics by HTCLI servers are out of scope of this
    specification.
 
-6.1.2. Standard HTCLI ALPS Profile
+6.1.2.  Standard HTCLI ALPS Profile
 
    The standard HTCLI ALPS profiles defined in this specification SHOULD
    be hosted alongside an HTCLI API deployment and correspondingly
-   referenced in HTCLI Documents. HTCLI Documents MAY also, if
+   referenced in an HTCLI Documents. HTCLI Documents MAY also, if
    appropriate, reference the standard HTCLI ALPS profile hosted at an
    independent ALPS repository.
 

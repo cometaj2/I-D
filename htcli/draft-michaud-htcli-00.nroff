@@ -82,8 +82,8 @@ Table of Contents
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
      6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
-       6.1.1. Stream Processing . . . . . . . . . . . . . . . . . . . 17
-       6.1.2. Standard HTCLI ALPS Profile . . . . . . . . . . . . . . 17
+       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
+       6.1.2.  Standard HTCLI ALPS Profile  . . . . . . . . . . . . . 17
      6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 17
        6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
          6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
@@ -715,7 +715,7 @@ Content-Type: application/json
 6.1.  Server-side Considerations
 
 .ti 0
-6.1.1. Stream Processing
+6.1.1.  Stream Processing
 
 Servers implementing HTCLI semantics that leverage Unsafe Execution and that intend to allow input stream like processing for their HTCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and process entity bodies of the application/octet-stream media type [RFC2046].
 
@@ -724,9 +724,9 @@ Servers SHOULD, however, endeavor to foster support for the reception of correct
 This is intended to enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Specific input stream processing semantics by HTCLI servers are out of scope of this specification.
 
 .ti 0
-6.1.2. Standard HTCLI ALPS Profile
+6.1.2.  Standard HTCLI ALPS Profile
 
-The standard HTCLI ALPS profiles defined in this specification SHOULD be hosted alongside an HTCLI API deployment and correspondingly referenced in HTCLI Documents. HTCLI Documents MAY also, if appropriate, reference the standard HTCLI ALPS profile hosted at an independent ALPS repository.
+The standard HTCLI ALPS profiles defined in this specification SHOULD be hosted alongside an HTCLI API deployment and correspondingly referenced in an HTCLI Documents. HTCLI Documents MAY also, if appropriate, reference the standard HTCLI ALPS profile hosted at an independent ALPS repository.
 
 .ti 0
 6.2.  Client-side Considerations
