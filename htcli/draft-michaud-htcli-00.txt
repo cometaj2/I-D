@@ -2,8 +2,9 @@
 
 
 
-Internet-Draft                                                J. Michaud
-Intended status: Informational                         February 13, 2017
+Network Working Group                                         J. Michaud
+Internet-Draft                                         February 13, 2017
+Intended status: Informational                                          
 Expires: August 17, 2017                                                
 
 
@@ -49,7 +50,6 @@ Copyright Notice
    described in the Simplified BSD License.
 
 
-Table of Contents
  
 
 
@@ -58,7 +58,9 @@ Michaud                 Expires August 17, 2017                 [Page 1]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HTCLI ALPS Semantics . . . . . . . . . . . . . . . . . . . . .  3
    4.  HTCLI Document . . . . . . . . . . . . . . . . . . . . . . . .  6
@@ -104,8 +106,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 21
 
 
-1.  Introduction
-
  
 
 
@@ -113,6 +113,8 @@ Michaud                 Expires August 17, 2017                 [Page 2]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+1.  Introduction
 
    The proliferation of hypermedia-rich media-types such as HAL,
    Collection+JSON, Siren, JSON API, JSON-LD, Mason, etc., was a
@@ -160,8 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    alps], and takes the following form:
 
    <alps version="1.0">
-       <doc format="text">Hypertext Command Line Interface (HTCLI) semantics.</doc>
-
  
 
 
@@ -169,6 +169,8 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+       <doc format="text">Hypertext Command Line Interface (HTCLI) semantics.</doc>
 
        <!-- The mandatory version of the HTCLI specification in use -->
        <descriptor id="htcli_version">
@@ -216,8 +218,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <descriptor id="item" type="safe">
                <doc>A link to an individual parameter.</doc>
 
-               <!-- Only one of these may be present -->
-               <descriptor id="htcli_param" type="semantic">
  
 
 
@@ -226,6 +226,8 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+               <!-- Only one of these may be present -->
+               <descriptor id="htcli_param" type="semantic">
                    <doc>Custom supplied input for a CLI execution.</doc>
                </descriptor>
            </descriptor>
@@ -257,8 +259,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            </descriptor>
        </descriptor>  
    </alps>
-
-
 
 
 

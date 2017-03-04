@@ -17,8 +17,9 @@
 .in 0
 
 .nf
-.tl '\%Internet-Draft''J. Michaud'
-.tl 'Intended status: Informational''February 13, 2017'
+.tl 'Network Working Group''J. Michaud'
+.tl '\%Internet-Draft''February 13, 2017'
+.tl 'Intended status: Informational'''
 .tl 'Expires: August 17, 2017'''
 .fi
 .in 3
@@ -56,7 +57,7 @@ This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relatin
 Table of Contents
 
 .nf
-   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HTCLI ALPS Semantics . . . . . . . . . . . . . . . . . . . . .  3
    4.  HTCLI Document . . . . . . . . . . . . . . . . . . . . . . . .  6
