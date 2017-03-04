@@ -128,12 +128,12 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    interfaces via hypermedia controls, such as through the use of links
    and forms.
 
-   HCLI leverages the use of the Application Level Profile Semantics
+   HTCLI leverages the use of the Application Level Profile Semantics
    (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to
    microformats, to establish a shared understanding and meaning within
    generic hypermedia-rich media-types.
 
-   HCLI's conventions result in a semantic interface for serving and
+   HTCLI's conventions result in a semantic interface for serving and
    consuming CLIs, enabling the creation of general-purpose libraries
    that can be re-used on any API and API consumer using HCLI semantics.
    Furthermore, the establishment of a semantic interface of this nature
