@@ -771,9 +771,9 @@ Additionally, clients SHOULD automatically generate an OPTIONS and COMMANDS sect
 
 CLI clients SHOULD use STDIN as an input stream to allow for pipe and filter processing.
 
-CLI clients receiving the result of a successful HCLI execution SHOULD output the result to STDOUT to allow for further pipe and filter processing.
+CLI clients receiving the result of a successful HTCLI command line execution SHOULD output the result to STDOUT to allow for further pipe and filter processing.
 
-CLI clients receiving failure results from an HCLI execution SHOULD output the failure result to STDERR to allow for further pipe and filter processing.
+CLI clients receiving failure results from an HTCLI command line execution SHOULD output the failure result to STDERR to allow for further pipe and filter processing.
 
 .ti 0
 7.  Security Considerations
