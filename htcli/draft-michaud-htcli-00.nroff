@@ -276,7 +276,7 @@ Other reserved names, mentioned in [Section 4.  HTCLI Document], and related pro
 
 The Name property is REQUIRED.
 
-The name property contains the name of the Command described by the HCLI Document.
+The name property contains the name of the Command described by the HTCLI Document.
 
 .ti 0
 4.3.  Section
@@ -322,9 +322,9 @@ The Command item is OPTIONAL.
 
 A Command describes a type of action to effect in a command line execution.
 
-A Command item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Command item MUST only be made available if contextually relevant, for a given HTCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI client MUST return an HCLI Document describing the targeted Command's context.
+Successful traversal of the "cli" link relation by an HTCLI client MUST return an HTCLI Document describing the targeted Command's context.
 
 .ti 0
 4.4.1.  name
@@ -340,7 +340,7 @@ By convention, and to help human actors differentiate Options from Commands, Com
 (2) two consecutive dash characters (i.e. "--").
 
 
-Furthermore, to make it easier for HCLI clients to differentiate between Parameters, Commands and Options, the name value MUST NOT make use of the:
+Furthermore, to make it easier for HTCLI clients to differentiate between Parameters, Commands and Options, the name value MUST NOT make use of the:
 
 (1) single quote character (i.e. ')
 
@@ -367,9 +367,9 @@ An Option describes a option or flag that MAY be used to effect a variation on t
 
 An Option item MUST only be made available if contextually relevant, for a given HTCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal of the "cli" link relation by an HCLI client MUST return an HTCLI Document that correlates to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
+Successful traversal of the "cli" link relation by an HTCLI client MUST return an HTCLI Document that correlates to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
 
-The "cli" link relation of an Option that's already been navigated through by an HTCLI client MUST NOT be presented any longer. The Option item, however, MUST otherwise remain available in an HCLI Document to help HTCLI clients with automatic documentation generation.
+The "cli" link relation of an Option that's already been navigated through by an HTCLI client MUST NOT be presented any longer. The Option item, however, MUST otherwise remain available in an HTCLI Document to help HTCLI clients with automatic documentation generation.
 
 .ti 0
 4.5.1.  name
@@ -721,7 +721,7 @@ Servers implementing HTCLI semantics that leverage Unsafe Execution and that int
 
 Servers SHOULD, however, endeavor to foster support for the reception of correctly identified media-types to help maintain visibility on the network.
 
-This is intended to enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Specific input stream processing semantics by HTCLI servers are out of scope of this specification.
+This is intended to enable the pipe and filter style for clients and servers that understand and offer HTCLI semantics. Specific input stream processing semantics by HTCLI servers are out of scope of this specification.
 
 .ti 0
 6.1.2.  Standard HTCLI ALPS Profile
@@ -737,7 +737,7 @@ The standard HTCLI ALPS profiles defined in this specification SHOULD be hosted 
 .ti 0
 6.2.1.1.  Command Line Execution
 
-Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter variable "htcli_param", corresponding to each entered command, option or parameter.
+Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HTCLI Documents, by using Command or Option "name" or the Parameter variable "htcli_param", corresponding to each entered command, option or parameter.
 
 A client MAY want to help disambiguate user supplied parameters from commands and options by always assuming that strings surrounded by the double quote character (i.e. ") are intended to be submitted as a user supplied parameter.
 
