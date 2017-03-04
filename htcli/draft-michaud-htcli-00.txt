@@ -8,7 +8,7 @@ Expires: August 17, 2017
 
 
                     Hypertext Command Line Interface
-                         draft-michaud-hcli-00
+                         draft-michaud-htcli-00
 
 Abstract
 
@@ -160,7 +160,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    alps], and takes the following form:
 
    <alps version="1.0">
-       <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
+       <doc format="text">Hypertext Command Line Interface (HTCLI) semantics.</doc>
 
  
 

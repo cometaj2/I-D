@@ -26,7 +26,7 @@
 
 .ce 2
 Hypertext Command Line Interface
-\%draft-michaud-hcli-00
+\%draft-michaud-htcli-00
 
 .ti 0
 Abstract
@@ -131,7 +131,7 @@ The HTCLI semantics are largely codified via the definition of a proposed standa
 
 .nf
 <alps version="1.0">
-    <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
+    <doc format="text">Hypertext Command Line Interface (HTCLI) semantics.</doc>
 
     <!-- The mandatory version of the HTCLI specification in use -->
     <descriptor id="htcli_version">
