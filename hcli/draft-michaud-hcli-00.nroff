@@ -488,7 +488,7 @@ Content-Type: application/hal+json
     {
       "_links": {
         "self": {
-          "href": "/usp5/__cdef/admin??command=usp5"
+          "href": "/usp5/__cdef/admin?command=usp5"
         },
         "profile": {
           "href": "http://example.org/profiles/htcli"

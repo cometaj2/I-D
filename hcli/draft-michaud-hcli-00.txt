@@ -655,7 +655,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        {
          "_links": {
            "self": {
-             "href": "/usp5/__cdef/admin??command=usp5"
+             "href": "/usp5/__cdef/admin?command=usp5"
            },
            "profile": {
              "href": "http://example.org/profiles/htcli"
