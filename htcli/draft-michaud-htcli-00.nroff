@@ -112,7 +112,7 @@ Table of Contents
 .fi
 The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
 
-The Hypertext Command Line Interface (HTCLI) is a standard that establishes semantic conventions for expressing command line interfaces via hypermedia controls, such as through the use of links and forms.
+Hypertext Command Line Interface (HTCLI) is a standard that establishes semantic conventions for expressing command line interfaces via hypermedia controls, such as through the use of links and forms.
 
 HTCLI leverages the use of the Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
