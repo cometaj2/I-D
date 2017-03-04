@@ -135,10 +135,10 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    HTCLI's conventions result in a semantic interface for serving and
    consuming CLIs, enabling the creation of general-purpose libraries
-   that can be re-used on any API and API consumer using HCLI semantics.
-   Furthermore, the establishment of a semantic interface of this nature
-   is expected to instigate the creation of a rich ecosystem of reusable
-   and shareable CLIs.
+   that can be re-used on any API and API consumer using HTCLI
+   semantics. Furthermore, the establishment of a semantic interface of
+   this nature is expected to instigate the creation of a rich ecosystem
+   of reusable and shareable CLIs.
 
    The primary design goal of HTCLI is to foster the creation of a
    reusable and prolific intersection, or bridge, between the REST

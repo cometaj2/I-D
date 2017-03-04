@@ -115,7 +115,7 @@ The Hypertext Command Line Interface (HTCLI) is a standard that establishes sema
 
 HTCLI leverages the use of the Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-HTCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. Furthermore, the establishment of a semantic interface of this nature is expected to instigate the creation of a rich ecosystem of reusable and shareable CLIs.
+HTCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HTCLI semantics. Furthermore, the establishment of a semantic interface of this nature is expected to instigate the creation of a rich ecosystem of reusable and shareable CLIs.
 
 The primary design goal of HTCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HTCLI can be applied to many different domains, and only imposes limitations that constrain a REST API to operate as a hypertext command line interface.
 
