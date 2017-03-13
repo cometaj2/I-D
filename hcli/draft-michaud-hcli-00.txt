@@ -199,7 +199,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            <descriptor id="description" type="semantic" />
        </descriptor>  
 
-       <!-- A command: zero or more of these may be present -->
+       <!-- An option: zero or more of these may be present -->
        <descriptor id="option" type="semantic">
            <descriptor id="item" type="safe">
                <doc>A link to an individual option.</doc>
