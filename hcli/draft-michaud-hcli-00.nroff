@@ -161,7 +161,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         <descriptor id="description" type="semantic" />
     </descriptor>  
 
-    <!-- A command: zero or more of these may be present -->
+    <!-- An option: zero or more of these may be present -->
     <descriptor id="option" type="semantic">
         <descriptor id="item" type="safe">
             <doc>A link to an individual option.</doc>
