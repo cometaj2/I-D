@@ -10,7 +10,10 @@ This specification emerged out of an idea that started as a python client named 
 
 Discussion about the HCLI specification (and huckle) can happen on huckle's google group [4].
 
+You can also visit hcli.io to access an example HCLI server [5]
+
 [1] http://alps.io  
 [2] https://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-02  
 [3] https://github.com/cometaj2/huckle  
 [4] https://groups.google.com/forum/#!forum/huck-hypermedia-unified-cli-with-a-kick
+[5] https://hcli.io
