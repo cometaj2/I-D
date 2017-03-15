@@ -103,8 +103,8 @@ Table of Contents
      9.2.  Informative References . . . . . . . . . . . . . . . . . . 20
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 21
+     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 21
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 21
-
 
  
 
@@ -1124,7 +1124,15 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 Appendix B.  Frequently Asked Questions
 
-   TBD
+B.1.  What are some of the benefits of HCLI?
+
+   By providing a standard semantic interface, HCLI enables notions of scripting, an inherent and well understood companion of the pipe and filter style under shell (e.g. Unix/Linux). HCLI enables scripting orchestration and experimentation.
+
+   Also, instead of having to develop a custom client for your API, you can benefit from the use of a client that understands standard HCLI semantics. Such a client would be, by definition, able to interact "out-of-the-box" with any HCLI API as an impostor CLI for your API.
+
+   Having at your disposal an instantly usable shell CLI for your API provides developers with an immediately usable, and familiar, mode of operation when interacting with your API, at no extra cost.
+
+   HCLI also raises notions of reusable HCLIs and of an ecosystem of shareable HCLIs to be used as building blocks to help in the construction of APIs, with minimal work.
 
 Author's Address
 
@@ -1132,14 +1140,6 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
-
-
-
-
 
 
 
