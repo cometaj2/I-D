@@ -72,14 +72,14 @@ Table of Contents
      6.1.  The ALPS descriptor.id property  . . . . . . . . . . . . .  5
      6.2.  The ALPS descriptor.name property  . . . . . . . . . . . .  6
      6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  7
-   7.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+   7.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
    8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  8
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  8
    11.  Normative References  . . . . . . . . . . . . . . . . . . . .  8
    12.  Informative References  . . . . . . . . . . . . . . . . . . .  8
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  8
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  8
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  9
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  9
 
 
@@ -381,11 +381,11 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
      </section>
    </resource>
 
+   Semantics for ALPS profiles that attempt to disambiguate non-unique
+   descriptor.id by using the descriptor.name are undefined under HAL
+   documents.
+
 6.3.  The ALPS descriptor.type property
-
-   TBD
-
-7.  Example
  
 
 
@@ -393,6 +393,10 @@ Michaud                Expires September 18, 2017               [Page 7]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+   TBD
+
+7.  Example
 
    TBD
 
@@ -438,10 +442,6 @@ Appendix A.  Acknowledgements
 
    TBD
 
-Appendix B.  Frequently Asked Questions
-
-   TBD
-
  
 
 
@@ -450,16 +450,16 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+Appendix B.  Frequently Asked Questions
+
+   TBD
+
 Author's Address
 
    Jeff Michaud
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
 
 
 
