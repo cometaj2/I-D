@@ -72,15 +72,15 @@ Table of Contents
      6.1.  The ALPS descriptor.id property  . . . . . . . . . . . . .  5
      6.2.  The ALPS descriptor.name property  . . . . . . . . . . . .  6
      6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  7
-   6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+   7.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
    8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  8
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  8
    11.  Normative References  . . . . . . . . . . . . . . . . . . . .  8
-   11.  Informative References  . . . . . . . . . . . . . . . . . . .  8
+   12.  Informative References  . . . . . . . . . . . . . . . . . . .  8
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  8
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  8
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  8
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  9
 
 
 1.  Introduction
@@ -155,9 +155,9 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    HAL documents SHOULD use the profile and type relations in a HAL Link
    . The profile relation value SHOULD be set to the URL of the ALPS
-   profile document and the type relation SHOULD be set to the URL of
-   the ALPS profile, or a URI fragment referencing an descriptor.id that
-   exists in the referenced ALPS profile.
+   profile document and the type relation [RFC6903] SHOULD be set to the
+   URL of the ALPS profile, or a URI fragment referencing a
+   descriptor.id that exists in the referenced ALPS profile.
 
    As application/hal+json:
 
@@ -385,7 +385,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    TBD
 
-6.  Example
+7.  Example
  
 
 
@@ -412,7 +412,10 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
-11.  Informative References
+   [RFC6903]  Snell, J., "Additional Link Relation Types", RFC 6903,
+              March 2013
+
+12.  Informative References
 
    [I-D.draft-amundsen-richardson-foster-alps]
 
@@ -439,9 +442,6 @@ Appendix B.  Frequently Asked Questions
 
    TBD
 
-Author's Address
-
-   Jeff Michaud
  
 
 
@@ -450,12 +450,12 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+Author's Address
+
+   Jeff Michaud
+
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
 
 
 
