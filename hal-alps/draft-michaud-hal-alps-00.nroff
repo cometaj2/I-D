@@ -72,14 +72,14 @@ Table of Contents
    6.  Basic Mapping Rules for ALPS to HAL  . . . . . . . . . . . . .  5
      6.1.  The ALPS descriptor.id property  . . . . . . . . . . . . .  5
      6.2.  The ALPS descriptor.name property  . . . . . . . . . . . .  6
-     6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  7
+     6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  8
    7.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
    8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  8
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  8
    11.  Normative References  . . . . . . . . . . . . . . . . . . . .  8
    12.  Informative References  . . . . . . . . . . . . . . . . . . .  8
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  8
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  9
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  9
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  9
 .fi
@@ -306,6 +306,8 @@ As application/hal+xml:
   </section>
 </resource>
 .fi
+
+Servers MAY still choose to represent HAL documents using the descriptor.id, even when the descriptor.name is present, in which case the descriptor.name is present in the ALPS profile, but otherwise completely absent in the HAL representation. Clients that understand ALPS bindings for HAL should be ready to process both the simple and complex forms (i.e. centered around descriptor.id or centered around descriptor.name) of HAL documents.
 
 Semantics for ALPS profiles that attempt to disambiguate non-unique descriptor.id by using the descriptor.name are undefined under HAL documents.
 
