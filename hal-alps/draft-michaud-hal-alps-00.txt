@@ -1,0 +1,504 @@
+ 
+
+
+
+Network Working Group                                         J. Michaud
+Internet-Draft                                            March 17, 2017
+Intended status: Informational                                          
+Expires: September 18, 2017                                             
+
+
+                 ALPS Bindings for the HAL media-types
+                       draft-michaud-hal-alps-02
+
+Abstract
+
+   This document defines ALPS bindings for the application/hal+json and
+   application/hal+xml media-types.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at http://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+Copyright Notice
+
+   Copyright (c) 2017 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents
+   (http://trustee.ietf.org/license-info) in effect on the date of
+   publication of this document.  Please review these documents
+   carefully, as they describe your rights and restrictions with respect
+   to this document.  Code Components extracted from this document must
+   include Simplified BSD License text as described in Section 4.e of
+   the Trust Legal Provisions and are provided without warranty as
+   described in the Simplified BSD License.
+
+
+
+
+
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 1]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+Table of Contents
+
+   1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  2
+   2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  2
+   3.  A Review of ALPS Principles  . . . . . . . . . . . . . . . . .  2
+   4.  Servers and Clients  . . . . . . . . . . . . . . . . . . . . .  3
+   5.  Advertising ALPS Profiles for HAL Representations  . . . . . .  3
+     5.1.  HAL profile and type relations . . . . . . . . . . . . . .  3
+     5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
+     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
+   6.  Basic Mapping Rules for ALPS to HAL  . . . . . . . . . . . . .  5
+     6.1.  The ALPS descriptor.id property  . . . . . . . . . . . . .  5
+     6.2.  The ALPS descriptor.name property  . . . . . . . . . . . .  6
+     6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  7
+   6.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  8
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  8
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  8
+   11.  Informative References  . . . . . . . . . . . . . . . . . . .  8
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  8
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  8
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  8
+
+
+1.  Introduction
+
+   In order to provide coherent use of Application Level Profile
+   Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps] in HAL
+   documents [I-D.draft-kelly-json-hal] and [I-D.draft-michaud-xml-hal],
+   ALPS bindings for the HAL media-types (application/hal+json and
+   application/hal+xml) must be defined.
+
+   This specification establishes conventions required for consistent
+   expression of Application Level Profile Semantics (ALPS) in HAL
+   documents.
+
+2.  Requirements
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
+   document are to be interpreted as described in [RFC2119].
+
+3.  A Review of ALPS Principles
+
+   The Application-Level Profile Semantics (ALPS) [I-D.draft-amundsen-
+   richardson-foster-alps] specification is designed to describe the
+   data elements and state transitions that make up a problem domain
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 2]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+   (e.g. micro-blogging, accounting, etc.). ALPS documents are designed
+   to be useful to both client and server implementers and can be used
+   at both run-time and design-time to handle the generation and
+   interpretation of response representations. ALPS description
+   documents are referred to as "profiles" or "profile documents".
+
+   Since the aim is to support a wide set of use cases (clients,
+   servers, run-time, design-time, etc.), ALPS profiles do not describe
+   the runtime behavior of any single system. Instead, ALPS profiles
+   describe the problem domain boundaries (e.g. the possible data
+   elements and possible state transitions). It is up to implementers to
+   decide how they wish to use ALPS profiles in order to create an
+   actual service instance or client application.
+
+4.  Servers and Clients
+
+   For server implementers, ALPS profiles establish the list of possible
+   identifiers for data values (givenName, familyName, etc.) and
+   transitions (publish, createUser, etc). ALPS profiles also provide
+   additional description information for state transitions including
+   whether the transition is safe, idempotent or unsafe and, in some
+   cases, whether there are any possible arguments that can be passed
+   with each transition.
+
+   Client implementers can use the same ALPS document as a guide for
+   what to expect from a service which advertises support for an ALPS
+   profile. For example, if a service announces that it uses the ALPS
+   profile for micro-blogging, then any client application that was
+   built to support the micro-blogging profile SHOULD be able to
+   recognize all the important data elements and state transitions
+   emitted by that service.
+
+5.  Advertising ALPS Profiles for HAL Representations
+
+   Servers returning HAL documents MUST only advertise the ALPS profiles
+   they support using one of the following methods
+
+5.1.  HAL profile and type relations
+
+   HAL documents SHOULD use the profile and type relations in a HAL Link
+   . The profile relation value SHOULD be set to the URL of the ALPS
+   profile document and the type relation SHOULD be set to the URL of
+   the ALPS profile, or a URI fragment referencing an descriptor.id that
+   exists in the referenced ALPS profile.
+
+   As application/hal+json:
+
+   {
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 3]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+     "_links": {
+       "self": {
+         "href": "/service"
+       },
+       "profile": {
+         "href": "http://example.org/profiles/accounting"
+       },
+       "type": {
+         "href": "http://example.org/profiles/accounting"
+       }
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource rel="self" href="/service">
+     <link rel="profile" href="http://example.org/profiles/accounting"/>
+     <link rel="type" href="http://example.org/profiles/accounting"/>
+   </resource>
+
+5.2.  Link Header
+
+   Responses can include the Link header, in conformance with [RFC5988],
+   with the href value set to the URL of the ALPS profile document or
+   type and the rel value set to "profile" or "type"".
+
+   Link: <http://example.org/profiles/accounting>; rel="profile",
+   <http://alps.io/profiles/accounting#invoice>;rel="type"
+
+5.3.  Additional Considerations
+
+   It is valid for a service to advertise support for more than one ALPS
+   profile for the same response. For example, a single response from a
+   server MAY include multiple HAL profile relations.
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/service"
+       },
+       "profile": [{
+         "href": "http://example.org/profiles/accounting"
+       },
+       {
+         "href": "http://example.org/profiles/finance"
+       }],
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 4]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+       "type": [{
+         "href": "http://example.org/profiles/accounting"
+       },
+       {
+         "href": "http://example.org/profiles/finance"
+       }]
+     }
+   }
+
+   In the above case, the client application has been informed that the
+   response MAY contain data elements and state transitions from both
+   the finance and the accounting ALPS profiles.
+
+   Clients accepting HAL documents SHOULD look for the ALPS profile in
+   each of the mentioned places (.e.g. Link Header, HAL Profile
+   Relation), as appropriate to the response. If an ALPS profile
+   reference appears in more than one location, all profiles SHOULD be
+   considered valid.
+
+6.  Basic Mapping Rules for ALPS to HAL
+
+6.1.  The ALPS descriptor.id property
+
+   The ALPS.descriptor.id, used in conjunction with the
+   ALPS.descriptor.type set to "semantic", without an
+   ALPS.descriptor.name, MUST be transformed into a "namespaced" or
+   "CURIE syntax" property with the same name as the descriptor.id.
+
+   Below are valid examples for both the application/hal+json and the
+   application/hal+xml media-types:
+
+   <!-- ALPS document -->
+   <descriptor id="section" type="semantic">
+     <descriptor id="name" type="semantic" />
+     <descriptor id="description" type="semantic" />
+   </descriptor>
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "curies": [{
+         "href": "http://example.org/profiles/p#{rel}",
+         "name": "alps",
+         "templated": true
+       }],
+       "profile": [{
+         "href": "http://example.org/profiles/accounting"
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 5]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+       }],
+       "type": [{
+         "href": "http://example.org/profiles/accounting"
+       }]
+     },
+     "alps:section": [{
+       "alps:name": "name",
+       "alps:description": "jsonf - a simple formatter for JSON"
+     }, {
+       "alps:name": "synopsis",
+       "alps:description": "jsonf [option] <command>"
+     }]
+   }
+
+   As application/hal+xml:
+
+   <resource xmlns:alps="http://example.org/profiles/p#>
+     <link rel="profile" href="http://example.org/profiles/accounting"/>
+     <link rel="type" href="http://example.org/profiles/accounting"/>
+     <alps:section>
+       <alps:name>name<alps:name/>
+       <alps:description>jsonf - a simple formatter for JSON</alps:description>
+     </alps:section>
+     <alps:section>
+       <alps:name>synopsis<alps:name/>
+       <alps:description>jsonf [option] <command></alps:description>
+     </alps:section>
+   </resource>
+
+6.2.  The ALPS descriptor.name property
+
+   To promote simplicity, in the HAL spirit, and when more complex
+   ALPS.descriptor.id disambiguation is not necessary, this
+   specification allows for the use of the ALPS.descriptor.name as a
+   primary identifier. 
+
+   The ALPS.descriptor.name, when used in conjunction with the
+   ALPS.descriptor.id and the ALPS.descriptor.type set to "semantic" MAY
+   be transformed into a document property with the same name as the
+   descriptor.name.
+
+   Below are valid examples for both the application/hal+json and the
+   application/hal+xml media-types:
+
+   <!-- ALPS document -->
+   <descriptor id="s1" name="section" type="semantic">
+     <descriptor id="n1" name="name" type="semantic" />
+     <descriptor id="d1" name="description" type="semantic" />
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 6]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+   </descriptor>
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/service"
+       },
+       "profile": [{
+         "href": "http://example.org/profiles/accounting"
+       }],
+       "type": [{
+         "href": "http://example.org/profiles/accounting"
+       }]
+     },
+     "section": [
+       {
+         "name": "name",
+         "description": "jsonf - a simple formatter for JSON"
+       },
+       {
+         "name": "synopsis",
+         "description": "jsonf [option] <command>"
+       }
+     ]
+   }
+
+   As application/hal+xml:
+
+   <resource self="/service">
+     <link rel="profile" href="http://example.org/profiles/accounting"/>
+     <link rel="type" href="http://example.org/profiles/accounting"/>
+     <section>
+       <name>name<name/>
+       <description>jsonf - a simple formatter for JSON</description>
+     </section>
+     <section>
+       <name>synopsis<name/>
+       <description>jsonf [option] <command></description>
+     </section>
+   </resource>
+
+6.3.  The ALPS descriptor.type property
+
+   TBD
+
+6.  Example
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 7]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+   TBD
+
+8.  Recommendations
+
+   TBD
+
+9.  Security Considerations
+
+   TBD
+
+10.  IANA Considerations
+
+   TBD
+
+11.  Normative References
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
+
+11.  Informative References
+
+   [I-D.draft-amundsen-richardson-foster-alps]
+
+              Amundsen, M., CA Technologies, Inc., Richardson L.,
+              Foster, M., "Application-Level Profile Semantics (ALPS)",
+              draft-amundsen-richardson-foster-alps-02 (work in
+              progress), August 2015.
+
+   [I-D.draft-kelly-json-hal]
+
+              Kelly, M., "JSON Hypertext Application Language", draft-
+              kelly-json-hal-08 (work in progress), May 2016.
+
+   [I-D.draft-michaud-xml-hal]
+
+              Michaud, J., "XML Hypertext Application Language", draft-
+              michaud-xml-hal-02 (work in progress), February 2017
+
+Appendix A.  Acknowledgements
+
+   TBD
+
+Appendix B.  Frequently Asked Questions
+
+   TBD
+
+Author's Address
+
+   Jeff Michaud
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 8]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+   Email: cometaj2@comcast.net
+   Twitter: @cometaj2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Michaud                Expires September 18, 2017               [Page 9]
