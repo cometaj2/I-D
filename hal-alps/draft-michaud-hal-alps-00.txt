@@ -175,22 +175,22 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "self": {
-         "href": "/service"
+         "href": "/svc"
        },
        "profile": {
-         "href": "http://example.org/profiles/accounting"
+         "href": "/profiles/accounting"
        },
        "type": {
-         "href": "http://example.org/profiles/accounting"
+         "href": "/profiles/accounting"
        }
      }
    }
 
    As application/hal+xml:
 
-   <resource rel="self" href="/service">
-     <link rel="profile" href="http://example.org/profiles/accounting"/>
-     <link rel="type" href="http://example.org/profiles/accounting"/>
+   <resource rel="self" href="/svc">
+     <link rel="profile" href="/profiles/accounting"/>
+     <link rel="type" href="/profiles/accounting"/>
    </resource>
 
 5.2.  Link Header
@@ -199,8 +199,8 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    with the href value set to the URL of the ALPS profile document or
    type and the rel value set to "profile" or "type"".
 
-   Link: <http://example.org/profiles/accounting>; rel="profile",
-   <http://alps.io/profiles/accounting#invoice>;rel="type"
+   Link: </profiles/accounting>; rel="profile",
+   </profiles/accounting#invoice>;rel="type"
 
 5.3.  Additional Considerations
 
@@ -213,7 +213,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "self": {
-         "href": "/service"
+         "href": "/svc"
        },
        "profile": [{
          "href": "/profiles/accounting"
@@ -285,6 +285,9 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "name": "alps",
          "templated": true
        }],
+       "self": {
+         "href": "/svc"
+       },
        "profile": [{
          "href": "/profiles/hcli"
        }],
@@ -303,7 +306,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    As application/hal+xml:
 
-   <resource xmlns:alps="/profiles/hcli#">
+   <resource self="/svc" xmlns:alps="/profiles/hcli#">
      <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <alps:section>
@@ -327,9 +330,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    allows for the omission of "namespaced" or "CURIE syntax"
    identifiers.
 
-   The descriptor.id and the ALPS.descriptor.type set to "semantic" MAY
-   be transformed into a HAL document property with the same name as the
-   descriptor.id, but without namespace or CURIE syntax dereference.
  
 
 
@@ -337,6 +337,10 @@ Michaud                Expires September 18, 2017               [Page 6]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+   The descriptor.id and the ALPS.descriptor.type set to "semantic" MAY
+   be transformed into a HAL document property with the same name as the
+   descriptor.id, but without namespace or CURIE syntax dereference.
 
    Below are valid examples for both the application/hal+json and the
    application/hal+xml media-types:
@@ -352,7 +356,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "self": {
-         "href": "/service"
+         "href": "/svc"
        },
        "profile": [{
          "href": "/profiles/hcli"
@@ -375,16 +379,12 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    As application/hal+xml:
 
-   <resource self="/service">
+   <resource self="/svc">
      <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <section>
        <name>name</name>
        <description>A simple formatter for JSON</description>
-     </section>
-     <section>
-       <name>synopsis</name>
-       <description>jsonf &lt;command&gt;</description>
      </section>
  
 
@@ -394,6 +394,10 @@ Michaud                Expires September 18, 2017               [Page 7]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+     <section>
+       <name>synopsis</name>
+       <description>jsonf &lt;command&gt;</description>
+     </section>
    </resource>
 
    Servers MAY choose to represent HAL documents using either the
@@ -438,10 +442,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    fragment referencing the descriptor.id of the child non-semantic
    descriptor.id.
 
-   If a service presents an embedded resource, the embedded resource
-   SHOULD contain a "profile" link relation referencing the URI of the
-   ALPS profile, a "type" link relation referencing the URI of the ALPS
-   profile and fragment referencing the descriptor.id of the child non-
  
 
 
@@ -450,6 +450,10 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+   If a service presents an embedded resource, the embedded resource
+   SHOULD contain a "profile" link relation referencing the URI of the
+   ALPS profile, a "type" link relation referencing the URI of the ALPS
+   profile and fragment referencing the descriptor.id of the child non-
    semantic descriptor.id
 
    <!-- ALPS document fragment -->
@@ -470,7 +474,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "self": {
-         "href": "/service"
+         "href": "/svc"
        },
        "profile": [{
          "href": "/profiles/hcli"
@@ -479,25 +483,21 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/profiles/hcli"
        },
        "item": {
-         "href": "/service/cli/jsonf/__cdef/go?command=jsonf",
+         "href": "/svc/jsonf/def/go?command=jsonf",
          "profile": "/profiles/hcli",
-         "type" : "http://example.org/profiles/hcli#command"
+         "type" : "/profiles/hcli#command"
        }
      },
      "_embedded" : {
        "item" : [{
          "_links" : {
            "self" : {
-             "href" : "/service/cli/jsonf/__cdef/go?command=jsonf"
+             "href" : "/svc/jsonf/def/go?command=jsonf"
            },
            "cli" : [{
-             "href" : "/service/cli/jsonf/go?command=jsonf+go"
+             "href" : "/svc/jsonf?command=jsonf+go"
            }],
            "profile" : [{
-             "href" : "/profiles/hcli"
-           }],
-           "type" : [{
-             "href" : "/profiles/hcli#command"
  
 
 
@@ -506,6 +506,10 @@ Michaud                Expires September 18, 2017               [Page 9]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+             "href" : "/profiles/hcli"
+           }],
+           "type" : [{
+             "href" : "/profiles/hcli#command"
            }]
          },
          "description" : "Kicks off JSON formatting.",
@@ -516,11 +520,11 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    As application/hal+xml:
 
-   <resource self="/service">
+   <resource self="/svc">
      <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <link rel="item"
-           href="/service/cli/jsonf/__cdef/go?command=jsonf"
+           href="/svc/cli/jsonf/__cdef/go?command=jsonf"
            profile="/profiles/hcli"
            type="/profiles/hcli#command"/>
      <section>
@@ -532,13 +536,13 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        <description>jsonf &lt;command&gt;</description>
      </section>
      <resource rel="item"
-               href="/service/cli/jsonf/__cdef/go?command=jsonf">
+               href="/svc/cli/jsonf/__cdef/go?command=jsonf">
        <link rel="profile"
              href="/profiles/hcli"/>
        <link rel="type"
              href="/profiles/hcli#command"/>
        <link rel="cli"
-             href="/service/cli/jsonf/go?command=jsonf+go"/>
+             href="/svc/jsonf?command=jsonf+go"/>
        <name>go</name>
        <description>Kicks off JSON formatting.</description>
      </resource>
@@ -550,10 +554,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 6.1.3.2. safe, unsafe, or idempotent
 
    If a non-semantic descriptor is otherwise not embedded in a semantic
-   descriptor, then it SHOULD only yield the formation of a templated
-   link (a form). Notably, the HAL profile and type properties SHOULD be
-   absent. The descriptor.id value should be used as the name of the
-   value to fill in the URI template.
  
 
 
@@ -561,6 +561,11 @@ Michaud                Expires September 18, 2017              [Page 10]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+   descriptor, then it SHOULD only yield the formation of a templated
+   link (a form). Notably, the HAL profile and type properties SHOULD be
+   absent. The descriptor.id value should be used as the name of the
+   value to fill in the URI template.
 
    The "namespaced" or "CURIE syntax" SHOULD NOT be used in the
    expansion variable of the URI template. the "namespaced" or "CURIE
@@ -587,7 +592,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "self": {
-         "href": "/service"
+         "href": "/svc"
        },
        "profile": [{
          "href": "/profiles/hcli"
@@ -596,20 +601,15 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/profiles/hcli"
        },
        "collection": {
-         "href": "/service/search{?rvalueId}",
+         "href": "/svc/search{?rvalueId}",
          "name" : "red-collection"
          "templated" : true
        },
        "collection": {
-         "href": "/service/search{?bvalueId}",
+         "href": "/svc/search{?bvalueId}",
          "name" : "blue-collection"
          "templated" : true
        }
-     }
-   }
-
-   As application/hal+xml:
-
  
 
 
@@ -618,15 +618,20 @@ Michaud                Expires September 18, 2017              [Page 11]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-   <resource self="/service">
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
      <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <link rel="collection"
-           href="/service/search{?rvalueId}"
+           href="/svc/search{?rvalueId}"
            name="red-collection"
            templated="true"/>
      <link rel="collection"
-           href="/service/search{?bvalueId}"
+           href="/svc/search{?bvalueId}"
            name="blue-collection"
            templated="true"/>
    </resource>
@@ -661,11 +666,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    [I-D.draft-kelly-json-hal]
 
-              Kelly, M., "JSON Hypertext Application Language", draft-
-              kelly-json-hal-08 (work in progress), May 2016.
-
-   [I-D.draft-michaud-xml-hal]
-
  
 
 
@@ -673,6 +673,11 @@ Michaud                Expires September 18, 2017              [Page 12]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+              Kelly, M., "JSON Hypertext Application Language", draft-
+              kelly-json-hal-08 (work in progress), May 2016.
+
+   [I-D.draft-michaud-xml-hal]
 
               Michaud, J., "XML Hypertext Application Language", draft-
               michaud-xml-hal-02 (work in progress), February 2017
@@ -691,11 +696,6 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
-
 
 
 

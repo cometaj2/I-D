@@ -133,13 +133,13 @@ As application/hal+json:
 {
   "_links": {
     "self": {
-      "href": "/service"
+      "href": "/svc"
     },
     "profile": {
-      "href": "http://example.org/profiles/accounting"
+      "href": "/profiles/accounting"
     },
     "type": {
-      "href": "http://example.org/profiles/accounting"
+      "href": "/profiles/accounting"
     }
   }
 }
@@ -148,9 +148,9 @@ As application/hal+json:
 .nf
 As application/hal+xml:
 
-<resource rel="self" href="/service">
-  <link rel="profile" href="http://example.org/profiles/accounting"/>
-  <link rel="type" href="http://example.org/profiles/accounting"/>
+<resource rel="self" href="/svc">
+  <link rel="profile" href="/profiles/accounting"/>
+  <link rel="type" href="/profiles/accounting"/>
 </resource>
 .fi
 
@@ -159,7 +159,7 @@ As application/hal+xml:
 
 Responses can include the Link header, in conformance with [RFC5988], with the href value set to the URL of the ALPS profile document or type and the rel value set to "profile" or "type"".
 
-Link: <http://example.org/profiles/accounting>; rel="profile", <http://alps.io/profiles/accounting#invoice>;rel="type"
+Link: </profiles/accounting>; rel="profile", </profiles/accounting#invoice>;rel="type"
 
 .ti 0
 5.3.  Additional Considerations
@@ -172,7 +172,7 @@ As application/hal+json:
 {
   "_links": {
     "self": {
-      "href": "/service"
+      "href": "/svc"
     },
     "profile": [{
       "href": "/profiles/accounting"
@@ -223,6 +223,9 @@ As application/hal+json:
       "name": "alps",
       "templated": true
     }],
+    "self": {
+      "href": "/svc"
+    },
     "profile": [{
       "href": "/profiles/hcli"
     }],
@@ -241,7 +244,7 @@ As application/hal+json:
 
 As application/hal+xml:
 
-<resource xmlns:alps="/profiles/hcli#">
+<resource self="/svc" xmlns:alps="/profiles/hcli#">
   <link rel="profile" href="/profiles/hcli"/>
   <link rel="type" href="/profiles/hcli"/>
   <alps:section>
@@ -278,7 +281,7 @@ As application/hal+json:
 {
   "_links": {
     "self": {
-      "href": "/service"
+      "href": "/svc"
     },
     "profile": [{
       "href": "/profiles/hcli"
@@ -301,7 +304,7 @@ As application/hal+json:
 
 As application/hal+xml:
 
-<resource self="/service">
+<resource self="/svc">
   <link rel="profile" href="/profiles/hcli"/>
   <link rel="type" href="/profiles/hcli"/>
   <section>
@@ -361,7 +364,7 @@ As application/hal+json:
 {
   "_links": {
     "self": {
-      "href": "/service"
+      "href": "/svc"
     },
     "profile": [{
       "href": "/profiles/hcli"
@@ -370,19 +373,19 @@ As application/hal+json:
       "href": "/profiles/hcli"
     },
     "item": {
-      "href": "/service/cli/jsonf/__cdef/go?command=jsonf",
+      "href": "/svc/jsonf/def/go?command=jsonf",
       "profile": "/profiles/hcli",
-      "type" : "http://example.org/profiles/hcli#command"
+      "type" : "/profiles/hcli#command"
     }
   },
   "_embedded" : {
     "item" : [{
       "_links" : {
         "self" : {
-          "href" : "/service/cli/jsonf/__cdef/go?command=jsonf"
+          "href" : "/svc/jsonf/def/go?command=jsonf"
         },
         "cli" : [{
-          "href" : "/service/cli/jsonf/go?command=jsonf+go"
+          "href" : "/svc/jsonf?command=jsonf+go"
         }],
         "profile" : [{
           "href" : "/profiles/hcli"
@@ -399,11 +402,11 @@ As application/hal+json:
 
 As application/hal+xml:
 
-<resource self="/service">
+<resource self="/svc">
   <link rel="profile" href="/profiles/hcli"/>
   <link rel="type" href="/profiles/hcli"/>
   <link rel="item"
-        href="/service/cli/jsonf/__cdef/go?command=jsonf"
+        href="/svc/cli/jsonf/__cdef/go?command=jsonf"
         profile="/profiles/hcli"
         type="/profiles/hcli#command"/>
   <section>
@@ -415,13 +418,13 @@ As application/hal+xml:
     <description>jsonf &lt;command&gt;</description>
   </section>
   <resource rel="item"
-            href="/service/cli/jsonf/__cdef/go?command=jsonf">
+            href="/svc/cli/jsonf/__cdef/go?command=jsonf">
     <link rel="profile"
           href="/profiles/hcli"/>
     <link rel="type"
           href="/profiles/hcli#command"/>
     <link rel="cli"
-          href="/service/cli/jsonf/go?command=jsonf+go"/>
+          href="/svc/jsonf?command=jsonf+go"/>
     <name>go</name>
     <description>Kicks off JSON formatting.</description>
   </resource>
@@ -456,7 +459,7 @@ As application/hal+json:
 {
   "_links": {
     "self": {
-      "href": "/service"
+      "href": "/svc"
     },
     "profile": [{
       "href": "/profiles/hcli"
@@ -465,12 +468,12 @@ As application/hal+json:
       "href": "/profiles/hcli"
     },
     "collection": {
-      "href": "/service/search{?rvalueId}",
+      "href": "/svc/search{?rvalueId}",
       "name" : "red-collection"
       "templated" : true
     },
     "collection": {
-      "href": "/service/search{?bvalueId}",
+      "href": "/svc/search{?bvalueId}",
       "name" : "blue-collection"
       "templated" : true
     }
@@ -479,15 +482,15 @@ As application/hal+json:
 
 As application/hal+xml:
 
-<resource self="/service">
+<resource self="/svc">
   <link rel="profile" href="/profiles/hcli"/>
   <link rel="type" href="/profiles/hcli"/>
   <link rel="collection"
-        href="/service/search{?rvalueId}"
+        href="/svc/search{?rvalueId}"
         name="red-collection"
         templated="true"/>
   <link rel="collection"
-        href="/service/search{?bvalueId}"
+        href="/svc/search{?bvalueId}"
         name="blue-collection"
         templated="true"/>
 </resource>
