@@ -81,7 +81,7 @@ Table of Contents
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 13
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
 
@@ -216,7 +216,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/service"
        },
        "profile": [{
-         "href": "http://example.org/profiles/accounting"
+         "href": "/profiles/accounting"
        },
  
 
@@ -227,13 +227,13 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
        {
-         "href": "http://example.org/profiles/finance"
+         "href": "/profiles/finance"
        }],
        "type": [{
-         "href": "http://example.org/profiles/accounting"
+         "href": "/profiles/accounting"
        },
        {
-         "href": "http://example.org/profiles/finance"
+         "href": "/profiles/finance"
        }]
      }
    }
@@ -273,7 +273,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    {
      "_links": {
        "curies": [{
-         "href": "http://example.org/profiles/hcli#{rel}",
+         "href": "/profiles/hcli#{rel}",
  
 
 
@@ -286,10 +286,10 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "templated": true
        }],
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }]
      },
      "alps:section": [{
@@ -297,22 +297,22 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        "alps:description": "jsonf - a simple formatter for JSON"
      }, {
        "alps:name": "synopsis",
-       "alps:description": "jsonf [option] <command>"
+       "alps:description": "jsonf <command>"
      }]
    }
 
    As application/hal+xml:
 
-   <resource xmlns:alps="http://example.org/profiles/hcli#">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
+   <resource xmlns:alps="/profiles/hcli#">
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
      <alps:section>
        <alps:name>name</alps:name>
-       <alps:description>jsonf - a simple formatter for JSON</alps:description>
+       <alps:description>A simple formatter for JSON</alps:description>
      </alps:section>
      <alps:section>
        <alps:name>synopsis</alps:name>
-       <alps:description>jsonf [option] &lt;command&gt;</alps:description>
+       <alps:description>jsonf &lt;command&gt;</alps:description>
      </alps:section>
    </resource>
 
@@ -355,20 +355,20 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/service"
        },
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }]
      },
      "section": [
        {
          "name": "name",
-         "description": "jsonf - a simple formatter for JSON"
+         "description": "A simple formatter for JSON"
        },
        {
          "name": "synopsis",
-         "description": "jsonf [option] <command>"
+         "description": "jsonf <command>"
        }
      ]
    }
@@ -376,15 +376,15 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    As application/hal+xml:
 
    <resource self="/service">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
      <section>
        <name>name</name>
-       <description>jsonf - a simple formatter for JSON</description>
+       <description>A simple formatter for JSON</description>
      </section>
      <section>
        <name>synopsis</name>
-       <description>jsonf [option] &lt;command&gt;</description>
+       <description>jsonf &lt;command&gt;</description>
      </section>
  
 
@@ -455,10 +455,10 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    <!-- ALPS document fragment -->
    <descriptor id="command" type="semantic">
      <descriptor id="item" type="safe">
-       <doc>A link to an individual command.</doc>
+       <doc>A link to an individual command summary.</doc>
 
-       <descriptor id="more" type="safe">
-         <doc>deeper linking.</doc>
+       <descriptor id="cli" type="safe">
+         <doc>A link to select a command.</doc>
        </descriptor>
      </descriptor>
      <descriptor id="name" type="semantic" />
@@ -473,14 +473,14 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/service"
        },
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        },
        "item": {
          "href": "/service/cli/jsonf/__cdef/go?command=jsonf",
-         "profile": "http://example.org/profiles/hcli",
+         "profile": "/profiles/hcli",
          "type" : "http://example.org/profiles/hcli#command"
        }
      },
@@ -490,14 +490,14 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
            "self" : {
              "href" : "/service/cli/jsonf/__cdef/go?command=jsonf"
            },
-           "more" : [{
-             "href" : "/service/cli/jsonf/go?command=jsonf+go",
-             "profile": "http://example.org/profiles/hcli",
+           "cli" : [{
+             "href" : "/service/cli/jsonf/go?command=jsonf+go"
            }],
            "profile" : [{
-             "href" : "http://example.org/profiles/hcli"
+             "href" : "/profiles/hcli"
            }],
            "type" : [{
+             "href" : "/profiles/hcli#command"
  
 
 
@@ -506,7 +506,6 @@ Michaud                Expires September 18, 2017               [Page 9]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-             "href" : "http://example.org/profiles/hcli#command"
            }]
          },
          "description" : "Kicks off JSON formatting.",
@@ -518,23 +517,30 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    As application/hal+xml:
 
    <resource self="/service">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
-     <link rel="search"
-           href="/service/search{?search}"
-           profile="http://example.org/profiles/hcli"/>
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
+     <link rel="item"
+           href="/service/cli/jsonf/__cdef/go?command=jsonf"
+           profile="/profiles/hcli"
+           type="/profiles/hcli#command"/>
      <section>
        <name>name<name/>
-       <description>jsonf - a simple formatter for JSON</description>
+       <description>A simple formatter for JSON</description>
      </section>
      <section>
        <name>synopsis<name/>
-       <description>jsonf [option] &lt;command&gt;</description>
+       <description>jsonf &lt;command&gt;</description>
      </section>
      <resource rel="item"
                href="/service/cli/jsonf/__cdef/go?command=jsonf">
        <link rel="profile"
-             href="http://example.org/profiles/hcli"/>
+             href="/profiles/hcli"/>
+       <link rel="type"
+             href="/profiles/hcli#command"/>
+       <link rel="cli"
+             href="/service/cli/jsonf/go?command=jsonf+go"/>
+       <name>go</name>
+       <description>Kicks off JSON formatting.</description>
      </resource>
    </resource>
 
@@ -548,12 +554,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    link (a form). Notably, the HAL profile and type properties SHOULD be
    absent. The descriptor.id value should be used as the name of the
    value to fill in the URI template.
-
-   The "namespaced" or "CURIE syntax" SHOULD NOT be used in the
-   expansion variable of the URI template. the "namespaced" or "CURIE
-   syntax" MAY however be used for the link relation, as needed, and as
-   defined in the section covering descriptor.id.
-
  
 
 
@@ -561,6 +561,11 @@ Michaud                Expires September 18, 2017              [Page 10]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+   The "namespaced" or "CURIE syntax" SHOULD NOT be used in the
+   expansion variable of the URI template. the "namespaced" or "CURIE
+   syntax" MAY however be used for the link relation, as needed, and as
+   defined in the section covering descriptor.id.
 
    The descriptor.name MAY be use to help differentiate between
    otherwise identical descriptor.id to provide "filter-like"
@@ -585,10 +590,10 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "href": "/service"
        },
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "/profiles/hcli"
        },
        "collection": {
          "href": "/service/search{?rvalueId}",
@@ -605,11 +610,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    As application/hal+xml:
 
-   <resource self="/service">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
-     <link rel="collection"
-           href="/service/search{?rvalueId}"
  
 
 
@@ -618,6 +618,11 @@ Michaud                Expires September 18, 2017              [Page 11]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
+   <resource self="/service">
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
+     <link rel="collection"
+           href="/service/search{?rvalueId}"
            name="red-collection"
            templated="true"/>
      <link rel="collection"
@@ -661,11 +666,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    [I-D.draft-michaud-xml-hal]
 
-              Michaud, J., "XML Hypertext Application Language", draft-
-              michaud-xml-hal-02 (work in progress), February 2017
-
-Appendix A.  Acknowledgements
-
  
 
 
@@ -673,6 +673,11 @@ Michaud                Expires September 18, 2017              [Page 12]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
+
+              Michaud, J., "XML Hypertext Application Language", draft-
+              michaud-xml-hal-02 (work in progress), February 2017
+
+Appendix A.  Acknowledgements
 
    TBD
 
@@ -686,11 +691,6 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
-
 
 
 
