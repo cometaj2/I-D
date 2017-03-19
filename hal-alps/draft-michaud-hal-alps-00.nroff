@@ -436,11 +436,11 @@ Semantics for a semantic descriptor containing multiple peer non-semantic descri
 .ti 0
 6.1.3.2. safe, unsafe, or idempotent
 
-If a non-semantic descriptor is otherwise not embedded in a semantic descriptor, then it SHOULD only yield the formation of a templated link (a form). Notably, the HAL profile and type properties SHOULD be absent. The descriptor.id value should be used as the name of the value to fill in the URI template.
+If a non-semantic descriptor is otherwise not embedded in a semantic descriptor, then it SHOULD only yield the formation of a templated link (a form). Notably, the HAL profile and type properties SHOULD be absent. The descriptor.id value SHOULD be used as the name of the value to fill in the URI template.
 
 The "namespaced" or "CURIE syntax" SHOULD NOT be used in the expansion variable of the URI template. the "namespaced" or "CURIE syntax" MAY however be used for the link relation, as needed, and as defined in the section covering descriptor.id.
 
-The descriptor.name MAY be use to help differentiate between otherwise identical descriptor.id to provide "filter-like" capabilities.
+The descriptor.name MAY be used to help differentiate between otherwise identical descriptor.id to enable client-side "filtering" capabilities.
 
 .nf
 <!-- ALPS document fragment -->

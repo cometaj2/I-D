@@ -564,7 +564,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    descriptor, then it SHOULD only yield the formation of a templated
    link (a form). Notably, the HAL profile and type properties SHOULD be
-   absent. The descriptor.id value should be used as the name of the
+   absent. The descriptor.id value SHOULD be used as the name of the
    value to fill in the URI template.
 
    The "namespaced" or "CURIE syntax" SHOULD NOT be used in the
@@ -572,8 +572,8 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    syntax" MAY however be used for the link relation, as needed, and as
    defined in the section covering descriptor.id.
 
-   The descriptor.name MAY be use to help differentiate between
-   otherwise identical descriptor.id to provide "filter-like"
+   The descriptor.name MAY be used to help differentiate between
+   otherwise identical descriptor.id to enable client-side "filtering"
    capabilities.
 
    <!-- ALPS document fragment -->
