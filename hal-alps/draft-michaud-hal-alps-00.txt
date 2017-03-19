@@ -461,7 +461,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
      <descriptor id="item" type="safe">
        <doc>A link to an individual command summary.</doc>
 
-       <descriptor id="next" type="safe">
+       <descriptor id="next" type="unsafe">
          <doc>A link to select a command.</doc>
        </descriptor>
      </descriptor>

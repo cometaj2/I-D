@@ -351,7 +351,7 @@ If a service presents an embedded resource, the embedded resource SHOULD contain
   <descriptor id="item" type="safe">
     <doc>A link to an individual command summary.</doc>
 
-    <descriptor id="next" type="safe">
+    <descriptor id="next" type="unsafe">
       <doc>A link to select a command.</doc>
     </descriptor>
   </descriptor>
