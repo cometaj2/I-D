@@ -351,7 +351,7 @@ If a service presents an embedded resource, the embedded resource SHOULD contain
   <descriptor id="item" type="safe">
     <doc>A link to an individual command summary.</doc>
 
-    <descriptor id="cli" type="safe">
+    <descriptor id="next" type="safe">
       <doc>A link to select a command.</doc>
     </descriptor>
   </descriptor>
@@ -384,7 +384,7 @@ As application/hal+json:
         "self" : {
           "href" : "/svc/jsonf/def/go?command=jsonf"
         },
-        "cli" : [{
+        "next" : [{
           "href" : "/svc/jsonf?command=jsonf+go"
         }],
         "profile" : [{
@@ -423,7 +423,7 @@ As application/hal+xml:
           href="/profiles/hcli"/>
     <link rel="type"
           href="/profiles/hcli#command"/>
-    <link rel="cli"
+    <link rel="next"
           href="/svc/jsonf?command=jsonf+go"/>
     <name>go</name>
     <description>Kicks off JSON formatting.</description>

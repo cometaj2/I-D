@@ -461,7 +461,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
      <descriptor id="item" type="safe">
        <doc>A link to an individual command summary.</doc>
 
-       <descriptor id="cli" type="safe">
+       <descriptor id="next" type="safe">
          <doc>A link to select a command.</doc>
        </descriptor>
      </descriptor>
@@ -494,7 +494,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
            "self" : {
              "href" : "/svc/jsonf/def/go?command=jsonf"
            },
-           "cli" : [{
+           "next" : [{
              "href" : "/svc/jsonf?command=jsonf+go"
            }],
            "profile" : [{
@@ -541,7 +541,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
              href="/profiles/hcli"/>
        <link rel="type"
              href="/profiles/hcli#command"/>
-       <link rel="cli"
+       <link rel="next"
              href="/svc/jsonf?command=jsonf+go"/>
        <name>go</name>
        <description>Kicks off JSON formatting.</description>
