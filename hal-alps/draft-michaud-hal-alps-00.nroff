@@ -70,18 +70,20 @@ Table of Contents
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
      5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
    6.  Basic Mapping Rules for ALPS to HAL  . . . . . . . . . . . . .  5
-     6.1.  The ALPS descriptor.id property  . . . . . . . . . . . . .  5
-     6.2.  The ALPS descriptor.name property  . . . . . . . . . . . .  6
-     6.3.  The ALPS descriptor.type property  . . . . . . . . . . . .  8
-   7.  Example  . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . .  8
-   9.  Security Considerations  . . . . . . . . . . . . . . . . . . .  8
-   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  8
-   11.  Normative References  . . . . . . . . . . . . . . . . . . . .  8
-   12.  Informative References  . . . . . . . . . . . . . . . . . . .  8
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . .  9
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . .  9
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . .  9
+     6.1.  ALPS descriptor properties property  . . . . . . . . . . .  5
+       6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
+       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
+       6.2.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
+         6.2.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
+         6.2.3.1. safe, unsafe, or idempotent . . . . . . . . . . . . 10
+   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
+   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 11
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 11
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 12
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 12
 .fi
 .in 3
 
@@ -122,7 +124,7 @@ Servers returning HAL documents MUST only advertise the ALPS profiles they suppo
 .ti 0
 5.1.  HAL profile and type relations
 
-HAL documents SHOULD use the profile and type relations in a HAL Link . The profile relation value SHOULD be set to the URL of the ALPS profile document and the type relation [RFC6903] SHOULD be set to the URL of the ALPS profile, or a URI fragment referencing a descriptor.id that exists in the referenced ALPS profile.
+HAL documents SHOULD use the profile and type relations in a HAL Link. The profile relation value SHOULD be set to the URL of the ALPS profile document and the type relation [RFC6903] SHOULD be set to the URL of the ALPS profile, or a URI fragment referencing a descriptor.id that exists in the referenced ALPS profile.
 
 .nf
 As application/hal+json:
@@ -195,14 +197,17 @@ Clients accepting HAL documents SHOULD look for the ALPS profile in each of the 
 6.  Basic Mapping Rules for ALPS to HAL
 
 .ti 0
-6.1.  The ALPS descriptor.id property
+6.1.  ALPS descriptor properties property
 
-The ALPS.descriptor.id, used in conjunction with the ALPS.descriptor.type set to "semantic", without an ALPS.descriptor.name, MUST be transformed into a "namespaced" or "CURIE syntax" property with the same name as the descriptor.id.
+.ti 0
+6.1.1.  id
+
+The descriptor.id, used in conjunction with the descriptor.type set to "semantic", without an ALPS.descriptor.name, MUST be transformed into a "namespaced" or "CURIE syntax" property with the same name as the descriptor.id.
 
 Below are valid examples for both the application/hal+json and the application/hal+xml media-types:
 
 .nf
-<!-- ALPS document -->
+<!-- ALPS document fragment -->
 <descriptor id="section" type="semantic">
   <descriptor id="name" type="semantic" />
   <descriptor id="description" type="semantic" />
@@ -213,15 +218,15 @@ As application/hal+json:
 {
   "_links": {
     "curies": [{
-      "href": "http://example.org/profiles/p#{rel}",
+      "href": "http://example.org/profiles/hcli#{rel}",
       "name": "alps",
       "templated": true
     }],
     "profile": [{
-      "href": "http://example.org/profiles/accounting"
+      "href": "http://example.org/profiles/hcli"
     }],
     "type": [{
-      "href": "http://example.org/profiles/accounting"
+      "href": "http://example.org/profiles/hcli"
     }]
   },
   "alps:section": [{
@@ -235,31 +240,33 @@ As application/hal+json:
 
 As application/hal+xml:
 
-<resource xmlns:alps="http://example.org/profiles/p#>
-  <link rel="profile" href="http://example.org/profiles/accounting"/>
-  <link rel="type" href="http://example.org/profiles/accounting"/>
+<resource xmlns:alps="http://example.org/profiles/hcli#">
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
   <alps:section>
-    <alps:name>name<alps:name/>
+    <alps:name>name</alps:name>
     <alps:description>jsonf - a simple formatter for JSON</alps:description>
   </alps:section>
   <alps:section>
-    <alps:name>synopsis<alps:name/>
-    <alps:description>jsonf [option] <command></alps:description>
+    <alps:name>synopsis</alps:name>
+    <alps:description>jsonf [option] &lt;command&gt;</alps:description>
   </alps:section>
 </resource>
 .fi
 
+One notable exception exists when a semantic descriptor.type contains a non-semantic descriptor.type. This is covered in a later section covering descriptor.type.
+
 .ti 0
-6.2.  The ALPS descriptor.name property
+6.1.2.  name
 
-To promote simplicity, in the HAL spirit, and when more complex ALPS.descriptor.id disambiguation is not necessary, this specification allows for the use of the ALPS.descriptor.name as a primary identifier. 
+To promote simplicity, in the HAL spirit, and when more complex descriptor.id disambiguation is not necessary, this specification allows descriptor.name to be used as a primary identifier. 
 
-The ALPS.descriptor.name, when used in conjunction with the ALPS.descriptor.id and the ALPS.descriptor.type set to "semantic" MAY be transformed into a document property with the same name as the descriptor.name.
+The descriptor.name, when used in conjunction with the descriptor.id and the ALPS.descriptor.type set to "semantic" MAY be transformed into a HAL document property with the same name as the descriptor.name.
 
 Below are valid examples for both the application/hal+json and the application/hal+xml media-types:
 
 .nf
-<!-- ALPS document -->
+<!-- ALPS document fragment -->
 <descriptor id="s1" name="section" type="semantic">
   <descriptor id="n1" name="name" type="semantic" />
   <descriptor id="d1" name="description" type="semantic" />
@@ -273,10 +280,10 @@ As application/hal+json:
       "href": "/service"
     },
     "profile": [{
-      "href": "http://example.org/profiles/accounting"
+      "href": "http://example.org/profiles/hcli"
     }],
     "type": [{
-      "href": "http://example.org/profiles/accounting"
+      "href": "http://example.org/profiles/hcli"
     }]
   },
   "section": [
@@ -294,50 +301,181 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/service">
-  <link rel="profile" href="http://example.org/profiles/accounting"/>
-  <link rel="type" href="http://example.org/profiles/accounting"/>
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
   <section>
-    <name>name<name/>
+    <name>name</name>
     <description>jsonf - a simple formatter for JSON</description>
   </section>
   <section>
-    <name>synopsis<name/>
-    <description>jsonf [option] <command></description>
+    <name>synopsis</name>
+    <description>jsonf [option] &lt;command&gt;</description>
   </section>
 </resource>
 .fi
 
 Servers MAY still choose to represent HAL documents using the descriptor.id, even when the descriptor.name is present, in which case the descriptor.name is present in the ALPS profile, but otherwise completely absent in the HAL representation. Clients that understand ALPS bindings for HAL should be ready to process both the simple and complex forms (i.e. centered around descriptor.id or centered around descriptor.name) of HAL documents.
 
-Semantics for ALPS profiles that attempt to disambiguate non-unique descriptor.id by using the descriptor.name are undefined under HAL documents.
+Semantics for ALPS profiles that attempt to disambiguate non-unique descriptor.id by using the descriptor.name are undefined under this specification.
 
 .ti 0
-6.3.  The ALPS descriptor.type property
+6.2.3.  type
+
+.ti 0
+6.2.3.1. semantic
+
+Coverage for the descriptor.type property with a value of "semantic" is covered under sections covering descriptor.id and descriptor.name.
+
+An important exception to the descriptor.id and descriptor.name coverage is when a semantic descriptor contains a single non-semantic descriptor. Such cases lead to the formation of linked resources or embedded resources, or both, in a HAL document. Determination of whether formation leads to the presence of a link, an embedded resource, or both, is left to service implementers.
+
+If a service presents a link, the link should use the non-semantic descriptor.id as the link relation. The HAL "profile" link property SHOULD contain a URI to the ALPS profile and the HAL "type" link property SHOUL contain a URI to the ALPS profile followed by a fragment referencing the descriptor.id of the parent non-semantic descriptor.id.
+
+If a service presents an embedded resource, the embedded resource SHOULD contain a "profile" link relation referencing the URI of the ALPS profile, a "type" link relation referencing the URI of the ALPS profile and fragment referencing the descriptor.id of the parent non-semantic descriptor.id
+
+.nf
+<!-- ALPS document fragment -->
+<descriptor id="command" name="command" type="semantic">
+  <descriptor id="item" type="safe">
+    <doc>A link to an individual command.</doc>
+
+    <descriptor id="more" type="safe">
+      <doc>deeper linking.</doc>
+    </descriptor>
+  </descriptor>
+  <descriptor id="name" name="name" type="semantic" />
+  <descriptor id="description" name="description" type="semantic" />
+</descriptor> 
+
+As application/hal+json:
+
+{
+  "_links": {
+    "self": {
+      "href": "/service"
+    },
+    "profile": [{
+      "href": "http://example.org/profiles/hcli"
+    }],
+    "type": [{
+      "href": "http://example.org/profiles/hcli"
+    },
+    "item": {
+      "href": "/service/cli/jsonf/__cdef/go?command=jsonf",
+      "profile": "http://example.org/profiles/hcli",
+      "type" : "http://example.org/profiles/hcli#command"
+    }
+  },
+  "_embedded" : {
+    "item" : [{
+      "_links" : {
+        "self" : {
+          "href" : "/service/cli/jsonf/__cdef/go?command=jsonf"
+        },
+        "more" : [{
+          "href" : "/service/cli/jsonf/go?command=jsonf+go",
+          "profile": "http://example.org/profiles/hcli",
+        }],
+        "profile" : [{
+          "href" : "http://example.org/profiles/hcli"
+        }],
+        "type" : [{
+          "href" : "http://example.org/profiles/hcli#command"
+        }]
+      },
+      "description" : "Kicks off JSON formatting.",
+      "name" : "go"
+    }]
+  }
+}
+
+As application/hal+xml:
+
+<resource self="/service">
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
+  <link rel="search"
+        href="/service/search{?search}"
+        profile="http://example.org/profiles/hcli"/>
+  <section>
+    <name>name<name/>
+    <description>jsonf - a simple formatter for JSON</description>
+  </section>
+  <section>
+    <name>synopsis<name/>
+    <description>jsonf [option] &lt;command&gt;</description>
+  </section>
+  <resource rel="item"
+            href="/service/cli/jsonf/__cdef/go?command=jsonf">
+    <link rel="profile"
+          href="http://example.org/profiles/hcli"/>
+  </resource>
+</resource>
+.fi 
+
+Semantics for a semantic descriptor containing multiple peer non-semantic descriptors are undefined.
+
+.ti 0
+6.2.3.1. safe, unsafe, or idempotent
+
+If a non-semantic descriptor is otherwise not embedded in a semantic descriptor, then it SHOULD only yield the formation of a templated link (a form), however the HAL profile and type properties SHOULD be absent. The descriptor.id value should be used as the name of the value to fill in the URI template.
+
+Notably, the "namespaced" or "CURIE syntax" SHOULD NOT in the expansion variable of the URI template. the "namespaced" or "CURIE syntax" MAY however be used as defined in the section covering descriptor.id.
+
+.nf
+<!-- ALPS document fragment -->
+<descriptor id="collection" type="safe">
+  <doc format="text">A search form with one input.</doc>
+  <descriptor id="valueId" name="valueName" type="semantic" />
+</descriptor>
+
+As application/hal+json:
+
+{
+  "_links": {
+    "self": {
+      "href": "/service"
+    },
+    "profile": [{
+      "href": "http://example.org/profiles/hcli"
+    }],
+    "type": [{
+      "href": "http://example.org/profiles/hcli"
+    },
+    "collection": {
+      "href": "/service/search{?valueId}",
+      "templated" : true
+    }
+  }
+}
+
+As application/hal+xml:
+
+<resource self="/service">
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
+  <link rel="collection"
+        href="/service/search{?valueId}"
+        templated="true"/>
+</resource>
+.fi
+
+.ti 0
+7.  Recommendations
 
 TBD
 
 .ti 0
-7.  Example
+8.  Security Considerations
 
 TBD
 
 .ti 0
-8.  Recommendations
+9.  IANA Considerations
 
 TBD
 
 .ti 0
-9.  Security Considerations
-
-TBD
-
-.ti 0
-10.  IANA Considerations
-
-TBD
-
-.ti 0
-11.  Normative References
+10.  Normative References
 
 .in 14
 .ti 3
@@ -347,7 +485,7 @@ TBD
 [RFC6903]  Snell, J., "Additional Link Relation Types", RFC 6903, March 2013
 
 .ti 0
-12.  Informative References
+11.  Informative References
 .fi
 
 .in 14
