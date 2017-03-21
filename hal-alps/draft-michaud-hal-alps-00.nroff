@@ -196,7 +196,7 @@ Clients accepting HAL documents SHOULD look for the ALPS profile in each of the 
 .ti 0
 6.  ALPS Bindings for HAL
 
-The following sections contain details and example on how to bind ALPS to HAL.
+The following sections contain details and examples on how to bind ALPS to HAL.
 
 .ti 0
 6.1.  ALPS Descriptor Bindings

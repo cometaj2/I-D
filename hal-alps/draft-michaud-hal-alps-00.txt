@@ -248,7 +248,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 6.  ALPS Bindings for HAL
 
-   The following sections contain details and example on how to bind
+   The following sections contain details and examples on how to bind
    ALPS to HAL.
 
 6.1.  ALPS Descriptor Bindings
