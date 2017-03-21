@@ -9,7 +9,7 @@
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
 .ds RH March 17, 2017
-.ds CH ALPS Bindings for the HAL media-types
+.ds CH ALPS Bindings for HAL
 .ds CF Expires September 18, 2017
 .hy 0
 .nh
@@ -26,7 +26,7 @@
 
 
 .ce 2
-ALPS Bindings for the HAL media-types
+ALPS Bindings for HAL
 \%draft-michaud-hal-alps-00
 
 .ti 0
@@ -76,14 +76,14 @@ Table of Contents
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
+   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 13
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 12
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 12
 .fi
 .in 3
 
@@ -262,7 +262,7 @@ One notable exception exists when a semantic descriptor.type contains a non-sema
 
 The descriptor.name property semantics are undefined if the semantic descriptor case and SHOULD NOT be used.
 
-The descriptor.name property semantics are otherwise defined in the non-semantic descriptor case and MAY be used to help differentiate between otherwise identical descriptor.id and HAL link relation.
+The descriptor.name property semantics are otherwise defined in the non-semantic descriptor case and MAY be used to help differentiate between otherwise identical descriptor.id and HAL link relation to enable client-side filtering.
 
 .nf
 <!-- ALPS document fragment -->
@@ -451,18 +451,11 @@ As application/hal+xml:
 
 If a non-semantic descriptor contains a semantic descriptor, then it SHOULD yield to the formation of a templated link (a form).
 
-The descriptor.name MAY be used to help differentiate between otherwise identical descriptor.id to enable client-side "filtering" capabilities.
-
 .nf
 <!-- ALPS document fragment -->
-<descriptor id="collection" name="red-collection" type="safe">
+<descriptor id="collection" type="safe">
   <doc format="text">A search form with one input.</doc>
-  <descriptor id="rvalueId" type="semantic" />
-</descriptor>
-
-<descriptor id="collection" name="blue-collection" type="safe">
-  <doc format="text">A search form with one input.</doc>
-  <descriptor id="bvalueId" type="semantic" />
+  <descriptor id="id" type="semantic" />
 </descriptor>
 
 As application/hal+json:
@@ -478,16 +471,10 @@ As application/hal+json:
     "type": [{
       "href": "/profiles/hcli"
     },
-    "collection": [{
-      "href": "/svc/search{?rvalueId}",
-      "name" : "red-collection",
+    "collection": {
+      "href": "/svc/search{?id}",
       "templated" : true
-    },
-    {
-      "href": "/svc/search{?bvalueId}",
-      "name" : "blue-collection",
-      "templated" : true
-    }]
+    }
   }
 }
 
@@ -498,11 +485,6 @@ As application/hal+xml:
   <link rel="type" href="/profiles/hcli"/>
   <link rel="collection"
         href="/svc/search{?rvalueId}"
-        name="red-collection"
-        templated="true"/>
-  <link rel="collection"
-        href="/svc/search{?bvalueId}"
-        name="blue-collection"
         templated="true"/>
 </resource>
 .fi

@@ -8,7 +8,7 @@ Intended status: Informational
 Expires: September 18, 2017                                             
 
 
-                 ALPS Bindings for the HAL media-types
+                         ALPS Bindings for HAL
                        draft-michaud-hal-alps-00
 
 Abstract
@@ -55,7 +55,7 @@ Copyright Notice
 
 Michaud                Expires September 18, 2017               [Page 1]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
 Table of Contents
@@ -75,14 +75,14 @@ Table of Contents
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
+   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 13
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 13
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 12
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 12
 
 
 1.  Introduction
@@ -111,7 +111,7 @@ Table of Contents
 
 Michaud                Expires September 18, 2017               [Page 2]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
    richardson-foster-alps] specification is designed to describe the
@@ -167,7 +167,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 Michaud                Expires September 18, 2017               [Page 3]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
    {
@@ -223,7 +223,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 Michaud                Expires September 18, 2017               [Page 4]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
        }],
@@ -279,7 +279,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 Michaud                Expires September 18, 2017               [Page 5]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
        }],
@@ -325,18 +325,20 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    The descriptor.name property semantics are otherwise defined in the
    non-semantic descriptor case and MAY be used to help differentiate
-   between otherwise identical descriptor.id and HAL link relation.
+   between otherwise identical descriptor.id and HAL link relation to
+   enable client-side filtering.
 
    <!-- ALPS document fragment -->
    <descriptor id="next" name="book" type="safe"/>
-   <descriptor id="next" name="movie" type="safe"/>
  
 
 
 Michaud                Expires September 18, 2017               [Page 6]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+   <descriptor id="next" name="movie" type="safe"/>
 
    As application/hal+json:
 
@@ -384,16 +386,16 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    whether formation leads to the presence of a link, an embedded
    resource, or both, is left to service implementers.
 
-   If a service presents a link, the link should use the non-semantic
-   descriptor.id as the link relation. The HAL "profile" link property
  
 
 
 Michaud                Expires September 18, 2017               [Page 7]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+   If a service presents a link, the link should use the non-semantic
+   descriptor.id as the link relation. The HAL "profile" link property
    SHOULD contain a URI to the ALPS profile and the HAL "type" link
    property SHOULD contain a URI to the ALPS profile followed by a URI
    fragment referencing the descriptor.id of the containing semantic
@@ -440,16 +442,16 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
      "_embedded" : {
        "item" : [{
          "_links" : {
-           "self" : {
-             "href" : "/svc/jsonf/def/go?command=jsonf"
  
 
 
 Michaud                Expires September 18, 2017               [Page 8]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+           "self" : {
+             "href" : "/svc/jsonf/def/go?command=jsonf"
            },
            "next" : [{
              "href" : "/svc/jsonf?command=jsonf+go"
@@ -496,16 +498,15 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        <description>Kicks off JSON formatting.</description>
      </resource>
    </resource>
-
-   Semantics for a semantic descriptor containing multiple peer non-
  
 
 
 Michaud                Expires September 18, 2017               [Page 9]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+   Semantics for a semantic descriptor containing multiple peer non-
    semantic descriptors are undefined.
 
 6.1.3.2. safe, unsafe, or idempotent
@@ -553,31 +554,21 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    </resource>
 
 6.1.3.2.2.  With a contained semantic descriptor
-
  
 
 
 Michaud                Expires September 18, 2017              [Page 10]
 
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
    If a non-semantic descriptor contains a semantic descriptor, then it
    SHOULD yield to the formation of a templated link (a form).
 
-   The descriptor.name MAY be used to help differentiate between
-   otherwise identical descriptor.id to enable client-side "filtering"
-   capabilities.
-
    <!-- ALPS document fragment -->
-   <descriptor id="collection" name="red-collection" type="safe">
+   <descriptor id="collection" type="safe">
      <doc format="text">A search form with one input.</doc>
-     <descriptor id="rvalueId" type="semantic" />
-   </descriptor>
-
-   <descriptor id="collection" name="blue-collection" type="safe">
-     <doc format="text">A search form with one input.</doc>
-     <descriptor id="bvalueId" type="semantic" />
+     <descriptor id="id" type="semantic" />
    </descriptor>
 
    As application/hal+json:
@@ -593,16 +584,10 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        "type": [{
          "href": "/profiles/hcli"
        },
-       "collection": [{
-         "href": "/svc/search{?rvalueId}",
-         "name" : "red-collection",
+       "collection": {
+         "href": "/svc/search{?id}",
          "templated" : true
-       },
-       {
-         "href": "/svc/search{?bvalueId}",
-         "name" : "blue-collection",
-         "templated" : true
-       }]
+       }
      }
    }
 
@@ -610,22 +595,9 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    <resource self="/svc">
      <link rel="profile" href="/profiles/hcli"/>
- 
-
-
-Michaud                Expires September 18, 2017              [Page 11]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
-
      <link rel="type" href="/profiles/hcli"/>
      <link rel="collection"
            href="/svc/search{?rvalueId}"
-           name="red-collection"
-           templated="true"/>
-     <link rel="collection"
-           href="/svc/search{?bvalueId}"
-           name="blue-collection"
            templated="true"/>
    </resource>
 
@@ -638,6 +610,13 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    TBD
 
 9.  IANA Considerations
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 11]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
 
    TBD
 
@@ -666,13 +645,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
               Michaud, J., "XML Hypertext Application Language", draft-
               michaud-xml-hal-02 (work in progress), February 2017
- 
-
-
-Michaud                Expires September 18, 2017              [Page 12]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
 
 Appendix A.  Acknowledgements
 
@@ -697,32 +669,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Michaud                Expires September 18, 2017              [Page 13]
+Michaud                Expires September 18, 2017              [Page 12]
