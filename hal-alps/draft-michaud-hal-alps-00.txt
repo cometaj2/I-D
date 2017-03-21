@@ -69,7 +69,7 @@ Table of Contents
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
      5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
-     6.1.  ALPS descriptor properties . . . . . . . . . . . . . . . .  5
+     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
        6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
        6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
@@ -77,7 +77,7 @@ Table of Contents
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
@@ -248,13 +248,16 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 6.  ALPS Bindings for HAL
 
-6.1.  ALPS descriptor properties
+6.1.  ALPS Descriptor Bindings
+
+   The following sections describe ALPS bindings for HAL, for the ALPS
+   descriptor property.
 
 6.1.1.  id
 
-   The descriptor.id and the ALPS.descriptor.type set to "semantic"
-   SHOULD be transformed into a HAL document property with the same name
-   as the descriptor.id.
+   The descriptor.id, and the descriptor.type set to "semantic", SHOULD
+   lead to lead to the formation of a HAL document property with the
+   same name as the descriptor.id.
 
    Below are valid examples for both the application/hal+json and the
    application/hal+xml media-types:
@@ -271,9 +274,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      "_links": {
        "self": {
          "href": "/svc"
-       },
-       "profile": [{
-         "href": "/profiles/hcli"
  
 
 
@@ -282,6 +282,9 @@ Michaud                Expires September 18, 2017               [Page 5]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+       },
+       "profile": [{
+         "href": "/profiles/hcli"
        }],
        "type": [{
          "href": "/profiles/hcli"
@@ -327,9 +330,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    non-semantic descriptor case and MAY be used to help differentiate
    between otherwise identical descriptor.id and HAL link relation to
    enable client-side filtering.
-
-   <!-- ALPS document fragment -->
-   <descriptor id="next" name="book" type="safe"/>
  
 
 
@@ -338,6 +338,8 @@ Michaud                Expires September 18, 2017               [Page 6]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+   <!-- ALPS document fragment -->
+   <descriptor id="next" name="book" type="safe"/>
    <descriptor id="next" name="movie" type="safe"/>
 
    As application/hal+json:
@@ -384,8 +386,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    descriptor. Such cases lead to the formation of linked resources or
    embedded resources, or both, in a HAL document. Determination of
    whether formation leads to the presence of a link, an embedded
-   resource, or both, is left to service implementers.
-
  
 
 
@@ -393,6 +393,8 @@ Michaud                Expires September 18, 2017               [Page 7]
 
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+   resource, or both, is left to service implementers.
 
    If a service presents a link, the link should use the non-semantic
    descriptor.id as the link relation. The HAL "profile" link property
@@ -440,8 +442,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
        }
      },
      "_embedded" : {
-       "item" : [{
-         "_links" : {
  
 
 
@@ -450,6 +450,8 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+       "item" : [{
+         "_links" : {
            "self" : {
              "href" : "/svc/jsonf/def/go?command=jsonf"
            },
@@ -496,8 +498,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
              href="/svc/jsonf?command=jsonf+go"/>
        <name>go</name>
        <description>Kicks off JSON formatting.</description>
-     </resource>
-   </resource>
  
 
 
@@ -505,6 +505,9 @@ Michaud                Expires September 18, 2017               [Page 9]
 
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+     </resource>
+   </resource>
 
    Semantics for a semantic descriptor containing multiple peer non-
    semantic descriptors are undefined.
@@ -551,9 +554,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <link rel="next" href="/svc/item"/>
-   </resource>
-
-6.1.3.2.2.  With a contained semantic descriptor
  
 
 
@@ -561,6 +561,10 @@ Michaud                Expires September 18, 2017              [Page 10]
 
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+   </resource>
+
+6.1.3.2.2.  With a contained semantic descriptor
 
    If a non-semantic descriptor contains a semantic descriptor, then it
    SHOULD yield to the formation of a templated link (a form).
@@ -606,10 +610,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    TBD
 
 8.  Security Considerations
-
-   TBD
-
-9.  IANA Considerations
  
 
 
@@ -617,6 +617,10 @@ Michaud                Expires September 18, 2017              [Page 11]
 
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+   TBD
+
+9.  IANA Considerations
 
    TBD
 
@@ -660,10 +664,6 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
 
 
 

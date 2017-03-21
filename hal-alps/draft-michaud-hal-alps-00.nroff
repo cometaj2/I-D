@@ -70,7 +70,7 @@ Table of Contents
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
      5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
-     6.1.  ALPS descriptor properties . . . . . . . . . . . . . . . .  5
+     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
        6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
        6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
@@ -78,7 +78,7 @@ Table of Contents
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 11
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
@@ -197,12 +197,14 @@ Clients accepting HAL documents SHOULD look for the ALPS profile in each of the 
 6.  ALPS Bindings for HAL
 
 .ti 0
-6.1.  ALPS descriptor properties
+6.1.  ALPS Descriptor Bindings
+
+The following sections describe ALPS bindings for HAL, for the ALPS descriptor property.
 
 .ti 0
 6.1.1.  id
 
-The descriptor.id and the ALPS.descriptor.type set to "semantic" SHOULD be transformed into a HAL document property with the same name as the descriptor.id.
+The descriptor.id, and the descriptor.type set to "semantic", SHOULD lead to lead to the formation of a HAL document property with the same name as the descriptor.id.
 
 Below are valid examples for both the application/hal+json and the application/hal+xml media-types:
 
