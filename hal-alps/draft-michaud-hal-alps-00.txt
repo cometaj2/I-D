@@ -76,7 +76,7 @@ Table of Contents
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
@@ -383,9 +383,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    However, an important exception to the semantic descriptor.id case
    exists; when a semantic descriptor contains a non-semantic
-   descriptor. Such cases lead to the formation of linked resources or
-   embedded resources, or both, in a HAL document. Determination of
-   whether formation leads to the presence of a link, an embedded
+   descriptor.
+
+   Such cases lead to the formation of linked resources or embedded
  
 
 
@@ -394,14 +394,17 @@ Michaud                Expires September 18, 2017               [Page 7]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
-   resource, or both, is left to service implementers.
+   resources, or both, in a HAL document. Determination of whether
+   formation leads to the presence of a link, an embedded resource, or
+   both, is left to service implementers.
 
-   If a service presents a link, the link should use the non-semantic
-   descriptor.id as the link relation. The HAL "profile" link property
-   SHOULD contain a URI to the ALPS profile and the HAL "type" link
-   property SHOULD contain a URI to the ALPS profile followed by a URI
-   fragment referencing the descriptor.id of the containing semantic
-   descriptor.id.
+   If a service presents a link, the link SHOULD use the non-semantic
+   descriptor.id as the link relation.
+
+   The HAL "profile" link property SHOULD contain a URI to the ALPS
+   profile and the HAL "type" link property SHOULD contain a URI to the
+   ALPS profile followed by a URI fragment referencing the descriptor.id
+   of the containing semantic descriptor.id.
 
    If a service presents an embedded resource, the embedded resource
    SHOULD contain a "profile" link relation referencing the URI of the
@@ -439,9 +442,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
          "href": "/svc/jsonf/def/go?command=jsonf",
          "profile": "/profiles/hcli",
          "type" : "/profiles/hcli#command"
-       }
-     },
-     "_embedded" : {
  
 
 
@@ -450,6 +450,9 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+       }
+     },
+     "_embedded" : {
        "item" : [{
          "_links" : {
            "self" : {
@@ -495,9 +498,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
        <link rel="type"
              href="/profiles/hcli#command"/>
        <link rel="next"
-             href="/svc/jsonf?command=jsonf+go"/>
-       <name>go</name>
-       <description>Kicks off JSON formatting.</description>
  
 
 
@@ -506,6 +506,9 @@ Michaud                Expires September 18, 2017               [Page 9]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+             href="/svc/jsonf?command=jsonf+go"/>
+       <name>go</name>
+       <description>Kicks off JSON formatting.</description>
      </resource>
    </resource>
 
@@ -516,8 +519,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent")
    is otherwise not embedded in a semantic descriptor, then it SHOULD
-   yield the formation of a link or a templated link (a form). Notably,
-   the HAL profile and type properties SHOULD be absent. The
+   yield the formation of a link or a templated link (a form). 
+
+   Notably, the HAL profile and type properties SHOULD be absent and the
    descriptor.id value SHOULD be used as the name of the value to fill
    in the URI template.
 
@@ -550,10 +554,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    As application/hal+xml:
 
-   <resource self="/svc">
-     <link rel="profile" href="/profiles/hcli"/>
-     <link rel="type" href="/profiles/hcli"/>
-     <link rel="next" href="/svc/item"/>
  
 
 
@@ -562,6 +562,10 @@ Michaud                Expires September 18, 2017              [Page 10]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+   <resource self="/svc">
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
+     <link rel="next" href="/svc/item"/>
    </resource>
 
 6.1.3.2.2.  With a contained semantic descriptor
@@ -606,10 +610,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    </resource>
 
 7.  Recommendations
-
-   TBD
-
-8.  Security Considerations
  
 
 
@@ -617,6 +617,10 @@ Michaud                Expires September 18, 2017              [Page 11]
 
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
+
+   TBD
+
+8.  Security Considerations
 
    TBD
 
@@ -662,6 +666,14 @@ Author's Address
 
    Jeff Michaud
 
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 12]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
+
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
 
@@ -669,4 +681,48 @@ Author's Address
 
 
 
-Michaud                Expires September 18, 2017              [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Michaud                Expires September 18, 2017              [Page 13]

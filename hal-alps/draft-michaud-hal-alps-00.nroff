@@ -77,7 +77,7 @@ Table of Contents
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 11
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 11
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
    10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
    11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
@@ -312,9 +312,13 @@ As application/hal+xml:
 
 Coverage for the descriptor.type property with a value of "semantic" is covered under sections covering descriptor.id and descriptor.name.
 
-However, an important exception to the semantic descriptor.id case exists; when a semantic descriptor contains a non-semantic descriptor. Such cases lead to the formation of linked resources or embedded resources, or both, in a HAL document. Determination of whether formation leads to the presence of a link, an embedded resource, or both, is left to service implementers.
+However, an important exception to the semantic descriptor.id case exists; when a semantic descriptor contains a non-semantic descriptor.
 
-If a service presents a link, the link should use the non-semantic descriptor.id as the link relation. The HAL "profile" link property SHOULD contain a URI to the ALPS profile and the HAL "type" link property SHOULD contain a URI to the ALPS profile followed by a URI fragment referencing the descriptor.id of the containing semantic descriptor.id.
+Such cases lead to the formation of linked resources or embedded resources, or both, in a HAL document. Determination of whether formation leads to the presence of a link, an embedded resource, or both, is left to service implementers.
+
+If a service presents a link, the link SHOULD use the non-semantic descriptor.id as the link relation.
+
+The HAL "profile" link property SHOULD contain a URI to the ALPS profile and the HAL "type" link property SHOULD contain a URI to the ALPS profile followed by a URI fragment referencing the descriptor.id of the containing semantic descriptor.id.
 
 If a service presents an embedded resource, the embedded resource SHOULD contain a "profile" link relation referencing the URI of the ALPS profile, a "type" link relation referencing the URI of the ALPS profile and fragment referencing the descriptor.id of the containing semantic descriptor.id
 
@@ -409,7 +413,9 @@ Semantics for a semantic descriptor containing multiple peer non-semantic descri
 .ti 0
 6.1.3.2. safe, unsafe, or idempotent
 
-If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is otherwise not embedded in a semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form). Notably, the HAL profile and type properties SHOULD be absent. The descriptor.id value SHOULD be used as the name of the value to fill in the URI template.
+If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is otherwise not embedded in a semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form). 
+
+Notably, the HAL profile and type properties SHOULD be absent and the descriptor.id value SHOULD be used as the name of the value to fill in the URI template.
 
 .ti 0
 6.1.3.2.1.  Without a contained semantic descriptor
