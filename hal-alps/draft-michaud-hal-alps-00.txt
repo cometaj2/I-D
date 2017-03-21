@@ -374,6 +374,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      <link rel="next" href="/svc/book/2" name="book"/>
      <link rel="next" href="/svc/movie/2" name="movie"/>
    </resource>
+
 6.1.3.  type
 
 6.1.3.1. semantic
@@ -385,7 +386,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    exists; when a semantic descriptor contains a non-semantic
    descriptor.
 
-   Such cases lead to the formation of linked resources or embedded
  
 
 
@@ -394,6 +394,7 @@ Michaud                Expires September 18, 2017               [Page 7]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+   Such cases lead to the formation of linked resources or embedded
    resources, or both, in a HAL document. Determination of whether
    formation leads to the presence of a link, an embedded resource, or
    both, is left to service implementers.
@@ -441,7 +442,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
        "item": {
          "href": "/svc/jsonf/def/go?command=jsonf",
          "profile": "/profiles/hcli",
-         "type" : "/profiles/hcli#command"
  
 
 
@@ -450,6 +450,7 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+         "type" : "/profiles/hcli#command"
        }
      },
      "_embedded" : {
@@ -497,7 +498,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
              href="/profiles/hcli"/>
        <link rel="type"
              href="/profiles/hcli#command"/>
-       <link rel="next"
  
 
 
@@ -506,6 +506,7 @@ Michaud                Expires September 18, 2017               [Page 9]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+       <link rel="next"
              href="/svc/jsonf?command=jsonf+go"/>
        <name>go</name>
        <description>Kicks off JSON formatting.</description>
@@ -553,7 +554,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    }
 
    As application/hal+xml:
-
  
 
 

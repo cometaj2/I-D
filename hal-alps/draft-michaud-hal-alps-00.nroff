@@ -304,6 +304,7 @@ As application/hal+xml:
   <link rel="next" href="/svc/movie/2" name="movie"/>
 </resource>
 .fi
+
 .ti 0
 6.1.3.  type
 
