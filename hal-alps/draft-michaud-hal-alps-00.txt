@@ -71,10 +71,9 @@ Table of Contents
    6.  Basic Mapping Rules for ALPS to HAL  . . . . . . . . . . . . .  5
      6.1.  ALPS descriptor properties property  . . . . . . . . . . .  5
        6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
-         6.1.1.1.  Simple Form  . . . . . . . . . . . . . . . . . . .  6
-       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
-         6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
+       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
+       6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
+         6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
@@ -106,6 +105,7 @@ Table of Contents
 
 3.  A Review of ALPS Principles
 
+   The Application-Level Profile Semantics (ALPS) [I-D.draft-amundsen-
  
 
 
@@ -114,7 +114,6 @@ Michaud                Expires September 18, 2017               [Page 2]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-   The Application-Level Profile Semantics (ALPS) [I-D.draft-amundsen-
    richardson-foster-alps] specification is designed to describe the
    data elements and state transitions that make up a problem domain
    (e.g. micro-blogging, accounting, etc.). ALPS documents are designed
@@ -162,6 +161,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    URL of the ALPS profile, or a URI fragment referencing a
    descriptor.id that exists in the referenced ALPS profile.
 
+   As application/hal+json:
  
 
 
@@ -169,8 +169,6 @@ Michaud                Expires September 18, 2017               [Page 3]
 
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
-
-   As application/hal+json:
 
    {
      "_links": {
@@ -199,7 +197,7 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    with the href value set to the URL of the ALPS profile document or
    type and the rel value set to "profile" or "type"".
 
-   Link: </profiles/accounting>; rel="profile",
+   Link: </profiles/accounting>;rel="profile",
    </profiles/accounting#invoice>;rel="type"
 
 5.3.  Additional Considerations
@@ -218,6 +216,8 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        "profile": [{
          "href": "/profiles/accounting"
        },
+       {
+         "href": "/profiles/finance"
  
 
 
@@ -226,8 +226,6 @@ Michaud                Expires September 18, 2017               [Page 4]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-       {
-         "href": "/profiles/finance"
        }],
        "type": [{
          "href": "/profiles/accounting"
@@ -254,10 +252,9 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 6.1.1.  id
 
-   The descriptor.id, used in conjunction with the descriptor.type set
-   to "semantic", without an ALPS.descriptor.name, MUST be transformed
-   into a "namespaced" or "CURIE syntax" property with the same name as
-   the descriptor.id.
+   The descriptor.id and the ALPS.descriptor.type set to "semantic"
+   SHOULD be transformed into a HAL document property with the same name
+   as the descriptor.id.
 
    Below are valid examples for both the application/hal+json and the
    application/hal+xml media-types:
@@ -272,8 +269,11 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    {
      "_links": {
-       "curies": [{
-         "href": "/profiles/hcli#{rel}",
+       "self": {
+         "href": "/svc"
+       },
+       "profile": [{
+         "href": "/profiles/hcli"
  
 
 
@@ -282,84 +282,6 @@ Michaud                Expires September 18, 2017               [Page 5]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-         "name": "alps",
-         "templated": true
-       }],
-       "self": {
-         "href": "/svc"
-       },
-       "profile": [{
-         "href": "/profiles/hcli"
-       }],
-       "type": [{
-         "href": "/profiles/hcli"
-       }]
-     },
-     "alps:section": [{
-       "alps:name": "name",
-       "alps:description": "jsonf - a simple formatter for JSON"
-     }, {
-       "alps:name": "synopsis",
-       "alps:description": "jsonf <command>"
-     }]
-   }
-
-   As application/hal+xml:
-
-   <resource self="/svc" xmlns:alps="/profiles/hcli#">
-     <link rel="profile" href="/profiles/hcli"/>
-     <link rel="type" href="/profiles/hcli"/>
-     <alps:section>
-       <alps:name>name</alps:name>
-       <alps:description>A simple formatter for JSON</alps:description>
-     </alps:section>
-     <alps:section>
-       <alps:name>synopsis</alps:name>
-       <alps:description>jsonf &lt;command&gt;</alps:description>
-     </alps:section>
-   </resource>
-
-   One notable exception exists when a semantic descriptor.type contains
-   a non-semantic descriptor.type. This is covered in a later section
-   covering descriptor.type.
-
-6.1.1.1.  Simple Form
-
-   To promote simplicity, in the HAL spirit, and when more complex
-   descriptor.id disambiguation is not necessary, this specification
-   allows for the omission of "namespaced" or "CURIE syntax"
-   identifiers.
-
- 
-
-
-Michaud                Expires September 18, 2017               [Page 6]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
-
-   The descriptor.id and the ALPS.descriptor.type set to "semantic" MAY
-   be transformed into a HAL document property with the same name as the
-   descriptor.id, but without namespace or CURIE syntax dereference.
-
-   Below are valid examples for both the application/hal+json and the
-   application/hal+xml media-types:
-
-   <!-- ALPS document fragment -->
-   <descriptor id="section" type="semantic">
-     <descriptor id="name" type="semantic" />
-     <descriptor id="description" type="semantic" />
-   </descriptor>
-
-   As application/hal+json:
-
-   {
-     "_links": {
-       "self": {
-         "href": "/svc"
-       },
-       "profile": [{
-         "href": "/profiles/hcli"
        }],
        "type": [{
          "href": "/profiles/hcli"
@@ -386,6 +308,84 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        <name>name</name>
        <description>A simple formatter for JSON</description>
      </section>
+     <section>
+       <name>synopsis</name>
+       <description>jsonf &lt;command&gt;</description>
+     </section>
+   </resource>
+
+   One notable exception exists when a semantic descriptor.type contains
+   a non-semantic descriptor.type. This is covered in a later section
+   covering non-semantic descriptor.type.
+
+6.1.2.  name
+
+   The descriptor.name property semantics are undefined if the semantic
+   descriptor case and SHOULD NOT be used.
+
+   The descriptor.name property semantics are otherwise defined in the
+   non-semantic descriptor case and MAY be used to help differentiate
+   between otherwise identical descriptor.id and HAL link relation.
+
+   <!-- ALPS document fragment -->
+   <descriptor id="next" name="book" type="safe"/>
+   <descriptor id="next" name="movie" type="safe"/>
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 6]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/svc"
+       },
+       "profile": [{
+         "href": "/profiles/hcli"
+       }],
+       "type": [{
+         "href": "/profiles/hcli"
+       },
+       "next": [{
+         "href": "/svc/book/2",
+         "name": "book"
+       },
+       {
+         "href": "/svc/movie/2",
+         "name": "movie"
+       }]
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
+     <link rel="next" href="/svc/book/2" name="book"/>
+     <link rel="next" href="/svc/movie/2" name="movie"/>
+   </resource>
+6.1.3.  type
+
+6.1.3.1. semantic
+
+   Coverage for the descriptor.type property with a value of "semantic"
+   is covered under sections covering descriptor.id and descriptor.name.
+
+   However, an important exception to the semantic descriptor.id case
+   exists; when a semantic descriptor contains a non-semantic
+   descriptor. Such cases lead to the formation of linked resources or
+   embedded resources, or both, in a HAL document. Determination of
+   whether formation leads to the presence of a link, an embedded
+   resource, or both, is left to service implementers.
+
+   If a service presents a link, the link should use the non-semantic
+   descriptor.id as the link relation. The HAL "profile" link property
  
 
 
@@ -394,66 +394,15 @@ Michaud                Expires September 18, 2017               [Page 7]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-     <section>
-       <name>synopsis</name>
-       <description>jsonf &lt;command&gt;</description>
-     </section>
-   </resource>
-
-   Servers MAY choose to represent HAL documents using either the
-   complex form or the simple form, in which case clients that
-   understand ALPS bindings for HAL should be ready to process both
-   forms of HAL documents.
-
-   Semantics for ALPS profiles that attempt to disambiguate non-unique
-   descriptor.id by using the descriptor.name are undefined under this
-   specification.
-
-6.1.2.  name
-
-   The descriptor.name property semantics are undefined in the semantic
-   descriptor case and SHOULD NOT be used.
-
-   The descriptor.name property semantics are otherwise defined and MAY
-   be used in non-semantic descriptor case to help differentiate between
-   otherwise identical descriptor.id and HAL link relation id.
-
-   An example of descriptor.name use is included in the section covering
-   "safe, unsafe, or idempotent" descriptor.type.
-
-6.1.3.  type
-
-6.1.3.1. semantic
-
-   Coverage for the descriptor.type property with a value of "semantic"
-   is covered under sections covering descriptor.id and descriptor.name.
-
-   However, an important exception to the semantic descriptor.id case is
-   when a semantic descriptor contains a single non-semantic descriptor.
-   Such cases lead to the formation of linked resources or embedded
-   resources, or both, in a HAL document. Determination of whether
-   formation leads to the presence of a link, an embedded resource, or
-   both, is left to service implementers.
-
-   If a service presents a link, the link should use the non-semantic
-   descriptor.id as the link relation. The HAL "profile" link property
    SHOULD contain a URI to the ALPS profile and the HAL "type" link
    property SHOULD contain a URI to the ALPS profile followed by a URI
-   fragment referencing the descriptor.id of the child non-semantic
+   fragment referencing the descriptor.id of the containing semantic
    descriptor.id.
-
- 
-
-
-Michaud                Expires September 18, 2017               [Page 8]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
 
    If a service presents an embedded resource, the embedded resource
    SHOULD contain a "profile" link relation referencing the URI of the
    ALPS profile, a "type" link relation referencing the URI of the ALPS
-   profile and fragment referencing the descriptor.id of the child non-
+   profile and fragment referencing the descriptor.id of the containing
    semantic descriptor.id
 
    <!-- ALPS document fragment -->
@@ -493,19 +442,19 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
          "_links" : {
            "self" : {
              "href" : "/svc/jsonf/def/go?command=jsonf"
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 8]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
            },
            "next" : [{
              "href" : "/svc/jsonf?command=jsonf+go"
            }],
            "profile" : [{
- 
-
-
-Michaud                Expires September 18, 2017               [Page 9]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
-
              "href" : "/profiles/hcli"
            }],
            "type" : [{
@@ -549,11 +498,62 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
    </resource>
 
    Semantics for a semantic descriptor containing multiple peer non-
+ 
+
+
+Michaud                Expires September 18, 2017               [Page 9]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
+
    semantic descriptors are undefined.
 
 6.1.3.2. safe, unsafe, or idempotent
 
-   If a non-semantic descriptor is otherwise not embedded in a semantic
+   If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent")
+   is otherwise not embedded in a semantic descriptor, then it SHOULD
+   yield the formation of a link or a templated link (a form). Notably,
+   the HAL profile and type properties SHOULD be absent. The
+   descriptor.id value SHOULD be used as the name of the value to fill
+   in the URI template.
+
+6.1.3.2.1.  Without a contained semantic descriptor
+
+   If a non-semantic descriptor does not contain a semantic descriptor,
+   then it SHOULD yield to the formation of a link.
+
+   <!-- ALPS document fragment -->
+   <descriptor id="next" type="safe"/>
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/svc"
+       },
+       "profile": [{
+         "href": "/profiles/hcli"
+       }],
+       "type": [{
+         "href": "/profiles/hcli"
+       },
+       "next": {
+         "href": "/svc/item"
+       }
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
+     <link rel="profile" href="/profiles/hcli"/>
+     <link rel="type" href="/profiles/hcli"/>
+     <link rel="next" href="/svc/item"/>
+   </resource>
+
+6.1.3.2.2.  With a contained semantic descriptor
+
  
 
 
@@ -562,15 +562,8 @@ Michaud                Expires September 18, 2017              [Page 10]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-   descriptor, then it SHOULD only yield the formation of a templated
-   link (a form). Notably, the HAL profile and type properties SHOULD be
-   absent. The descriptor.id value SHOULD be used as the name of the
-   value to fill in the URI template.
-
-   The "namespaced" or "CURIE syntax" SHOULD NOT be used in the
-   expansion variable of the URI template. the "namespaced" or "CURIE
-   syntax" MAY however be used for the link relation, as needed, and as
-   defined in the section covering descriptor.id.
+   If a non-semantic descriptor contains a semantic descriptor, then it
+   SHOULD yield to the formation of a templated link (a form).
 
    The descriptor.name MAY be used to help differentiate between
    otherwise identical descriptor.id to enable client-side "filtering"
@@ -600,16 +593,23 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
        "type": [{
          "href": "/profiles/hcli"
        },
-       "collection": {
+       "collection": [{
          "href": "/svc/search{?rvalueId}",
-         "name" : "red-collection"
+         "name" : "red-collection",
          "templated" : true
        },
-       "collection": {
+       {
          "href": "/svc/search{?bvalueId}",
-         "name" : "blue-collection"
+         "name" : "blue-collection",
          "templated" : true
-       }
+       }]
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
+     <link rel="profile" href="/profiles/hcli"/>
  
 
 
@@ -618,13 +618,6 @@ Michaud                Expires September 18, 2017              [Page 11]
 Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
 
-     }
-   }
-
-   As application/hal+xml:
-
-   <resource self="/svc">
-     <link rel="profile" href="/profiles/hcli"/>
      <link rel="type" href="/profiles/hcli"/>
      <link rel="collection"
            href="/svc/search{?rvalueId}"
@@ -666,14 +659,6 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
    [I-D.draft-kelly-json-hal]
 
- 
-
-
-Michaud                Expires September 18, 2017              [Page 12]
-
-Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
-
-
               Kelly, M., "JSON Hypertext Application Language", draft-
               kelly-json-hal-08 (work in progress), May 2016.
 
@@ -681,6 +666,13 @@ Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
 
               Michaud, J., "XML Hypertext Application Language", draft-
               michaud-xml-hal-02 (work in progress), February 2017
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 12]
+
+Internet-Draft   ALPS Bindings for the HAL media-types    March 17, 2017
+
 
 Appendix A.  Acknowledgements
 
@@ -696,6 +688,14 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
+
+
+
+
+
+
+
+
 
 
 
