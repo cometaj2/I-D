@@ -63,55 +63,61 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
-       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
-       4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
-     4.2.  Name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
-     4.3.  Section  . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
-     4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
-     4.5.  Option . . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
-     4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
-     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 10
-     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
-   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
-   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
-     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
-       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 17
-     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 17
-       6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
-         6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
-         6.2.1.2.  Documentation  . . . . . . . . . . . . . . . . . . 18
-         6.2.1.3.  Stream Processing  . . . . . . . . . . . . . . . . 18
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  8
+       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  8
+       4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  8
+     4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
+     4.3.  section  . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
+     4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.4.1  hcli_version  . . . . . . . . . . . . . . . . . . . . .  9
+       4.4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.4.3.  description  . . . . . . . . . . . . . . . . . . . . . 10
+     4.5.  Option . . . . . . . . . . . . . . . . . . . . . . . . . . 10
+       4.5.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 11
+       4.5.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . 11
+       4.5.3.  description  . . . . . . . . . . . . . . . . . . . . . 11
+     4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 11
+       4.6.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 12
+     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 12
+       4.7.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 12
+     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 12
+       4.8.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 13
+   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+     5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
+   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 19
+     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 19
+       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 19
+       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 19
+     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 19
+       6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 19
+         6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 19
+         6.2.1.2.  Documentation  . . . . . . . . . . . . . . . . . . 20
+         6.2.1.3.  Stream Processing  . . . . . . . . . . . . . . . . 20
        6.2.2.  For Command Line Interface Clients (e.g. Under
-               Unix/Linux shell)  . . . . . . . . . . . . . . . . . . 18
-         6.2.2.1.  Documentation  . . . . . . . . . . . . . . . . . . 18
-         6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 19
-   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
-   8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
-   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 19
-     9.1.  Normative References . . . . . . . . . . . . . . . . . . . 19
-     9.2.  Informative References . . . . . . . . . . . . . . . . . . 20
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 21
-     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 21
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 21
-
+               Unix/Linux shell)  . . . . . . . . . . . . . . . . . . 20
+         6.2.2.1.  Documentation  . . . . . . . . . . . . . . . . . . 20
+         6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 21
+   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 21
+   8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 21
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 21
+     9.1.  Normative References . . . . . . . . . . . . . . . . . . . 21
+     9.2.  Informative References . . . . . . . . . . . . . . . . . . 22
  
 
 
 Michaud                 Expires August 17, 2017                 [Page 2]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 22
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 23
+     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 23
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 23
 
 
 1.  Introduction
@@ -156,12 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    document are to be interpreted as described in [RFC2119].
 
 3.  HCLI ALPS Semantics
-
-   The HCLI semantics are largely codified via the definition of a
-   proposed standard ALPS profile [I-D.draft-amundsen-richardson-foster-
-   alps], and takes the following form:
-
-   <alps version="1.0">
  
 
 
@@ -170,20 +170,22 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+   The HCLI semantics are largely codified via the definition of a
+   proposed standard ALPS profile [I-D.draft-amundsen-richardson-foster-
+   alps], and takes the following form:
+
+   <alps version="1.0">
        <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
 
-       <!-- The mandatory version of the HCLI specification in use -->
-       <descriptor id="hcli_version">
-           <doc>1.0</doc>
-       </descriptor>
+       <descriptor href="#hcli_version" />
 
        <!-- The mandatory name of the command described by the HCLI Document -->
-       <descriptor id="name" type="semantic"/>
+       <descriptor href="#name" />
 
        <!-- A mandatory documentation section -->
        <descriptor id="section" type="semantic">
-           <descriptor id="name" type="semantic" />
-           <descriptor id="description" type="semantic" />
+           <descriptor href="#name" />
+           <descriptor href="#description" />
        </descriptor>
 
        <!-- A command: zero or more of these may be present -->
@@ -195,8 +197,9 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
                    <doc>A link for selecting a command.</doc>
                </descriptor>
            </descriptor>
-           <descriptor id="name" type="semantic" />
-           <descriptor id="description" type="semantic" />
+           <descriptor href="#hcli_version"/>
+           <descriptor href="#name" />
+           <descriptor href="#description" />
        </descriptor>  
 
        <!-- An option: zero or more of these may be present -->
@@ -208,16 +211,13 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
                    <doc>A link for selecting an option.</doc>
                </descriptor>
            </descriptor>
-           <descriptor id="name" type="semantic" />
-           <descriptor id="description" type="semantic" />
+           <descriptor href="#hcli_version"/>
+           <descriptor href="#name" />
+           <descriptor href="#description" />
        </descriptor> 
 
        <!-- Parameters: zero or one of these may be present -->
        <descriptor id="parameter" type="semantic">
-           <doc>A form for inputting command line parameters.</doc>
-           <descriptor id="item" type="safe">
-               <doc>A link to an individual parameter.</doc>
-
  
 
 
@@ -226,14 +226,19 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+           <doc>A form for inputting command line parameters.</doc>
+           <descriptor id="item" type="safe">
+               <doc>A link to an individual parameter.</doc>
+
                <!-- Only one of these may be present -->
                <descriptor id="hcli_param" type="semantic">
                    <doc>Custom supplied input for a CLI execution.</doc>
                </descriptor>
            </descriptor>
+           <descriptor href="#hcli_version"/>
        </descriptor>
 
-       <!-- An execution: zero or one of these is present -->
+       <!-- An execution: zero or one of these may be present -->
        <descriptor id="safe-execution" type="semantic">
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
@@ -244,9 +249,10 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
                    <doc>A link for executing a command line.</doc>
                </descriptor>
            </descriptor>
+           <descriptor href="#hcli_version"/>
        </descriptor>  
 
-       <!-- An execution: zero or one of these is present -->
+       <!-- An execution: zero or one of these may be present -->
        <descriptor id="unsafe-execution" type="semantic">
            <doc>A form for executing a command line.</doc>
            <descriptor id="item" type="safe">
@@ -257,7 +263,25 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
                    <doc>A link for executing a command line.</doc>
                </descriptor>
            </descriptor>
+           <descriptor href="#hcli_version"/>
        </descriptor>  
+
+       <!-- The mandatory version of the HCLI specification in use -->
+       <descriptor id="hcli_version" type="semantic" />
+
+       <!-- The mandatory name of the described command or option -->
+       <descriptor id="name" type="semantic" />
+
+       <!-- The mandatory description of a named section, command, or option -->
+       <descriptor id="description" type="semantic" />    
+ 
+
+
+Michaud                 Expires August 17, 2017                 [Page 5]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
    </alps>
 
 
@@ -274,10 +298,42 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
-Michaud                 Expires August 17, 2017                 [Page 5]
+Michaud                 Expires August 17, 2017                 [Page 6]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
@@ -324,16 +380,16 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    Additionally, this specification reserves the following names for
    exclusive use by HCLI clients:
 
-   (1)  "OPTIONS" : A reserved Section name
+   (1)  "options" : A reserved section name
 
-   (2)  "COMMANDS" : A reserved Section name
+   (2)  "commands" : A reserved section name
 
    (3)  "help": A reserved Command name
 
  
 
 
-Michaud                 Expires August 17, 2017                 [Page 6]
+Michaud                 Expires August 17, 2017                 [Page 7]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
@@ -355,29 +411,29 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    related provisions are covered in sections further below, where they
    can be better contextualized.
 
-4.2.  Name
+4.2.  name
 
-   The Name property is REQUIRED.
+   The "name" property is REQUIRED.
 
    The name property contains the name of the Command described by the
    HCLI Document.
 
-4.3.  Section
+4.3.  section
 
-   The Section property is REQUIRED.
+   The "section" property is REQUIRED.
 
    A section contains documentation used by users to interact with an
    HCLI. Given the primary goal of HCLI, mentioned in the introduction,
    the sections SHOULD take a form akin to Unix/Linux style man pages
    and MUST minimally make use of the following named sections:
 
-   (1) NAME
+   (1) name
 
-   (2) SYNOPSIS
+   (2) synopsis
 
-   (3) DESCRIPTION
+   (3) description
 
-   (4) EXAMPLES
+   (4) examples
 
    The purpose and content of each section SHOULD adhere to Unix/Linux
    man page conventions and the first three sections MUST be in the
@@ -389,14 +445,14 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
  
 
 
-Michaud                 Expires August 17, 2017                 [Page 7]
+Michaud                 Expires August 17, 2017                 [Page 8]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-   (1) OPTIONS
+   (1) options
 
-   (2) COMMANDS
+   (2) commands
 
 4.3.1.  name
 
@@ -423,11 +479,17 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    line sequence. Specific contextual relevance determination is,
    however, out of scope of this specification.
 
-   Successful traversal of the "cli" link relation by an HCLI client
-   MUST return an HCLI Document describing the targeted Command's
-   context.
+   Successful traversal, by an HCLI client, of the "cli" link relation
+   contained in a Command item, MUST return an HCLI Document describing
+   the targeted Command's context.
 
-4.4.1.  name
+4.4.1  hcli_version
+
+   The "hcli_version" property is REQUIRED.
+
+   The version of this HCLI specification; it's value set to "1.0".
+
+4.4.2.  name
 
    The "name" property is REQUIRED.
 
@@ -436,21 +498,21 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    By convention, and to help human actors differentiate Options from
    Commands, Command names SHOULD NOT be prefixed with a:
 
+ 
+
+
+Michaud                 Expires August 17, 2017                 [Page 9]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
    (1) single dash character (i.e. "-")
 
    (2) two consecutive dash characters (i.e. "--").
 
 
    Furthermore, to make it easier for HCLI clients to differentiate
- 
-
-
-Michaud                 Expires August 17, 2017                 [Page 8]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
-   between Parameters, Commands and Options, the name value MUST NOT
+   between Parameters, Commands and Options, the name value SHOULD NOT
    make use of the:
 
    (1) single quote character (i.e. ')
@@ -463,7 +525,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    The "help" Command name is reserved for use by clients and MUST NOT
    be presented as a valid Command to use.
 
-4.4.2.  description
+4.4.3.  description
 
    The "description" property is REQUIRED.
 
@@ -482,38 +544,45 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    line sequence. Specific contextual relevance determination is,
    however, out of scope of this specification.
 
-   Successful traversal of the "cli" link relation by an HCLI client
-   MUST return an HCLI Document that correlates to the last successfully
-   navigated Command. Options MUST NOT present documentation distinct
-   from that of it's associated Command.
+   Successful traversal, by an HCLI client, of the "cli" link relation
+   contained in an Option item, MUST return an HCLI Document that
+   correlates to the last successfully navigated Command. Options MUST
+   NOT present documentation distinct from that of it's associated
+   Command.
 
    The "cli" link relation of an Option that's already been navigated
    through by an HCLI client MUST NOT be presented any longer. The
    Option item, however, MUST otherwise remain available in an HCLI
    Document to help HCLI clients with automatic documentation
-   generation.
-
-4.5.1.  name
-
-   The "name" property is REQUIRED.
-
-   By convention, and to help human actors differentiate Options from
  
 
 
-Michaud                 Expires August 17, 2017                 [Page 9]
+Michaud                 Expires August 17, 2017                [Page 10]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-   Commands, Option names SHOULD be prefixed with a:
+   generation.
+
+4.5.1  hcli_version
+
+   The "hcli_version" property is REQUIRED.
+
+   The version of this HCLI specification; it's value set to "1.0".
+
+4.5.2.  name
+
+   The "name" property is REQUIRED.
+
+   By convention, and to help human actors differentiate between Options
+   and Commands, Option names SHOULD be prefixed with a:
 
    (1) single dash character (i.e. "-")
 
    (2) two consecutive dash characters (i.e. "--").
 
    To make it easier for clients to differentiate between Parameters,
-   Commands and Options, the name value MUST NOT make use of the:
+   Commands and Options, the name value SHOULD NOT make use of the:
 
    (1) single quote character (i.e. ')
 
@@ -521,7 +590,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    (3) back tick character (i.e. `)
 
-4.5.2.  description
+4.5.3.  description
 
    The "description" property is REQUIRED.
 
@@ -541,26 +610,35 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    A submitted expansion variable MUST be URL encoded [RFC3986].
 
    A Parameter item MUST only be made available if contextually
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 11]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
    relevant, for a given HCLI Document, in the cumulative formation of a
    command line sequence. Specific contextual relevance determination
    is, however, out of scope of this specification.
 
-   Successful traversal of the "cli" link relation by an HCLI client
-   MUST return an HCLI Document that correlates to the last successfully
-   navigated Command. Parameters MUST NOT present documentation distinct
-   from that of it's associated Command.
+   Successful traversal, by an HCLI client, of the "cli" link relation
+   contained in a Parameter item, MUST return an HCLI Document that
+   correlates to the last successfully navigated Command. Parameters
+   MUST NOT present documentation distinct from that of it's associated
+   Command.
 
-   Only a single Parameter item at a time MAY be presented in an HCLI
-   Document.
+   An HCLI Document MUST NOT contain more than a single Parameter item
+   at a time but more than one Parameter MAY be presented sequencially
+   across HCLI Documents.
+
+4.6.1  hcli_version
+
+   The "hcli_version" property is REQUIRED.
+
+   The version of this HCLI specification; it's value set to "1.0".
 
 4.7.  Safe Execution
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 10]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
 
    The Safe Execution item is OPTIONAL.
 
@@ -572,14 +650,29 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    sequence. Specific contextual relevance determination is, however,
    out of scope of this specification.
 
-   Successful traversal of the "cli" link relation by an HCLI client
-   MUST NOT return an HCLI Document and execution fulfillment MUST NOT
-   impact server resources.
+   Successful traversal, by an HCLI client, of the "cli" link relation
+   contained in the Safe Execution item, MUST NOT return an HCLI
+   Document and execution fulfillment MUST NOT impact server resources.
 
-   Both a Safe Execution and an Unsafe Execution MUST NOT be present
+   If presented, only a single Safe Execution MUST be presented and both
+   a Safe Execution and an Unsafe Execution MUST NOT be present
    simultaneously in the same HCLI Document.
 
+4.7.1  hcli_version
+
+   The "hcli_version" property is REQUIRED.
+
+   The version of this HCLI specification; it's value set to "1.0".
+
 4.8.  Unsafe Execution
+
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 12]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
 
    The Unsafe Execution item is OPTIONAL.
 
@@ -591,12 +684,19 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    sequence. Specific contextual relevance determination is, however,
    out of scope of this specification.
 
-   Successful traversal of the "cli" link relation by an HCLI client
-   MUST NOT return an HCLI Document and execution MAY impact server
-   resources.
+   Successful traversal, by an HCLI client, of the "cli" link relation
+   contained in an Unsafe Execution item, MUST NOT return an HCLI
+   Document and execution MAY impact server resources.
 
-   Both a Safe Execution and an Unsafe Execution MUST NOT be present
+   If presented, only a single Unsafe Execution MUST be presented and
+   both a Safe Execution and an Unsafe Execution MUST NOT be present
    simultaneously in the same HCLI Document.
+
+4.8.1  hcli_version
+
+   The "hcli_version" property is REQUIRED.
+
+   The version of this HCLI specification; it's value set to "1.0".
 
 5.  Examples
 
@@ -610,14 +710,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    Host: example.org
    Accept: application/hal+json
 
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 11]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
    HTTP/1.1 200 OK
    Content-Type: application/hal+json
 
@@ -630,24 +722,32 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
          "href": "http://example.org/profiles/hcli"
        },
        "type": {
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 13]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
          "href": "http://example.org/profiles/hcli"
        }
      },
      "section" : [
      {
-       "name": "NAME",
+       "name": "name",
        "description": "usp5"
      },
      {
-       "name": "SYNOPSIS",
+       "name": "synopsis",
        "description": "usp5 [option] <command> <subcommand> [parameters]"
      },
      {
-       "name": "DESCRIPTION",
+       "name": "description",
        "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
      },
      {
-       "name": "EXAMPLES",
+       "name": "examples",
        "description": "N/A"
      }],
      "_embedded":{
@@ -666,16 +766,9 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
            "cli": {
              "href": "/usp5/admin?command=usp5+admin",
              "profile": "http://example.org/profiles/hcli"
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 12]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
            }
          },
+         "hcli_version": "1.0",
          "name": "admin",
          "description": "Allows you to administer the usp5 server."
        },
@@ -685,6 +778,14 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "href": "/usp5/__odef/--version?command=usp5"
            },
            "profile": {
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 14]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
              "href": "http://example.org/profiles/hcli"
            },
            "type": {
@@ -695,6 +796,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "profile": "http://example.org/profiles/hcli"
            }
          },
+         "hcli_version": "1.0",
          "name": "--version",
          "description": "The usp5 CLI version."
        }]
@@ -722,27 +824,27 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
      },
      "section" : [
      {
+       "name": "name",
+       "description": "usp5"
+     },
+     {
+       "name": "synopsis",
+       "description": "usp5 [option] <command> <subcommand> [parameters]"
+     },
+     {
+       "name": "description",
+       "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
  
 
 
-Michaud                 Expires August 17, 2017                [Page 13]
+Michaud                 Expires August 17, 2017                [Page 15]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-       "name": "NAME",
-       "description": "usp5"
      },
      {
-       "name": "SYNOPSIS",
-       "description": "usp5 [option] <command> <subcommand> [parameters]"
-     },
-     {
-       "name": "DESCRIPTION",
-       "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
-     },
-     {
-       "name": "EXAMPLES",
+       "name": "examples",
        "description": "N/A"
      }],
      "_embedded":{
@@ -759,6 +861,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "href": "http://example.org/profiles/hcli#command"
            }
          },
+         "hcli_version": "1.0",
          "name": "admin",
          "description": "Allows you to administer the usp5 server."
        },
@@ -774,18 +877,11 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "href": "http://example.org/profiles/hcli#option"
            }
          },
+         "hcli_version": "1.0",
          "name": "--version",
          "description": "The usp5 CLI version."
        },
        {
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 14]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
          "_links": {
            "self": {
              "href": "/usp5/__edef?command=usp5+--version"
@@ -794,13 +890,22 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "href": "http://example.org/profiles/hcli"
            },
            "type": {
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 16]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
              "href": "http://example.org/profiles/hcli#safe-execution"
            },
            "cli": {
              "href": "/usp5/execution?command=usp5+--version",
              "profile": "http://example.org/profiles/hcli"
            }
-         }
+         },
+         "hcli_version": "1.0"
        }]
      }
    }
@@ -812,9 +917,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    HTTP/1.1 200 OK
    Content-Type: application/octet-stream
 
-   {
-     "version" : "0.0.1"
-   }
+   0.0.1
 
 5.2  jsonf
 
@@ -834,14 +937,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
      "_links": {
        "self": {
          "href": "/jsonf?command=jsonf"
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 15]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
        },
        "profile": {
          "href": "http://example.org/profiles/hcli"
@@ -851,20 +946,28 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        }
      },
      "section" : [
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 17]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
      {
-       "name": "NAME",
+       "name": "name",
        "description": "jsonf"
      },
      {
-       "name": "SYNOPSIS",
+       "name": "synopsis",
        "description": "jsonf"
      },
      {
-       "name": "DESCRIPTION",
+       "name": "description",
        "description": "The jsonf CLI formats JSON documents to make them more human-readable."
      },
      {
-       "name": "EXAMPLES",
+       "name": "examples",
        "description": "cat linear.json | jsonf"
      }],
      "_embedded":{
@@ -884,20 +987,13 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
              "href": "/jsonf/execution?command=jsonf",
              "profile": "http://example.org/profiles/hcli"
            }
-         }
+         },
+         "hcli_version": "1.0"
        }]
      }
    }
 
    POST /jsonf/execution?command=jsonf HTTP/1.1
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 16]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
    Host: example.org
    Content-Type: application/json
    Accept: */*
@@ -906,6 +1002,13 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    HTTP/1.1 200 OK
    Content-Type: application/json
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 18]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
 
    {
      "linear" : "and",
@@ -924,35 +1027,27 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    and that intend to allow input stream like processing for their HCLI,
    for example, by receiving an STDIN input stream through a filter from
    a pipe and filter sequence in a Unix/Linux shell, MUST minimally be
-   ready to receive and process entity bodies of the application/octet-
+   ready to receive and send entity bodies of the application/octet-
    stream media-type [RFC2046].
 
-   Servers SHOULD, however, endeavor to foster support for the reception
-   of correctly identified media-types to help maintain visibility on
-   the network.
-
-   This is intended to primarily enable the pipe and filter style for
+   This is intended to easily enable the pipe and filter style for
    clients and servers that understand and offer HCLI semantics.
-   Specific input stream processing semantics by HCLI servers are out of
+   Specific input stream processing semantics by services are out of
    scope of this specification.
+
+   Servers SHOULD, however, endeavor to support receiving and sending
+   correctly identified media-types to help maintain visibility on the
+   network.
 
 6.1.2.  Standard HCLI ALPS Profile
 
    The standard HCLI ALPS profiles defined in this specification SHOULD
    be hosted alongside an HCLI API deployment and correspondingly
-   referenced in an HCLI Documents. HCLI Documents MAY also, if
+   referenced in an HCLI Document. HCLI Documents MAY also, if
    appropriate, reference the standard HCLI ALPS profile hosted at an
-   independent ALPS repository.
+   independent ALPS registry (APR).
 
 6.2.  Client-side Considerations
-
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 17]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
 
 6.2.1.  For Clients in General
 
@@ -962,12 +1057,19 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    automatically, and sequentially parse submitted arguments, and to
    navigate through sequences of HCLI Documents, by using Command or
    Option "name" or the Parameter variable "hcli_param", corresponding
-   to each entered command, option or parameter.
+   to each parsed command, option or parameter.
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 19]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
 
    A client MAY want to help disambiguate user supplied parameters from
    commands and options by always assuming that strings surrounded by
-   the double quote character (i.e. ") are intended to be submitted as a
-   user supplied parameter.
+   the double quote character (i.e. "), or the single quote character
+   (i.e. '), are intended to be submitted as a user supplied parameter.
 
    Upon running out of commands, options and parameters to parse for use
    in HCLI navigation, a client SHOULD automatically attempt a Safe
@@ -980,7 +1082,7 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 6.2.1.2.  Documentation
 
    The reserved "help" command MAY be used anywhere in a command line
-   execution and SHOULD present documentation formatted from the last
+   sequence and SHOULD present documentation formatted from the last
    successfully retrieved HCLI Document preceding the "help" command.
 
 6.2.1.3.  Stream Processing
@@ -989,12 +1091,15 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    attempt to send it to HCLI server, but only if a command line
    sequence leads to an Unsafe Execution.
 
-   Clients MUST minimally support sending input streams under the
-   application/octet-stream [RFC2046] media-type.
+   Clients MUST minimally support sending input streams and receiving
+   output streams under the application/octet-stream [RFC2046] media-
+   type.
 
    Command line clients SHOULD, however, endeavor to communicate input
    streams by using the most appropriate media-type representing the
-   input stream to transfer.
+   input stream to transfer and SHOULD also be ready to process
+   responses making use of the most appropriate media-type for the
+   received payload to help maintain visibility on the network.
 
 6.2.2.  For Command Line Interface Clients (e.g. Under Unix/Linux shell)
 
@@ -1002,20 +1107,20 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    When generating documentation via "help", a man page SHOULD be
    presented and formatted from the last successfully retrieved HCLI
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 18]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
    Document preceding the "help" command.
 
    Additionally, clients SHOULD automatically generate an OPTIONS and
    COMMANDS section (both reserved for client use), in the man page
    documentation, that corresponds to a listing of Options and Commands
-   and contained in the presented HCLI Document.
+   referenced in the presented HCLI Document.
+
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 20]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
 
 6.2.2.2.  Stream Processing
 
@@ -1036,14 +1141,14 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 8.  IANA Considerations
 
-   The HCLI specification introduces the "cli" link relation [RFC5988]
-   to indicate the presence of hypertext command line interface
-   semantics.
+   The HCLI specification introduces the "cli" link relation per
+   [RFC5988] to indicate the presence of hypertext command line
+   interface semantics.
 
    The link relation SHOULD be accompanied by a "profile" [RFC6906]
    defining command line interface semantics.
 
-   This specification defines an HCLI ALPS profile to be used in
+   This specification defines a standard ALPS profile to be used in
    conjunction with the "cli" link relation but does NOT REQUIRE that
    the HCLI profile defined in this specification be the only profile
    used in conjunction with the "cli" link relation.
@@ -1058,14 +1163,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119, March 1997.
 
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 19]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
-
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
@@ -1073,6 +1170,14 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
               3986, January 2005.
 
    [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 21]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
               and D. Orchard, "URI Template", RFC 6570, March 2012.
 
    [RFC2046]  Freed, N., Innosoft, Borenstein, N., First Virtual, RFC
@@ -1114,10 +1219,17 @@ Appendix A.  Acknowledgements
 
 
 
+
+
+
+
+
+
+
  
 
 
-Michaud                 Expires August 17, 2017                [Page 20]
+Michaud                 Expires August 17, 2017                [Page 22]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
@@ -1173,4 +1285,4 @@ Author's Address
 
 
 
-Michaud                 Expires August 17, 2017                [Page 21]
+Michaud                 Expires August 17, 2017                [Page 23]
