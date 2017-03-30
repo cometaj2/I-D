@@ -60,53 +60,48 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  7
-     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  8
-       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  8
-       4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  8
-     4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  8
-     4.3.  section  . . . . . . . . . . . . . . . . . . . . . . . . .  8
-       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
-     4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.4.1  hcli_version  . . . . . . . . . . . . . . . . . . . . .  9
-       4.4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
-       4.4.3.  description  . . . . . . . . . . . . . . . . . . . . . 10
-     4.5.  Option . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-       4.5.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 11
-       4.5.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . 11
-       4.5.3.  description  . . . . . . . . . . . . . . . . . . . . . 11
-     4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 11
-       4.6.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 12
-     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 12
-       4.7.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 12
-     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 12
-       4.8.1  hcli_version  . . . . . . . . . . . . . . . . . . . . . 13
-   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-     5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 17
-   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 19
-     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 19
-       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 19
-       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 19
-     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 19
-       6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 19
-         6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 19
-         6.2.1.2.  Documentation  . . . . . . . . . . . . . . . . . . 20
-         6.2.1.3.  Stream Processing  . . . . . . . . . . . . . . . . 20
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
+       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
+       4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
+     4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     4.3.  section  . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
+     4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.4.2.  description  . . . . . . . . . . . . . . . . . . . . .  9
+     4.5.  Option . . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
+       4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
+     4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
+     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 11
+     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
+   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
+   6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
+     6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
+       6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
+       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 18
+     6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 18
+       6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
+         6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
+         6.2.1.2.  Documentation  . . . . . . . . . . . . . . . . . . 18
+         6.2.1.3.  Stream Processing  . . . . . . . . . . . . . . . . 18
        6.2.2.  For Command Line Interface Clients (e.g. Under
-               Unix/Linux shell)  . . . . . . . . . . . . . . . . . . 20
-         6.2.2.1.  Documentation  . . . . . . . . . . . . . . . . . . 20
-         6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 21
-   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 21
-   8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 21
-   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 21
-     9.1.  Normative References . . . . . . . . . . . . . . . . . . . 21
-     9.2.  Informative References . . . . . . . . . . . . . . . . . . 22
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 22
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 23
-     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 23
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 23
+               Unix/Linux shell)  . . . . . . . . . . . . . . . . . . 19
+         6.2.2.1.  Documentation  . . . . . . . . . . . . . . . . . . 19
+         6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 19
+   7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
+   8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+     9.1.  Normative References . . . . . . . . . . . . . . . . . . . 20
+     9.2.  Informative References . . . . . . . . . . . . . . . . . . 20
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 21
+     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 21
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 21
 .fi
 .in 3
 
@@ -222,9 +217,9 @@ The HCLI semantics are largely codified via the definition of a proposed standar
     </descriptor>  
 
     <!-- The mandatory version of the HCLI specification in use -->
-    <descriptor id="hcli_version" type="semantic" />
+    <descriptor id="hcli_version" type="semantic"/>
 
-    <!-- The mandatory name of the described command or option -->
+    <!-- The mandatory name of the described section, command, or option -->
     <descriptor id="name" type="semantic" />
 
     <!-- The mandatory description of a named section, command, or option -->
@@ -344,14 +339,7 @@ A Command item MUST only be made available if contextually relevant, for a given
 Successful traversal, by an HCLI client, of the "cli" link relation contained in a Command item, MUST return an HCLI Document describing the targeted Command's context.
 
 .ti 0
-4.4.1  hcli_version
-
-The "hcli_version" property is REQUIRED.
-
-The version of this HCLI specification; it's value set to "1.0".
-
-.ti 0
-4.4.2.  name
+4.4.1.  name
 
 The "name" property is REQUIRED.
 
@@ -376,7 +364,7 @@ Furthermore, to make it easier for HCLI clients to differentiate between Paramet
 The "help" Command name is reserved for use by clients and MUST NOT be presented as a valid Command to use.
 
 .ti 0
-4.4.3.  description
+4.4.2.  description
 
 The "description" property is REQUIRED.
 
@@ -396,14 +384,7 @@ Successful traversal, by an HCLI client, of the "cli" link relation contained in
 The "cli" link relation of an Option that's already been navigated through by an HCLI client MUST NOT be presented any longer. The Option item, however, MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
 
 .ti 0
-4.5.1  hcli_version
-
-The "hcli_version" property is REQUIRED.
-
-The version of this HCLI specification; it's value set to "1.0".
-
-.ti 0
-4.5.2.  name
+4.5.1.  name
 
 The "name" property is REQUIRED.
 
@@ -422,7 +403,7 @@ To make it easier for clients to differentiate between Parameters, Commands and 
 (3) back tick character (i.e. `)
 
 .ti 0
-4.5.3.  description
+4.5.2.  description
 
 The "description" property is REQUIRED.
 
@@ -444,13 +425,6 @@ Successful traversal, by an HCLI client, of the "cli" link relation contained in
 An HCLI Document MUST NOT contain more than a single Parameter item at a time but more than one Parameter MAY be presented sequencially across HCLI Documents.
 
 .ti 0
-4.6.1  hcli_version
-
-The "hcli_version" property is REQUIRED.
-
-The version of this HCLI specification; it's value set to "1.0".
-
-.ti 0
 4.7.  Safe Execution
 
 The Safe Execution item is OPTIONAL.
@@ -464,13 +438,6 @@ Successful traversal, by an HCLI client, of the "cli" link relation contained in
 If presented, only a single Safe Execution MUST be presented and both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
 
 .ti 0
-4.7.1  hcli_version
-
-The "hcli_version" property is REQUIRED.
-
-The version of this HCLI specification; it's value set to "1.0".
-
-.ti 0
 4.8.  Unsafe Execution
 
 The Unsafe Execution item is OPTIONAL.
@@ -482,13 +449,6 @@ An Unsafe Execution item MUST only be made available if contextually relevant, f
 Successful traversal, by an HCLI client, of the "cli" link relation contained in an Unsafe Execution item, MUST NOT return an HCLI Document and execution MAY impact server resources.
 
 If presented, only a single Unsafe Execution MUST be presented and both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
-
-.ti 0
-4.8.1  hcli_version
-
-The "hcli_version" property is REQUIRED.
-
-The version of this HCLI specification; it's value set to "1.0".
 
 .ti 0
 5.  Examples
