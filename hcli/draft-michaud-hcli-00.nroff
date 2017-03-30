@@ -60,8 +60,8 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  5
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  6
        4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
        4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
      4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
@@ -75,7 +75,7 @@ Table of Contents
        4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
        4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
      4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
-     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 11
+     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 10
      4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
    5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
      5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
@@ -83,7 +83,7 @@ Table of Contents
    6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
      6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
        6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 18
+       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 17
      6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 18
        6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
          6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
@@ -95,7 +95,7 @@ Table of Contents
          6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 19
    7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
    8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
-   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 19
      9.1.  Normative References . . . . . . . . . . . . . . . . . . . 20
      9.2.  Informative References . . . . . . . . . . . . . . . . . . 20
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
@@ -133,93 +133,94 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 
 .nf
 <alps version="1.0">
-    <doc format="text">Hypertext Command Line Interface (HCLI) semantics.</doc>
+    <doc>Hypertext Command Line Interface (HCLI) semantics.</doc>
 
-    <descriptor href="#hcli_version" />
+    <descriptor id="hcli-document">
+        <descriptor href="#hcli_version" />
 
-    <!-- The mandatory name of the command described by the HCLI Document -->
-    <descriptor href="#name" />
-
-    <!-- A mandatory documentation section -->
-    <descriptor id="section" type="semantic">
         <descriptor href="#name" />
-        <descriptor href="#description" />
+
+        <descriptor id="section" type="semantic">
+            <descriptor href="#name" />
+            <descriptor href="#description" />
+        </descriptor>
+
+        <!-- A command: zero or more of these may be present -->
+        <descriptor href="#command"/>
+
+        <!-- An option: zero or more of these may be present -->
+        <descriptor href="#option"/>
+
+        <!-- Parameters: zero or one of these may be present -->
+        <descriptor href="#parameter"/>
+
+        <!-- A safe execution: zero or one of these may be present -->
+        <descriptor href="#safe-execution"/>
+
+        <!-- An unsafe execution: zero or one of these may be present -->
+        <descriptor href="#unsafe-execution"/>
     </descriptor>
 
-    <!-- A command: zero or more of these may be present -->
     <descriptor id="command" type="semantic">
-        <descriptor id="item" type="safe">
-            <doc>A link to an individual command.</doc>
+        <doc>A resource for selecting a command.</doc>
 
-            <descriptor id="cli" type="safe">
-                <doc>A link for selecting a command.</doc>
-            </descriptor>
-        </descriptor>
+        <descriptor href="#item" name="safe-cli" />
         <descriptor href="#hcli_version"/>
         <descriptor href="#name" />
         <descriptor href="#description" />
     </descriptor>  
 
-    <!-- An option: zero or more of these may be present -->
     <descriptor id="option" type="semantic">
-        <descriptor id="item" type="safe">
-            <doc>A link to an individual option.</doc>
+        <doc>A resource for selecting an option.</doc>
 
-            <descriptor id="cli" type="safe">
-                <doc>A link for selecting an option.</doc>
-            </descriptor>
-        </descriptor>
+        <descriptor href="#item" name="safe-cli" />
         <descriptor href="#hcli_version"/>
         <descriptor href="#name" />
         <descriptor href="#description" />
     </descriptor> 
 
-    <!-- Parameters: zero or one of these may be present -->
     <descriptor id="parameter" type="semantic">
-        <doc>A form for inputting command line parameters.</doc>
-        <descriptor id="item" type="safe">
-            <doc>A link to an individual parameter.</doc>
+        <descriptor href="#item" name="parametrized" type="safe"/>
+        <descriptor href="#hcli_version"/>        
+    </descriptor>
+
+    <descriptor id="safe-execution" type="semantic">
+        <doc>A resource for executing a safe command line.</doc>
+
+        <descriptor href="#item" name="safe-cli" />
+    </descriptor>  
+
+    <descriptor id="unsafe-execution" type="semantic">
+        <doc>A resource for executing an unsafe command line.</doc>
+
+        <descriptor href="#item" name="unsafe-cli" />
+    </descriptor>  
+
+    <descriptor id="item" name="safe-cli" type="safe">
+        <descriptor id="cli" name="safe-cli" type="safe"/>
+    </descriptor>
+
+    <descriptor id="item" name="unsafe-cli" type="safe">
+        <descriptor id="cli" name="unsafe-cli" type="usafe"/>
+    </descriptor>
+
+    <descriptor id="item" name="parametrized" type="safe">
+        <doc>A resource for entering a parameter.</doc>
+
+        <descriptor id="cli" name="parametrized" type="safe">
+            <doc>A form for inputting a command line parameter.</doc>
 
             <!-- Only one of these may be present -->
             <descriptor id="hcli_param" type="semantic">
                 <doc>Custom supplied input for a CLI execution.</doc>
             </descriptor>
         </descriptor>
-        <descriptor href="#hcli_version"/>
     </descriptor>
 
-    <!-- An execution: zero or one of these may be present -->
-    <descriptor id="safe-execution" type="semantic">
-        <doc>A form for executing a command line.</doc>
-        <descriptor id="item" type="safe">
-            <doc>A link to a command line execution item.</doc>
-
-            <!-- Only one of these may be present -->
-            <descriptor id="cli" type="safe">
-                <doc>A link for executing a command line.</doc>
-            </descriptor>
-        </descriptor>
-        <descriptor href="#hcli_version"/>
-    </descriptor>  
-
-    <!-- An execution: zero or one of these may be present -->
-    <descriptor id="unsafe-execution" type="semantic">
-        <doc>A form for executing a command line.</doc>
-        <descriptor id="item" type="safe">
-            <doc>A link to a command line execution item.</doc>
-
-            <!-- Only one of these may be present -->
-            <descriptor id="cli" type="unsafe">
-                <doc>A link for executing a command line.</doc>
-            </descriptor>
-        </descriptor>
-        <descriptor href="#hcli_version"/>
-    </descriptor>  
-
     <!-- The mandatory version of the HCLI specification in use -->
-    <descriptor id="hcli_version" type="semantic"/>
+    <descriptor id="hcli_version" type="semantic" />
 
-    <!-- The mandatory name of the described section, command, or option -->
+    <!-- The mandatory name of the described command or option -->
     <descriptor id="name" type="semantic" />
 
     <!-- The mandatory description of a named section, command, or option -->
@@ -227,7 +228,6 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 </alps>
 .fi
 
-.bp
 .ti 0
 4.  HCLI Document
 
@@ -475,7 +475,7 @@ Content-Type: application/hal+json
       "href": "http://example.org/profiles/hcli"
     },
     "type": {
-      "href": "http://example.org/profiles/hcli"
+      "href": "http://example.org/profiles/hcli#hcli-document"
     }
   },
   "section" : [
@@ -556,7 +556,7 @@ Content-Type: application/hal+json
       "href": "http://example.org/profiles/hcli"
     },
     "type": {
-      "href": "http://example.org/profiles/hcli"
+      "href": "http://example.org/profiles/hcli#hcli-document"
     }
   },
   "section" : [
@@ -663,7 +663,7 @@ Content-Type: application/hal+json
       "href": "http://example.org/profiles/hcli"
     },
     "type": {
-      "href": "http://example.org/profiles/hcli"
+      "href": "http://example.org/profiles/hcli#hcli-document"
     }
   },
   "section" : [
