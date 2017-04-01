@@ -60,8 +60,8 @@ Table of Contents
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
    3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  5
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  6
        4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
        4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
      4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
@@ -75,7 +75,7 @@ Table of Contents
        4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
        4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
      4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
-     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 11
+     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 10
      4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
    5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
      5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
@@ -83,7 +83,7 @@ Table of Contents
    6.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 17
      6.1.  Server-side Considerations . . . . . . . . . . . . . . . . 17
        6.1.1.  Stream Processing  . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 18
+       6.1.2.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . 17
      6.2.  Client-side Considerations . . . . . . . . . . . . . . . . 18
        6.2.1.  For Clients in General . . . . . . . . . . . . . . . . 18
          6.2.1.1.  Command Line Execution . . . . . . . . . . . . . . 18
@@ -95,7 +95,7 @@ Table of Contents
          6.2.2.2.  Stream Processing  . . . . . . . . . . . . . . . . 19
    7.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
    8.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
-   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 20
+   9.  References . . . . . . . . . . . . . . . . . . . . . . . . . . 19
      9.1.  Normative References . . . . . . . . . . . . . . . . . . . 20
      9.2.  Informative References . . . . . . . . . . . . . . . . . . 20
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
@@ -209,7 +209,6 @@ The HCLI semantics are largely codified via the definition of a proposed standar
         <descriptor id="param-cli-item" name="cli" type="safe" rt="#hcli-document">
             <doc>A form to input a command line parameter.</doc>
 
-            <!-- Only one of these may be present -->
             <descriptor id="hcli_param" type="semantic">
                 <doc>Custom supplied input for a CLI execution.</doc>
             </descriptor>
@@ -679,7 +678,7 @@ Content-Type: application/hal+json
   },
   {
     "name": "description",
-    "description": "The jsonf CLI formats JSON documents to make them more human-readable."
+    "description": "The jsonf CLI formats JSON documents."
   },
   {
     "name": "examples",
