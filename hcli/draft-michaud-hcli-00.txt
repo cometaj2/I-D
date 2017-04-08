@@ -92,20 +92,20 @@ Table of Contents
      7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 18
        7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 18
        7.2.2.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
+       7.2.3.  Robustness . . . . . . . . . . . . . . . . . . . . . . 19
      7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 19
        7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 19
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 20
    10.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 20
      10.1.  Normative References  . . . . . . . . . . . . . . . . . . 20
      10.2.  Informative References  . . . . . . . . . . . . . . . . . 20
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 20
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 21
-     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 21
-       B.1.1.  Reduced Cost . . . . . . . . . . . . . . . . . . . . . 21
-       B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 21
-       B.1.3.  Familiarity  . . . . . . . . . . . . . . . . . . . . . 21
-       B.1.4.  Scripting and Experimentation  . . . . . . . . . . . . 21
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 21
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 22
+     B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 22
+       B.1.1.  Reduced Cost . . . . . . . . . . . . . . . . . . . . . 22
+       B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
+       B.1.3.  Immediacy  . . . . . . . . . . . . . . . . . . . . . . 22
  
 
 
@@ -114,8 +114,9 @@ Michaud                 Expires August 17, 2017                 [Page 2]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
-       B.1.5.  Building Blocks  . . . . . . . . . . . . . . . . . . . 21
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 21
+       B.1.4.  Scripting and Experimentation  . . . . . . . . . . . . 22
+       B.1.5.  Building Blocks  . . . . . . . . . . . . . . . . . . . 22
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 22
 
 
 1.  Introduction
@@ -161,7 +162,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 3.  HCLI ALPS Semantics
 
-   The HCLI semantics are largely codified via the definition of a
  
 
 
@@ -170,6 +170,7 @@ Michaud                 Expires August 17, 2017                 [Page 3]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+   The HCLI semantics are largely codified via the definition of a
    proposed standard ALPS profile [I-D.draft-amundsen-richardson-foster-
    alps], and takes the following form:
 
@@ -217,7 +218,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        </descriptor>
 
        <descriptor id="safe-execution" type="semantic">
-           <doc>A resource for executing a safe command line.</doc>
  
 
 
@@ -225,6 +225,8 @@ Michaud                 Expires August 17, 2017                 [Page 4]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+           <doc>A resource for executing a safe command line.</doc>
 
            <descriptor href="#execution-safe-cli-item" />
        </descriptor>  
@@ -272,8 +274,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
        </descriptor>
 
        <descriptor id="description" type="semantic">    
-           <doc>The description of a named section, command, or option</doc>
-       </descriptor>
  
 
 
@@ -282,6 +282,8 @@ Michaud                 Expires August 17, 2017                 [Page 5]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+           <doc>The description of a named section, command, or option</doc>
+       </descriptor>
    </alps>
 
 4.  HCLI Document
@@ -328,8 +330,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    (1)  "options" : A reserved section name
 
-   (2)  "commands" : A reserved section name
-
  
 
 
@@ -337,6 +337,8 @@ Michaud                 Expires August 17, 2017                 [Page 6]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
+
+   (2)  "commands" : A reserved section name
 
    (3)  "help": A reserved Command name
 
@@ -384,8 +386,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    The purpose and content of each section SHOULD adhere to Unix/Linux
    man page conventions and the first three sections MUST be in the
    exact sequence mentioned above. Other sections MAY be in any order.
-
-   Two section names are reserved for automatic documentation generation
  
 
 
@@ -394,6 +394,7 @@ Michaud                 Expires August 17, 2017                 [Page 7]
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
 
+   Two section names are reserved for automatic documentation generation
    by HCLI clients and MUST NOT be used in HCLI Documents:
 
    (1) options
@@ -441,7 +442,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    (1) single dash character (i.e. "-")
 
    (2) two consecutive dash characters (i.e. "--").
-
  
 
 
@@ -1029,6 +1029,17 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    sequence and SHOULD present documentation formatted from the last
    successfully retrieved HCLI Document preceding the "help" command.
 
+7.2.3.  Robustness
+
+   To maximize robustness, clients SHOULD endeavor to follow Postel's
+   law (e.g. be conservative in what you do, be liberal in what you
+   accept from others).
+
+   In other words, and of particular interest in this case, clients
+   consuming coherent HCLI semantics intermixed with non-HCLI semantics
+   they don't understand, SHOULD favor ignoring what they don't
+   understand over failing. 
+
 7.3.  For Command Line Clients (e.g. Under Unix/Linux shell)
 
 7.3.1.  Documentation
@@ -1047,6 +1058,13 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    presented HCLI Document.
 
 8.  Security Considerations
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 19]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
 
    TBD
 
@@ -1058,13 +1076,6 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
    The link relation SHOULD be accompanied by a "profile" [RFC6906]
    defining command line interface semantics.
- 
-
-
-Michaud                 Expires August 17, 2017                [Page 19]
-
-Internet-Draft      Hypertext Command Line Interface   February 13, 2017
-
 
    This specification defines a standard ALPS profile to be used in
    conjunction with the "cli" link relation but does NOT REQUIRE that
@@ -1103,6 +1114,14 @@ Internet-Draft      Hypertext Command Line Interface   February 13, 2017
    [I-D.draft-amundsen-richardson-foster-alps]
 
               Amundsen, M., CA Technologies, Inc., Richardson L.,
+ 
+
+
+Michaud                 Expires August 17, 2017                [Page 20]
+
+Internet-Draft      Hypertext Command Line Interface   February 13, 2017
+
+
               Foster, M., "Application-Level Profile Semantics (ALPS)",
               draft-amundsen-richardson-foster-alps-02 (work in
               progress), August 2015.
@@ -1114,10 +1133,47 @@ Appendix A.  Acknowledgements
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  
 
 
-Michaud                 Expires August 17, 2017                [Page 20]
+Michaud                 Expires August 17, 2017                [Page 21]
 
 Internet-Draft      Hypertext Command Line Interface   February 13, 2017
 
@@ -1129,11 +1185,11 @@ B.1.  What are some of the benefits of HCLI?
 B.1.1.  Reduced Cost
 
    The most immediate benefit is that instead of having to develop a
-   custom client for your REST API, you can benefit from the use of a
-   standard client that understands HCLI semantics. Such a client would
-   be able to interact, out-of-the-box with any HCLI API, as an impostor
-   CLI for any HCLI API; you get a free bridge into the pipe and filter
-   style for your HCLI API.
+   custom client for your HCLI API, you can benefit from the use of a
+   standard client that understands HCLI semantics. Such a client is
+   able to interact out-of-the-box with any HCLI API as an imposter CLI;
+   you get a free bridge into the pipe and filter style for your HCLI
+   API.
 
 B.1.2.  Self-documenting and Up-to-date
 
@@ -1144,11 +1200,11 @@ B.1.2.  Self-documenting and Up-to-date
    using the API so everybody benefits from up-to-date functionality and
    up-to-date documentation.
 
-B.1.3.  Familiarity
+B.1.3.  Immediacy
 
-   Having at your disposal an instantly usable shell CLI for your API
-   provides developers with an immediately usable, and familiar, mode of
-   operation when interacting with an HCLI API.
+   Having at your disposal an instantly usable shell CLI for your HCLI
+   API provides developers with an immediately usable, and familiar,
+   solution through a familiar mode of operation (pipe and filter).
 
 B.1.4.  Scripting and Experimentation
 
@@ -1173,4 +1229,4 @@ Author's Address
 
 
 
-Michaud                 Expires August 17, 2017                [Page 21]
+Michaud                 Expires August 17, 2017                [Page 22]
