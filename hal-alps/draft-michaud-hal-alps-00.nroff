@@ -66,24 +66,25 @@ Table of Contents
    3.  A Review of ALPS Principles  . . . . . . . . . . . . . . . . .  2
    4.  Servers and Clients  . . . . . . . . . . . . . . . . . . . . .  3
    5.  Advertising ALPS Profiles for HAL Representations  . . . . . .  3
-     5.1.  HAL profile and type relations . . . . . . . . . . . . . .  3
+     5.1.  HAL profile and type link relations  . . . . . . . . . . .  3
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
      5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
      6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
-       6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
-       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
-       6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  7
-         6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  6
+       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+       6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
+         6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 12
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 12
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 12
-   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 12
-   11.  Informative References  . . . . . . . . . . . . . . . . . . . 12
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 12
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 12
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 13
+       6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 14
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 14
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 14
+   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 14
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 14
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 15
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 15
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 15
 .fi
 .in 3
 
@@ -122,9 +123,13 @@ Client implementers can use the same ALPS document as a guide for what to expect
 Servers returning HAL documents MUST only advertise the ALPS profiles they support using one of the following methods
 
 .ti 0
-5.1.  HAL profile and type relations
+5.1.  HAL profile and type link relations
 
-HAL documents SHOULD use the profile and type relations in a HAL Link. The profile relation value SHOULD be set to the URL of the ALPS profile document and the type relation [RFC6903] SHOULD be set to the URL of the ALPS profile, or a URI fragment referencing a descriptor.id that exists in the referenced ALPS profile.
+HAL documents conforming to an ALPS profile SHOULD use the standard profile [RFC6906] and type [RFC6903] link relations HAL Link.
+
+The profile link relation href SHOULD be set to the URL of the advertised ALPS profile.
+
+The type link relation href SHOULD be set to the URL, with URL fragment referencing the descriptor.id of a semantic descriptor that exists in the referenced ALPS profile.
 
 .nf
 As application/hal+json:
@@ -135,10 +140,10 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": {
-      "href": "/profiles/accounting"
+      "href": "http://example.org/profiles/accounting"
     },
     "type": {
-      "href": "/profiles/accounting"
+      "href": "http://example.org/profiles/accounting#invoice"
     }
   }
 }
@@ -148,17 +153,23 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource rel="self" href="/svc">
-  <link rel="profile" href="/profiles/accounting"/>
-  <link rel="type" href="/profiles/accounting"/>
+  <link rel="profile" href="http://example.org/profiles/accounting"/>
+  <link rel="type" href="http://example.org/profiles/accounting"/>
 </resource>
 .fi
+
+Precedence rules between Link Headers and HAL link relations SHOULD observer compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
 .ti 0
 5.2.  Link Header
 
-Responses can include the Link header, in conformance with [RFC5988], with the href value set to the URL of the ALPS profile document or type and the rel value set to "profile" or "type"".
+Responses can include the Link header, in conformance with [RFC5988].
 
-Link: </profiles/accounting>;rel="profile", </profiles/accounting#invoice>;rel="type"
+The profile and type link relations can also similarly be used.
+
+Link: <http://example.org/profiles/accounting>;rel="profile", <http://example.org/profiles/accounting#invoice>;rel="type"
+
+Precedence rules between Link Headers and HAL link relations SHOULD observer compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
 .ti 0
 5.3.  Additional Considerations
@@ -174,24 +185,26 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/accounting"
+      "href": "http://example.org/profiles/accounting"
     },
     {
-      "href": "/profiles/finance"
+      "href": "http://example.org/profiles/finance"
     }],
     "type": [{
-      "href": "/profiles/accounting"
+      "href": "http://example.org/profiles/accounting#invoice"
     },
     {
-      "href": "/profiles/finance"
+      "href": "http://example.org/profiles/finance#billing"
     }]
   }
 }
 .fi
 
-In the above case, the client application has been informed that the response MAY contain data elements and state transitions from both the finance and the accounting ALPS profiles.
+In the above case, the client application has been informed that the response MAY contain data elements and state transitions from both the accounting and finance ALPS profiles.
 
-Clients accepting HAL documents SHOULD look for the ALPS profile in each of the mentioned places (.e.g. Link Header, HAL Profile Relation), as appropriate to the response. If an ALPS profile reference appears in more than one location, all profiles SHOULD be considered valid.
+Clients accepting HAL documents, and understanding ALPS semantics, SHOULD look for the ALPS profile in each of the mentioned places (.e.g. Link Header, HAL Profile Relation), as appropriate to the response. If an ALPS profile reference appears in more than one location, all profiles SHOULD be considered valid.
+
+Precedence rules between Link Headers and HAL link relations SHOULD observer compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
 .ti 0
 6.  ALPS Bindings for HAL
@@ -206,7 +219,7 @@ The following sections describe ALPS bindings for HAL, for the ALPS descriptor p
 .ti 0
 6.1.1.  id
 
-The descriptor.id, and the descriptor.type set to "semantic", SHOULD lead to lead to the formation of a HAL document property with the same name as the descriptor.id.
+The descriptor.id, with a descriptor.type set to "semantic", SHOULD lead to the formation of a HAL document property with the same name as the descriptor.id.
 
 Below are valid examples for both the application/hal+json and the application/hal+xml media-types:
 
@@ -225,10 +238,10 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/hcli"
     }],
     "type": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/hcli#hcli-document"
     }]
   },
   "section": [
@@ -246,8 +259,8 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="/profiles/hcli"/>
-  <link rel="type" href="/profiles/hcli"/>
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli#hcli-document"/>
   <section>
     <name>name</name>
     <description>A simple formatter for JSON</description>
@@ -259,19 +272,21 @@ As application/hal+xml:
 </resource>
 .fi
 
-One notable exception exists when a semantic descriptor.type contains a non-semantic descriptor.type. This is covered in a later section covering non-semantic descriptor.type.
+One notable and important exception exists when a semantic descriptor contains a non-semantic descriptor. This is covered in a later section covering non-semantic descriptor.type.
 
 .ti 0
 6.1.2.  name
 
-The descriptor.name property semantics are undefined if the semantic descriptor case and SHOULD NOT be used.
+The descriptor.name property SHOULD be used to help differentiate semantics when a condition would yield the required use of multiple identical descriptor.ids in an ALPS profile. Since having multiple identical descriptor.ids in an ALPS profile MUST NOT occur, the descriptor.id can remain unique within an ALPS profile and the descriptor.name MAY be used to otherwise lead to the formation of an identical key or link relation but with different application semantics.
 
-The descriptor.name property semantics are otherwise defined in the non-semantic descriptor case and MAY be used to help differentiate between otherwise identical descriptor.id and HAL link relation to enable client-side filtering.
+The below example is simplistic but hints at how semantics could be differentiated when a need for identical keys is otherwise desirable.
 
 .nf
 <!-- ALPS document fragment -->
-<descriptor id="next" name="book" type="safe"/>
-<descriptor id="next" name="movie" type="safe"/>
+<descriptor id="media" type="semantic">
+  <descriptor id="book-item" name="next" type="safe" />
+  <descriptor id="movie-item" name="next" type="safe" />
+</descriptor>
 
 As application/hal+json:
 
@@ -281,11 +296,11 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/library"
     }],
     "type": [{
-      "href": "/profiles/hcli"
-    },
+      "href": "http://example.org/profiles/library#media"
+    }, 
     "next": [{
       "href": "/svc/book/2",
       "name": "book"
@@ -300,8 +315,8 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="/profiles/hcli"/>
-  <link rel="type" href="/profiles/hcli"/>
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
   <link rel="next" href="/svc/book/2" name="book"/>
   <link rel="next" href="/svc/movie/2" name="movie"/>
 </resource>
@@ -315,18 +330,20 @@ As application/hal+xml:
 
 Coverage for the descriptor.type property with a value of "semantic" is covered under sections covering descriptor.id and descriptor.name.
 
-However, an important exception to the semantic descriptor.id case exists; when a semantic descriptor contains a non-semantic descriptor.
+However, an important and complex exception to the semantic descriptor.id case exists: when an ALPS profile semantic descriptor references a semantic descriptor that contains a non-semantic descriptor.
 
-Such cases lead to the formation of linked resources or embedded resources, or both, in a HAL document. Determination of whether formation leads to the presence of a link, an embedded resource, or both, is left to service implementers.
+Such cases lead to the formation of linked resources, embedded resources, or both, in a HAL document. Determination of whether formation leads to the presence of a link, an embedded resource, or both, is left to service implementers.
 
-If a service presents a link, the link SHOULD use the non-semantic descriptor.id as the link relation.
+If a service implementation SHOULD leads to the formation of a linked resource, the linked resource SHOULD contain a "profile" property referencing the URI of the ALPS profile, a "type" property referencing the URI of the ALPS profile, and fragment referencing the descriptor.id, or descriptor.name if appropriate, of the targeted semantic descriptor.
 
-The HAL "profile" link property SHOULD contain a URI to the ALPS profile and the HAL "type" link property SHOULD contain a URI to the ALPS profile followed by a URI fragment referencing the descriptor.id of the containing semantic descriptor.id.
-
-If a service presents an embedded resource, the embedded resource SHOULD contain a "profile" link relation referencing the URI of the ALPS profile, a "type" link relation referencing the URI of the ALPS profile and fragment referencing the descriptor.id of the containing semantic descriptor.id
+If a service implementation SHOULD leads to the formation of an embedded resource, the embedded resource SHOULD contain a "profile" link relation referencing the URI of the ALPS profile, a "type" link relation referencing the URI of the ALPS profile and fragment referencing the descriptor.id, or descriptor.name if appropriate, of the targeted semantic descriptor.
 
 .nf
-<!-- ALPS document fragment -->
+<!-- ALPS document fragments -->
+<descriptor id="hcli-document" type="semantic">
+  <descriptor href="#command">
+</descriptor> 
+
 <descriptor id="command" type="semantic">
   <descriptor id="item" type="safe">
     <doc>A link to an individual command summary.</doc>
@@ -347,15 +364,15 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/hcli"
     }],
     "type": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/hcli#hcli-document"
     },
     "item": {
       "href": "/svc/jsonf/def/go?command=jsonf",
-      "profile": "/profiles/hcli",
-      "type" : "/profiles/hcli#command"
+      "profile": "http://example.org/profiles/hcli",
+      "type" : "http://example.org/profiles/hcli#command"
     }
   },
   "_embedded" : {
@@ -364,14 +381,14 @@ As application/hal+json:
         "self" : {
           "href" : "/svc/jsonf/def/go?command=jsonf"
         },
-        "next" : [{
-          "href" : "/svc/jsonf?command=jsonf+go"
-        }],
         "profile" : [{
-          "href" : "/profiles/hcli"
+          "href" : "http://example.org/profiles/hcli"
         }],
         "type" : [{
-          "href" : "/profiles/hcli#command"
+          "href" : "http://example.org/profiles/hcli#command"
+        }],
+        "next" : [{
+          "href" : "/svc/jsonf?command=jsonf+go"
         }]
       },
       "description" : "Kicks off JSON formatting.",
@@ -383,12 +400,12 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="/profiles/hcli"/>
-  <link rel="type" href="/profiles/hcli"/>
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
   <link rel="item"
         href="/svc/cli/jsonf/__cdef/go?command=jsonf"
-        profile="/profiles/hcli"
-        type="/profiles/hcli#command"/>
+        profile="http://example.org/profiles/hcli"
+        type="http://example.org/profiles/hcli#command"/>
   <section>
     <name>name<name/>
     <description>A simple formatter for JSON</description>
@@ -400,9 +417,9 @@ As application/hal+xml:
   <resource rel="item"
             href="/svc/cli/jsonf/__cdef/go?command=jsonf">
     <link rel="profile"
-          href="/profiles/hcli"/>
+          href="http://example.org/profiles/hcli"/>
     <link rel="type"
-          href="/profiles/hcli#command"/>
+          href="http://example.org/profiles/hcli#command"/>
     <link rel="next"
           href="/svc/jsonf?command=jsonf+go"/>
     <name>go</name>
@@ -411,23 +428,23 @@ As application/hal+xml:
 </resource>
 .fi 
 
-Semantics for a semantic descriptor containing multiple peer non-semantic descriptors are undefined.
-
 .ti 0
 6.1.3.2. safe, unsafe, or idempotent
 
-If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is otherwise not embedded in a semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form). 
+If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is otherwise not embedded in a referenced semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form). 
 
-Notably, the HAL profile and type properties SHOULD be absent and the descriptor.id value SHOULD be used as the name of the value to fill in the URI template.
+Notably, the profile and type properties on the link SHOULD be absent and the descriptor.id value SHOULD be used as the name of the value to fill in the URI template.
 
 .ti 0
-6.1.3.2.1.  Without a contained semantic descriptor
+6.1.3.2.1.  Without a referenced semantic descriptor
 
 If a non-semantic descriptor does not contain a semantic descriptor, then it SHOULD yield to the formation of a link.
 
 .nf
 <!-- ALPS document fragment -->
-<descriptor id="next" type="safe"/>
+<descriptor id="media" type="semantic">
+  <descriptor id="next" type="safe" />
+</descriptor>
 
 As application/hal+json:
 
@@ -437,33 +454,43 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/library"
     }],
     "type": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/library#media"
+    }, 
+    "next": [{
+      "href": "/svc/book/2",
+      "name": "book"
     },
-    "next": {
-      "href": "/svc/item"
-    }
+    {
+      "href": "/svc/movie/2",
+      "name": "movie"
+    }]
   }
 }
 
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="/profiles/hcli"/>
-  <link rel="type" href="/profiles/hcli"/>
-  <link rel="next" href="/svc/item"/>
+  <link rel="profile" href="http://example.org/profiles/hcli"/>
+  <link rel="type" href="http://example.org/profiles/hcli"/>
+  <link rel="next" href="/svc/book/2" name="book"/>
+  <link rel="next" href="/svc/movie/2" name="movie"/>
 </resource>
 .fi
 
 .ti 0
-6.1.3.2.2.  With a contained semantic descriptor
+6.1.3.2.2.  With a referenced semantic descriptor
 
-If a non-semantic descriptor contains a semantic descriptor, then it SHOULD yield to the formation of a templated link (a form).
+If a non-semantic descriptor contains a semantic descriptor, then it SHOULD yield the formation of a templated link (a form).
 
 .nf
 <!-- ALPS document fragment -->
+<descriptor id="search" type="semantic">
+  <descriptor href="#collection" />
+</descriptor>
+
 <descriptor id="collection" type="safe">
   <doc format="text">A search form with one input.</doc>
   <descriptor id="id" type="semantic" />
@@ -477,10 +504,10 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/search"
     }],
     "type": [{
-      "href": "/profiles/hcli"
+      "href": "http://example.org/profiles/search#search"
     },
     "collection": {
       "href": "/svc/search{?id}",
@@ -492,11 +519,79 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="/profiles/hcli"/>
-  <link rel="type" href="/profiles/hcli"/>
+  <link rel="profile"
+        href="http://example.org/profiles/hcli"/>
+  <link rel="type"
+        href="http://example.org/profiles/hcli"/>
   <link rel="collection"
         href="/svc/search{?rvalueId}"
         templated="true"/>
+</resource>
+.fi
+
+.ti 0
+6.1.4.  rt
+
+The use of descriptor.rt on a semantic descriptor is undefined under this specification.
+
+However, if descriptor.rt is used on a non-semantic descriptor, it SHOULD lead to the formation of a link referencing the specific semantic type referenced under descriptor.rt.
+
+The return type of a non-semantic descriptor MUST NOT come in conflict with the implied return type of an embedded resource or link relation target described in this specification. The return type MAY however be used to make explicit the otherwise implied return type of an embedded resource or link relation target if the return type does not yield a conflict.
+
+.nf
+<!-- ALPS document fragment -->
+<descriptor id="search" type="semantic">
+  <descriptor href="#collection" />
+  <descriptor href="#result" />
+</descriptor>
+
+<descriptor id="collection" type="safe" rt="#search">
+  <doc format="text">A search form with one input.</doc>
+  <descriptor id="id" type="semantic" />
+</descriptor>
+
+<descriptor id="result" type="semantic">
+  <doc format="text">A returned search result.</doc>
+
+  <descriptor id="item" type="safe" />
+  <descriptor id="synopsis" type="semantic" />
+  <descriptor id="ranking" type="semantic" />
+</descriptor>
+
+As application/hal+json:
+
+{
+  "_links": {
+    "self": {
+      "href": "/svc"
+    },
+    "profile": [{
+      "href": "http://example.org/profiles/search"
+    }],
+    "type": [{
+      "href": "http://example.org/profiles/search#search"
+    },
+    "collection": {
+      "href": "/svc/search{?id}",
+      "templated" : true,
+      "profile": "http://example.org/profiles/search",
+      "type" : "http://example.org/profiles/search#search"
+    }
+  }
+}
+
+As application/hal+xml:
+
+<resource self="/svc">
+  <link rel="profile"
+        href="http://example.org/profiles/search"/>
+  <link rel="type"
+        href="http://example.org/profiles/search#search"/>
+  <link rel="collection"
+        href="/svc/search{?rvalueId}"
+        templated="true",
+        profile="http://example.org/profiles/search",
+        type="http://example.org/profiles/search#search" />
 </resource>
 .fi
 
@@ -519,6 +614,9 @@ TBD
 10.  Normative References
 
 .in 14
+.ti 3
+[RFC6906]  Wilde, E., EMC Corporation, RFC 6906, March 2013
+
 .ti 3
 [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
