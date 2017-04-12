@@ -4,7 +4,7 @@ This repository is intended to contain various Internet-Draft I'm working on.
 
 A note about the author:
 
-My focus for the past 10 years has been around systems, data, infrastructure architecture, development and operations. More recently however, I was tasked to understand REST APIs so that I could design one to help expose parts data within our organization.
+My focus for the past 10 years has been around systems, data, infrastructure architecture, development and operations. More recently however, I have focused my attention to REST APIs.
 
 This journey started around mid 2013 and lasted well over a year. It took a while to get to a point where I felt comfortable because I kept seeing discrepancies between what was commonly understood and what Roy Fielding's dissertation was telling me about REST.
 
