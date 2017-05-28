@@ -6,5 +6,5 @@ Some of the conversations surrounding these bindings will take place on the Hal 
 
 Join in and help shape the spec!
 
-[1] https://groups.google.com/forum/#!topic/hal-discuss 
+[1] https://groups.google.com/forum/#!topic/hal-discuss  
 [2] https://groups.google.com/forum/?fromgroups=#!forum/alps-io
