@@ -194,7 +194,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    <resource rel="self" href="/svc">
      <link rel="profile" href="http://example.org/profiles/accounting"/>
-     <link rel="type" href="http://example.org/profiles/accounting"/>
+     <link rel="type" href="http://example.org/profiles/accounting#invoice"/>
    </resource>
 
    Precedence rules between Link Headers and HAL link relations SHOULD
@@ -405,8 +405,8 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    As application/hal+xml:
 
    <resource self="/svc">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
+     <link rel="profile" href="http://example.org/profiles/library"/>
+     <link rel="type" href="http://example.org/profiles/library#media"/>
      <link rel="next" href="/svc/book/2" name="book"/>
      <link rel="next" href="/svc/movie/2" name="movie"/>
    </resource>
@@ -481,7 +481,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
          "href": "http://example.org/profiles/hcli#hcli-document"
        },
        "item": {
-         "href": "/svc/jsonf/def/go?command=jsonf",
+         "href": "/svc/jsonf/__cdef/go?command=jsonf",
          "profile": "http://example.org/profiles/hcli",
          "type" : "http://example.org/profiles/hcli#command"
        }
@@ -490,7 +490,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
        "item" : [{
          "_links" : {
            "self" : {
-             "href" : "/svc/jsonf/def/go?command=jsonf"
+             "href" : "/svc/jsonf/__cdef/go?command=jsonf"
            },
            "profile" : [{
              "href" : "http://example.org/profiles/hcli"
@@ -520,7 +520,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    <resource self="/svc">
      <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
+     <link rel="type" href="http://example.org/profiles/hcli#hcli-document"/>
      <link rel="item"
            href="/svc/cli/jsonf/__cdef/go?command=jsonf"
            profile="http://example.org/profiles/hcli"
@@ -602,8 +602,8 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    As application/hal+xml:
 
    <resource self="/svc">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli"/>
+     <link rel="profile" href="http://example.org/profiles/library"/>
+     <link rel="type" href="http://example.org/profiles/library#media"/>
      <link rel="next" href="/svc/book/2" name="book"/>
      <link rel="next" href="/svc/movie/2" name="movie"/>
    </resource>
@@ -655,9 +655,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    <resource self="/svc">
      <link rel="profile"
-           href="http://example.org/profiles/hcli"/>
+           href="http://example.org/profiles/search"/>
      <link rel="type"
-           href="http://example.org/profiles/hcli"/>
+           href="http://example.org/profiles/search#search"/>
      <link rel="collection"
            href="/svc/search{?rvalueId}"
            templated="true"/>
@@ -744,7 +744,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      <link rel="type"
            href="http://example.org/profiles/search#search"/>
      <link rel="collection"
-           href="/svc/search{?rvalueId}"
+           href="/svc/search{?id}"
            templated="true",
            profile="http://example.org/profiles/search",
            type="http://example.org/profiles/search#search" />
