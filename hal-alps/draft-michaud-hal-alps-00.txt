@@ -3,9 +3,9 @@
 
 
 Network Working Group                                         J. Michaud
-Internet-Draft                                            March 17, 2017
+Internet-Draft                                        September 30, 2017
 Intended status: Informational                                          
-Expires: September 18, 2017                                             
+Expires: April 3, 2018                                                  
 
 
                          ALPS Bindings for HAL
@@ -53,9 +53,9 @@ Copyright Notice
  
 
 
-Michaud                Expires September 18, 2017               [Page 1]
+Michaud                  Expires April 3, 2018                  [Page 1]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
 Table of Contents
@@ -76,14 +76,15 @@ Table of Contents
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 11
        6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 15
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 15
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 15
-   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 15
-   11.  Informative References  . . . . . . . . . . . . . . . . . . . 15
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 15
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 16
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 16
+   7.  HAL Curies and Extension Relations . . . . . . . . . . . . . . 15
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 16
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 16
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 16
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 17
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 17
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 17
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 17
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 17
 
 
 1.  Introduction
@@ -105,13 +106,12 @@ Table of Contents
    document are to be interpreted as described in [RFC2119].
 
 3.  A Review of ALPS Principles
-
  
 
 
-Michaud                Expires September 18, 2017               [Page 2]
+Michaud                  Expires April 3, 2018                  [Page 2]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    The Application-Level Profile Semantics (ALPS) [I-D.draft-amundsen-
@@ -165,9 +165,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 3]
+Michaud                  Expires April 3, 2018                  [Page 3]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    The type link relation href SHOULD be set to the URL, with URL
@@ -221,9 +221,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 4]
+Michaud                  Expires April 3, 2018                  [Page 4]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    server MAY include multiple HAL profile relations.
@@ -277,9 +277,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 5]
+Michaud                  Expires April 3, 2018                  [Page 5]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
 6.1.1.  id
@@ -333,9 +333,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 6]
+Michaud                  Expires April 3, 2018                  [Page 6]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
        <description>A simple formatter for JSON</description>
@@ -389,9 +389,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 7]
+Michaud                  Expires April 3, 2018                  [Page 7]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
          "name": "book"
@@ -445,9 +445,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 8]
+Michaud                  Expires April 3, 2018                  [Page 8]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    </descriptor> 
@@ -501,9 +501,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017               [Page 9]
+Michaud                  Expires April 3, 2018                  [Page 9]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    If a service implementation leads to the formation of an embedded
@@ -557,9 +557,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017              [Page 10]
+Michaud                  Expires April 3, 2018                 [Page 10]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
              "href" : "http://example.org/profiles/library#book"
@@ -613,9 +613,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017              [Page 11]
+Michaud                  Expires April 3, 2018                 [Page 11]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    {
@@ -669,9 +669,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017              [Page 12]
+Michaud                  Expires April 3, 2018                 [Page 12]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    {
@@ -725,9 +725,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017              [Page 13]
+Michaud                  Expires April 3, 2018                 [Page 13]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
    <descriptor id="search" type="semantic">
@@ -781,9 +781,9 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
  
 
 
-Michaud                Expires September 18, 2017              [Page 14]
+Michaud                  Expires April 3, 2018                 [Page 14]
 
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
            href="/svc/search{?id}"
@@ -792,19 +792,115 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
            type="http://example.org/profiles/search#search" />
    </resource>
 
-7.  Recommendations
+7.  HAL Curies and Extension Relations
+
+   Because of the way HAL binds link relations to the descriptor.id or
+   descriptor.name in this specification, extension relations MUST
+   remain exclusively and independently within the control of service
+   implementers to avoid impacting existing implementations that choose
+   to enhance their HAL representations with ALPS semantics. HAL curies,
+   used to provide extension relation documentation, MUST NOT be used to
+   bind to semantic type ids.
+
+   This restriction intends to favor decoupling and independent
+   evolution of the documented semantics associated with extension
+   relations from those associated to ALPS semantic types in ALPS
+   profiles.
+
+   Service implementers are free to extend link relations as needed to
+   provide non-conflicting, but independent, semantics.
+
+   The following example combines a wide swath of binding semantics
+   defined in this specification but specifically focuses on the HAL
+   document curie extension relation of the bound link relation "book"
+   into "ext:book":
+
+   <!-- ALPS document fragment -->
+   <descriptor id="media" type="semantic">
+     <descriptor href="#book-type-1">
+     <descriptor href="#book-type-2">
+   </descriptor> 
+
+   <descriptor id="book-type-1" type="safe" name="book" rt="#book-t1-definition">
+     <doc>A link to an individual book.</doc>
+   </descriptor>
+
+   <descriptor id="book-type-2" type="safe" name="book" rt="#book-t2-definition">
+     <doc>A link to a different book type</doc>
+   </descriptor>
+
+   <descriptor id="book-t1-definition" type="semantic">
+     <descriptor id="related" type="safe" />
+     <descriptor id="ISBN" type="semantic" />
+     <descriptor id="name" type="semantic" />
+     <descriptor id="description" type="semantic" />
+ 
+
+
+Michaud                  Expires April 3, 2018                 [Page 15]
+
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
+
+
+   </descriptor>
+
+   <descriptor id="book-t1-definition" type="semantic">
+     <descriptor id="name" type="semantic" />
+     <descriptor id="summary" type="semantic" />
+   </descriptor>
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/svc"
+       },
+       "curies": [{
+         "href": "http://example.org/rels/{rel}",
+         "name": "ext",
+         "templated": true
+        }],
+       "profile": [{
+         "href": "http://example.org/profiles/library"
+       }],
+       "type": [{
+         "href": "http://example.org/profiles/library#media"
+       }, 
+       "ext:book": [{
+         "href": "/svc/book/1",
+         "profile": "http://example.org/profiles/library",
+         "type" : "http://example.org/profiles/library#book-t1-definition"
+       },
+       {
+         "href": "/svc/book/2",
+         "profile": "http://example.org/profiles/library",
+         "type" : "http://example.org/profiles/search#book-t2-definition"
+       }]
+     }
+   }
+
+8.  Recommendations
 
    TBD
 
-8.  Security Considerations
+9.  Security Considerations
 
    TBD
 
-9.  IANA Considerations
+10.  IANA Considerations
+
+ 
+
+
+Michaud                  Expires April 3, 2018                 [Page 16]
+
+Internet-Draft           ALPS Bindings for HAL        September 30, 2017
+
 
    TBD
 
-10.  Normative References
+11.  Normative References
 
    [RFC6906]  Wilde, E., EMC Corporation, RFC 6906, March 2013
 
@@ -834,14 +930,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 Appendix A.  Acknowledgements
 
- 
-
-
-Michaud                Expires September 18, 2017              [Page 15]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
    TBD
 
 Appendix B.  Frequently Asked Questions
@@ -861,36 +949,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Michaud                Expires September 18, 2017              [Page 16]
+Michaud                  Expires April 3, 2018                 [Page 17]

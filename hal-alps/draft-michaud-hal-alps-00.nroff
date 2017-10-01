@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH March 17, 2017
+.ds RH September 30, 2017
 .ds CH ALPS Bindings for HAL
-.ds CF Expires September 18, 2017
+.ds CF Expires April 3, 2018
 .hy 0
 .nh
 .ad l
@@ -18,9 +18,9 @@
 
 .nf
 .tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''March 17, 2017'
+.tl '\%Internet-Draft''September 30, 2017'
 .tl 'Intended status: Informational'''
-.tl 'Expires: September 18, 2017'''
+.tl 'Expires: April 3, 2018'''
 .fi
 .in 3
 
@@ -77,14 +77,15 @@ Table of Contents
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 11
        6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 13
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 15
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 15
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 15
-   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 15
-   11.  Informative References  . . . . . . . . . . . . . . . . . . . 15
-   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 15
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 16
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 16
+   7.  HAL Curies and Extension Relations . . . . . . . . . . . . . . 15
+   8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 16
+   9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 16
+   10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 16
+   11.  Normative References  . . . . . . . . . . . . . . . . . . . . 17
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 17
+   Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 17
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 17
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 17
 .fi
 .in 3
 
@@ -644,22 +645,92 @@ As application/hal+xml:
 .fi
 
 .ti 0
-7.  Recommendations
+7.  HAL Curies and Extension Relations
+
+Because of the way HAL binds link relations to the descriptor.id or descriptor.name in this specification, extension relations MUST remain exclusively and independently within the control of service implementers to avoid impacting existing implementations that choose to enhance their HAL representations with ALPS semantics. HAL curies, used to provide extension relation documentation, MUST NOT be used to bind to semantic type ids.
+
+This restriction intends to favor decoupling and independent evolution of the documented semantics associated with extension relations from those associated to ALPS semantic types in ALPS profiles.
+
+Service implementers are free to extend link relations as needed to provide non-conflicting, but independent, semantics.
+
+The following example combines a wide swath of binding semantics defined in this specification but specifically focuses on the HAL document curie extension relation of the bound link relation "book" into "ext:book":
+
+.nf
+<!-- ALPS document fragment -->
+<descriptor id="media" type="semantic">
+  <descriptor href="#book-type-1">
+  <descriptor href="#book-type-2">
+</descriptor> 
+
+<descriptor id="book-type-1" type="safe" name="book" rt="#book-t1-definition">
+  <doc>A link to an individual book.</doc>
+</descriptor>
+
+<descriptor id="book-type-2" type="safe" name="book" rt="#book-t2-definition">
+  <doc>A link to a different book type</doc>
+</descriptor>
+
+<descriptor id="book-t1-definition" type="semantic">
+  <descriptor id="related" type="safe" />
+  <descriptor id="ISBN" type="semantic" />
+  <descriptor id="name" type="semantic" />
+  <descriptor id="description" type="semantic" />
+</descriptor>
+
+<descriptor id="book-t1-definition" type="semantic">
+  <descriptor id="name" type="semantic" />
+  <descriptor id="summary" type="semantic" />
+</descriptor>
+
+As application/hal+json:
+
+{
+  "_links": {
+    "self": {
+      "href": "/svc"
+    },
+    "curies": [{
+      "href": "http://example.org/rels/{rel}",
+      "name": "ext",
+      "templated": true
+     }],
+    "profile": [{
+      "href": "http://example.org/profiles/library"
+    }],
+    "type": [{
+      "href": "http://example.org/profiles/library#media"
+    }, 
+    "ext:book": [{
+      "href": "/svc/book/1",
+      "profile": "http://example.org/profiles/library",
+      "type" : "http://example.org/profiles/library#book-t1-definition"
+    },
+    {
+      "href": "/svc/book/2",
+      "profile": "http://example.org/profiles/library",
+      "type" : "http://example.org/profiles/search#book-t2-definition"
+    }]
+  }
+}
+.fi
+
+.ti 0
+8.  Recommendations
 
 TBD
 
 .ti 0
-8.  Security Considerations
+9.  Security Considerations
 
 TBD
 
 .ti 0
-9.  IANA Considerations
+10.  IANA Considerations
 
 TBD
 
 .ti 0
-10.  Normative References
+11.  Normative References
 
 .in 14
 .ti 3
