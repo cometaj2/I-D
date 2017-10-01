@@ -74,16 +74,16 @@ Table of Contents
        6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
-         6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 10
-       6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 12
-   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 14
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 14
-   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 14
-   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 14
-   11.  Informative References  . . . . . . . . . . . . . . . . . . . 14
+         6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . . 11
+       6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 13
+   7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 15
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 15
+   9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 15
+   10.  Normative References  . . . . . . . . . . . . . . . . . . . . 15
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 15
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 15
-   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 15
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 15
+   Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 16
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 16
 
 
 1.  Introduction
@@ -261,8 +261,8 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    location, all profiles SHOULD be considered valid.
 
    Precedence rules between Link Headers and HAL link relations SHOULD
-   observer compliance per the ALPS specification Section 3.1. Linking
-   to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+   observe compliance per the ALPS specification Section 3.1. Linking to
+   ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
 6.  ALPS Bindings for HAL
 
@@ -305,10 +305,10 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
          "href": "/svc"
        },
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "http://example.org/profiles/man-page"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli#hcli-document"
+         "href": "http://example.org/profiles/man-page#section"
        }]
      },
      "section": [
@@ -326,8 +326,8 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    As application/hal+xml:
 
    <resource self="/svc">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli#hcli-document"/>
+     <link rel="profile" href="http://example.org/profiles/man-page"/>
+     <link rel="type" href="http://example.org/profiles/man-page#section"/>
      <section>
        <name>name</name>
  
@@ -346,28 +346,29 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      </section>
    </resource>
 
-   One notable and important exception exists when a semantic descriptor
-   contains a non-semantic descriptor. This is covered in a later
-   section covering non-semantic descriptor.type.
+   One important exception exists when a semantic descriptor contains a
+   non-semantic descriptor. This is covered in a later section covering
+   non-semantic descriptor.type.
 
 6.1.2.  name
 
    The descriptor.name property SHOULD be used to help differentiate
    semantics when a condition would yield the required use of multiple
-   identical descriptor.ids in an ALPS profile. Since having multiple
-   identical descriptor.ids in an ALPS profile MUST NOT occur, the
-   descriptor.id can remain unique within an ALPS profile and the
-   descriptor.name MAY be used to otherwise lead to the formation of an
-   identical key or link relation but with different application
-   semantics.
+   identical descriptor.ids in an ALPS profile.
 
-   The below example is simplistic but hints at how semantics could be
-   differentiated when a need for identical keys is otherwise desirable.
+   Since having multiple identical descriptor.ids in an ALPS profile
+   MUST NOT occur, the descriptor.id can remain unique within an ALPS
+   profile and the descriptor.name MAY be used to otherwise lead to the
+   formation of an identical key or link relation but with different
+   type semantics.
+
+   The below example hints at how type semantics could be differentiated
+   when a need for identical link relation keys is otherwise desirable:
 
    <!-- ALPS document fragment -->
    <descriptor id="media" type="semantic">
-     <descriptor id="book-item" name="next" type="safe" />
-     <descriptor id="movie-item" name="next" type="safe" />
+     <descriptor id="book" name="next" type="safe" />
+     <descriptor id="movie" name="next" type="safe" />
    </descriptor>
 
    As application/hal+json:
@@ -384,8 +385,7 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
          "href": "http://example.org/profiles/library#media"
        }, 
        "next": [{
-         "href": "/svc/book/2",
-         "name": "book"
+         "href": "/svc/book/1",
  
 
 
@@ -394,9 +394,10 @@ Michaud                Expires September 18, 2017               [Page 7]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
+         "name": "book"
        },
        {
-         "href": "/svc/movie/2",
+         "href": "/svc/movie/1",
          "name": "movie"
        }]
      }
@@ -407,8 +408,8 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    <resource self="/svc">
      <link rel="profile" href="http://example.org/profiles/library"/>
      <link rel="type" href="http://example.org/profiles/library#media"/>
-     <link rel="next" href="/svc/book/2" name="book"/>
-     <link rel="next" href="/svc/movie/2" name="movie"/>
+     <link rel="next" href="/svc/book/1" name="book"/>
+     <link rel="next" href="/svc/movie/1" name="movie"/>
    </resource>
 
 6.1.3.  type
@@ -416,32 +417,31 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 6.1.3.1. semantic
 
    Coverage for the descriptor.type property with a value of "semantic"
-   is covered under sections covering descriptor.id and descriptor.name.
+   is covered under sections covering descriptor.id and descriptor.name
+   abov:.
 
    However, an important and complex exception to the semantic
-   descriptor.id case exists: when an ALPS profile semantic descriptor
+   descriptor.id case exists; when an ALPS profile semantic descriptor
    references a semantic descriptor that contains a non-semantic
    descriptor.
 
-   Such cases lead to the formation of linked resources, embedded
-   resources, or both, in a HAL document. Determination of whether
+   Such cases lead to the formation, in a HAL document, of linked
+   resources, embedded resources, or both. Determination of whether
    formation leads to the presence of a link, an embedded resource, or
    both, is left to service implementers.
 
-   If a service implementation SHOULD leads to the formation of a linked
-   resource, the linked resource SHOULD contain a "profile" property
-   referencing the URI of the ALPS profile, a "type" property
-   referencing the URI of the ALPS profile, and fragment referencing the
-   descriptor.id, or descriptor.name if appropriate, of the targeted
-   semantic descriptor.
+6.1.3.1.1 As a HAL Link
 
-   If a service implementation SHOULD leads to the formation of an
-   embedded resource, the embedded resource SHOULD contain a "profile"
-   link relation referencing the URI of the ALPS profile, a "type" link
-   relation referencing the URI of the ALPS profile and fragment
-   referencing the descriptor.id, or descriptor.name if appropriate, of
-   the targeted semantic descriptor.
+   If a service implementation leads to the formation of a linked
+   resource (a HAL Link), the linked resource SHOULD contain:
 
+     - a "profile" property referencing the URI of the ALPS profile of
+   the target resource  - a "type" property referencing the URI of the
+   ALPS profile, with descriptor.id fragment, of the target resource.
+
+   <!-- ALPS document fragments -->
+   <descriptor id="media" type="semantic">
+     <descriptor href="#book">
  
 
 
@@ -450,17 +450,14 @@ Michaud                Expires September 18, 2017               [Page 8]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
-   <!-- ALPS document fragments -->
-   <descriptor id="hcli-document" type="semantic">
-     <descriptor href="#command">
    </descriptor> 
 
-   <descriptor id="command" type="semantic">
+   <descriptor id="book" type="semantic">
      <descriptor id="item" type="safe">
-       <doc>A link to an individual command summary.</doc>
+       <doc>A link to an individual book.</doc>
 
-       <descriptor id="next" type="unsafe">
-         <doc>A link to select a command.</doc>
+       <descriptor id="related" type="safe">
+         <doc>A link to a related book.</doc>
        </descriptor>
      </descriptor>
      <descriptor id="name" type="semantic" />
@@ -475,29 +472,32 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
          "href": "/svc"
        },
        "profile": [{
-         "href": "http://example.org/profiles/hcli"
+         "href": "http://example.org/profiles/library"
        }],
        "type": [{
-         "href": "http://example.org/profiles/hcli#hcli-document"
+         "href": "http://example.org/profiles/library#media"
        },
        "item": {
-         "href": "/svc/jsonf/__cdef/go?command=jsonf",
-         "profile": "http://example.org/profiles/hcli",
-         "type" : "http://example.org/profiles/hcli#command"
+         "href": "/library/book/1",
+         "profile": "http://example.org/profiles/library",
+         "type" : "http://example.org/profiles/library#book"
        }
-     },
-     "_embedded" : {
-       "item" : [{
-         "_links" : {
-           "self" : {
-             "href" : "/svc/jsonf/__cdef/go?command=jsonf"
-           },
-           "profile" : [{
-             "href" : "http://example.org/profiles/hcli"
-           }],
-           "type" : [{
-             "href" : "http://example.org/profiles/hcli#command"
-           }],
+     }
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
+     <link rel="profile" href="http://example.org/profiles/library"/>
+     <link rel="type" href="http://example.org/profiles/library#media"/>
+     <link rel="item"
+           href="/library/book/1"
+           profile="http://example.org/profiles/library"
+           type="http://example.org/profiles/library#book"/>
+   </resource>
+
+6.1.3.1.2 As an Embedded Resource
+
  
 
 
@@ -506,12 +506,70 @@ Michaud                Expires September 18, 2017               [Page 9]
 Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 
-           "next" : [{
-             "href" : "/svc/jsonf?command=jsonf+go"
+   If a service implementation leads to the formation of an embedded
+   resource, the embedded resource SHOULD contain:
+
+     - a "profile" link relation referencing the URI of the ALPS profile
+    - a "type" link relation referencing the URI of the ALPS profile,
+   with descriptor.id fragment, of the embedded resource.
+
+   <!-- ALPS document fragments -->
+   <descriptor id="media" type="semantic">
+     <descriptor href="#book">
+   </descriptor> 
+
+   <descriptor id="book" type="semantic">
+     <descriptor id="item" type="safe">
+       <doc>A link to an individual book.</doc>
+
+       <descriptor id="related" type="safe">
+         <doc>A link to a related book.</doc>
+       </descriptor>
+     </descriptor>
+     <descriptor id="name" type="semantic" />
+     <descriptor id="description" type="semantic" />
+   </descriptor> 
+
+   As application/hal+json:
+
+   {
+     "_links": {
+       "self": {
+         "href": "/svc"
+       },
+       "profile": [{
+         "href": "http://example.org/profiles/library"
+       }],
+       "type": [{
+         "href": "http://example.org/profiles/library#media"
+       }
+     },
+     "_embedded" : {
+       "item" : [{
+         "_links" : {
+           "self" : {
+             "href" : "/library/book/1"
+           },
+           "profile" : [{
+             "href" : "http://example.org/profiles/library"
+           }],
+           "type" : [{
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 10]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
+
+             "href" : "http://example.org/profiles/library#book"
+           }],
+           "related" : [{
+             "href" : "/library/book/2"
            }]
          },
-         "description" : "Kicks off JSON formatting.",
-         "name" : "go"
+         "name" : "Lorem Ipsum: A History",
+         "description" : "Lorem ipsum."
        }]
      }
    }
@@ -519,30 +577,18 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    As application/hal+xml:
 
    <resource self="/svc">
-     <link rel="profile" href="http://example.org/profiles/hcli"/>
-     <link rel="type" href="http://example.org/profiles/hcli#hcli-document"/>
-     <link rel="item"
-           href="/svc/cli/jsonf/__cdef/go?command=jsonf"
-           profile="http://example.org/profiles/hcli"
-           type="http://example.org/profiles/hcli#command"/>
-     <section>
-       <name>name<name/>
-       <description>A simple formatter for JSON</description>
-     </section>
-     <section>
-       <name>synopsis<name/>
-       <description>jsonf &lt;command&gt;</description>
-     </section>
+     <link rel="profile" href="http://example.org/profiles/library"/>
+     <link rel="type" href="http://example.org/profiles/library#media"/>
      <resource rel="item"
-               href="/svc/cli/jsonf/__cdef/go?command=jsonf">
+               href="/library/book/1">
        <link rel="profile"
-             href="http://example.org/profiles/hcli"/>
+             href="http://example.org/profiles/library"/>
        <link rel="type"
-             href="http://example.org/profiles/hcli#command"/>
-       <link rel="next"
-             href="/svc/jsonf?command=jsonf+go"/>
-       <name>go</name>
-       <description>Kicks off JSON formatting.</description>
+             href="http://example.org/profiles/library#book"/>
+       <link rel="related"
+             href="/library/book/2"/>
+       <name>Lorem Ipsum: A History</name>
+       <description>Lorem ipsum.</description>
      </resource>
    </resource>
 
@@ -553,22 +599,10 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    it SHOULD yield the formation of a link or a templated link (a
    form).
 
-   Notably, the profile and type properties on the link SHOULD be absent
- 
-
-
-Michaud                Expires September 18, 2017              [Page 10]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
-   and the descriptor.id value SHOULD be used as the name of the value
-   to fill in the URI template.
-
 6.1.3.2.1.  Without a referenced semantic descriptor
 
    If a non-semantic descriptor does not contain a semantic descriptor,
-   then it SHOULD yield to the formation of a link.
+   then it SHOULD yield the formation of a link.
 
    <!-- ALPS document fragment -->
    <descriptor id="media" type="semantic">
@@ -576,6 +610,13 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    </descriptor>
 
    As application/hal+json:
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 11]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
 
    {
      "_links": {
@@ -610,14 +651,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
 6.1.3.2.2.  With a referenced semantic descriptor
 
- 
-
-
-Michaud                Expires September 18, 2017              [Page 11]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
    If a non-semantic descriptor contains a semantic descriptor, then it
    SHOULD yield the formation of a templated link (a form).
 
@@ -632,6 +665,14 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
    </descriptor>
 
    As application/hal+json:
+
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 12]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
 
    {
      "_links": {
@@ -666,14 +707,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 6.1.4.  rt
 
    The use of descriptor.rt on a semantic descriptor is undefined under
- 
-
-
-Michaud                Expires September 18, 2017              [Page 12]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
    this specification.
 
    However, if descriptor.rt is used on a non-semantic descriptor, it
@@ -682,12 +715,21 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
 
    The return type of a non-semantic descriptor MUST NOT come in
    conflict with the implied return type of an embedded resource or link
-   relation target described in this specification. The return type MAY
-   however be used to make explicit the otherwise implied return type of
-   an embedded resource or link relation target if the return type does
-   not yield a conflict.
+   relation target.
+
+   The return type MAY however be used to make explicit the otherwise
+   implied semantic return type of an embedded resource or link relation
+   target if the return type does not yield a conflict.
 
    <!-- ALPS document fragment -->
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 13]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
+
    <descriptor id="search" type="semantic">
      <descriptor href="#collection" />
      <descriptor href="#result" />
@@ -722,14 +764,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
        "collection": {
          "href": "/svc/search{?id}",
          "templated" : true,
- 
-
-
-Michaud                Expires September 18, 2017              [Page 13]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
          "profile": "http://example.org/profiles/search",
          "type" : "http://example.org/profiles/search#search"
        }
@@ -744,6 +778,14 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
      <link rel="type"
            href="http://example.org/profiles/search#search"/>
      <link rel="collection"
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 14]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
+
            href="/svc/search{?id}"
            templated="true",
            profile="http://example.org/profiles/search",
@@ -778,14 +820,6 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
               Amundsen, M., CA Technologies, Inc., Richardson L.,
               Foster, M., "Application-Level Profile Semantics (ALPS)",
               draft-amundsen-richardson-foster-alps-02 (work in
- 
-
-
-Michaud                Expires September 18, 2017              [Page 14]
-
-Internet-Draft           ALPS Bindings for HAL            March 17, 2017
-
-
               progress), August 2015.
 
    [I-D.draft-kelly-json-hal]
@@ -799,6 +833,14 @@ Internet-Draft           ALPS Bindings for HAL            March 17, 2017
               michaud-xml-hal-02 (work in progress), February 2017
 
 Appendix A.  Acknowledgements
+
+ 
+
+
+Michaud                Expires September 18, 2017              [Page 15]
+
+Internet-Draft           ALPS Bindings for HAL            March 17, 2017
+
 
    TBD
 
@@ -837,4 +879,18 @@ Author's Address
 
 
 
-Michaud                Expires September 18, 2017              [Page 15]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Michaud                Expires September 18, 2017              [Page 16]
