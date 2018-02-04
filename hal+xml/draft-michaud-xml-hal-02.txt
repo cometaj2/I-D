@@ -3,13 +3,13 @@
 
 
 Network Working Group                                         J. Michaud
-Internet-Draft                                          February 8, 2017
+Internet-Draft                                          February 3, 2018
 Intended status: Informational                                          
-Expires: August 12, 2017                                                
+Expires: August 7, 2018                                                 
 
 
                    XML Hypertext Application Language
-                        draft-michaud-xml-hal-01
+                        draft-michaud-xml-hal-02
 
 Abstract
 
@@ -33,7 +33,7 @@ Status of This Memo
 
 Copyright Notice
 
-   Copyright (c) 2017 IETF Trust and the persons identified as the
+   Copyright (c) 2018 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 1]
+Michaud                  Expires August 7, 2018                 [Page 1]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 2]
+Michaud                  Expires August 7, 2018                 [Page 2]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
    HAL is a generic media type with which Web APIs can be developed and
@@ -165,9 +165,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 3]
+Michaud                  Expires August 7, 2018                 [Page 3]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 4.  Resource
@@ -221,9 +221,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 4]
+Michaud                  Expires August 7, 2018                 [Page 4]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 5.1.  href
@@ -277,9 +277,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 5]
+Michaud                  Expires August 7, 2018                 [Page 5]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 5.6.  profile
@@ -333,9 +333,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 6]
+Michaud                  Expires August 7, 2018                 [Page 6]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 6.  Example
@@ -351,7 +351,7 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
 
    <resource rel="self" href="/orders">
        <link rel="next" href="/orders?page=2"/>
-       <link rel="find" href="/orders{/id}" templated="true"/>
+       <link rel="find" href="/orderse{/id}" templated="true"/>
        <resource rel="order" href="/orders/123">
            <link rel="basket" href="/baskets/98712"/>
            <link rel="customer" href="/customers/7809"/>
@@ -389,9 +389,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 7]
+Michaud                  Expires August 7, 2018                 [Page 7]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 7.  Media Type Parameters
@@ -445,9 +445,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 8]
+Michaud                  Expires August 7, 2018                 [Page 8]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
    an embedded resource into the representation with the same relation.
@@ -501,9 +501,9 @@ Internet-Draft     XML Hypertext Application Language   February 8, 2017
  
 
 
-Michaud                 Expires August 12, 2017                 [Page 9]
+Michaud                  Expires August 7, 2018                 [Page 9]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
@@ -557,15 +557,15 @@ Appendix A.  Acknowledgements
  
 
 
-Michaud                 Expires August 12, 2017                [Page 10]
+Michaud                  Expires August 7, 2018                [Page 10]
 
-Internet-Draft     XML Hypertext Application Language   February 8, 2017
+Internet-Draft     XML Hypertext Application Language   February 3, 2018
 
 
 Appendix B.  Frequently Asked Questions
 
 B.1.  How should a client know the meaning/structure/semantics/type of a
-   resource?
+      resource?
 
    There are two main approaches to solving this problem.  Both involve
    exposing additional documentation describing the resource which may
@@ -613,4 +613,4 @@ Author's Address
 
 
 
-Michaud                 Expires August 12, 2017                [Page 11]
+Michaud                  Expires August 7, 2018                [Page 11]

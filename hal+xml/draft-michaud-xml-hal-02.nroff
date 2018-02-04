@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH February 8, 2017
+.ds RH February 3, 2018
 .ds CH XML Hypertext Application Language
-.ds CF Expires August 12, 2017
+.ds CF Expires August 7, 2018
 .hy 0
 .nh
 .ad l
@@ -18,16 +18,16 @@
 
 .nf
 .tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''February 8, 2017'
+.tl '\%Internet-Draft''February 3, 2018'
 .tl 'Intended status: Informational'''
-.tl 'Expires: August 12, 2017'''
+.tl 'Expires: August 7, 2018'''
 .fi
 .in 3
 
 
 .ce 2
 XML Hypertext Application Language
-\%draft-michaud-xml-hal-01
+\%draft-michaud-xml-hal-02
 
 .ti 0
 Abstract
@@ -46,7 +46,7 @@ Internet-Drafts are draft documents valid for a maximum of six months and may be
 .ti 0
 Copyright Notice
 
-Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.
+Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.
 
 This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents \%(http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
 
@@ -273,7 +273,7 @@ Content-Type: application/hal+xml
 
 <resource rel="self" href="/orders">
     <link rel="next" href="/orders?page=2"/>
-    <link rel="find" href="/orders{/id}" templated="true"/>
+    <link rel="find" href="/orderse{/id}" templated="true"/>
     <resource rel="order" href="/orders/123">
         <link rel="basket" href="/baskets/98712"/>
         <link rel="customer" href="/customers/7809"/>
@@ -437,7 +437,7 @@ Appendix B.  Frequently Asked Questions
 
 .ti 0
 B.1.  How should a client know the meaning/structure/semantics/type of a
-resource?
+   resource?
 
 .fi
 .in 3
