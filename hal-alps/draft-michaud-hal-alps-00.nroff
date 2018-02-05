@@ -68,9 +68,9 @@ Table of Contents
    5.  Advertising ALPS Profiles for HAL Representations  . . . . . .  3
      5.1.  HAL profile and type link relations  . . . . . . . . . . .  3
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
+     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  5
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
-     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
+     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  6
        6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  6
        6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
@@ -159,7 +159,9 @@ As application/hal+xml:
 </resource>
 .fi
 
-Precedence rules between Link Headers and HAL link relations SHOULD observer compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+Precedence rules between Link Headers and HAL link relations SHOULD observe compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+
+Note that this specification reserves the "halps" attribute prefix and defines the "halps:type" attribute to extend the semantic of HAL Links. The reserved attribute's semantics are equivalent to the "type" link relation semantics defined under [RFC6903] with the notable exception that this is intended to help provide a hint about the expected semantic type of a HAL Link's target.
 
 .ti 0
 5.2.  Link Header
@@ -331,17 +333,17 @@ As application/hal+xml:
 .ti 0
 6.1.3.1. semantic
 
-Coverage for the descriptor.type property with a value of "semantic" is covered under sections covering descriptor.id and descriptor.name above.
+The descriptor.type property with a value of "semantic" is covered under sections covering descriptor.id and descriptor.name.
 
 .ti 0
 6.1.3.2. safe, unsafe, or idempotent
 
-If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is used in a referenced semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form).
+If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is contained in semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form) in a HAL representation.
 
 Note however that HAL does not support the presence of links within nested attributes, therefore, HAL based representations SHALL only coherently fulfill the intent of an ALPS profile if a non-semantic descriptor is contained within a semantic descriptor and if that semantic descriptor aligns with a HAL resource boundary. 
 
 .ti 0
-6.1.3.2.1.  Without a referenced semantic descriptor
+6.1.3.2.1.  Without a Contained Semantic Descriptor
 
 If a non-semantic descriptor does not contain a semantic descriptor, then it SHOULD yield the formation of a link.
 
@@ -386,7 +388,7 @@ As application/hal+xml:
 .fi
 
 .ti 0
-6.1.3.2.2.  With a referenced semantic descriptor
+6.1.3.2.2.  With a Contained Semantic Descriptor
 
 If a non-semantic descriptor contains one or more semantic descriptors, then it SHOULD yield the formation of a templated link (a form).
 
@@ -480,7 +482,7 @@ As application/hal+json:
       "href": "/svc/search{?id}",
       "templated" : true,
       "profile": "http://example.org/profiles/search",
-      "alps:type" : "http://example.org/profiles/search#search"
+      "halps:type" : "http://example.org/profiles/search#search"
     }
   }
 }
@@ -496,7 +498,7 @@ As application/hal+xml:
         href="/svc/search{?id}"
         templated="true",
         profile="http://example.org/profiles/search",
-        alps:type="http://example.org/profiles/search#search" />
+        halps:type="http://example.org/profiles/search#search" />
 </resource>
 .fi
 
@@ -551,12 +553,12 @@ As application/hal+json:
     "ext:book": [{
       "href": "/svc/book/1",
       "profile": "http://example.org/profiles/library",
-      "alps:type" : "http://example.org/profiles/library#book-type-1"
+      "halps:type" : "http://example.org/profiles/library#book-type-1"
     },
     {
       "href": "/svc/book/2",
       "profile": "http://example.org/profiles/library",
-      "alps:type" : "http://example.org/profiles/search#book-type-2"
+      "halps:type" : "http://example.org/profiles/search#book-type-2"
     }]
   }
 }

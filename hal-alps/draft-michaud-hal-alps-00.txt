@@ -67,9 +67,9 @@ Table of Contents
    5.  Advertising ALPS Profiles for HAL Representations  . . . . . .  3
      5.1.  HAL profile and type link relations  . . . . . . . . . . .  3
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
+     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  5
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
-     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
+     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  6
        6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  6
        6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
@@ -198,8 +198,15 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
    </resource>
 
    Precedence rules between Link Headers and HAL link relations SHOULD
-   observer compliance per the ALPS specification Section 3.1. Linking
-   to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+   observe compliance per the ALPS specification Section 3.1. Linking to
+   ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+
+   Note that this specification reserves the "halps" attribute prefix
+   and defines the "halps:type" attribute to extend the semantic of HAL
+   Links. The reserved attribute's semantics are equivalent to the
+   "type" link relation semantics defined under [RFC6903] with the
+   notable exception that this is intended to help provide a hint about
+   the expected semantic type of a HAL Link's target.
 
 5.2.  Link Header
 
@@ -211,13 +218,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
    <http://example.org/profiles/accounting#invoice>;rel="type"
 
    Precedence rules between Link Headers and HAL link relations SHOULD
-   observer compliance per the ALPS specification Section 3.1. Linking
-   to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
-
-5.3.  Additional Considerations
-
-   It is valid for a service to advertise support for more than one ALPS
-   profile for the same response. For example, a single response from a
  
 
 
@@ -226,6 +226,13 @@ Michaud                  Expires April 3, 2018                  [Page 4]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
+   observer compliance per the ALPS specification Section 3.1. Linking
+   to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+
+5.3.  Additional Considerations
+
+   It is valid for a service to advertise support for more than one ALPS
+   profile for the same response. For example, a single response from a
    server MAY include multiple HAL profile relations.
 
    As application/hal+json:
@@ -267,13 +274,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 6.  ALPS Bindings for HAL
 
    The following sections contain details and examples on how to bind
-   ALPS to HAL.
-
-6.1.  ALPS Descriptor Bindings
-
-   The following sections describe ALPS bindings for HAL, for the ALPS
-   descriptor property.
-
  
 
 
@@ -281,6 +281,13 @@ Michaud                  Expires April 3, 2018                  [Page 5]
 
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
+
+   ALPS to HAL.
+
+6.1.  ALPS Descriptor Bindings
+
+   The following sections describe ALPS bindings for HAL, for the ALPS
+   descriptor property.
 
 6.1.1.  id
 
@@ -323,13 +330,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
          "description": "jsonf <command>"
        }
      ]
-   }
-
-   As application/hal+xml:
-
-   <resource self="/svc">
-     <link rel="profile" href="http://example.org/profiles/man"/>
-     <link rel="type" href="http://example.org/profiles/man#man-page"/>
  
 
 
@@ -338,6 +338,13 @@ Michaud                  Expires April 3, 2018                  [Page 6]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
+   }
+
+   As application/hal+xml:
+
+   <resource self="/svc">
+     <link rel="profile" href="http://example.org/profiles/man"/>
+     <link rel="type" href="http://example.org/profiles/man#man-page"/>
      <section>
        <name>name</name>
        <description>A simple formatter for JSON</description>
@@ -379,13 +386,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
        },
        "profile": [{
          "href": "http://example.org/profiles/library"
-       }],
-       "type": [{
-         "href": "http://example.org/profiles/library#media"
-       }, 
-       "item": [{
-         "href": "/svc/book/1",
-         "name": "book"
  
 
 
@@ -394,6 +394,13 @@ Michaud                  Expires April 3, 2018                  [Page 7]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
+       }],
+       "type": [{
+         "href": "http://example.org/profiles/library#media"
+       }, 
+       "item": [{
+         "href": "/svc/book/1",
+         "name": "book"
        },
        {
          "href": "/svc/movie/1",
@@ -415,15 +422,15 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 6.1.3.1. semantic
 
-   Coverage for the descriptor.type property with a value of "semantic"
-   is covered under sections covering descriptor.id and descriptor.name
-   above.
+   The descriptor.type property with a value of "semantic" is covered
+   under sections covering descriptor.id and descriptor.name.
 
 6.1.3.2. safe, unsafe, or idempotent
 
    If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent")
-   is used in a referenced semantic descriptor, then it SHOULD yield the
-   formation of a link or a templated link (a form).
+   is contained in semantic descriptor, then it SHOULD yield the
+   formation of a link or a templated link (a form) in a HAL
+   representation.
 
    Note however that HAL does not support the presence of links within
    nested attributes, therefore, HAL based representations SHALL only
@@ -431,17 +438,10 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
    descriptor is contained within a semantic descriptor and if that
    semantic descriptor aligns with a HAL resource boundary. 
 
-6.1.3.2.1.  Without a referenced semantic descriptor
+6.1.3.2.1.  Without a Contained Semantic Descriptor
 
    If a non-semantic descriptor does not contain a semantic descriptor,
    then it SHOULD yield the formation of a link.
-
-   <!-- ALPS document fragment -->
-   <descriptor id="media" type="semantic">
-     <descriptor id="next" type="safe" />
-   </descriptor>
-
-   As application/hal+json:
  
 
 
@@ -449,6 +449,13 @@ Michaud                  Expires April 3, 2018                  [Page 8]
 
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
+
+   <!-- ALPS document fragment -->
+   <descriptor id="media" type="semantic">
+     <descriptor id="next" type="safe" />
+   </descriptor>
+
+   As application/hal+json:
 
    {
      "_links": {
@@ -481,7 +488,7 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
      <link rel="next" href="/svc/movie/2" name="movie"/>
    </resource>
 
-6.1.3.2.2.  With a referenced semantic descriptor
+6.1.3.2.2.  With a Contained Semantic Descriptor
 
    If a non-semantic descriptor contains one or more semantic
    descriptors, then it SHOULD yield the formation of a templated link
@@ -491,13 +498,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
    <descriptor id="search" type="semantic">
      <descriptor href="#collection" />
    </descriptor>
-
-   <descriptor id="collection" type="safe">
-     <doc format="text">A search form with one input.</doc>
-     <descriptor id="id" type="semantic" />
-   </descriptor>
-
-   As application/hal+json:
  
 
 
@@ -505,6 +505,13 @@ Michaud                  Expires April 3, 2018                  [Page 9]
 
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
+
+   <descriptor id="collection" type="safe">
+     <doc format="text">A search form with one input.</doc>
+     <descriptor id="id" type="semantic" />
+   </descriptor>
+
+   As application/hal+json:
 
    {
      "_links": {
@@ -547,13 +554,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
    relation target.
 
    The return type MAY however be used to make explicit the otherwise
-   implied semantic return type of an embedded resource or link relation
-   target if the return type does not yield a semantic conflict.
-
-   <!-- ALPS document fragment -->
-   <descriptor id="search" type="semantic">
-     <descriptor href="#collection" />
-     <descriptor href="#result" />
  
 
 
@@ -562,6 +562,13 @@ Michaud                  Expires April 3, 2018                 [Page 10]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
+   implied semantic return type of an embedded resource or link relation
+   target if the return type does not yield a semantic conflict.
+
+   <!-- ALPS document fragment -->
+   <descriptor id="search" type="semantic">
+     <descriptor href="#collection" />
+     <descriptor href="#result" />
    </descriptor>
 
    <descriptor id="collection" type="safe" rt="#search">
@@ -594,7 +601,7 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
          "href": "/svc/search{?id}",
          "templated" : true,
          "profile": "http://example.org/profiles/search",
-         "alps:type" : "http://example.org/profiles/search#search"
+         "halps:type" : "http://example.org/profiles/search#search"
        }
      }
    }
@@ -603,13 +610,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
    <resource self="/svc">
      <link rel="profile"
-           href="http://example.org/profiles/search"/>
-     <link rel="type"
-           href="http://example.org/profiles/search#search"/>
-     <link rel="collection"
-           href="/svc/search{?id}"
-           templated="true",
-           profile="http://example.org/profiles/search",
  
 
 
@@ -618,7 +618,14 @@ Michaud                  Expires April 3, 2018                 [Page 11]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
-           alps:type="http://example.org/profiles/search#search" />
+           href="http://example.org/profiles/search"/>
+     <link rel="type"
+           href="http://example.org/profiles/search#search"/>
+     <link rel="collection"
+           href="/svc/search{?id}"
+           templated="true",
+           profile="http://example.org/profiles/search",
+           halps:type="http://example.org/profiles/search#search" />
    </resource>
 
 7.  HAL Curies and Extension Relations
@@ -659,13 +666,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
    <descriptor id="book-type-2" type="semantic">
      <descriptor id="name" type="semantic" />
-     <descriptor id="summary" type="semantic" />
-   </descriptor>
-
-   As application/hal+json:
-
-   {
-     "_links": {
  
 
 
@@ -674,6 +674,13 @@ Michaud                  Expires April 3, 2018                 [Page 12]
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 
+     <descriptor id="summary" type="semantic" />
+   </descriptor>
+
+   As application/hal+json:
+
+   {
+     "_links": {
        "self": {
          "href": "/svc"
        },
@@ -691,12 +698,12 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
        "ext:book": [{
          "href": "/svc/book/1",
          "profile": "http://example.org/profiles/library",
-         "alps:type" : "http://example.org/profiles/library#book-type-1"
+         "halps:type" : "http://example.org/profiles/library#book-type-1"
        },
        {
          "href": "/svc/book/2",
          "profile": "http://example.org/profiles/library",
-         "alps:type" : "http://example.org/profiles/search#book-type-2"
+         "halps:type" : "http://example.org/profiles/search#book-type-2"
        }]
      }
    }
@@ -715,13 +722,6 @@ Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
 11.  Normative References
 
-   [RFC6906]  Wilde, E., EMC Corporation, RFC 6906, March 2013
-
-   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
-
-   [RFC6903]  Snell, J., "Additional Link Relation Types", RFC 6903,
-              March 2013
-
  
 
 
@@ -729,6 +729,13 @@ Michaud                  Expires April 3, 2018                 [Page 13]
 
 Internet-Draft           ALPS Bindings for HAL        September 30, 2017
 
+
+   [RFC6906]  Wilde, E., EMC Corporation, RFC 6906, March 2013
+
+   [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
+
+   [RFC6903]  Snell, J., "Additional Link Relation Types", RFC 6903,
+              March 2013
 
 11.  Informative References
 
@@ -763,13 +770,6 @@ Author's Address
 
    Email: cometaj2@comcast.net
    Twitter: @cometaj2
-
-
-
-
-
-
-
 
 
 
