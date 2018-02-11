@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH February 13, 2017
+.ds RH February 4, 2018
 .ds CH Hypertext Command Line Interface
-.ds CF Expires August 17, 2017
+.ds CF Expires August 8, 2018
 .hy 0
 .nh
 .ad l
@@ -18,9 +18,9 @@
 
 .nf
 .tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''February 13, 2017'
+.tl '\%Internet-Draft''February 4, 2018'
 .tl 'Intended status: Informational'''
-.tl 'Expires: August 17, 2017'''
+.tl 'Expires: August 8, 2018'''
 .fi
 .in 3
 
@@ -46,7 +46,7 @@ Internet-Drafts are draft documents valid for a maximum of six months and may be
 .ti 0
 Copyright Notice
 
-Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.
+Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.
 
 This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
 
@@ -59,14 +59,14 @@ Table of Contents
 .nf
    1.  Introduction . . . . . . . . . . . . . . . . . . . . . . . . .  3
    2.  Requirements . . . . . . . . . . . . . . . . . . . . . . . . .  3
-   3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  3
-   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  6
-     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  7
-       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  7
+   3.  HCLI ALPS Semantics  . . . . . . . . . . . . . . . . . . . . .  4
+   4.  HCLI Document  . . . . . . . . . . . . . . . . . . . . . . . .  5
+     4.1.  Reserved Property and Other Reserved Names . . . . . . . .  6
+       4.1.1.  hcli_version . . . . . . . . . . . . . . . . . . . . .  6
        4.1.2.  Other Reserved Names . . . . . . . . . . . . . . . . .  7
      4.2.  name . . . . . . . . . . . . . . . . . . . . . . . . . . .  7
      4.3.  section  . . . . . . . . . . . . . . . . . . . . . . . . .  7
-       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
+       4.3.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
        4.3.2.  description  . . . . . . . . . . . . . . . . . . . . .  8
      4.4.  Command  . . . . . . . . . . . . . . . . . . . . . . . . .  8
        4.4.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  8
@@ -75,28 +75,29 @@ Table of Contents
        4.5.1.  name . . . . . . . . . . . . . . . . . . . . . . . . .  9
        4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
      4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
-     4.7.  Safe Execution . . . . . . . . . . . . . . . . . . . . . . 11
-     4.8.  Unsafe Execution . . . . . . . . . . . . . . . . . . . . . 11
-   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
-     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 11
+     4.7.  Execution  . . . . . . . . . . . . . . . . . . . . . . . . 11
+       4.7.1  method  . . . . . . . . . . . . . . . . . . . . . . . . 11
+         4.7.1.1  HTTP Protocol . . . . . . . . . . . . . . . . . . . 11
+   5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
+     5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Stream Processing  . . . . . . . . . . . . . . . . . . . . . . 17
        6.1.1.  For Servers  . . . . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 17
+       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 18
        6.1.2.  For Command Line Clients . . . . . . . . . . . . . . . 18
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 18
-     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 18
-     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 18
-       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 18
+     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 19
+     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 19
+       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 19
        7.2.2.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
        7.2.3.  Robustness . . . . . . . . . . . . . . . . . . . . . . 19
-     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 19
-       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
-   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 19
+     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 20
+       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 20
+   8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 20
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 20
    10.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 20
      10.1.  Normative References  . . . . . . . . . . . . . . . . . . 20
-     10.2.  Informative References  . . . . . . . . . . . . . . . . . 20
+     10.2.  Informative References  . . . . . . . . . . . . . . . . . 21
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 21
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 22
      B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 22
@@ -105,7 +106,8 @@ Table of Contents
        B.1.3.  Immediacy  . . . . . . . . . . . . . . . . . . . . . . 22
        B.1.4.  Scripting and Experimentation  . . . . . . . . . . . . 22
        B.1.5.  Building Blocks  . . . . . . . . . . . . . . . . . . . 22
-   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 22
+       B.1.5.  Native . . . . . . . . . . . . . . . . . . . . . . . . 22
+   Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 23
 .fi
 .in 3
 
@@ -123,7 +125,7 @@ HCLI leverages the use of the Application Level Profile Semantics (ALPS) [I-D.dr
 
 HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. Furthermore, the establishment of a semantic interface of this nature is expected to instigate the creation of a rich ecosystem of reusable and shareable CLIs.
 
-The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to many different domains, and only imposes limitations that constrain a REST API to operate as a hypertext command line interface.
+The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to many different domains, and only imposes limitations that constrain an HTTP API to operate as a hypertext command line interface.
 
 .ti 0
 2.  Requirements
@@ -137,97 +139,86 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 
 .nf
 <alps version="1.0">
-    <doc>Hypertext Command Line Interface (HCLI) semantics.</doc>
+  <doc>Hypertext Command Line Interface (HCLI) semantics.</doc>
 
-    <descriptor id="hcli-document">
-        <descriptor href="#hcli_version" />
+  <descriptor id="hcli-document" name="cli">
+    <doc>A resource for providing HCLI argument choices</doc>
 
-        <descriptor href="#name" />
+    <descriptor rt="#command" type="safe" name="cli"/>
+    <descriptor rt="#option" type="safe" name="cli"/>
+    <descriptor rt="#parameter" type="safe" name="cli"/>
+    <descriptor rt="#execution" type="safe" name="cli"/>        
 
-        <descriptor id="section" type="semantic">
-            <descriptor href="#name" />
-            <descriptor href="#description" />
-        </descriptor>
+    <descriptor href="#hcli_version" />
+    <descriptor href="#name" />
+    <descriptor href="#section" />        
+  </descriptor>
 
-        <descriptor href="#command"/>
-        <descriptor href="#option"/>
-        <descriptor href="#parameter"/>
-        <descriptor href="#safe-execution"/>
-        <descriptor href="#unsafe-execution"/>
+  <descriptor id="command" type="semantic">
+    <doc>A resource for describing and selecting a command.</doc>
+
+    <descriptor rt="#hcli-document" name="cli" type="safe"/>
+
+    <descriptor href="#hcli_version"/>
+    <descriptor href="#name" />
+    <descriptor href="#description" />
+  </descriptor>  
+
+  <descriptor id="option" type="semantic">
+    <doc>A resource for describing and selecting an option.</doc>
+
+    <descriptor rt="#hcli-document" name="cli" type="safe"/>
+
+    <descriptor href="#hcli_version"/>
+    <descriptor href="#name" />
+    <descriptor href="#description" />
+  </descriptor> 
+
+  <descriptor id="parameter" type="semantic">
+    <doc>A resource for providing an input parameter.</doc>
+
+    <descriptor rt="#hcli-document" name="cli" type="safe">
+      <doc>A form to input a command line parameter.</doc>
+
+      <descriptor id="hcli_param" type="semantic"/>
     </descriptor>
 
-    <descriptor id="command" type="semantic">
-        <doc>A resource for selecting a command.</doc>
+    <descriptor href="#hcli_version"/>        
+  </descriptor>
 
-        <descriptor href="#safe-cli-item" />
-        <descriptor href="#hcli_version"/>
-        <descriptor href="#name" />
-        <descriptor href="#description" />
-    </descriptor>  
+  <descriptor id="execution" type="semantic">
+    <doc>A resource for executing a command line.</doc>
 
-    <descriptor id="option" type="semantic">
-        <doc>A resource for selecting an option.</doc>
+    <descriptor name="cli" type="safe" />
+    <descriptor name="cli" type="unsafe" />
+    <descriptor name="cli" type="idempotent" />
 
-        <descriptor href="#safe-cli-item" />
-        <descriptor href="#hcli_version"/>
-        <descriptor href="#name" />
-        <descriptor href="#description" />
-    </descriptor> 
+    <descriptor href="#hcli_version"/>        
+    <descriptor href="#method"/>
+  </descriptor>  
 
-    <descriptor id="parameter" type="semantic">
-        <descriptor href="#param-item" type="safe"/>
-        <descriptor href="#hcli_version"/>        
-    </descriptor>
+  <descriptor id="hcli_version" type="semantic">
+    <doc>The version of the HCLI specification in use</doc>
+  </descriptor>
 
-    <descriptor id="safe-execution" type="semantic">
-        <doc>A resource for executing a safe command line.</doc>
+  <descriptor id="name" type="semantic">
+    <doc>The name of the described command or option</doc>
+  </descriptor>
 
-        <descriptor href="#execution-safe-cli-item" />
-        <descriptor href="#hcli_version"/>        
-    </descriptor>  
+  <descriptor id="description" type="semantic">    
+    <doc>The description of a named section, command, or option</doc>
+  </descriptor>
 
-    <descriptor id="unsafe-execution" type="semantic">
-        <doc>A resource for executing an unsafe command line.</doc>
+  <descriptor id="section" type="semantic">
+    <doc>A man page style HCLI documentation section.</doc>
 
-        <descriptor href="#execution-unsafe-cli-item" />
-        <descriptor href="#hcli_version"/>                
-    </descriptor>  
+    <descriptor href="#name" />
+    <descriptor href="#description" />
+  </descriptor>
 
-    <descriptor id="safe-cli-item" name="item" type="safe">
-        <descriptor id="safe-cli" name="cli" type="safe" rt="#hcli-document" />
-    </descriptor>
-
-    <descriptor id="execution-safe-cli-item" name="item" type="safe">
-        <descriptor id="execution-safe-cli" name="cli" type="safe" />
-    </descriptor>
-
-    <descriptor id="execution-unsafe-cli-item" name="item" type="safe">
-        <descriptor id="execution-unsafe-cli" name="cli" type="unsafe" />
-    </descriptor>
-
-    <descriptor id="param-item" name="item" type="safe">
-        <doc>A resource for entering a parameter.</doc>
-
-        <descriptor id="param-cli-item" name="cli" type="safe" rt="#hcli-document">
-            <doc>A form to input a command line parameter.</doc>
-
-            <descriptor id="hcli_param" type="semantic">
-                <doc>Custom supplied input for a CLI execution.</doc>
-            </descriptor>
-        </descriptor>
-    </descriptor>
-
-    <descriptor id="hcli_version" type="semantic">
-        <doc>The version of the HCLI specification in use</doc>
-    </descriptor>
-
-    <descriptor id="name" type="semantic">
-        <doc>The name of the described command or option</doc>
-    </descriptor>
-
-    <descriptor id="description" type="semantic">    
-        <doc>The description of a named section, command, or option</doc>
-    </descriptor>
+  <descriptor id="method" type="semantic">
+    <doc>A protocol hint of the default method to use when executing an HCLI.</doc>
+  </descriptor>    
 </alps>
 .fi
 
@@ -236,7 +227,7 @@ The HCLI semantics are largely codified via the definition of a proposed standar
 
 An HCLI Document, or any document containing HCLI semantics, MAY be represented using any media-type that is able to express the HCLI semantics described via the proposed ALPS profile and the provisions otherwise mentioned in this specification.
 
-It should also be noted that an HCLI Document MUST NOT endeavor to expose the entirety of a command line interface in a single HCLI Document. HCLI serving MUST be represented incrementally and across multiple HCLI Documents as each layer of commands, options and parameters unfold through hypertext navigation.
+It should also be noted that an HCLI Document MUST NOT endeavor to expose the entirety of a command line interface in a single HCLI Document. HCLI serving MUST be represented incrementally and across multiple HCLI Documents as each layer of commands, options and parameters unfold through linked navigation.
 
 
 An HCLI Document MUST always contain at least one of the following:
@@ -247,9 +238,7 @@ An HCLI Document MUST always contain at least one of the following:
 
 (3)  Parameter
 
-(4)  Safe Execution
-
-(5)  Unsafe Execution.
+(4)  Execution
 
 
 The "hcli_" prefix is reserved by the HCLI specification and MUST NOT be used by API creators to define private semantics.
@@ -277,7 +266,7 @@ Additionally, this specification reserves the following names for exclusive use 
 
 The reserved "hcli_version" property is REQUIRED.
 
-This property MUST be present in all HCLI Documents and MUST contain the version number of the applicable HCLI specification.
+This property MUST be present in all HCLI Resources and MUST contain the version number of the applicable HCLI specification.
 
 This specification documents the semantics of HCLI version "1.0".
 
@@ -333,13 +322,15 @@ Its value SHOULD contain information that pertains to the purpose of the named s
 .ti 0
 4.4.  Command
 
-The Command item is OPTIONAL.
+Command is OPTIONAL.
 
 A Command describes a type of action to effect in a command line execution.
 
-A Command item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Command MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal, by an HCLI client, of the "cli" link relation contained in a Command item, MUST return an HCLI Document describing the targeted Command's context.
+Because many Commands and Options MAY be presented in an HCLI Document, individual Command "cli" links presented in an HCLI Document SHOULD be disambiguated, if possible, by using a secondary key containing the name of the Command. 
+
+Successful traversal, by an HCLI client, of a the "cli" link relation in a Command, SHOULD return an HCLI Document describing the targeted Command's context.
 
 .ti 0
 4.4.1.  name
@@ -376,15 +367,17 @@ Its value SHOULD contain information that describes the purpose of the Command.
 .ti 0
 4.5.  Option
 
-The Option item is OPTIONAL.
+Option is OPTIONAL.
 
 An Option describes an option or flag that MAY be used to effect a variation on the outcome of a command line execution.
 
-An Option item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+An Option MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal, by an HCLI client, of the "cli" link relation contained in an Option item, MUST return an HCLI Document that correlates to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
+Successful traversal, by an HCLI client, of a "cli" link relation in an Option SHOULD return an HCLI Document that correlates to the last successfully navigated Command. Options MUST NOT present documentation distinct from that of it's associated Command.
 
-The "cli" link relation of an Option that's already been navigated through by an HCLI client MUST NOT be presented any longer. The Option item, however, MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
+Because many Commands and Options MAY be presented in an HCLI Document, individual Option "cli" links presented in an HCLI Document SHOULD be disambiguated, if possible, by using a secondary key containing the name of the Option. 
+
+The "cli" link relation contained in an Option that has already been navigated through by an HCLI client MUST NOT be presented any longer. The Option itself, however, MUST otherwise remain available in an HCLI Document to help HCLI clients with automatic documentation generation.
 
 .ti 0
 4.5.1.  name
@@ -415,43 +408,59 @@ Its value SHOULD contain information that describes the purpose of the Option, a
 .ti 0
 4.6.  Parameter
 
-The Parameter item is OPTIONAL.
+Parameter is OPTIONAL.
 
-A Parameter describes an HCLI client's ability to input a user supplied parameter, using the reserved "hcli_param" name. The "hcli_param" name is used as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
+A Parameter describes an HCLI client's ability to input a single user supplied parameter, using the reserved "hcli_param" key. The "hcli_param" key is used as a simple string expansion variable in a URI Template (see section 3.2.2 of [RFC6570]), that MAY be required for successful command line execution.
 
 A submitted expansion variable MUST be URL encoded [RFC3986].
 
-A Parameter item MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+A Parameter MUST only be made available if contextually relevant, for a given HCLI Document, in the cumulative formation of a command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal, by an HCLI client, of the "cli" link relation contained in a Parameter item, MUST return an HCLI Document that correlates to the last successfully navigated Command. Parameters MUST NOT present documentation distinct from that of it's associated Command.
+Successful traversal, by an HCLI client, of the "cli" link relation contained in a Parameter, SHOULD return an HCLI Document that correlates to the last successfully navigated Command. Parameters MUST NOT present documentation distinct from that of it's associated Command.
 
-An HCLI Document MUST NOT contain more than a single Parameter item at a time but more than one Parameter MAY be presented sequencially across HCLI Documents.
-
-.ti 0
-4.7.  Safe Execution
-
-The Safe Execution item is OPTIONAL.
-
-A Safe Execution item identifies an HCLI client's ability to execute a theretofore accumulated command line.
-
-A Safe Execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
-
-Successful traversal, by an HCLI client, of the "cli" link relation contained in the Safe Execution item, MUST NOT return an HCLI Document and execution fulfillment MUST NOT impact server resources.
-
-If presented, only a single Safe Execution MUST be presented and both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
+An HCLI Document MUST NOT contain more than a single Parameter at a time but more than one Parameter MAY be presented sequentially across HCLI Documents.
 
 .ti 0
-4.8.  Unsafe Execution
+4.7.  Execution
 
-The Unsafe Execution item is OPTIONAL.
+Execution is OPTIONAL.
 
-An Unsafe Execution item identifies an HCLI client's ability to execute a theretofore accumulated command line.
+Execution identifies an HCLI client's ability to execute a theretofore accumulated command line.
 
-An Unsafe Execution item MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
+Execution MUST only be made available if contextually relevant, for a given HCLI Document and an accumulated command line sequence. Specific contextual relevance determination is, however, out of scope of this specification.
 
-Successful traversal, by an HCLI client, of the "cli" link relation contained in an Unsafe Execution item, MUST NOT return an HCLI Document and execution MAY impact server resources.
+Successful traversal, by an HCLI client, of the "cli" link relation contained in Execution, MUST NOT return an HCLI Document and effectively steps out of scope of HCLI semantics. API provider semantics are also out of scope of this specification.
 
-If presented, only a single Unsafe Execution MUST be presented and both a Safe Execution and an Unsafe Execution MUST NOT be present simultaneously in the same HCLI Document.
+.ti 0
+4.7.1  method
+
+The method property is REQUIRED.
+
+the method property MUST provides a protocol hint of the default method to automatically use by HCLI clients when navigating through the final "cli" link relation leading into API provider specific semantics.
+
+Note that only a single default value is allowed. The default value MUST align with one of the allowed methods for the "cli" link relation.
+
+.ti 0
+4.7.1.1  HTTP Protocol
+
+For the HTTP protocol, the allowed method values are:
+
+(1) for a safe "cli" link transition
+    
+    - HTTP.GET
+
+(2) for an unsafe, idempotent "cli" link transition
+
+    - HTTP.PUT
+    
+    - HTTP.DELETE
+
+(3) for an unsafe, non-idempotent "cli" link transition
+
+    - HTTP.POST
+
+    - HTTP.PATCH
+
 
 .ti 0
 5.  Examples
@@ -479,8 +488,24 @@ Content-Type: application/hal+json
     },
     "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
-    }
+    },
+    "cli": [
+      {
+        "href": "/usp5/__cdef/admin?command=usp5"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#command"
+        "name": "admin"
+      },
+      {
+        "href": "/usp5/__cdef/admin?command=usp5+--version"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#option"
+        "name": "--version"
+      }
+    ]
   },
+  "hcli_version": "1.0",
+  "name": "usp5",
   "section" : [
   {
     "name": "name",
@@ -497,50 +522,35 @@ Content-Type: application/hal+json
   {
     "name": "examples",
     "description": "N/A"
-  }],
-  "_embedded":{
-    "item":[
-    {
-      "_links": {
-        "self": {
-          "href": "/usp5/__cdef/admin?command=usp5"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#command"
-        },
-        "cli": {
-          "href": "/usp5/admin?command=usp5+admin",
-          "profile": "http://example.org/profiles/hcli"
-        }
-      },
-      "hcli_version": "1.0",
-      "name": "admin",
-      "description": "Allows you to administer the usp5 server."
+  }]
+}
+
+GET /usp5/__odef/--version?command=usp5 HTTP/1.1
+Host: example.org
+Accept: application/hal+json
+
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+{
+  "_links": {
+    "self": {
+      "href": "/usp5/__odef/--version?command=usp5"
     },
-    {
-      "_links": {
-        "self": {
-          "href": "/usp5/__odef/--version?command=usp5"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#option"
-        },
-        "cli": {
-          "href": "/usp5?command=usp5+--version",
-          "profile": "http://example.org/profiles/hcli"
-        }
-      },
-      "hcli_version": "1.0",
-      "name": "--version",
-      "description": "The usp5 CLI version."
-    }]
-  }
+    "profile": {
+      "href": "http://example.org/profiles/hcli"
+    },
+    "type": {
+      "href": "http://example.org/profiles/hcli#option"
+    },
+    "cli": {
+      "href": "/usp5?command=usp5+--version",
+      "profile": "http://example.org/profiles/hcli"
+      "halps:type": "http://example.org/profiles/hcli#hcli-document"
+    }
+  },
+  "hcli_version": "1.0",
+  "name": "--version",
+  "description": "The usp5 CLI version."
 }
 
 GET /usp5?command=usp5+--version HTTP/1.1
@@ -560,8 +570,29 @@ Content-Type: application/hal+json
     },
     "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
-    }
+    },
+    "cli": [
+      {
+        "href": "/usp5/__cdef/admin?command=usp5+--version"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#command"
+        "name": "admin"
+      },
+      {
+        "href": "/usp5/__cdef/admin?command=usp5+--version"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#option"
+        "name": "--version"
+      },
+      {
+        "href": "/usp5/__edef?command=usp5+--version"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#execution"
+      }
+    ]
   },
+  "hcli_version": "1.0"
+  "name": "--version",
   "section" : [
   {
     "name": "name",
@@ -578,60 +609,33 @@ Content-Type: application/hal+json
   {
     "name": "examples",
     "description": "N/A"
-  }],
-  "_embedded":{
-    "item":[
-    {
-      "_links": {
-        "self": {
-          "href": "/usp5/__cdef/admin?command=usp5+--version"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#command"
-        }
-      },
-      "hcli_version": "1.0",
-      "name": "admin",
-      "description": "Allows you to administer the usp5 server."
+  }]  
+}
+
+GET /usp5/__edef?command=usp5+--version HTTP/1.1
+Host: example.org
+Accept: application/hal+json
+
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+
+{
+  "_links": {
+    "self": {
+      "href": "/usp5/__edef?command=usp5+--version"
     },
-    {
-      "_links": {
-        "self": {
-          "href": "/usp5/__odef/--version?command=usp5+--version"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#option"
-        }
-      },
-      "hcli_version": "1.0",
-      "name": "--version",
-      "description": "The usp5 CLI version."
+    "profile": {
+      "href": "http://example.org/profiles/hcli"
     },
-    {
-      "_links": {
-        "self": {
-          "href": "/usp5/__edef?command=usp5+--version"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#safe-execution"
-        },
-        "cli": {
-          "href": "/usp5/execution?command=usp5+--version",
-          "profile": "http://example.org/profiles/hcli"
-        }
-      },
-      "hcli_version": "1.0"
-    }]
-  }
+    "type": {
+      "href": "http://example.org/profiles/hcli#execution"
+    },
+    "cli": {
+      "href": "/usp5/execution?command=usp5+--version",
+    }
+  },
+  "hcli_version": "1.0",
+  "method": "HTTP.GET"
 }
 
 GET /usp5/execution?command=usp5+--version HTTP/1.1
@@ -667,8 +671,17 @@ Content-Type: application/hal+json
     },
     "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
-    }
+    },
+    "cli": [
+      {
+        "href": "/jsonf/__edef?command=jsonf"
+        "profile": "href": "http://example.org/profiles/hcli"
+        "halps:type": "http://example.org/profiles/hcli#execution"
+      }
+    ]
   },
+  "hcli_version": "1.0"
+  "name": "jsonf",
   "section" : [
   {
     "name": "name",
@@ -685,28 +698,33 @@ Content-Type: application/hal+json
   {
     "name": "examples",
     "description": "cat linear.json | jsonf"
-  }],
-  "_embedded":{
-    "item":[
-    {
-      "_links": {
-        "self": {
-          "href": "/jsonf/__edef?command=jsonf"
-        },
-        "profile": {
-          "href": "http://example.org/profiles/hcli"
-        },
-        "type": {
-          "href": "http://example.org/profiles/hcli#unsafe-execution"
-        },
-        "cli": {
-          "href": "/jsonf/execution?command=jsonf",
-          "profile": "http://example.org/profiles/hcli"
-        }
-      },
-      "hcli_version": "1.0"
-    }]
-  }
+  }]
+}
+
+GET /jsonf/__edef?command=jsonf HTTP/1.1
+Host: example.org
+Accept: application/hal+json
+
+HTTP/1.1 200 OK
+Content-Type: application/hal+json
+
+{
+  "_links": {
+    "self": {
+      "href": "/jsonf/__edef?command=jsonf"
+    },
+    "profile": {
+      "href": "http://example.org/profiles/hcli"
+    },
+    "type": {
+      "href": "http://example.org/profiles/hcli#execution"
+    },
+    "cli": {
+      "href": "/jsonf/execution?command=jsonf",
+    }
+  },
+  "hcli_version": "1.0",
+  "method": "HTTP.POST"
 }
 
 POST /jsonf/execution?command=jsonf HTTP/1.1
@@ -733,7 +751,7 @@ Content-Type: application/json
 .ti 0
 6.1.1.  For Servers
 
-Servers implementing HCLI semantics that leverage Unsafe Execution and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and send entity bodies of the application/octet-stream media-type [RFC2046].
+Servers implementing HCLI semantics that leverage unsafe Execution (HTTP.POST or HTTP.PATCH) and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and send entity bodies of the application/octet-stream media-type [RFC2046].
 
 This is intended to easily enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Specific input stream processing semantics by services are out of scope of this specification.
 
@@ -742,16 +760,16 @@ Servers SHOULD, however, endeavor to support receiving and sending correctly ide
 .ti 0
 6.1.2.  For Clients in General
 
-Command line clients that support input stream processing SHOULD attempt to send it to an HCLI server, but only if a command line sequence leads to an Unsafe Execution.
+Command line clients that support input stream processing SHOULD attempt to send their input stream to an HCLI server, but only if a command line sequence leads to an unsafe HTTP.POST or idempotent HTTP.PUT Execution.
 
 Clients MUST minimally support sending input streams and receiving output streams under the application/octet-stream [RFC2046] media-type.
 
-Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer, and SHOULD also be ready to process responses making use of the most appropriate media-type for the received payload, to help maintain visibility on the network.
+Command line clients SHOULD, however, endeavor to communicate input streams by using the most appropriate media-type representing the input stream to transfer, and SHOULD also be ready to process responses making use of the most appropriate media-type for the received response, to help maintain visibility on the network.
 
 .ti 0
 6.1.2.  For Command Line Clients
 
-Command line (CLI) clients SHOULD use STDIN, or other equivalent, as an input stream to allow for pipe and filter processing.
+Command line interface (CLI) clients SHOULD support receiving input from STDIN, or other equivalent, to allow for pipe and filter processing.
 
 Command line clients receiving the result of a successful HCLI command line execution SHOULD output the result to STDOUT, or other equivalent, to allow for further pipe and filter processing.
 
@@ -774,9 +792,9 @@ The standard HCLI ALPS profiles defined in this specification MAY be hosted alon
 
 Submitting a command line sequence SHOULD prompt a client to automatically, and sequentially parse submitted arguments, and to navigate through sequences of HCLI Documents, by using Command or Option "name" or the Parameter variable "hcli_param", corresponding to each parsed command, option or parameter.
 
-A client MAY want to help disambiguate user supplied parameters from commands and options by always assuming that strings surrounded by the double quote character (i.e. "), or the single quote character (i.e. '), are intended to be submitted as a user supplied parameter.
+A client MAY want to facilitate disambiguation of user supplied parameters from commands and options by always assuming that strings surrounded by the double quote character (i.e. "), or the single quote character (i.e. '), are intended to be submitted as a user supplied parameter.
 
-Upon running out of commands, options and parameters to parse for use in HCLI navigation, a client SHOULD automatically attempt a Safe Execution or Unsafe Execution traversal. If neither a Safe Execution nor Unsafe Execution is available, the command line execution SHOULD be treated as a failure and the last successfully retrieved HCLI Document MAY be used to provide useful feedback to help users correct mistakes.
+Upon running out of commands, options and parameters to parse for use in HCLI navigation, a client SHOULD automatically attempt an Execution. If Execution isn't available, the command line execution SHOULD be treated as a failure and the last successfully retrieved HCLI Document MAY be used to provide useful feedback to help users correct mistakes.
 
 .ti 0
 7.2.2.  Documentation
@@ -810,7 +828,7 @@ TBD
 .ti 0
 9.  IANA Considerations
 
-The HCLI specification introduces the "cli" link relation per [RFC5988] to indicate the presence of hypertext command line interface semantics.
+This specification introduces the "cli" link relation per [RFC5988] to indicate the presence of hypertext command line interface semantics.
 
 The link relation SHOULD be accompanied by a "profile" [RFC6906] defining command line interface semantics.
 
@@ -840,7 +858,7 @@ This specification defines a standard ALPS profile to be used in conjunction wit
 [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M., and D. Orchard, "URI Template", RFC 6570, March 2012.
 
 .ti 3
-[RFC2046]  Freed, N., Innosoft, Borenstein, N., First Virtual, RFC 2046, November 1996.
+[RFC2046]  Freed, N., Innosoft, Borenstein, N., First Virtual, "Multipurpose Internet Mail Extensions", RFC 2046, November 1996.
 .nf
 
 .in 3
@@ -864,7 +882,7 @@ Amundsen, M., CA Technologies, Inc., Richardson L., Foster, M., "Application-Lev
 Appendix A.  Acknowledgements
 
 .fi
-TBD
+Thanks to Mike Amundsen, Mark Foster and others on the ALPS Discussion list for providing invaluable feedback during the definition of the HCLI ALPS profile.
 .nf
 
 .bp
@@ -878,12 +896,12 @@ B.1.  What are some of the benefits of HCLI?
 .ti 0
 B.1.1.  Reduced Cost
 
-The most immediate benefit is that instead of having to develop a custom client for your HCLI API, you can benefit from the use of a standard client that understands HCLI semantics. Such a client is able to interact out-of-the-box with any HCLI API as an imposter CLI; you get a free bridge into the pipe and filter style for your HCLI API.
+The most immediate benefit is that instead of having to develop a custom client for your HCLI API, you can benefit from the use of a standard client that understands HCLI semantics. Such a client would be able to interact out-of-the-box with any HCLI API as an imposter CLI; you get a free bridge into the pipe and filter style for your HCLI fronted API.
 
 .ti 0
 B.1.2.  Self-documenting and Up-to-date
 
-An HCLI API is self-documenting in that the commands, options and parameters that can be selected are plainly visible through the documentation mechanisms highlighted in this specification. Moreover, changes made to an HCLI API are always distributed to all clients using the API so everybody benefits from up-to-date functionality and up-to-date documentation.
+An HCLI API is self-documenting in that the commands, options and parameters that can be selected are plainly visible through the documentation mechanisms highlighted in this specification. Moreover, given the distributed nature of the HCLI semantic interface, changes made to an HCLI API are always distributed to all clients using the API so everybody benefits from up-to-date functionality and up-to-date documentation.
 
 .ti 0
 B.1.3.  Immediacy
@@ -898,7 +916,12 @@ By enabling the pipe and filter style, HCLI also enables notions of scripting, a
 .ti 0
 B.1.5.  Building Blocks
 
-HCLI also raises notions of reusable HCLIs and of an ecosystem of shareable and reusable HCLIs to be used as building blocks to help in the construction of APIs, with minimal work.
+HCLI also raises notions of reusable HCLIs and of an ecosystem of shareable and reusable HCLIs to be used as building blocks to help in the construction and orchestration of APIs, with minimal work.
+
+.ti 0
+B.1.5.  Native
+
+Because the entire HCLI semantic interface leading all the way up to API is safe from side-effects on the API fronted by HCLI, we raise the possibility of "nativizing" a HCLI by allowing for a CLI to be auto-generated, on demand, to run locally and natively (without the extra overhead of navigating through hypertext); likely improving on performance and creating a "frozen" version of a CLI.
 .nf
 
 .ti 0
