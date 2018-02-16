@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH September 30, 2017
+.ds RH February 16, 2018
 .ds CH ALPS Bindings for HAL
-.ds CF Expires April 3, 2018
+.ds CF Expires August 20, 2018
 .hy 0
 .nh
 .ad l
@@ -18,9 +18,9 @@
 
 .nf
 .tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''September 30, 2017'
+.tl '\%Internet-Draft''February 16, 2018'
 .tl 'Intended status: Informational'''
-.tl 'Expires: April 3, 2018'''
+.tl 'Expires: August 20, 2018'''
 .fi
 .in 3
 
@@ -46,7 +46,7 @@ Internet-Drafts are draft documents valid for a maximum of six months and may be
 .ti 0
 Copyright Notice
 
-Copyright (c) 2017 IETF Trust and the persons identified as the document authors.  All rights reserved.
+Copyright (c) 2018 IETF Trust and the persons identified as the document authors.  All rights reserved.
 
 This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents \%(http://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.
 
@@ -66,23 +66,23 @@ Table of Contents
    3.  A Review of ALPS Principles  . . . . . . . . . . . . . . . . .  2
    4.  Servers and Clients  . . . . . . . . . . . . . . . . . . . . .  3
    5.  Advertising ALPS Profiles for HAL Representations  . . . . . .  3
-     5.1.  HAL profile and type link relations  . . . . . . . . . . .  3
+     5.1.  HAL profile link relations . . . . . . . . . . . . . . . .  3
      5.2.  Link Header  . . . . . . . . . . . . . . . . . . . . . . .  4
-     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  5
+     5.3.  Additional Considerations  . . . . . . . . . . . . . . . .  4
    6.  ALPS Bindings for HAL  . . . . . . . . . . . . . . . . . . . .  5
-     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  6
-       6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  6
-       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  7
+     6.1.  ALPS Descriptor Bindings . . . . . . . . . . . . . . . . .  5
+       6.1.1.  id . . . . . . . . . . . . . . . . . . . . . . . . . .  5
+       6.1.2.  name . . . . . . . . . . . . . . . . . . . . . . . . .  6
        6.1.3.  type . . . . . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.1. semantic  . . . . . . . . . . . . . . . . . . . . .  8
          6.1.3.2. safe, unsafe, or idempotent . . . . . . . . . . . .  8
        6.1.4.  rt . . . . . . . . . . . . . . . . . . . . . . . . . . 10
-   7.  HAL Curies and Extension Relations . . . . . . . . . . . . . . 12
+   7.  HAL Curies and Extension Relations . . . . . . . . . . . . . . 11
    8.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 13
    9.  Security Considerations  . . . . . . . . . . . . . . . . . . . 13
    10.  IANA Considerations . . . . . . . . . . . . . . . . . . . . . 13
    11.  Normative References  . . . . . . . . . . . . . . . . . . . . 13
-   11.  Informative References  . . . . . . . . . . . . . . . . . . . 14
+   11.  Informative References  . . . . . . . . . . . . . . . . . . . 13
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 14
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 14
    Author's Address . . . . . . . . . . . . . . . . . . . . . . . . . 14
@@ -121,16 +121,14 @@ Client implementers can use the same ALPS document as a guide for what to expect
 .ti 0
 5.  Advertising ALPS Profiles for HAL Representations
 
-Servers returning HAL documents MUST only advertise the ALPS profiles they support using one of the following methods
+Servers returning HAL documents SHOULD only advertise the ALPS profiles they support, using one or more of the methods described in the following sections.
 
 .ti 0
-5.1.  HAL profile and type link relations
+5.1.  HAL profile link relations
 
-HAL documents conforming to an ALPS profile SHOULD use the standard profile [RFC6906] and type [RFC6903] link relations HAL Link.
+HAL documents conforming to an ALPS profile SHOULD use the standard profile [RFC6906] link relations HAL Link.
 
-The profile link relation href SHOULD be set to the URL of the advertised ALPS profile.
-
-The type link relation href SHOULD be set to the URL, with URL fragment referencing the descriptor.id of a semantic descriptor that exists in the referenced ALPS profile.
+The profile link relation href SHOULD be set to the URL of the supported ALPS profile, and the URL MAY make use of the URL fragment referencing a unique descriptor.id that exists in the referenced ALPS profile.
 
 .nf
 As application/hal+json:
@@ -141,9 +139,6 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": {
-      "href": "http://example.org/profiles/accounting"
-    },
-    "type": {
       "href": "http://example.org/profiles/accounting#invoice"
     }
   }
@@ -154,25 +149,23 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource rel="self" href="/svc">
-  <link rel="profile" href="http://example.org/profiles/accounting"/>
-  <link rel="type" href="http://example.org/profiles/accounting#invoice"/>
+  <link rel="profile"
+        href="http://example.org/profiles/accounting#invoice"/>
 </resource>
 .fi
 
 Precedence rules between Link Headers and HAL link relations SHOULD observe compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
-
-Note that this specification reserves the "halps" attribute prefix and defines the "halps:type" attribute to extend the semantic of HAL Links. The reserved attribute's semantics are equivalent to the "type" link relation semantics defined under [RFC6903] with the notable exception that this is intended to help provide a hint about the expected semantic type of a HAL Link's target.
 
 .ti 0
 5.2.  Link Header
 
 Responses can include the Link header, in conformance with [RFC5988].
 
-The profile and type link relations can also similarly be used.
+The profile link relation can also similarly be used.
 
-Link: <http://example.org/profiles/accounting>;rel="profile", <http://example.org/profiles/accounting#invoice>;rel="type"
+Link: <http://example.org/profiles/accounting>;rel="profile"
 
-Precedence rules between Link Headers and HAL link relations SHOULD observer compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
+Precedence rules between Link Headers and HAL link relations SHOULD observe compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
 .ti 0
 5.3.  Additional Considerations
@@ -188,12 +181,6 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/accounting"
-    },
-    {
-      "href": "http://example.org/profiles/finance"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/accounting#invoice"
     },
     {
@@ -203,9 +190,9 @@ As application/hal+json:
 }
 .fi
 
-In the above case, the client application has been informed that the response MAY contain data elements and state transitions from both the accounting and finance ALPS profiles.
+In the above case, the client application has been informed that the response MAY contain data elements and state transitions from both the accounting and finance ALPS profiles, and more specifically along invoicing and billing.
 
-Clients accepting HAL documents, and understanding ALPS semantics, SHOULD look for the ALPS profile in each of the mentioned places (.e.g. Link Header, HAL Profile Relation), as appropriate to the response. If an ALPS profile reference appears in more than one location, all profiles SHOULD be considered valid.
+Clients accepting HAL documents, and understanding ALPS semantics, SHOULD look for the ALPS profile in each of the mentioned places (.e.g. Link Header, HAL Profile link relation), as appropriate to the response. If an ALPS profile reference appears in more than one location, all profiles SHOULD be considered valid.
 
 Precedence rules between Link Headers and HAL link relations SHOULD observe compliance per the ALPS specification Section 3.1. Linking to ALPS Documents [I-D.draft-amundsen-richardson-foster-alps].
 
@@ -222,9 +209,9 @@ The following sections describe ALPS bindings for HAL, for the ALPS descriptor p
 .ti 0
 6.1.1.  id
 
-The descriptor.id, with a descriptor.type set to "semantic", SHOULD lead to the formation of a HAL document property with the same name as the descriptor.id.
+The descriptor.id, with a descriptor.type set to "semantic" SHOULD lead to the formation of a HAL document properties with the same name as the descriptor.id.
 
-Below are valid examples for both the application/hal+json and the application/hal+xml media-types:
+Below are valid examples for both the application/hal+json and the application/hal+xml media-types where the man-page semantics happen to align with a HAL resource boundary:
 
 .nf
 <!-- ALPS document fragment -->
@@ -243,9 +230,6 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/man"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/man#man-page"
     }]
   },
@@ -264,8 +248,8 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="http://example.org/profiles/man"/>
-  <link rel="type" href="http://example.org/profiles/man#man-page"/>
+  <link rel="profile"
+        href="http://example.org/profiles/man#man-page"/>
   <section>
     <name>name</name>
     <description>A simple formatter for JSON</description>
@@ -289,8 +273,8 @@ The below example hints at how type semantics could be differentiated when a nee
 .nf
 <!-- ALPS document fragment -->
 <descriptor id="media" type="semantic">
-  <descriptor id="book" name="next" type="safe" />
-  <descriptor id="movie" name="next" type="safe" />
+  <descriptor id="book" name="item" type="safe" />
+  <descriptor id="movie" name="item" type="safe" />
 </descriptor>
 
 As application/hal+json:
@@ -301,11 +285,8 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/library"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/library#media"
-    }, 
+    }], 
     "item": [{
       "href": "/svc/book/1",
       "name": "book"
@@ -320,8 +301,8 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="http://example.org/profiles/library"/>
-  <link rel="type" href="http://example.org/profiles/library#media"/>
+  <link rel="profile"
+        href="http://example.org/profiles/library#media"/>
   <link rel="item" href="/svc/book/1" name="book"/>
   <link rel="item" href="/svc/movie/1" name="movie"/>
 </resource>
@@ -329,6 +310,8 @@ As application/hal+xml:
 
 .ti 0
 6.1.3.  type
+
+The following sections cover how descriptor.type MAY influence HAL document formation and conformance.
 
 .ti 0
 6.1.3.1. semantic
@@ -338,7 +321,7 @@ The descriptor.type property with a value of "semantic" is covered under section
 .ti 0
 6.1.3.2. safe, unsafe, or idempotent
 
-If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is contained in semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form) in a HAL representation.
+If a non-semantic descriptor (e.g. "safe", "unsafe", or "idempotent") is contained within a semantic descriptor, then it SHOULD yield the formation of a link or a templated link (a form) in a HAL document.
 
 Note however that HAL does not support the presence of links within nested attributes, therefore, HAL based representations SHALL only coherently fulfill the intent of an ALPS profile if a non-semantic descriptor is contained within a semantic descriptor and if that semantic descriptor aligns with a HAL resource boundary. 
 
@@ -361,18 +344,13 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/library"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/library#media"
-    }, 
+    }], 
     "next": [{
       "href": "/svc/book/2",
-      "name": "book"
     },
     {
       "href": "/svc/movie/2",
-      "name": "movie"
     }]
   }
 }
@@ -380,10 +358,10 @@ As application/hal+json:
 As application/hal+xml:
 
 <resource self="/svc">
-  <link rel="profile" href="http://example.org/profiles/library"/>
-  <link rel="type" href="http://example.org/profiles/library#media"/>
-  <link rel="next" href="/svc/book/2" name="book"/>
-  <link rel="next" href="/svc/movie/2" name="movie"/>
+  <link rel="profile"
+        href="http://example.org/profiles/library#media"/>
+  <link rel="next" href="/svc/book/2"/>
+  <link rel="next" href="/svc/movie/2"/>
 </resource>
 .fi
 
@@ -411,11 +389,8 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/search"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/search#search"
-    },
+    }],
     "collection": {
       "href": "/svc/search{?id}",
       "templated" : true
@@ -427,8 +402,6 @@ As application/hal+xml:
 
 <resource self="/svc">
   <link rel="profile"
-        href="http://example.org/profiles/search"/>
-  <link rel="type"
         href="http://example.org/profiles/search#search"/>
   <link rel="collection"
         href="/svc/search{?id}"
@@ -439,28 +412,32 @@ As application/hal+xml:
 .ti 0
 6.1.4.  rt
 
-If descriptor.rt is used on a non-semantic descriptor, it SHOULD lead to the formation of a link referencing the specific semantic type corresponding to the value of descriptor.rt.
+If descriptor.rt is used in conjunction with a non-semantic descriptor.type, it SHOULD lead to the formation of a link or form target profile reference with a value of descriptor.rt.
 
-The return type of a non-semantic descriptor MUST NOT come in conflict with the implied return type of an embedded resource or link relation target.
+The expected target profile, on a link or form, SHOULD NOT come in conflict with the actual profile of the target resource. Semantic conflict resolution resulting from a misalignment between an expected target profile and an actual profile are out of scope of this specification.
 
-The return type MAY however be used to make explicit the otherwise implied semantic return type of an embedded resource or link relation target if the return type does not yield a semantic conflict.
+The following example showcases a potentially paginated list of results returned when using a collection form which returns result hits from a string based search:
 
 .nf
 <!-- ALPS document fragment -->
 <descriptor id="search" type="semantic">
   <descriptor href="#collection" />
-  <descriptor href="#result" />
+  <descriptor rt="#result" name="item" type="safe" />
+  <descriptor rt="#search" name="previous" type="safe"/>
+  <descriptor rt="#search" name="next" type="safe"/>
+  <descriptor id="results" type="semantic"/>
+  <descriptor id="search-string" type="semantic"/>
 </descriptor>
 
 <descriptor id="collection" type="safe" rt="#search">
-  <doc format="text">A search form with one input.</doc>
-  <descriptor id="id" type="semantic" />
+  <doc format="text">A search form with a string input.</doc>
+  <descriptor id="string" type="semantic" />
 </descriptor>
 
 <descriptor id="result" type="semantic">
   <doc format="text">A returned search result.</doc>
 
-  <descriptor id="item" type="safe" />
+  <descriptor id="related" type="safe" />
   <descriptor id="synopsis" type="semantic" />
   <descriptor id="ranking" type="semantic" />
 </descriptor>
@@ -473,63 +450,78 @@ As application/hal+json:
       "href": "/svc"
     },
     "profile": [{
-      "href": "http://example.org/profiles/search"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/search#search"
-    },
+    }],
     "collection": {
-      "href": "/svc/search{?id}",
+      "href": "/svc/search{?string}",
       "templated" : true,
-      "profile": "http://example.org/profiles/search",
-      "halps:type" : "http://example.org/profiles/search#search"
-    }
-  }
+      "profile": "http://example.org/profiles/search#search"
+    },
+    "item": [{
+      "href": "/result/1?string=test",
+      "profile": "http://example.org/profiles/search#result"
+    },
+    {
+      "href": "/result/2?string=test",
+      "profile": "http://example.org/profiles/search#result"
+    }]
+  },
+  "results": 2,
+  "search-string": "test"
 }
 
 As application/hal+xml:
 
 <resource self="/svc">
   <link rel="profile"
-        href="http://example.org/profiles/search"/>
-  <link rel="type"
         href="http://example.org/profiles/search#search"/>
   <link rel="collection"
-        href="/svc/search{?id}"
+        href="/svc/search{?string}"
         templated="true",
-        profile="http://example.org/profiles/search",
-        halps:type="http://example.org/profiles/search#search" />
+        profile="http://example.org/profiles/search#search"
+  <link rel="result"
+        href="/result/1?string=test"
+        profile="http://example.org/profiles/search#result"
+  <link rel="result"
+        href="/result/2?string=test"
+        profile="http://example.org/profiles/search#result"
+  <results>2</results>
+  <search-string>test</search-string>
 </resource>
 .fi
 
 .ti 0
 7.  HAL Curies and Extension Relations
 
-Because of the way HAL binds link relations to the descriptor.id or descriptor.name in this specification, extension relations MUST remain exclusively and independently within the control of service implementers to avoid impacting existing implementations that choose to enhance their HAL representations with ALPS semantics. HAL curies, used to provide extension relation documentation, MUST NOT be used to bind to semantic type ids or names.
+Because of the way HAL binds link relations to the descriptor.id or descriptor.name in this specification, extension relations MUST remain exclusively and independently within the control of service implementers to avoid impacting existing implementations that choose to enhance their HAL representations with ALPS semantics. HAL CURIEs, used to provide extension relation documentation, MUST NOT be used to bind to semantic type ids or names.
 
-This restriction intends to favor decoupling and independent evolution of the documented semantics associated with extension relations from those associated to ALPS semantic types in ALPS profiles.
+This restriction intends to favor decoupling and independent evolution of the documented semantics associated with extension relations from those associated to ALPS profiles.
 
-Service implementers are free to extend link relations as needed to provide non-conflicting, but independent, semantics.
+Service implementers are free to extend link relations as needed to provide non-conflicting, and independent, semantics.
 
-The following example combines a wide swath of binding semantics defined in this specification but specifically focuses on the HAL document curie extension relation of the bound link relation "book" into "ext:book":
+The following example combines a wide swath of binding semantics defined in this specification but specifically focuses on the HAL document CURIE extension relation of the bound link relation "book" into "ext:book":
 
 .nf
 <!-- ALPS document fragment -->
 <descriptor id="media" type="semantic">
-  <descriptor href="#book-type-1" name="book" type="safe">
-  <descriptor href="#book-type-2" name="book" type="safe">
+  <descriptor rt="#book-type-1" name="book" type="safe">
+  <descriptor rt="#book-type-2" name="book" type="safe">
 </descriptor> 
 
 <descriptor id="book-type-1" type="semantic">
   <descriptor id="related" type="safe" />
   <descriptor id="ISBN" type="semantic" />
-  <descriptor id="name" type="semantic" />
+  <descriptor href="#name"/>
   <descriptor id="description" type="semantic" />
 </descriptor>
 
 <descriptor id="book-type-2" type="semantic">
-  <descriptor id="name" type="semantic" />
+  <descriptor href="#name"/>
   <descriptor id="summary" type="semantic" />
+</descriptor>
+
+<descriptor id="name" type="semantic">
+  <doc>A book name</doc>
 </descriptor>
 
 As application/hal+json:
@@ -545,20 +537,15 @@ As application/hal+json:
       "templated": true
      }],
     "profile": [{
-      "href": "http://example.org/profiles/library"
-    }],
-    "type": [{
       "href": "http://example.org/profiles/library#media"
-    }, 
+    }],
     "ext:book": [{
       "href": "/svc/book/1",
-      "profile": "http://example.org/profiles/library",
-      "halps:type" : "http://example.org/profiles/library#book-type-1"
+      "profile": "http://example.org/profiles/library#book-type-1"
     },
     {
       "href": "/svc/book/2",
-      "profile": "http://example.org/profiles/library",
-      "halps:type" : "http://example.org/profiles/search#book-type-2"
+      "profile": "http://example.org/profiles/library#book-type-2"
     }]
   }
 }
