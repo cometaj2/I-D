@@ -76,28 +76,29 @@ Table of Contents
        4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
      4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
      4.7.  Execution  . . . . . . . . . . . . . . . . . . . . . . . . 11
-       4.7.1  method  . . . . . . . . . . . . . . . . . . . . . . . . 11
-         4.7.1.1  HTTP Protocol . . . . . . . . . . . . . . . . . . . 11
+       4.7.1  command . . . . . . . . . . . . . . . . . . . . . . . . 11
+       4.7.2  http  . . . . . . . . . . . . . . . . . . . . . . . . . 11
+         4.7.2.1  HTTP Protocol . . . . . . . . . . . . . . . . . . . 11
    5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
      5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Stream Processing  . . . . . . . . . . . . . . . . . . . . . . 17
        6.1.1.  For Servers  . . . . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 18
+       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 17
        6.1.2.  For Command Line Clients . . . . . . . . . . . . . . . 18
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 18
-     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 19
-     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 19
-       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 19
+     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 18
+     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 18
+       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 18
        7.2.2.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
        7.2.3.  Robustness . . . . . . . . . . . . . . . . . . . . . . 19
-     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 20
-       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 20
+     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 19
+       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 20
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 20
    10.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 20
      10.1.  Normative References  . . . . . . . . . . . . . . . . . . 20
-     10.2.  Informative References  . . . . . . . . . . . . . . . . . 21
+     10.2.  Informative References  . . . . . . . . . . . . . . . . . 20
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 21
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 22
      B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 22
@@ -194,7 +195,8 @@ The HCLI semantics are largely codified via the definition of a proposed standar
     <descriptor name="cli" type="idempotent" />
 
     <descriptor href="#hcli_version"/>        
-    <descriptor href="#method"/>
+    <descriptor href="#command"/>
+    <descriptor href="#http"/>
   </descriptor>  
 
   <descriptor id="hcli_version" type="semantic">
@@ -432,34 +434,41 @@ Execution MUST only be made available if contextually relevant, for a given HCLI
 Successful traversal, by an HCLI client, of the "cli" link relation contained in Execution, MUST NOT return an HCLI Document and effectively steps out of scope of HCLI semantics. API provider semantics are also out of scope of this specification.
 
 .ti 0
-4.7.1  method
+4.7.1  command
 
-The method property is REQUIRED.
+The command property is REQUIRED.
 
-the method property MUST provides a protocol hint of the default method to automatically use by HCLI clients when navigating through the final "cli" link relation leading into API provider specific semantics.
-
-Note that only a single default value is allowed. The default value MUST align with one of the allowed methods for the "cli" link relation.
+The command property MUST contain a summary of the theretofore accumulated command line sequence.
 
 .ti 0
-4.7.1.1  HTTP Protocol
+4.7.2  http
+
+The http property is REQUIRED.
+
+The http property MUST provides a protocol hint of the default HTTP method to automatically use by HCLI clients when navigating through the final "cli" link relation leading into API provider specific semantics.
+
+Note that only a single default value is allowed. The default value MUST align with one of the allowed methods for the resource referenced through the "cli" link relation.
+
+.ti 0
+4.7.2.1  HTTP Protocol
 
 For the HTTP protocol, the allowed method values are:
 
 (1) for a safe "cli" link transition
     
-    - HTTP.GET
+    - get
 
 (2) for an unsafe, idempotent "cli" link transition
 
-    - HTTP.PUT
+    - put
     
-    - HTTP.DELETE
+    - delete
 
 (3) for an unsafe, non-idempotent "cli" link transition
 
-    - HTTP.POST
+    - post
 
-    - HTTP.PATCH
+    - patch
 
 
 .ti 0
@@ -484,22 +493,17 @@ Content-Type: application/hal+json
       "href": "/usp5"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
     },
     "cli": [
       {
-        "href": "/usp5/__cdef/admin?command=usp5"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#command"
+        "href": "/usp5/__cdef/admin?command=usp5",
+        "profile": "href": "http://example.org/profiles/hcli#command"
         "name": "admin"
       },
       {
-        "href": "/usp5/__cdef/admin?command=usp5+--version"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#option"
+        "href": "/usp5/__cdef/admin?command=usp5+--version",
+        "profile": "href": "http://example.org/profiles/hcli#option"
         "name": "--version"
       }
     ]
@@ -537,15 +541,11 @@ Content-Type: application/hal+json
       "href": "/usp5/__odef/--version?command=usp5"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#option"
     },
     "cli": {
       "href": "/usp5?command=usp5+--version",
-      "profile": "http://example.org/profiles/hcli"
-      "halps:type": "http://example.org/profiles/hcli#hcli-document"
+      "profile": "http://example.org/profiles/hcli#hcli-document"
     }
   },
   "hcli_version": "1.0",
@@ -566,28 +566,22 @@ Content-Type: application/hal+json
       "href": "/usp5?command=usp5+--version"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
     },
     "cli": [
       {
-        "href": "/usp5/__cdef/admin?command=usp5+--version"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#command"
+        "href": "/usp5/__cdef/admin?command=usp5+--version",
+        "profile": "href": "http://example.org/profiles/hcli#command"
         "name": "admin"
       },
       {
-        "href": "/usp5/__cdef/admin?command=usp5+--version"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#option"
+        "href": "/usp5/__cdef/admin?command=usp5+--version",
+        "profile": "href": "http://example.org/profiles/hcli#option"
         "name": "--version"
       },
       {
-        "href": "/usp5/__edef?command=usp5+--version"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#execution"
+        "href": "/usp5/__edef?command=usp5+--version",
+        "profile": "href": "http://example.org/profiles/hcli#execution"
       }
     ]
   },
@@ -625,9 +619,6 @@ Content-Type: application/hal+json
       "href": "/usp5/__edef?command=usp5+--version"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#execution"
     },
     "cli": {
@@ -635,7 +626,8 @@ Content-Type: application/hal+json
     }
   },
   "hcli_version": "1.0",
-  "method": "HTTP.GET"
+  "command": "usp5 --version",
+  "http": "get"
 }
 
 GET /usp5/execution?command=usp5+--version HTTP/1.1
@@ -667,16 +659,12 @@ Content-Type: application/hal+json
       "href": "/jsonf?command=jsonf"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#hcli-document"
     },
     "cli": [
       {
-        "href": "/jsonf/__edef?command=jsonf"
-        "profile": "href": "http://example.org/profiles/hcli"
-        "halps:type": "http://example.org/profiles/hcli#execution"
+        "href": "/jsonf/__edef?command=jsonf",
+        "profile": "href": "http://example.org/profiles/hcli#execution"
       }
     ]
   },
@@ -714,9 +702,6 @@ Content-Type: application/hal+json
       "href": "/jsonf/__edef?command=jsonf"
     },
     "profile": {
-      "href": "http://example.org/profiles/hcli"
-    },
-    "type": {
       "href": "http://example.org/profiles/hcli#execution"
     },
     "cli": {
@@ -724,7 +709,8 @@ Content-Type: application/hal+json
     }
   },
   "hcli_version": "1.0",
-  "method": "HTTP.POST"
+  "command": "jsonf go",
+  "http": "post"
 }
 
 POST /jsonf/execution?command=jsonf HTTP/1.1
@@ -751,16 +737,16 @@ Content-Type: application/json
 .ti 0
 6.1.1.  For Servers
 
-Servers implementing HCLI semantics that leverage unsafe Execution (HTTP.POST or HTTP.PATCH) and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and send entity bodies of the application/octet-stream media-type [RFC2046].
+Servers implementing HCLI semantics that leverage unsafe Execution (HTTP POST or HTTP PATCH) and that intend to allow input stream like processing for their HCLI, for example, by receiving an STDIN input stream through a filter from a pipe and filter sequence in a Unix/Linux shell, MUST minimally be ready to receive and send entity bodies of the application/octet-stream media-type [RFC2046].
 
 This is intended to easily enable the pipe and filter style for clients and servers that understand and offer HCLI semantics. Specific input stream processing semantics by services are out of scope of this specification.
 
-Servers SHOULD, however, endeavor to support receiving and sending correctly identified media-types to help maintain visibility on the network.
+Servers SHOULD, however, in as much as it doesn't interfere with pipe and filter streaming behavior, endeavor to support receiving and sending correctly identified media-types to help maintain visibility on the network.
 
 .ti 0
 6.1.2.  For Clients in General
 
-Command line clients that support input stream processing SHOULD attempt to send their input stream to an HCLI server, but only if a command line sequence leads to an unsafe HTTP.POST or idempotent HTTP.PUT Execution.
+Command line clients that support input stream processing SHOULD attempt to send their input stream to an HCLI server, but only if a command line sequence leads to an unsafe HTTP POST or idempotent HTTP PUT Execution.
 
 Clients MUST minimally support sending input streams and receiving output streams under the application/octet-stream [RFC2046] media-type.
 

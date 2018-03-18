@@ -79,33 +79,33 @@ Table of Contents
        4.5.2.  description  . . . . . . . . . . . . . . . . . . . . . 10
      4.6.  Parameter  . . . . . . . . . . . . . . . . . . . . . . . . 10
      4.7.  Execution  . . . . . . . . . . . . . . . . . . . . . . . . 11
-       4.7.1  method  . . . . . . . . . . . . . . . . . . . . . . . . 11
-         4.7.1.1  HTTP Protocol . . . . . . . . . . . . . . . . . . . 11
+       4.7.1  command . . . . . . . . . . . . . . . . . . . . . . . . 11
+       4.7.2  http  . . . . . . . . . . . . . . . . . . . . . . . . . 11
+         4.7.2.1  HTTP Protocol . . . . . . . . . . . . . . . . . . . 11
    5.  Examples . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
      5.1  usp5  . . . . . . . . . . . . . . . . . . . . . . . . . . . 12
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Stream Processing  . . . . . . . . . . . . . . . . . . . . . . 17
        6.1.1.  For Servers  . . . . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 18
+       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 17
        6.1.2.  For Command Line Clients . . . . . . . . . . . . . . . 18
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 18
-     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 19
-     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 19
-       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 19
+     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 18
+     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 18
+       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 18
        7.2.2.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
        7.2.3.  Robustness . . . . . . . . . . . . . . . . . . . . . . 19
-     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 20
-       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 20
+     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 19
+       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 20
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 20
    10.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 20
      10.1.  Normative References  . . . . . . . . . . . . . . . . . . 20
-     10.2.  Informative References  . . . . . . . . . . . . . . . . . 21
+     10.2.  Informative References  . . . . . . . . . . . . . . . . . 20
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 21
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 22
      B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 22
        B.1.1.  Reduced Cost . . . . . . . . . . . . . . . . . . . . . 22
-       B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
  
 
 
@@ -114,6 +114,7 @@ Michaud                  Expires August 8, 2018                 [Page 2]
 Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
 
+       B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
        B.1.3.  Immediacy  . . . . . . . . . . . . . . . . . . . . . . 22
        B.1.4.  Scripting and Experimentation  . . . . . . . . . . . . 22
        B.1.5.  Building Blocks  . . . . . . . . . . . . . . . . . . . 22
@@ -161,7 +162,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
-
  
 
 
@@ -240,7 +240,8 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
        <descriptor name="cli" type="idempotent" />
 
        <descriptor href="#hcli_version"/>        
-       <descriptor href="#method"/>
+       <descriptor href="#command"/>
+       <descriptor href="#http"/>
      </descriptor>  
 
      <descriptor id="hcli_version" type="semantic">
@@ -273,7 +274,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    represented using any media-type that is able to express the HCLI
    semantics described via the proposed ALPS profile and the provisions
    otherwise mentioned in this specification.
-
  
 
 
@@ -579,37 +579,37 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    effectively steps out of scope of HCLI semantics. API provider
    semantics are also out of scope of this specification.
 
-4.7.1  method
+4.7.1  command
 
-   The method property is REQUIRED.
+   The command property is REQUIRED.
 
-   the method property MUST provides a protocol hint of the default
+   The command property MUST contain a summary of the theretofore
+   accumulated command line sequence.
+
+4.7.2  http
+
+   The http property is REQUIRED.
+
+   The http property MUST provides a protocol hint of the default HTTP
    method to automatically use by HCLI clients when navigating through
    the final "cli" link relation leading into API provider specific
    semantics.
 
    Note that only a single default value is allowed. The default value
-   MUST align with one of the allowed methods for the "cli" link
-   relation.
+   MUST align with one of the allowed methods for the resource
+   referenced through the "cli" link relation.
 
-4.7.1.1  HTTP Protocol
+4.7.2.1  HTTP Protocol
 
    For the HTTP protocol, the allowed method values are:
 
    (1) for a safe "cli" link transition
 
-       - HTTP.GET
+       - get
 
    (2) for an unsafe, idempotent "cli" link transition
 
-       - HTTP.PUT
-
-       - HTTP.DELETE
-
-   (3) for an unsafe, non-idempotent "cli" link transition
-
-       - HTTP.POST
-
+       - put
  
 
 
@@ -618,7 +618,13 @@ Michaud                  Expires August 8, 2018                [Page 11]
 Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
 
-       - HTTP.PATCH
+       - delete
+
+   (3) for an unsafe, non-idempotent "cli" link transition
+
+       - post
+
+       - patch
 
 
 5.  Examples
@@ -642,22 +648,17 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
          "href": "/usp5"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#hcli-document"
        },
        "cli": [
          {
-           "href": "/usp5/__cdef/admin?command=usp5"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#command"
+           "href": "/usp5/__cdef/admin?command=usp5",
+           "profile": "href": "http://example.org/profiles/hcli#command"
            "name": "admin"
          },
          {
-           "href": "/usp5/__cdef/admin?command=usp5+--version"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#option"
+           "href": "/usp5/__cdef/admin?command=usp5+--version",
+           "profile": "href": "http://example.org/profiles/hcli#option"
            "name": "--version"
          }
        ]
@@ -665,7 +666,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
      "hcli_version": "1.0",
      "name": "usp5",
      "section" : [
-     {
  
 
 
@@ -674,6 +674,7 @@ Michaud                  Expires August 8, 2018                [Page 12]
 Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
 
+     {
        "name": "name",
        "description": "usp5"
      },
@@ -703,15 +704,11 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
          "href": "/usp5/__odef/--version?command=usp5"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#option"
        },
        "cli": {
          "href": "/usp5?command=usp5+--version",
-         "profile": "http://example.org/profiles/hcli"
-         "halps:type": "http://example.org/profiles/hcli#hcli-document"
+         "profile": "http://example.org/profiles/hcli#hcli-document"
        }
      },
      "hcli_version": "1.0",
@@ -722,6 +719,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    GET /usp5?command=usp5+--version HTTP/1.1
    Host: example.org
    Accept: application/hal+json
+
+   HTTP/1.1 200 OK
+   Content-Type: application/hal+json
  
 
 
@@ -730,37 +730,28 @@ Michaud                  Expires August 8, 2018                [Page 13]
 Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
 
-   HTTP/1.1 200 OK
-   Content-Type: application/hal+json
-
    {
      "_links": {
        "self": {
          "href": "/usp5?command=usp5+--version"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#hcli-document"
        },
        "cli": [
          {
-           "href": "/usp5/__cdef/admin?command=usp5+--version"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#command"
+           "href": "/usp5/__cdef/admin?command=usp5+--version",
+           "profile": "href": "http://example.org/profiles/hcli#command"
            "name": "admin"
          },
          {
-           "href": "/usp5/__cdef/admin?command=usp5+--version"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#option"
+           "href": "/usp5/__cdef/admin?command=usp5+--version",
+           "profile": "href": "http://example.org/profiles/hcli#option"
            "name": "--version"
          },
          {
-           "href": "/usp5/__edef?command=usp5+--version"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#execution"
+           "href": "/usp5/__edef?command=usp5+--version",
+           "profile": "href": "http://example.org/profiles/hcli#execution"
          }
        ]
      },
@@ -778,14 +769,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
      {
        "name": "description",
        "description": "The usp5 CLI is a tool used to manipulate udp session manager protocol (usp5) users and credentials."
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 14]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
      },
      {
        "name": "examples",
@@ -795,6 +778,14 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
    GET /usp5/__edef?command=usp5+--version HTTP/1.1
    Host: example.org
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 14]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
+
    Accept: application/hal+json
 
    HTTP/1.1 200 OK
@@ -806,9 +797,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
          "href": "/usp5/__edef?command=usp5+--version"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#execution"
        },
        "cli": {
@@ -816,7 +804,8 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
        }
      },
      "hcli_version": "1.0",
-     "method": "HTTP.GET"
+     "command": "usp5 --version",
+     "http": "get"
    }
 
    GET /usp5/execution?command=usp5+--version HTTP/1.1
@@ -834,13 +823,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    interface represented as hal+json [I-D.draft-kelly-json-hal] that
    takes a JSON input stream and attempts to reformat it to enhance
    human readability:
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 15]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
 
    GET /jsonf HTTP/1.1
    Host: example.org
@@ -852,19 +834,23 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    {
      "_links": {
        "self": {
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 15]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
+
          "href": "/jsonf?command=jsonf"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#hcli-document"
        },
        "cli": [
          {
-           "href": "/jsonf/__edef?command=jsonf"
-           "profile": "href": "http://example.org/profiles/hcli"
-           "halps:type": "http://example.org/profiles/hcli#execution"
+           "href": "/jsonf/__edef?command=jsonf",
+           "profile": "href": "http://example.org/profiles/hcli#execution"
          }
        ]
      },
@@ -890,14 +876,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    }
 
    GET /jsonf/__edef?command=jsonf HTTP/1.1
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 16]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
    Host: example.org
    Accept: application/hal+json
 
@@ -910,17 +888,23 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
          "href": "/jsonf/__edef?command=jsonf"
        },
        "profile": {
-         "href": "http://example.org/profiles/hcli"
-       },
-       "type": {
          "href": "http://example.org/profiles/hcli#execution"
        },
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 16]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
+
        "cli": {
          "href": "/jsonf/execution?command=jsonf",
        }
      },
      "hcli_version": "1.0",
-     "method": "HTTP.POST"
+     "command": "jsonf go",
+     "http": "post"
    }
 
    POST /jsonf/execution?command=jsonf HTTP/1.1
@@ -945,15 +929,7 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 6.1.1.  For Servers
 
    Servers implementing HCLI semantics that leverage unsafe Execution
-   (HTTP.POST or HTTP.PATCH) and that intend to allow input stream like
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 17]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
+   (HTTP POST or HTTP PATCH) and that intend to allow input stream like
    processing for their HCLI, for example, by receiving an STDIN input
    stream through a filter from a pipe and filter sequence in a
    Unix/Linux shell, MUST minimally be ready to receive and send entity
@@ -964,16 +940,24 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    Specific input stream processing semantics by services are out of
    scope of this specification.
 
-   Servers SHOULD, however, endeavor to support receiving and sending
-   correctly identified media-types to help maintain visibility on the
-   network.
+   Servers SHOULD, however, in as much as it doesn't interfere with pipe
+   and filter streaming behavior, endeavor to support receiving and
+   sending correctly identified media-types to help maintain visibility
+   on the network.
 
 6.1.2.  For Clients in General
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 17]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
 
    Command line clients that support input stream processing SHOULD
    attempt to send their input stream to an HCLI server, but only if a
-   command line sequence leads to an unsafe HTTP.POST or idempotent
-   HTTP.PUT Execution.
+   command line sequence leads to an unsafe HTTP POST or idempotent HTTP
+   PUT Execution.
 
    Clients MUST minimally support sending input streams and receiving
    output streams under the application/octet-stream [RFC2046] media-
@@ -1002,14 +986,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 
 7.  Recommendations
 
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 18]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
 7.1.  Standard HCLI ALPS Profile
 
    The standard HCLI ALPS profiles defined in this specification MAY be
@@ -1026,6 +1002,14 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    automatically, and sequentially parse submitted arguments, and to
    navigate through sequences of HCLI Documents, by using Command or
    Option "name" or the Parameter variable "hcli_param", corresponding
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 18]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
+
    to each parsed command, option or parameter.
 
    A client MAY want to facilitate disambiguation of user supplied
@@ -1058,14 +1042,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    they don't understand, SHOULD favor ignoring what they don't
    understand over failing. 
 
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 19]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
 7.3.  For Command Line Clients (e.g. Under Unix/Linux shell)
 
 7.3.1.  Documentation
@@ -1082,6 +1058,13 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    COMMANDS section, two sections reserved for client use, that
    corresponds to a listing of Options and Commands referenced in the
    presented HCLI Document.
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 19]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
 
 8.  Security Considerations
 
@@ -1114,14 +1097,6 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    [RFC5988]  Nottingham, M., "Web Linking", RFC 5988, October 2010.
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
- 
-
-
-Michaud                  Expires August 8, 2018                [Page 20]
-
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
-
-
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
               3986, January 2005.
 
@@ -1139,6 +1114,14 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
               Kelly, M., "JSON Hypertext Application Language", draft-
               kelly-json-hal-08 (work in progress), May 2016.
 
+ 
+
+
+Michaud                  Expires August 8, 2018                [Page 20]
+
+Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+
+
    [I-D.draft-amundsen-richardson-foster-alps]
 
               Amundsen, M., CA Technologies, Inc., Richardson L.,
@@ -1151,6 +1134,23 @@ Appendix A.  Acknowledgements
    Thanks to Mike Amundsen, Mark Foster and others on the ALPS
    Discussion list for providing invaluable feedback during the
    definition of the HCLI ALPS profile.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
