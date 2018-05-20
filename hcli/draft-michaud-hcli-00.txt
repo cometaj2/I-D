@@ -3,9 +3,9 @@
 
 
 Network Working Group                                         J. Michaud
-Internet-Draft                                          February 4, 2018
+Internet-Draft                                              May 19, 2018
 Intended status: Informational                                          
-Expires: August 8, 2018                                                 
+Expires: November 20, 2018                                              
 
 
                     Hypertext Command Line Interface
@@ -17,7 +17,7 @@ Abstract
    relations with hyperlinks, using Unix-like command line interface
    (CLI) semantics, to foster the creation of a reusable and prolific
    intersection between the REST architectural style and the pipe and
-   filter style, as seen in a Unix/Linux shell.
+   filter style.
 
 Status of This Memo
 
@@ -53,9 +53,9 @@ Copyright Notice
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 1]
+Michaud                Expires November 20, 2018                [Page 1]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 2]
+Michaud                Expires November 20, 2018                [Page 2]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
        B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
@@ -130,8 +130,8 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    industry. However, given the generic nature of these hypermedia-rich
    media types, the establishment of meaning within their structure
    requires additional work. Semantic definition and agreement between
-   API creators and consumers is required to enable use coherence to
-   emerge between APIs and API consumers.
+   API providers and consumers is required to enable use coherence to
+   emerge.
 
    Hypertext Command Line Interface (HCLI) is a standard that
    establishes semantic conventions for expressing command line
@@ -143,31 +143,31 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
    microformats, to establish a shared understanding and meaning within
    generic hypermedia-rich media-types.
 
-   HCLI's conventions result in a semantic interface for serving and
-   consuming CLIs, enabling the creation of general-purpose libraries
-   that can be re-used on any API and API consumer using HCLI semantics.
-   Furthermore, the establishment of a semantic interface of this nature
-   is expected to instigate the creation of a rich ecosystem of reusable
-   and shareable CLIs.
+   HCLI's conventions result in a semantic interface, a connector, for
+   serving and consuming CLIs, enabling for the creation of general-
+   purpose libraries and clients that can be re-used. The establishment
+   of a semantic interface of this nature lays down a foundation for the
+   instigation of a rich ecosystem of reusable and shareable CLIs.
 
    The primary design goal of HCLI is to foster the creation of a
    reusable and prolific intersection, or bridge, between the REST
    architectural style and the pipe and filter style; as the latter is
-   seen under the Unix/Linux shell. HCLI can be applied to many
-   different domains, and only imposes limitations that constrain an
-   HTTP API to operate as a hypertext command line interface.
+   seen under the Unix/Linux shell. HCLI can be applied to any domain,
+   and only imposes limitations that constrain an HTTP API to operate as
+   a hypertext command line interface.
 
 2.  Requirements
 
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
+
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 3]
+Michaud                Expires November 20, 2018                [Page 3]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 3.  HCLI ALPS Semantics
@@ -221,9 +221,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 4]
+Michaud                Expires November 20, 2018                [Page 4]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
          <descriptor id="hcli_param" type="semantic"/>
@@ -277,9 +277,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 5]
+Michaud                Expires November 20, 2018                [Page 5]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    It should also be noted that an HCLI Document MUST NOT endeavor to
@@ -333,9 +333,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 6]
+Michaud                Expires November 20, 2018                [Page 6]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    This specification documents the semantics of HCLI version "1.0".
@@ -389,9 +389,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 7]
+Michaud                Expires November 20, 2018                [Page 7]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 4.3.2.  description
@@ -445,9 +445,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 8]
+Michaud                Expires November 20, 2018                [Page 8]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    (2) double quote character (i.e. ")
@@ -501,9 +501,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                 [Page 9]
+Michaud                Expires November 20, 2018                [Page 9]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    and Commands, Option names SHOULD be prefixed with a:
@@ -557,9 +557,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 10]
+Michaud                Expires November 20, 2018               [Page 10]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 4.7.  Execution
@@ -613,9 +613,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 11]
+Michaud                Expires November 20, 2018               [Page 11]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
        - delete
@@ -669,9 +669,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 12]
+Michaud                Expires November 20, 2018               [Page 12]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
      {
@@ -725,9 +725,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 13]
+Michaud                Expires November 20, 2018               [Page 13]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    {
@@ -781,9 +781,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 14]
+Michaud                Expires November 20, 2018               [Page 14]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    Accept: application/hal+json
@@ -837,9 +837,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 15]
+Michaud                Expires November 20, 2018               [Page 15]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
          "href": "/jsonf?command=jsonf"
@@ -893,9 +893,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 16]
+Michaud                Expires November 20, 2018               [Page 16]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
        "cli": {
@@ -949,9 +949,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 17]
+Michaud                Expires November 20, 2018               [Page 17]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    Command line clients that support input stream processing SHOULD
@@ -1005,9 +1005,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 18]
+Michaud                Expires November 20, 2018               [Page 18]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
    to each parsed command, option or parameter.
@@ -1061,9 +1061,9 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
  
 
 
-Michaud                  Expires August 8, 2018                [Page 19]
+Michaud                Expires November 20, 2018               [Page 19]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 8.  Security Considerations
@@ -1073,8 +1073,7 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
 9.  IANA Considerations
 
    This specification introduces the "cli" link relation per [RFC5988]
-   to indicate the presence of hypertext command line interface
-   semantics.
+   to indicate the presence of command line interface semantics.
 
    The link relation SHOULD be accompanied by a "profile" [RFC6906]
    defining command line interface semantics.
@@ -1114,15 +1113,14 @@ Internet-Draft      Hypertext Command Line Interface    February 4, 2018
               Kelly, M., "JSON Hypertext Application Language", draft-
               kelly-json-hal-08 (work in progress), May 2016.
 
+   [I-D.draft-amundsen-richardson-foster-alps]
  
 
 
-Michaud                  Expires August 8, 2018                [Page 20]
+Michaud                Expires November 20, 2018               [Page 20]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
-
-   [I-D.draft-amundsen-richardson-foster-alps]
 
               Amundsen, M., CA Technologies, Inc., Richardson L.,
               Foster, M., "Application-Level Profile Semantics (ALPS)",
@@ -1170,12 +1168,14 @@ Appendix A.  Acknowledgements
 
 
 
+
+
  
 
 
-Michaud                  Expires August 8, 2018                [Page 21]
+Michaud                Expires November 20, 2018               [Page 21]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
 Appendix B.  Frequently Asked Questions
@@ -1187,24 +1187,24 @@ B.1.1.  Reduced Cost
    The most immediate benefit is that instead of having to develop a
    custom client for your HCLI API, you can benefit from the use of a
    standard client that understands HCLI semantics. Such a client would
-   be able to interact out-of-the-box with any HCLI API as an imposter
-   CLI; you get a free bridge into the pipe and filter style for your
-   HCLI fronted API.
+   be able to interact out-of-the-box with any HCLI as an imposter CLI;
+   you get a free bridge into the pipe and filter style for your HCLI
+   connector fronted API.
 
 B.1.2.  Self-documenting and Up-to-date
 
-   An HCLI API is self-documenting in that the commands, options and
+   An HCLI is self-documenting in that the commands, options and
    parameters that can be selected are plainly visible through the
    documentation mechanisms highlighted in this specification. Moreover,
    given the distributed nature of the HCLI semantic interface, changes
-   made to an HCLI API are always distributed to all clients using the
-   API so everybody benefits from up-to-date functionality and up-to-
+   made to an HCLI are always distributed to all clients using the API.
+   Clients can always benefits from up-to-date functionality and up-to-
    date documentation.
 
 B.1.3.  Immediacy
 
    Having at your disposal an instantly usable shell CLI for your HCLI
-   API provides developers with an immediately usable, and familiar,
+   provides developers with an immediately usable, and familiar,
    solution through a familiar mode of operation (pipe and filter).
 
 B.1.4.  Scripting and Experimentation
@@ -1222,20 +1222,20 @@ B.1.5.  Building Blocks
 
 B.1.5.  Native
 
-   Because the entire HCLI semantic interface leading all the way up to
-   API is safe from side-effects on the API fronted by HCLI, we raise
-   the possibility of "nativizing" a HCLI by allowing for a CLI to be
-   auto-generated, on demand, to run locally and natively (without the
+   Because the entire HCLI semantic interface (connector) leading all
+   the way up to an API surface (component) is safe from side-effects,
+   we raise the possibility of "nativizing" an HCLI by allowing for a
+   CLI to be auto-generated, on demand, to run locally and natively
  
 
 
-Michaud                  Expires August 8, 2018                [Page 22]
+Michaud                Expires November 20, 2018               [Page 22]
 
-Internet-Draft      Hypertext Command Line Interface    February 4, 2018
+Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
 
-   extra overhead of navigating through hypertext); likely improving on
-   performance and creating a "frozen" version of a CLI.
+   (without the extra overhead of navigating through hypertext);
+   improving on performance and creating a "frozen" version of a CLI.
 
 Author's Address
 
@@ -1285,4 +1285,4 @@ Author's Address
 
 
 
-Michaud                  Expires August 8, 2018                [Page 23]
+Michaud                Expires November 20, 2018               [Page 23]

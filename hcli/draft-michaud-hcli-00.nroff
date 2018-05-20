@@ -8,9 +8,9 @@
 .ds LF Michaud
 .ds RF FORMFEED[Page %]
 .ds LH Internet-Draft
-.ds RH February 4, 2018
+.ds RH May 19, 2018
 .ds CH Hypertext Command Line Interface
-.ds CF Expires August 8, 2018
+.ds CF Expires November 20, 2018
 .hy 0
 .nh
 .ad l
@@ -18,9 +18,9 @@
 
 .nf
 .tl 'Network Working Group''J. Michaud'
-.tl '\%Internet-Draft''February 4, 2018'
+.tl '\%Internet-Draft''May 19, 2018'
 .tl 'Intended status: Informational'''
-.tl 'Expires: August 8, 2018'''
+.tl 'Expires: November 20, 2018'''
 .fi
 .in 3
 
@@ -32,7 +32,7 @@ Hypertext Command Line Interface
 .ti 0
 Abstract
 
-This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the pipe and filter style, as seen in a Unix/Linux shell.
+This document proposes a codification of resources and their relations with hyperlinks, using Unix-like command line interface (CLI) semantics, to foster the creation of a reusable and prolific intersection between the REST architectural style and the pipe and filter style.
 
 .ti 0
 Status of This Memo
@@ -118,15 +118,15 @@ Table of Contents
 1.  Introduction
 
 .fi
-The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API creators and consumers is required to enable use coherence to emerge between APIs and API consumers.
+The proliferation of hypermedia-rich media-types such as HAL, Collection+JSON, Siren, JSON API, JSON-LD, Mason, etc., was a significant step in helping hypermedia APIs take flight in the industry. However, given the generic nature of these hypermedia-rich media types, the establishment of meaning within their structure requires additional work. Semantic definition and agreement between API providers and consumers is required to enable use coherence to emerge.
 
 Hypertext Command Line Interface (HCLI) is a standard that establishes semantic conventions for expressing command line interfaces via hypermedia controls, such as through the use of links and forms.
 
 HCLI leverages the use of the Application Level Profile Semantics (ALPS) [I-D.draft-amundsen-richardson-foster-alps], similar to microformats, to establish a shared understanding and meaning within generic hypermedia-rich media-types.
 
-HCLI's conventions result in a semantic interface for serving and consuming CLIs, enabling the creation of general-purpose libraries that can be re-used on any API and API consumer using HCLI semantics. Furthermore, the establishment of a semantic interface of this nature is expected to instigate the creation of a rich ecosystem of reusable and shareable CLIs.
+HCLI's conventions result in a semantic interface, a connector, for serving and consuming CLIs, enabling for the creation of general-purpose libraries and clients that can be re-used. The establishment of a semantic interface of this nature lays down a foundation for the instigation of a rich ecosystem of reusable and shareable CLIs.
 
-The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to many different domains, and only imposes limitations that constrain an HTTP API to operate as a hypertext command line interface.
+The primary design goal of HCLI is to foster the creation of a reusable and prolific intersection, or bridge, between the REST architectural style and the pipe and filter style; as the latter is seen under the Unix/Linux shell. HCLI can be applied to any domain, and only imposes limitations that constrain an HTTP API to operate as a hypertext command line interface.
 
 .ti 0
 2.  Requirements
@@ -814,7 +814,7 @@ TBD
 .ti 0
 9.  IANA Considerations
 
-This specification introduces the "cli" link relation per [RFC5988] to indicate the presence of hypertext command line interface semantics.
+This specification introduces the "cli" link relation per [RFC5988] to indicate the presence of command line interface semantics.
 
 The link relation SHOULD be accompanied by a "profile" [RFC6906] defining command line interface semantics.
 
@@ -882,17 +882,17 @@ B.1.  What are some of the benefits of HCLI?
 .ti 0
 B.1.1.  Reduced Cost
 
-The most immediate benefit is that instead of having to develop a custom client for your HCLI API, you can benefit from the use of a standard client that understands HCLI semantics. Such a client would be able to interact out-of-the-box with any HCLI API as an imposter CLI; you get a free bridge into the pipe and filter style for your HCLI fronted API.
+The most immediate benefit is that instead of having to develop a custom client for your HCLI API, you can benefit from the use of a standard client that understands HCLI semantics. Such a client would be able to interact out-of-the-box with any HCLI as an imposter CLI; you get a free bridge into the pipe and filter style for your HCLI connector fronted API.
 
 .ti 0
 B.1.2.  Self-documenting and Up-to-date
 
-An HCLI API is self-documenting in that the commands, options and parameters that can be selected are plainly visible through the documentation mechanisms highlighted in this specification. Moreover, given the distributed nature of the HCLI semantic interface, changes made to an HCLI API are always distributed to all clients using the API so everybody benefits from up-to-date functionality and up-to-date documentation.
+An HCLI is self-documenting in that the commands, options and parameters that can be selected are plainly visible through the documentation mechanisms highlighted in this specification. Moreover, given the distributed nature of the HCLI semantic interface, changes made to an HCLI are always distributed to all clients using the API. Clients can always benefits from up-to-date functionality and up-to-date documentation.
 
 .ti 0
 B.1.3.  Immediacy
 
-Having at your disposal an instantly usable shell CLI for your HCLI API provides developers with an immediately usable, and familiar, solution through a familiar mode of operation (pipe and filter).
+Having at your disposal an instantly usable shell CLI for your HCLI provides developers with an immediately usable, and familiar, solution through a familiar mode of operation (pipe and filter).
 
 .ti 0
 B.1.4.  Scripting and Experimentation
@@ -907,7 +907,7 @@ HCLI also raises notions of reusable HCLIs and of an ecosystem of shareable and 
 .ti 0
 B.1.5.  Native
 
-Because the entire HCLI semantic interface leading all the way up to API is safe from side-effects on the API fronted by HCLI, we raise the possibility of "nativizing" a HCLI by allowing for a CLI to be auto-generated, on demand, to run locally and natively (without the extra overhead of navigating through hypertext); likely improving on performance and creating a "frozen" version of a CLI.
+Because the entire HCLI semantic interface (connector) leading all the way up to an API surface (component) is safe from side-effects, we raise the possibility of "nativizing" an HCLI by allowing for a CLI to be auto-generated, on demand, to run locally and natively (without the extra overhead of navigating through hypertext); improving on performance and creating a "frozen" version of a CLI.
 .nf
 
 .ti 0
