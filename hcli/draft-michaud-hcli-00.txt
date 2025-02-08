@@ -3,9 +3,9 @@
 
 
 Network Working Group                                         J. Michaud
-Internet-Draft                                          October 28, 2024
+Internet-Draft                                          February 8, 2025
 Intended status: Informational                                          
-Expires: May 1, 2025                                                    
+Expires: August 12, 2025                                                
 
 
                     Hypertext Command Line Interface
@@ -36,7 +36,7 @@ Status of This Memo
 
 Copyright Notice
 
-   Copyright (c) 2024 IETF Trust and the persons identified as the
+   Copyright (c) 2025 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 1]
+Michaud                 Expires August 12, 2025                 [Page 1]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 Table of Contents
@@ -109,9 +109,9 @@ Table of Contents
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 2]
+Michaud                 Expires August 12, 2025                 [Page 2]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
        B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
@@ -165,9 +165,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 3]
+Michaud                 Expires August 12, 2025                 [Page 3]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 3.  HCLI ALPS Semantics
@@ -221,9 +221,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 4]
+Michaud                 Expires August 12, 2025                 [Page 4]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
          <descriptor id="hcli_param" type="semantic"/>
@@ -277,9 +277,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 5]
+Michaud                 Expires August 12, 2025                 [Page 5]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    It should also be noted that an HCLI Document MUST NOT endeavor to
@@ -333,9 +333,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 6]
+Michaud                 Expires August 12, 2025                 [Page 6]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    This specification documents the semantics of HCLI version "1.0".
@@ -389,9 +389,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 7]
+Michaud                 Expires August 12, 2025                 [Page 7]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 4.3.2.  description
@@ -445,9 +445,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 8]
+Michaud                 Expires August 12, 2025                 [Page 8]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    (2) double quote character (i.e. ")
@@ -501,9 +501,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                   [Page 9]
+Michaud                 Expires August 12, 2025                 [Page 9]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    and Commands, Option names SHOULD be prefixed with a:
@@ -557,9 +557,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 10]
+Michaud                 Expires August 12, 2025                [Page 10]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 4.7.  Execution
@@ -613,9 +613,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 11]
+Michaud                 Expires August 12, 2025                [Page 11]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
        - delete
@@ -669,9 +669,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 12]
+Michaud                 Expires August 12, 2025                [Page 12]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
      {
@@ -725,9 +725,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 13]
+Michaud                 Expires August 12, 2025                [Page 13]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    {
@@ -781,9 +781,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 14]
+Michaud                 Expires August 12, 2025                [Page 14]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    Accept: application/hal+json
@@ -837,9 +837,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 15]
+Michaud                 Expires August 12, 2025                [Page 15]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
          "href": "/jsonf?command=jsonf"
@@ -893,9 +893,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 16]
+Michaud                 Expires August 12, 2025                [Page 16]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
        "cli": {
@@ -949,9 +949,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 17]
+Michaud                 Expires August 12, 2025                [Page 17]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    the standard error output stream (STDERR) SHOULD return an HTTP API
@@ -1005,9 +1005,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 18]
+Michaud                 Expires August 12, 2025                [Page 18]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 7.1.  Standard HCLI ALPS Profile
@@ -1061,9 +1061,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 19]
+Michaud                 Expires August 12, 2025                [Page 19]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 7.3.  For Command Line Clients (e.g. Under Unix/Linux shell)
@@ -1117,9 +1117,9 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 20]
+Michaud                 Expires August 12, 2025                [Page 20]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
               3986, January 2005.
@@ -1139,14 +1139,14 @@ Internet-Draft      Hypertext Command Line Interface    October 28, 2024
    [I-D.draft-kelly-json-hal]
 
               Kelly, M., "JSON Hypertext Application Language", draft-
-              kelly-json-hal-08 (work in progress), May 2016.
+              kelly-json-hal-11 (work in progress), October 2023.
 
    [I-D.draft-amundsen-richardson-foster-alps]
 
               Amundsen, M., CA Technologies, Inc., Richardson L.,
               Foster, M., "Application-Level Profile Semantics (ALPS)",
-              draft-amundsen-richardson-foster-alps-02 (work in
-              progress), August 2015.
+              draft-amundsen-richardson-foster-alps-04 (work in
+              progress), October 2020.
 
 Appendix A.  Acknowledgements
 
@@ -1173,9 +1173,9 @@ Appendix A.  Acknowledgements
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 21]
+Michaud                 Expires August 12, 2025                [Page 21]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
 Appendix B.  Frequently Asked Questions
@@ -1229,9 +1229,9 @@ B.1.5.  Native
  
 
 
-Michaud                   Expires May 1, 2025                  [Page 22]
+Michaud                 Expires August 12, 2025                [Page 22]
 
-Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+Internet-Draft      Hypertext Command Line Interface    February 8, 2025
 
 
    (without the extra overhead of navigating through hypertext);
@@ -1241,7 +1241,7 @@ Author's Address
 
    Jeff Michaud
 
-   Email: cometaj2@comcast.net
+   Email: cometaj2@proton.me
    Twitter: @cometaj2
 
 
@@ -1285,4 +1285,4 @@ Author's Address
 
 
 
-Michaud                   Expires May 1, 2025                  [Page 23]
+Michaud                 Expires August 12, 2025                [Page 23]
