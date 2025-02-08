@@ -16,4 +16,4 @@ You can also visit hcli.io to access an example HCLI server [5]
 [2] https://tools.ietf.org/html/draft-amundsen-richardson-foster-alps-02  
 [3] https://github.com/cometaj2/huckle  
 [4] https://groups.google.com/forum/#!forum/huck-hypermedia-unified-cli-with-a-kick  
-[5] http://hcli.io
+[5] https://hcli.io

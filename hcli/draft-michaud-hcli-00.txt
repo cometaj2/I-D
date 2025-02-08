@@ -3,9 +3,9 @@
 
 
 Network Working Group                                         J. Michaud
-Internet-Draft                                              May 19, 2018
+Internet-Draft                                          October 28, 2024
 Intended status: Informational                                          
-Expires: November 20, 2018                                              
+Expires: May 1, 2025                                                    
 
 
                     Hypertext Command Line Interface
@@ -36,7 +36,7 @@ Status of This Memo
 
 Copyright Notice
 
-   Copyright (c) 2018 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -53,9 +53,9 @@ Copyright Notice
  
 
 
-Michaud                Expires November 20, 2018                [Page 1]
+Michaud                   Expires May 1, 2025                   [Page 1]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
 Table of Contents
@@ -87,21 +87,21 @@ Table of Contents
      5.2  jsonf . . . . . . . . . . . . . . . . . . . . . . . . . . . 15
    6.  Stream Processing  . . . . . . . . . . . . . . . . . . . . . . 17
        6.1.1.  For Servers  . . . . . . . . . . . . . . . . . . . . . 17
-       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 17
+       6.1.2.  For Clients in General . . . . . . . . . . . . . . . . 18
        6.1.2.  For Command Line Clients . . . . . . . . . . . . . . . 18
    7.  Recommendations  . . . . . . . . . . . . . . . . . . . . . . . 18
-     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 18
-     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 18
-       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 18
+     7.1.  Standard HCLI ALPS Profile . . . . . . . . . . . . . . . . 19
+     7.2.  For Clients in General . . . . . . . . . . . . . . . . . . 19
+       7.2.1.  Command Line Execution . . . . . . . . . . . . . . . . 19
        7.2.2.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
        7.2.3.  Robustness . . . . . . . . . . . . . . . . . . . . . . 19
-     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 19
-       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 19
+     7.3.  For Command Line Clients (e.g. Under Unix/Linux shell) . . 20
+       7.3.1.  Documentation  . . . . . . . . . . . . . . . . . . . . 20
    8.  Security Considerations  . . . . . . . . . . . . . . . . . . . 20
    9.  IANA Considerations  . . . . . . . . . . . . . . . . . . . . . 20
    10.  References  . . . . . . . . . . . . . . . . . . . . . . . . . 20
      10.1.  Normative References  . . . . . . . . . . . . . . . . . . 20
-     10.2.  Informative References  . . . . . . . . . . . . . . . . . 20
+     10.2.  Informative References  . . . . . . . . . . . . . . . . . 21
    Appendix A.  Acknowledgements  . . . . . . . . . . . . . . . . . . 21
    Appendix B.  Frequently Asked Questions  . . . . . . . . . . . . . 22
      B.1.  What are some of the benefits of HCLI? . . . . . . . . . . 22
@@ -109,9 +109,9 @@ Table of Contents
  
 
 
-Michaud                Expires November 20, 2018                [Page 2]
+Michaud                   Expires May 1, 2025                   [Page 2]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
        B.1.2.  Self-documenting and Up-to-date  . . . . . . . . . . . 22
@@ -165,9 +165,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 3]
+Michaud                   Expires May 1, 2025                   [Page 3]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
 3.  HCLI ALPS Semantics
@@ -221,9 +221,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 4]
+Michaud                   Expires May 1, 2025                   [Page 4]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
          <descriptor id="hcli_param" type="semantic"/>
@@ -277,9 +277,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 5]
+Michaud                   Expires May 1, 2025                   [Page 5]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    It should also be noted that an HCLI Document MUST NOT endeavor to
@@ -333,9 +333,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 6]
+Michaud                   Expires May 1, 2025                   [Page 6]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    This specification documents the semantics of HCLI version "1.0".
@@ -389,9 +389,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 7]
+Michaud                   Expires May 1, 2025                   [Page 7]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
 4.3.2.  description
@@ -445,9 +445,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 8]
+Michaud                   Expires May 1, 2025                   [Page 8]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    (2) double quote character (i.e. ")
@@ -501,9 +501,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018                [Page 9]
+Michaud                   Expires May 1, 2025                   [Page 9]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    and Commands, Option names SHOULD be prefixed with a:
@@ -557,9 +557,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 10]
+Michaud                   Expires May 1, 2025                  [Page 10]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
 4.7.  Execution
@@ -613,9 +613,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 11]
+Michaud                   Expires May 1, 2025                  [Page 11]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
        - delete
@@ -669,9 +669,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 12]
+Michaud                   Expires May 1, 2025                  [Page 12]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
      {
@@ -725,9 +725,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 13]
+Michaud                   Expires May 1, 2025                  [Page 13]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    {
@@ -781,9 +781,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 14]
+Michaud                   Expires May 1, 2025                  [Page 14]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    Accept: application/hal+json
@@ -837,9 +837,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 15]
+Michaud                   Expires May 1, 2025                  [Page 15]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
          "href": "/jsonf?command=jsonf"
@@ -893,9 +893,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
  
 
 
-Michaud                Expires November 20, 2018               [Page 16]
+Michaud                   Expires May 1, 2025                  [Page 16]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
        "cli": {
@@ -929,7 +929,7 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 6.1.1.  For Servers
 
    Servers implementing HCLI semantics that leverage unsafe Execution
-   (HTTP POST or HTTP PATCH) and that intend to allow input stream like
+   (HTTP POST or HTTP PATCH) and that intend to allow input stream-like
    processing for their HCLI, for example, by receiving an STDIN input
    stream through a filter from a pipe and filter sequence in a
    Unix/Linux shell, MUST minimally be ready to receive and send entity
@@ -945,29 +945,46 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
    sending correctly identified media-types to help maintain visibility
    on the network.
 
-6.1.2.  For Clients in General
+   Servers intending for clients to present coherent error messaging to
  
 
 
-Michaud                Expires November 20, 2018               [Page 17]
+Michaud                   Expires May 1, 2025                  [Page 17]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
+
+   the standard error output stream (STDERR) SHOULD return an HTTP API
+   problem detail [RFC9457].
+
+   Servers SHOULD abide by the Unix philosophy regarding successes.
+   Notably, servers SHOULD favor "success equals silence" to enable
+   piping without noise from success messages, and CLI behavior SHOULD
+   remain predictable and composable.
+
+6.1.2.  For Clients in General
 
    Command line clients that support input stream processing SHOULD
    attempt to send their input stream to an HCLI server, but only if a
    command line sequence leads to an unsafe HTTP POST or idempotent HTTP
    PUT Execution.
 
-   Clients MUST minimally support sending input streams and receiving
-   output streams under the application/octet-stream [RFC2046] media-
-   type.
+   Clients MUST minimally support sending input streams (STDIN) and
+   receiving output streams (STDOUT) under the application/octet-stream
+   [RFC2046] media-type.
 
    Command line clients SHOULD, however, endeavor to communicate input
    streams by using the most appropriate media-type representing the
    input stream to transfer, and SHOULD also be ready to process
    responses making use of the most appropriate media-type for the
    received response, to help maintain visibility on the network.
+
+   Clients SHOULD also be ready to support HTTP API problem details
+   [RFC9457] to help yield a sensible standard error output stream
+   (STDERR).
+
+   Clients SHOULD give navigation precedence to a Parameter, over
+   Commands and Options, when presented in an HCLI Document.
 
 6.1.2.  For Command Line Clients
 
@@ -980,11 +997,18 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
    equivalent, to allow for further pipe and filter processing.
 
    Command line clients receiving failure results from an HCLI command
-   line execution SHOULD output the failure result to STDERR, or other
+   line execution in the form of an HTTP API problem detail [RFC9457]
+   SHOULD output the failure result detail to STDERR, or other
    equivalent, to allow for further pipe and filter processing.
 
-
 7.  Recommendations
+ 
+
+
+Michaud                   Expires May 1, 2025                  [Page 18]
+
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+
 
 7.1.  Standard HCLI ALPS Profile
 
@@ -1002,14 +1026,6 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
    automatically, and sequentially parse submitted arguments, and to
    navigate through sequences of HCLI Documents, by using Command or
    Option "name" or the Parameter variable "hcli_param", corresponding
- 
-
-
-Michaud                Expires November 20, 2018               [Page 18]
-
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
-
-
    to each parsed command, option or parameter.
 
    A client MAY want to facilitate disambiguation of user supplied
@@ -1042,6 +1058,14 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
    they don't understand, SHOULD favor ignoring what they don't
    understand over failing. 
 
+ 
+
+
+Michaud                   Expires May 1, 2025                  [Page 19]
+
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+
+
 7.3.  For Command Line Clients (e.g. Under Unix/Linux shell)
 
 7.3.1.  Documentation
@@ -1058,13 +1082,6 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
    COMMANDS section, two sections reserved for client use, that
    corresponds to a listing of Options and Commands referenced in the
    presented HCLI Document.
- 
-
-
-Michaud                Expires November 20, 2018               [Page 19]
-
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
-
 
 8.  Security Considerations
 
@@ -1097,6 +1114,14 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
 
    [RFC3986]  Berners-Lee, T., Fielding, R., and L. Masinter, "Uniform
               Resource Identifier (URI): Generic Syntax", STD 66, RFC
+ 
+
+
+Michaud                   Expires May 1, 2025                  [Page 20]
+
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
+
+
               3986, January 2005.
 
    [RFC6570]  Gregorio, J., Fielding, R., Hadley, M., Nottingham, M.,
@@ -1106,6 +1131,9 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
               "Multipurpose Internet Mail Extensions", RFC 2046,
               November 1996.
 
+   [RFC9457]  Nottingham, M., Wilde, E., Dalal, S., "Problem Details for
+              HTTP APIs", RFC 9457, March 2016.
+
 10.2.  Informative References
 
    [I-D.draft-kelly-json-hal]
@@ -1114,13 +1142,6 @@ Internet-Draft      Hypertext Command Line Interface        May 19, 2018
               kelly-json-hal-08 (work in progress), May 2016.
 
    [I-D.draft-amundsen-richardson-foster-alps]
- 
-
-
-Michaud                Expires November 20, 2018               [Page 20]
-
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
-
 
               Amundsen, M., CA Technologies, Inc., Richardson L.,
               Foster, M., "Application-Level Profile Semantics (ALPS)",
@@ -1149,33 +1170,12 @@ Appendix A.  Acknowledgements
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
  
 
 
-Michaud                Expires November 20, 2018               [Page 21]
+Michaud                   Expires May 1, 2025                  [Page 21]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
 Appendix B.  Frequently Asked Questions
@@ -1229,9 +1229,9 @@ B.1.5.  Native
  
 
 
-Michaud                Expires November 20, 2018               [Page 22]
+Michaud                   Expires May 1, 2025                  [Page 22]
 
-Internet-Draft      Hypertext Command Line Interface        May 19, 2018
+Internet-Draft      Hypertext Command Line Interface    October 28, 2024
 
 
    (without the extra overhead of navigating through hypertext);
@@ -1285,4 +1285,4 @@ Author's Address
 
 
 
-Michaud                Expires November 20, 2018               [Page 23]
+Michaud                   Expires May 1, 2025                  [Page 23]
